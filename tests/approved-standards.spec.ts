@@ -58,7 +58,7 @@ test("approved Atelier v4 geometry, copy, original imagery and responsive photo 
    expect(info.rows.map(x=>Math.round(x.h))).toEqual([354,402,365]);
   }
   if([901,1100,1440,1920].includes(width))
-   await standard.screenshot({path:"test-results/approved-standards-desktop-"+width+".png",animations:"disabled"});
+   await standard.screenshot({path:"test-results/approved-standards-desktop-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
  }
 });
 test("all approved full-length Standards copy remains readable on tablet and phone",async({page})=>{
@@ -88,6 +88,6 @@ test("all approved full-length Standards copy remains readable on tablet and pho
    expect(story.headingVisible).toBe(true);
   }
   if([390,750].includes(width))
-   await page.locator("#standards").screenshot({path:"test-results/approved-standards-mobile-"+width+".png",animations:"disabled"});
+   await page.locator("#standards").screenshot({path:"test-results/approved-standards-mobile-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
  }
 });
