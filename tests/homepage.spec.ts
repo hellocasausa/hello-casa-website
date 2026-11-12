@@ -157,3 +157,28 @@ test("default checklist and contact fallback are usable without application Java
   );
   await context.close();
 });
+
+// Measurements from the original embedded document, not implementation constants.
+import baseline from "./fixtures/b633-layout.json" with { type: "json" };
+test("Hero and Steps preserve measured B6.3.3 geometry", async ({ page }) => {
+  for (const [width, reference] of Object.entries(baseline.measurements)) {
+    await page.setViewportSize({ width: Number(width), height: 1000 });
+    await page.evaluate(() => document.fonts.ready);
+    const title = (await page.locator(".hero h1").boundingBox())!,
+      steps = (await page.locator(".steps h2").boundingBox())!,
+      services = (await page.locator("#services").boundingBox())!;
+    for (const [name, actual, expected] of [
+      ["headline inset", title.x, reference.titleX],
+      ["headline top", title.y, reference.titleY],
+      ["headline height", title.height, reference.titleHeight],
+      ["Steps inset", steps.x, reference.stepsTitleX],
+      ["Steps top", steps.y, reference.stepsTitleY],
+      ["Steps height", steps.height, reference.stepsTitleHeight],
+      ["Services start", services.y, reference.servicesTop],
+    ] as const) {
+      expect(Math.abs(actual - expected), `${name} at ${width}px`).toBeLessThan(
+        2,
+      );
+    }
+  }
+});

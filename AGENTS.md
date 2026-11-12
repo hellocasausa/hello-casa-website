@@ -11,7 +11,7 @@ Reconstruct the *approved* Hello Casa homepage as a clean, maintainable, Wix-ind
 - **Source workspace and historical comparisons:** https://drive.google.com/drive/folders/18Qa1d6yQVT4x6dj9Ly03phGlRqmxK7kQ
 - **Astra Phase 1 editor findings (context, not a work order):** https://drive.google.com/file/d/1ueydpO96huYGNnmke1KZm6Wxqz4YlFrs/view
 
-The Phase A blueprint is based on **B6.3.3's embedded website snapshot**, which might predate the newest *approved* HTML preview revisions to Footer, Contact and selling-point copy. Before declaring completion, incorporate later approved source references if supplied and document any baseline conflicts. Do not silently revert newer approved design decisions.
+The primary visual authority is **the website embedded in Design Studio B6.3.3**, the exact source investigated by Astra and used for the Phase A blueprint. Continue refining the existing native reconstruction against that embedded website's actual assets, CSS, positioning, artwork and responsive behavior. The separate v11.0 and v11.2 standalone previews are historical references only; do not apply their designs unless a specific newer approved change is explicitly identified and authorized. Do not restart the reconstruction, merge PR #1 or deploy. This source-priority clarification was supplied by the owner on 12 November 2026.
 
 These external source files are not yet committed to this repository. If inaccessible in the coding environment, request their actual bytes or a connector-mediated export; do not invent missing code, images or fonts.
 

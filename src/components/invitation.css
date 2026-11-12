@@ -1,0 +1,90 @@
+@media (min-width: 751px) {
+  #hc-mobile-vertical .hc96-mobile-invitation {
+    display: none !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-mobile-invitation {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-mobile-invitation h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #274b6a !important;
+    font:
+      400 clamp(25px, 7vw, 31px)/1.21 "HC Libre",
+      "Libre Baskerville",
+      Georgia,
+      serif !important;
+    letter-spacing: -0.035em !important;
+    white-space: nowrap !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-invitation-rule {
+    display: block;
+    width: 85px;
+    height: 3px;
+    background: #fff0ae;
+    border-radius: 2px;
+  }
+}
+@media (max-width: 369px) {
+  #hc-mobile-vertical .hc96-mobile-invitation h2 {
+    font-size: 24px !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-mobile-invitation {
+    gap: 7px !important;
+    margin-bottom: 14px !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-mobile-invitation h2 {
+    font:
+      400 clamp(17.5px, 5.25vw, 22px)/1.14 "HC Libre",
+      "Libre Baskerville",
+      Georgia,
+      serif !important;
+    letter-spacing: -0.035em !important;
+    white-space: nowrap !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-invitation-rule {
+    width: clamp(58px, 16vw, 72px) !important;
+    height: 3px !important;
+    background: #fff0ae !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-mobile-invitation {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding-left: clamp(22px, 7.2vw, 34px) !important;
+    width: 100% !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-mobile-invitation h2 {
+    text-align: left !important;
+    white-space: nowrap !important;
+  }
+}
+@media (max-width: 750px) {
+  #hc-mobile-vertical .hc96-invitation-rule {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
