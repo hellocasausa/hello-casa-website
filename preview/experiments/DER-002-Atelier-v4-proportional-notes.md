@@ -1,6 +1,6 @@
 # DER-002 / Refinement 03 — Proportional Atelier v4
 
-**Status:** Isolated experimental design preview; **not approved** for production.  
+**Status:** Owner **approved Atelier v4 for native integration** on 2026-11-12. Implemented in draft PR #1; no merge or deployment. Experimental v4 remains an immutable reference.  
 **Date:** 2026-11-12  
 **Source:** The approved Hello Casa Standards source/assets via Atelier v3, with owner-supplied photo properties.  
 **Gallery:** [Open the interactive, immutable v4 study](https://raw.githack.com/hellocasausa/hello-casa-website/05aafe84488e93bb47727544297a5c455822321b/preview/experiments/standards-atelier-proportional-v4.html)  
@@ -52,7 +52,7 @@ Cropping and zoom remain consistent across both.
 
 The first v4 QA run correctly caught the third image overlapping its paragraph by just 9px at 1440. Rather than altering the owner's saved image x/y, the grid track was adjusted, yielding a 23px intersection. Tests were rerun to success. This demonstrates why the export must preserve **structural layout relationships**, not just isolated image properties.
 
-There are two successful screenshots at 1440 and 1100px. The owner has **not approved** implementing v4 on the live website, and this experimental design must remain separate from shipping Services/Standards code until explicitly authorized.
+There are two successful screenshots at 1440 and 1100px. The owner subsequently **approved native integration** of v4. Its layout and copy are now implemented under the single authoritative Standards component in draft PR #1, while this experiment remains archived and is not imported as production code. Final combined-site approval and deployment authorization are still separate.
 
 ## Visual follow-up suggestions (not implemented)
 
