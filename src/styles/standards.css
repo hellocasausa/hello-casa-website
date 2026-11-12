@@ -1,0 +1,649 @@
+/* Owner: standards. Edit the authoritative rule for its scope; do not append correction sheets. */
+
+.hc-standards-asym-section .hc-asym-shell {
+  max-width: 1140px;
+  width: calc(100% - 72px);
+  margin: 0 auto;
+  padding: 54px 0 60px;
+  position: relative;
+}
+.hc-standards-asym-section .hc-asym-promise {
+  width: min(375px, 82%);
+  height: 58px;
+  margin: 0 0 30px -5.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #284f70;
+  background: #cfe5f4;
+  border-radius: 0 100px 100px 0;
+  font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+.hc-standards-asym-section .hc-asym-stage {
+  position: relative;
+  height: 800px;
+  min-height: 0;
+}
+.hc-standards-asym-section .hc-asym-feature {
+  position: absolute;
+  height: 350px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.hc-standards-asym-section .hc-asym-feature--one {
+  width: 65%;
+  left: 3.3%;
+  top: 0;
+}
+.hc-standards-asym-section .hc-asym-feature--two {
+  width: 62%;
+  right: 3%;
+  top: 240px;
+}
+.hc-standards-asym-section .hc-asym-feature--three {
+  width: 72%;
+  left: 9%;
+  top: 490px;
+  height: 300px;
+}
+.hc-standards-asym-section .hc-asym-heading {
+  position: absolute;
+  margin: 0;
+  max-width: max-content;
+}
+.hc-standards-asym-section .hc-asym-feature--one .hc-asym-heading {
+  left: 8px;
+  top: 0;
+}
+.hc-standards-asym-section .hc-asym-feature--two .hc-asym-heading {
+  right: 18px;
+  top: 0;
+  text-align: right;
+}
+.hc-standards-asym-section .hc-asym-feature--three .hc-asym-heading {
+  left: 4px;
+  top: 0;
+}
+.hc-standards-asym-section .hc-asym-kicker {
+  display: block;
+  margin: 0 0 16px;
+  color: #738ea2;
+  font-family: "HC Nunito", "Nunito Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-weight: 800;
+}
+.hc-standards-asym-section .hc-asym-kicker::before {
+  content: "";
+  display: block;
+  width: 77px;
+  height: 2px;
+  background: #f2bb90;
+  border-radius: 8px;
+  margin: 0 0 14px;
+}
+.hc-standards-asym-section .hc-asym-feature--two .hc-asym-kicker::before {
+  margin-left: auto;
+}
+.hc-standards-asym-section .hc-asym-title {
+  font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+  font-size: clamp(29px, 2.85vw, 41px);
+  color: #284f70;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin: 0;
+  text-wrap: balance;
+}
+.hc-standards-asym-section .hc-asym-photo {
+  display: block;
+  position: absolute;
+  margin: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #f6ede8;
+  box-shadow: 0 13px 29px rgba(42, 70, 84, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.93);
+}
+.hc-standards-asym-section .hc-asym-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: none;
+  opacity: 1;
+}
+.hc-standards-asym-section .hc-asym-feature--one .hc-asym-photo {
+  left: 24px;
+  top: 102px;
+  width: 265px;
+  height: 260px;
+}
+.hc-standards-asym-section .hc-asym-feature--two .hc-asym-photo {
+  right: 0;
+  top: 106px;
+  width: 245px;
+  height: 262px;
+}
+.hc-standards-asym-section .hc-asym-feature--three .hc-asym-photo {
+  left: 39px;
+  top: 100px;
+  width: 330px;
+  height: 208px;
+}
+.hc-standards-asym-section .hc-asym-text {
+  font-family: "HC Nunito", "Nunito Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: 0.006em;
+  font-weight: 450;
+  color: #526d86;
+  position: absolute;
+  max-width: 320px;
+  margin: 0;
+}
+.hc-standards-asym-section .hc-asym-feature--one .hc-asym-text {
+  left: 330px;
+  top: 167px;
+  max-width: 325px;
+}
+.hc-standards-asym-section .hc-asym-feature--two .hc-asym-text {
+  right: 284px;
+  top: 213px;
+  max-width: 286px;
+  text-align: right;
+}
+.hc-standards-asym-section .hc-asym-feature--three .hc-asym-text {
+  left: 423px;
+  top: 156px;
+  max-width: 305px;
+}
+@media (max-width: 1100px) and (min-width: 751px) {
+  .hc-standards-asym-section .hc-asym-shell {
+    width: calc(100% - 48px);
+    padding: 38px 0 45px;
+  }
+  .hc-standards-asym-section .hc-asym-stage {
+    height: 735px;
+  }
+  .hc-standards-asym-section .hc-asym-promise {
+    margin-bottom: 22px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--one {
+    width: 75%;
+    left: 0;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two {
+    width: 70%;
+    right: 0;
+    top: 230px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--three {
+    width: 77%;
+    left: 5%;
+    top: 465px;
+  }
+  .hc-standards-asym-section .hc-asym-title {
+    font-size: 31px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--one .hc-asym-photo {
+    width: 222px;
+    height: 227px;
+    top: 96px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two .hc-asym-photo {
+    width: 214px;
+    height: 225px;
+    top: 96px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--three .hc-asym-photo {
+    width: 270px;
+    height: 205px;
+    top: 93px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--one .hc-asym-text {
+    left: 272px;
+    top: 162px;
+    max-width: 255px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two .hc-asym-text {
+    right: 246px;
+    top: 174px;
+    max-width: 238px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--three .hc-asym-text {
+    left: 338px;
+    top: 142px;
+    max-width: 235px;
+  }
+  .hc-standards-asym-section .hc-asym-text {
+    font-size: 14px;
+  }
+}
+@media (max-width: 750px) {
+  .hc-standards-asym-section .hc-asym-shell {
+    width: 100%;
+    padding: 24px 0 33px;
+  }
+  .hc-standards-asym-section .hc-asym-promise {
+    width: 78%;
+    height: 52px;
+    font-size: 16px;
+    margin: 0 0 26px 0;
+  }
+  .hc-standards-asym-section .hc-asym-stage {
+    height: 530px;
+  }
+  .hc-standards-asym-section .hc-asym-feature {
+    width: 100%;
+    left: 0;
+    right: auto;
+    top: 0;
+    height: auto;
+  }
+  .hc-standards-asym-section .hc-asym-heading {
+    left: 9%;
+    right: auto;
+    text-align: left;
+    top: 0;
+  }
+  .hc-standards-asym-section .hc-asym-kicker {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    margin-bottom: 7px;
+  }
+  .hc-standards-asym-section .hc-asym-kicker::before {
+    width: 47px;
+    margin: 0 0 6px;
+  }
+  .hc-standards-asym-section .hc-asym-title {
+    font-size: 21px;
+    line-height: 1.22;
+  }
+  .hc-standards-asym-section .hc-asym-photo {
+    border-radius: 13px;
+    box-shadow: 0 5px 14px rgba(42, 70, 84, 0.12);
+  }
+  .hc-standards-asym-section .hc-asym-feature--one .hc-asym-photo {
+    left: 6%;
+    top: 54px;
+    width: 26%;
+    height: 126px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--one .hc-asym-text {
+    left: 36%;
+    top: 76px;
+    max-width: 52%;
+    text-align: left;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two {
+    top: 172px;
+    height: 200px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two .hc-asym-heading {
+    left: auto;
+    right: 9%;
+    top: 0;
+    text-align: right;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two .hc-asym-kicker::before {
+    margin-left: auto;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two .hc-asym-photo {
+    left: auto;
+    right: 7%;
+    top: 54px;
+    width: 27%;
+    height: 126px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--two .hc-asym-text {
+    left: 12%;
+    right: auto;
+    top: 81px;
+    max-width: 51%;
+    text-align: right;
+  }
+  .hc-standards-asym-section .hc-asym-feature--three {
+    top: 342px;
+    height: 188px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--three .hc-asym-photo {
+    left: 6%;
+    top: 53px;
+    width: 36%;
+    height: 125px;
+  }
+  .hc-standards-asym-section .hc-asym-feature--three .hc-asym-text {
+    left: 46%;
+    top: 84px;
+    max-width: 49%;
+    text-align: left;
+  }
+  .hc-standards-asym-section .hc-asym-text {
+    font-size: 11px;
+    line-height: 1.34;
+    letter-spacing: 0;
+  }
+}
+@media (min-width: 751px) {
+  #standards.hc-standards-asym-section .hc-asym-promise {
+    margin-left: calc(3.3% + 8px);
+    margin-bottom: 23px;
+  }
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  #standards.hc-standards-asym-section .hc-asym-promise {
+    margin-left: 0;
+    margin-bottom: 23px;
+    width: min(340px, 83%);
+    height: 49px;
+  }
+}
+@media (min-width: 751px) {
+  #standards.hc-standards-asym-section .hc-asym-promise {
+    box-sizing: border-box;
+    width: 55.2vw;
+    max-width: none;
+    height: clamp(88px, calc(2.5vw + 62px), 98px);
+    margin: 0 0 23px calc(50% - 50vw);
+    border-radius: 0 100px 100px 0;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 36px 0 calc(max(46px, (100vw - 1160px)/2) + 28px);
+    background: #d4e9f7;
+    color: #234e73;
+    font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+    font-size: clamp(30px, 2.38vw, 35px);
+    line-height: 1.16;
+    letter-spacing: -0.035em;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  #standards.hc-standards-asym-section .hc-asym-promise {
+    padding-left: 48px;
+    padding-right: 24px;
+    font-size: clamp(26px, 3vw, 32px);
+  }
+}
+@media (min-width: 751px) {
+  #standards.hc-standards-asym-section .hc-asym-title {
+    font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(30px, 2.38vw, 34.272px);
+    line-height: 1.16;
+    letter-spacing: -0.035em;
+    margin: 0;
+  }
+  #standards.hc-standards-asym-section .hc-asym-kicker {
+    font-family: "HC Nunito", "Nunito Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.19em;
+    margin: 0 0 7px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-kicker::before {
+    margin-bottom: 10px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-copy {
+    font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+    font-size: clamp(30px, 2.38vw, 34.272px);
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.16;
+    letter-spacing: -0.035em;
+  }
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  #standards.hc-standards-asym-section .hc-asym-title,
+  #standards.hc-standards-asym-section .hc-asym-copy {
+    font-size: clamp(26px, 3vw, 31px);
+    line-height: 1.18;
+  }
+}
+@media screen and (max-width: 750px) {
+  #standards .hc-asym-copy {
+    font:
+      400 clamp(17.5px, 5.25vw, 22px)/1.14 "HC Libre",
+      "Libre Baskerville",
+      Georgia,
+      serif;
+    font-style: normal;
+    letter-spacing: -0.035em;
+  }
+}
+@media screen and (min-width: 901px) {
+  #standards.hc-standards-asym-section .hc-asym-shell {
+    padding-top: clamp(36px, 3.1vw, 44px);
+    padding-bottom: clamp(36px, 2.92vw, 42px);
+  }
+  #standards.hc-standards-asym-section .hc-asym-promise {
+    height: clamp(80px, 6.3vw, 88px);
+    margin-bottom: 18px;
+    background: #d3e7f5;
+    border-radius: 0 110px 110px 0;
+    font-weight: 400;
+  }
+  #standards.hc-standards-asym-section .hc-asym-copy {
+    font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+    font-style: normal;
+    font-weight: 400;
+  }
+  #standards.hc-standards-asym-section .hc-asym-kicker {
+    margin-bottom: 7px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-stage {
+    height: 735px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-feature--two {
+    top: 215px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-feature--three {
+    top: 425px;
+  }
+}
+@media screen and (min-width: 901px) and (max-width: 1100px) {
+  #standards.hc-standards-asym-section .hc-asym-shell {
+    padding-top: 34px;
+    padding-bottom: 38px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-promise {
+    height: 78px;
+    margin-bottom: 18px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-stage {
+    height: 675px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-feature--two {
+    top: 205px;
+  }
+  #standards.hc-standards-asym-section .hc-asym-feature--three {
+    top: 405px;
+  }
+}
+#standards.hc-standards-asym-section {
+  display: block;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #eaf5fa 0%,
+    #f2f8f8 34%,
+    #fff5e8 72%,
+    #ffdfca 100%
+  );
+  overflow: hidden;
+}
+.hc-asym-copy {
+  font: inherit;
+  margin: 0;
+}
+@media (max-width: 750px) {
+  #standards.hc-standards-asym-section {
+    background: linear-gradient(
+      193deg,
+      #e4f1f7 4.56%,
+      #fff9df 78.95%,
+      #feceb5 100%
+    );
+  }
+  #standards .hc-asym-shell {
+    width: 100%;
+    max-width: none;
+  }
+  #standards .hc-asym-promise {
+    padding: 0 22px;
+    justify-content: flex-start;
+    transform: none;
+    border-radius: 0 90px 90px 0;
+    background: #cee4f1;
+  }
+  #standards .hc-asym-stage {
+    margin: 0;
+  }
+  #standards .hc-asym-feature {
+    position: absolute;
+    height: 30vw;
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+  #standards .hc-asym-heading {
+    right: auto;
+    text-align: left;
+    max-width: none;
+  }
+  #standards .hc-asym-feature--two .hc-asym-heading {
+    text-align: right;
+  }
+  #standards .hc-asym-title {
+    white-space: nowrap;
+  }
+  #standards .hc-asym-kicker {
+    font-size: 8px;
+  }
+  #standards .hc-asym-kicker:before {
+    margin-bottom: 9px;
+  }
+  #standards .hc-asym-photo {
+    right: auto;
+  }
+  #standards .hc-asym-text {
+    right: auto;
+    text-align: left;
+  }
+  #standards .hc-asym-feature--two .hc-asym-text {
+    right: auto;
+    text-align: right;
+  }
+}
+@media (max-width: 350px) {
+  #standards .hc-asym-promise {
+    padding-left: 18px;
+  }
+}
+@media (max-width: 750px) {
+  #standards .hc-asym-shell {
+    padding: 0;
+  }
+  #standards .hc-asym-promise {
+    position: absolute;
+    left: 0;
+    top: 24px;
+    width: 77.4%;
+    margin: 0;
+    height: 53px;
+    font-size: clamp(18px, 5.25vw, 29px);
+  }
+  #standards .hc-asym-stage {
+    height: 154.64vw;
+    min-height: 0;
+  }
+  #standards .hc-asym-feature--one {
+    top: 27.57333vw;
+  }
+  #standards .hc-asym-feature--two {
+    top: 65.63013vw;
+  }
+  #standards .hc-asym-feature--three {
+    top: 102.18987vw;
+  }
+  #standards .hc-asym-heading {
+    left: 9.5%;
+    top: 0;
+  }
+  #standards .hc-asym-feature--two .hc-asym-heading {
+    right: 9.3%;
+    left: auto;
+  }
+  #standards .hc-asym-kicker {
+    font:
+      700 1.662vw/1.65 "dm-sans",
+      sans-serif;
+    margin: 0 0 1vw;
+    letter-spacing: 0.2em;
+  }
+  #standards .hc-asym-kicker:before {
+    position: absolute;
+    width: 23.3vw;
+    top: -1.6vw;
+    left: -9.5vw;
+    height: 1px;
+    background: #f9c49e;
+  }
+  #standards .hc-asym-feature--two .hc-asym-kicker:before {
+    left: auto;
+    right: -9.3vw;
+  }
+  #standards .hc-asym-title {
+    font-size: 4.432vw;
+    line-height: 1.12;
+  }
+  #standards .hc-asym-photo {
+    top: 13.62vw;
+    left: 6.5%;
+    width: 25.61%;
+    height: 32.37vw;
+    border-radius: 9px;
+    border: 0;
+    box-shadow: 0 3px 9px #2a465430;
+  }
+  #standards .hc-asym-feature--two .hc-asym-photo {
+    left: auto;
+    right: 6.4%;
+  }
+  #standards .hc-asym-feature--three .hc-asym-photo {
+    left: 6.2%;
+    width: 35.65%;
+  }
+  #standards .hc-asym-text {
+    left: 35.16%;
+    top: 19.27vw;
+    width: 49.94%;
+    font-size: clamp(11.8px, 3.22vw, 12.6px);
+    line-height: 1.48;
+  }
+  #standards .hc-asym-feature--two .hc-asym-text {
+    left: 14.12%;
+    top: 20.59vw;
+    width: 51.3%;
+  }
+  #standards .hc-asym-feature--three .hc-asym-text {
+    left: 44.64%;
+    top: 22.78vw;
+    width: 46.35%;
+  }
+  #standards .hc-asym-text {
+    font-weight: 400;
+    letter-spacing: normal;
+    color: #59758b;
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "0cdf1e4b27f7420b0ad3.woff2": {
+    "family": "Nunito Sans 12pt ExtraLight 12pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 200,
+        "default": 200,
+        "max": 1000
+      }
+    },
+    "glyphs": 294
+  },
+  "166048b1b494b546d686.woff2": {
+    "family": "Nunito Sans 12pt ExtraLight 12pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 200,
+        "default": 200,
+        "max": 1000
+      }
+    },
+    "glyphs": 174
+  },
+  "1e9980fffc6e5926fd7b.woff2": {
+    "family": "Playfair Display",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 400,
+        "default": 400,
+        "max": 900
+      }
+    },
+    "glyphs": 264
+  },
+  "868fe383df55f68daa2f.woff2": {
+    "family": "Playfair Display",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 400,
+        "default": 400,
+        "max": 900
+      }
+    },
+    "glyphs": 139
+  },
+  "8e915393da9c685c5ada.woff2": {
+    "family": "Playfair Display",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 400,
+        "default": 400,
+        "max": 900
+      }
+    },
+    "glyphs": 139
+  },
+  "98396cc7a6298243c2d3.woff2": {
+    "family": "DM Sans 9pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 100,
+        "default": 400,
+        "max": 1000
+      }
+    },
+    "glyphs": 216
+  },
+  "d700c3704d0bc4778401.woff2": {
+    "family": "Playfair Display",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 400,
+        "default": 400,
+        "max": 900
+      }
+    },
+    "glyphs": 318
+  },
+  "d9075ef709afe117129e.woff2": {
+    "family": "DM Sans 9pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 100,
+        "default": 400,
+        "max": 1000
+      }
+    },
+    "glyphs": 270
+  },
+  "db54c83b4d309f39eb8f.woff2": {
+    "family": "Nunito Sans 12pt ExtraLight 12pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 200,
+        "default": 200,
+        "max": 1000
+      }
+    },
+    "glyphs": 144
+  },
+  "dbcc0e48671e24477635.woff2": {
+    "family": "Libre Baskerville",
+    "axes": {},
+    "glyphs": 240
+  },
+  "f073912fb0548bfc2211.woff2": {
+    "family": "Nunito Sans 12pt ExtraLight 12pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 200,
+        "default": 200,
+        "max": 1000
+      }
+    },
+    "glyphs": 426
+  },
+  "fcdbf7c9a4d2cd79b922.woff2": {
+    "family": "Nunito Sans 12pt ExtraLight 12pt",
+    "axes": {
+      "wght": {
+        "name": "Weight",
+        "min": 200,
+        "default": 200,
+        "max": 1000
+      }
+    },
+    "glyphs": 200
+  }
+}

@@ -1,0 +1,18 @@
+/* Shared design tokens. Component-local tokens stay with their owner. */
+:root {
+  --hc-brand-blue: #274b6a;
+  --hc-navy-ink: #283a68;
+  --hc-paper: #fffdfa;
+  --hc-footer-text: #333765;
+  --hc-footer-logo-width: 260px;
+  --hc-footer-content-width: 1360px;
+  --hc-footer-col-gap: 50px;
+  --hc-footer-nav-gap: 30px;
+  --hc-footer-padding-top: 36px;
+  --hc-footer-padding-bottom: 30px;
+  --hc-footer-heading-size: 14px;
+  --hc-footer-link-size: 15px;
+  --hc-footer-art-x: 50%;
+  --hc-footer-art-y: 67%;
+  --hc-footer-wash: 0.18;
+}

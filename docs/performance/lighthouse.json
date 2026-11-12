@@ -1,0 +1,48 @@
+{
+  "before": {
+    "version": "13.6.0",
+    "score": 0.75,
+    "settings": {
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      }
+    },
+    "audits": {
+      "first-contentful-paint": 1381.66455,
+      "largest-contentful-paint": 13578.329099999999,
+      "cumulative-layout-shift": 0.0006907883823777999,
+      "total-blocking-time": 0,
+      "speed-index": 1381.66455
+    }
+  },
+  "after": {
+    "version": "13.6.0",
+    "score": 0.76,
+    "settings": {
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 150,
+        "throughputKbps": 1638.4,
+        "requestLatencyMs": 562.5,
+        "downloadThroughputKbps": 1474.5600000000002,
+        "uploadThroughputKbps": 675,
+        "cpuSlowdownMultiplier": 4
+      }
+    },
+    "audits": {
+      "first-contentful-paint": 1381.98175,
+      "largest-contentful-paint": 7128.9635,
+      "cumulative-layout-shift": 0.0006907883823777999,
+      "total-blocking-time": 0,
+      "speed-index": 1381.98175
+    }
+  }
+}

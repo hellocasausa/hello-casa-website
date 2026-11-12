@@ -100,6 +100,16 @@ test("responsive boundaries retain one page, original images and no horizontal o
     await expect(page.locator("main")).toHaveCount(1);
     await expect(page.getByRole("tab")).toHaveCount(6);
     await expect(page.locator(".steps li")).toHaveCount(3);
+    await page.evaluate(async () => {
+      for (let y = 0; y < document.body.scrollHeight; y += 600) {
+        scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 5));
+      }
+      await Promise.all(
+        [...document.images].map((i) => i.decode().catch(() => {})),
+      );
+      scrollTo(0, 0);
+    });
     expect(
       await page.evaluate(() =>
         [...document.images]
@@ -148,7 +158,7 @@ test("default checklist and contact fallback are usable without application Java
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const p = await context.newPage();
-  await p.goto("http://127.0.0.1:5173");
+  await p.goto(process.env.TEST_BASE_URL || "http://127.0.0.1:5173");
   await expect(p.locator("[data-task-id]")).toHaveCount(20);
   await expect(p.locator(".hc-button")).toBeVisible();
   await expect(p.locator(".contact-fallback")).toHaveAttribute(

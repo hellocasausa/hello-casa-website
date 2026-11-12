@@ -1,0 +1,349 @@
+/* Owner: steps. Edit the authoritative rule for its scope; do not append correction sheets. */
+
+.steps {
+  height: 144px;
+  background: #eaf4fb;
+  display: grid;
+  grid-template-columns: minmax(235px, 1.36fr) 3fr;
+  align-items: center;
+  padding-inline: max(36px, calc((100% - 1140px) / 2));
+  gap: 0;
+}
+.steps-heading p {
+  font-size: 10px;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 0 0 9px;
+}
+.steps h2 {
+  font:
+    400 25px/1.18 "HC Libre",
+    serif;
+  color: #274b6a;
+  margin: 0;
+  letter-spacing: -0.035em;
+}
+.steps h2:after,
+.mobile-invitation:after {
+  content: "";
+  display: block;
+  width: 82px;
+  height: 3px;
+  background: #fff0ae;
+  margin-top: 10px;
+}
+.steps ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0;
+  margin: 0;
+}
+.steps li {
+  text-align: center;
+  position: relative;
+}
+.steps li + li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 67px;
+  width: 1px;
+  background: #bed2de;
+}
+.step-number {
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  margin: 0 auto 9px;
+  background: #fff;
+  font:
+    400 26px "HC Libre",
+    serif;
+}
+.steps li p {
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  .step-number {
+    width: 43px;
+    height: 43px;
+  }
+}
+@media (max-width: 840px) and (min-width: 751px) {
+  .steps {
+    padding-inline: 18px;
+    grid-template-columns: 170px 3fr;
+  }
+}
+@media (max-width: 750px) {
+  .steps {
+    height: auto;
+    display: block;
+  }
+  .steps-heading p {
+    display: none;
+  }
+  .steps h2:after {
+    width: 54px;
+    margin-top: 9px;
+  }
+  .steps ol {
+    margin-top: -24px;
+    margin-left: clamp(80px, 25vw, 110px);
+  }
+  .step-number {
+    width: clamp(30px, 8vw, 39px);
+    height: clamp(30px, 8vw, 39px);
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .steps li p {
+    font-size: clamp(9px, 2.2vw, 12px);
+    line-height: 1.4;
+  }
+}
+@media (min-width: 751px) {
+  .steps-heading {
+    padding-left: 15px;
+  }
+  .steps h2 {
+    font-size: 34px;
+    line-height: 1.18;
+  }
+  .steps h2 span {
+    color: #527f99;
+  }
+  .steps-heading p {
+    font-size: 11px;
+  }
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  .steps h2 {
+    font-size: 27px;
+  }
+}
+@media (max-width: 750px) {
+  .steps h2 {
+    font-size: clamp(20px, 5.25vw, 29px);
+  }
+  .steps {
+    padding-bottom: 16px;
+  }
+  .steps h2 {
+    white-space: nowrap;
+  }
+}
+@media (min-width: 751px) and (max-width: 840px) {
+  .steps h2 {
+    font-size: 25px;
+    white-space: nowrap;
+  }
+  .steps-heading p {
+    white-space: nowrap;
+  }
+}
+.steps h2:after {
+  content: none;
+}
+.steps-rule {
+  display: block;
+  width: 82px;
+  height: 3px;
+  background: #fff0ae;
+  margin-top: 10px;
+}
+.step-number {
+  color: #507395;
+}
+.steps li:nth-child(2) .step-number {
+  background: #d9ebf5;
+}
+.steps li:nth-child(3) .step-number {
+  background: #fcf1e5;
+}
+@media (min-width: 751px) {
+  .steps {
+    grid-template-columns: minmax(235px, 1.36fr) repeat(3, minmax(0, 1fr));
+    color: #274b6a;
+  }
+  .steps-heading {
+    padding: 0 14px;
+  }
+  .steps-heading p {
+    font:
+      800 11px/1.3 "HC Nunito",
+      sans-serif;
+    letter-spacing: 0.19em;
+    margin: 0 0 7px;
+    color: #51758f;
+  }
+  .steps h2,
+  .steps h2 span {
+    font:
+      400 clamp(30px, 2.38vw, 34.272px)/1.16 "HC Libre",
+      serif;
+    letter-spacing: -0.035em;
+  }
+  .steps ol {
+    display: contents;
+  }
+  .steps li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    padding: 0 15px;
+  }
+  .steps .step-number {
+    flex: 0 0 47px;
+    font-size: 30px;
+    line-height: 1;
+    margin: 0;
+  }
+  .steps li p {
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: 0.023em;
+    color: #557892;
+  }
+  .steps li + li:before {
+    top: 50%;
+    height: 48px;
+    transform: translateY(-50%);
+  }
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  .steps {
+    grid-template-columns: minmax(195px, 1.28fr) repeat(3, minmax(0, 1fr));
+  }
+  .steps-heading {
+    padding-left: 8px;
+  }
+  .steps h2,
+  .steps h2 span {
+    font-size: clamp(26px, 3vw, 30px);
+  }
+  .steps .step-number {
+    width: 43px;
+    height: 43px;
+    flex-basis: 43px;
+    font-size: 26px;
+  }
+  .steps li p {
+    font-size: 12.6px;
+  }
+}
+@media (min-width: 751px) and (max-width: 840px) {
+  .steps {
+    grid-template-columns: minmax(170px, 1.19fr) repeat(3, minmax(0, 1fr));
+  }
+  .steps li {
+    padding: 0 7px;
+  }
+  .steps li p {
+    font-size: 11.8px;
+  }
+  .steps-heading p {
+    font-size: 11px;
+  }
+}
+@media (max-width: 750px) {
+  .steps {
+    padding: clamp(17px, 4.6vw, 23px) clamp(17px, 5vw, 23px) 20px;
+    min-height: 0;
+    background: linear-gradient(180deg, #eaf4fb 0%, #eaf4fb 71%, #f7fbfa 100%);
+  }
+  .steps-heading {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .steps h2 {
+    font:
+      400 clamp(17.5px, 5.25vw, 22px)/1.14 "HC Libre",
+      serif;
+    letter-spacing: -0.035em;
+    margin: 0;
+    padding: 0;
+  }
+  .steps h2 br {
+    display: none;
+  }
+  .steps h2 span {
+    display: block;
+    font-size: 0.89em;
+    line-height: 1.18;
+    font-weight: 400;
+    white-space: nowrap;
+    color: #527b9a;
+  }
+  .steps-rule {
+    width: clamp(40px, 12vw, 53px);
+    height: 3px;
+    margin-top: 6px;
+  }
+  .steps ol {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - clamp(80px, 25vw, 110px) - 10px);
+    margin: -24px 0 0 clamp(80px, 25vw, 110px);
+    padding: 0;
+    align-items: start;
+  }
+  .steps li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 0 1px;
+    min-width: 0;
+  }
+  .steps .step-number {
+    width: clamp(30px, 9.2vw, 39px);
+    height: clamp(30px, 9.2vw, 39px);
+    flex: 0 0 clamp(30px, 9.2vw, 39px);
+    font:
+      400 clamp(18px, 5.35vw, 23px)/1 "HC Libre",
+      serif;
+    margin: 0;
+    background: #fff;
+  }
+  .steps li:nth-child(2) .step-number {
+    background: #d9ecf6;
+  }
+  .steps li:nth-child(3) .step-number {
+    background: #fcf0e7;
+  }
+  .steps li p {
+    font:
+      600 clamp(8px, 2.33vw, 10.6px)/1.36 "HC Nunito",
+      sans-serif;
+    letter-spacing: 0;
+    color: #557892;
+  }
+  .steps li + li:before {
+    top: 4px;
+    height: clamp(26px, 7.6vw, 34px);
+    transform: none;
+  }
+}
+@media (max-width: 359px) {
+  .steps ol {
+    margin-top: -19px;
+  }
+  .steps li p {
+    font-size: 8px;
+  }
+}

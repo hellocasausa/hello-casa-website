@@ -1,0 +1,71 @@
+/* Owner: foundation. Edit the authoritative rule for its scope; do not append correction sheets. */
+
+:root {
+  font-family: "HC Nunito", sans-serif;
+  color: #526d86;
+  font-synthesis: none;
+  background: #fffdfa;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+a {
+  color: inherit;
+}
+html {
+  scroll-behavior: smooth;
+}
+main {
+  overflow: clip;
+}
+section {
+  scroll-margin-top: 12px;
+}
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  left: 16px;
+  top: -100px;
+  background: white;
+  padding: 12px;
+}
+.skip-link:focus {
+  top: 12px;
+}
+[hidden] {
+  display: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    transition: none !important;
+  }
+}
