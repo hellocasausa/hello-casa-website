@@ -1,7 +1,7 @@
 /* Owner: Standards. Approved DER-002 Atelier v4 composition, no preview/editor runtime.
    Photo geometry remains proportional to the story container; other sections are untouched. */
 #standards,#standards *{box-sizing:border-box}
-#standards p,#standards h2,#standards h3,#standards figure{margin:0}
+:where(#standards) :where(p,h2,h3,figure){margin:0}
 #standards img{display:block;max-width:100%}
 #standards{position:relative;overflow:hidden;color:#41677e;font-family:"HC Nunito","Nunito Sans",Arial,sans-serif;background:linear-gradient(180deg,#eaf5fa 0%,#f2f8f8 34%,#fff5e8 72%,#ffdfca 100%);padding:39px 0 67px}
 .st-shell{width:min(calc(100% - 64px),1210px);margin:0 auto;container-type:inline-size}
