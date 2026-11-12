@@ -1,0 +1,33 @@
+name: Refined Atelier v2 — Experimental Visual QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "preview/experiments/standards-atelier-refined-v2.html"
+      - "tests/experiments/standards-atelier-refined-v2.spec.ts"
+      - ".github/workflows/standards-atelier-refined-v2.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Verify refined Atelier geometry, text, assets and render
+        run: npx playwright test tests/experiments/standards-atelier-refined-v2.spec.ts --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: refined-atelier-v2-desktop-previews
+          path: test-results/refined-atelier-v2-*.png
+          if-no-files-found: ignore
