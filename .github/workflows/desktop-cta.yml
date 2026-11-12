@@ -1,0 +1,29 @@
+name: Desktop quote CTA geometry
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "src/styles/services.css"
+      - "tests/homepage.spec.ts"
+      - ".github/workflows/desktop-cta.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  desktop-cta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Assert actual desktop CTA geometry
+        run: npx playwright test tests/homepage.spec.ts -g "desktop Customize My Quote button aligns to the right edge" --reporter=line
