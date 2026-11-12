@@ -89,7 +89,7 @@ iframe{display:block;border:0;background:#fff}
       <div class="sep"></div>
       <input class="custom" id="customWidth" type="number" min="320" max="1920" step="1" value="820" aria-label="Custom viewport width in pixels" title="Viewport width in CSS pixels">
       <span class="toolbar-label">px</span>
-      <button id="pickMode" class="tool-button active" type="button" aria-pressed="true" title="Switch between selecting element identifiers and trying service checklists">⌖ Inspect elements</button>
+      <button id="pickMode" class="tool-button active" type="button" aria-pressed="true" title="Switch between selecting element identifiers and trying service checklists">▶ Try checklists</button>
     </div>
     <div class="stage" id="stage"><div class="stage-inner"><div class="frame-shell" id="frameShell"><div class="frame-surface" id="frameSurface"><iframe id="site" sandbox="allow-same-origin" title="Read-only Hello Casa website"></iframe></div></div></div></div>
     <div class="status" id="status"><span class="signal"></span><span id="statusText">Loading current optimized PR #1 from GitHub…</span></div>
@@ -263,7 +263,7 @@ function changeWidth(n){
 }
 document.querySelectorAll('.view-button').forEach(b=>b.addEventListener('click',()=>changeWidth(b.dataset.size)));
 custom.addEventListener('change',()=>changeWidth(custom.value));
-pick.addEventListener('click',()=>{picked=!picked;pick.classList.toggle('active',picked);pick.setAttribute('aria-pressed',String(picked));pick.textContent=picked?'⌖ Inspect elements':'▶ Try checklists';toast(picked?'Inspect mode: click to identify components':'Checklist mode: choose a plan or an Essential+ focus');});
+pick.addEventListener('click',()=>{picked=!picked;pick.classList.toggle('active',picked);pick.setAttribute('aria-pressed',String(picked));pick.textContent=picked?'▶ Try checklists':'⌖ Inspect elements';toast(picked?'Inspect mode: click to identify components':'Checklist mode: choose a plan or an Essential+ focus');});
 window.addEventListener('resize',()=>fit());
 function connectChecklist(){
  // A safe, read-only mirror of src/components/services.ts. Only browser-local
@@ -343,7 +343,7 @@ function attach(){
  if(iframeDoc.fonts?.ready)iframeDoc.fonts.ready.then(measure).catch(()=>{});
  const initial=iframeDoc.querySelector('.hero');
  if(initial)setSelected(initial,map.find(x=>x.selector==='.hero'),false);
- mark('Loaded optimized PR #1 · '+sha.slice(0,8)+' · '+map.length+' named elements · inspect or try checklists · no site edits','ready');
+ mark('Loaded optimized PR #1 · '+sha.slice(0,8)+' · '+map.length+' named elements · choose Try checklists to switch service plans · no site edits','ready');
  for(const wait of [500,1300,2600,4500])setTimeout(measure,wait);
 }
 async function start(){
