@@ -41,11 +41,7 @@ const status=document.getElementById('status');
 const widths=[...document.querySelectorAll('[data-width]')];
 let desired=390,loaded=false;
 const project='https://raw.githubusercontent.com/hellocasausa/hello-casa-website/';
-let sha='c5b9d7a4ebb9699245c0d31d44153879dcec9ad8';
-try{
-  const pr=await fetch('https://api.github.com/repos/hellocasausa/hello-casa-website/pulls/1',{cache:'no-store'});
-  if(pr.ok){const info=await pr.json();if(info.head?.sha)sha=info.head.sha;}
-}catch(_){}
+const sha='fb98c0f3fd5830685e603a376018fceb336469a7'; // immutable review source
 const root=project+sha+'/';
 const get=async(path)=>{const res=await fetch(root+path,{cache:'no-store'});if(!res.ok)throw Error('Unable to fetch '+path+' ('+res.status+')');return res.text()};
 const absolutize=(raw)=>{
@@ -111,7 +107,7 @@ try{
  const sty=doc.createElement('style');sty.textContent=css;doc.head.appendChild(sty);
  const base=doc.createElement('base');base.href=root;doc.head.prepend(base);
  frame.srcdoc='<!doctype html>\n'+doc.documentElement.outerHTML;
- frame.addEventListener('load',()=>{loaded=true;sizeFrame();status.textContent='Loaded current PR #1 source · '+sha.slice(0,8)+' · visual-only preview';let n=0;const id=setInterval(()=>{sizeFrame();if(++n>10)clearInterval(id)},400);});
+ frame.addEventListener('load',()=>{loaded=true;sizeFrame();status.textContent='Loaded fixed review snapshot · '+sha.slice(0,8)+' · visual-only preview';let n=0;const id=setInterval(()=>{sizeFrame();if(++n>10)clearInterval(id)},400);});
 }catch(error){
  status.textContent='Could not load the GitHub assets: '+error.message+'. Check that this file is opened in a browser with internet access.';
 }
