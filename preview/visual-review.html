@@ -41,7 +41,7 @@ const status=document.getElementById('status');
 const widths=[...document.querySelectorAll('[data-width]')];
 let desired=390,loaded=false;
 const project='https://raw.githubusercontent.com/hellocasausa/hello-casa-website/';
-let sha='e5953f2d0d4375daf5a8462c9343d71785e5f81b';
+let sha='c5b9d7a4ebb9699245c0d31d44153879dcec9ad8';
 try{
   const pr=await fetch('https://api.github.com/repos/hellocasausa/hello-casa-website/pulls/1',{cache:'no-store'});
   if(pr.ok){const info=await pr.json();if(info.head?.sha)sha=info.head.sha;}
