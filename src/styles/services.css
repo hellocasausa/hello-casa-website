@@ -1292,14 +1292,16 @@
     margin-top: 12px;
   }
   #hc-mobile-vertical .hc-panel-actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     padding: 15px 20px 18px;
     min-height: 0;
   }
   #hc-mobile-vertical .hc-panel-actions .hc-button {
-    margin-left: auto;
+    grid-column: 2;
+    justify-self: end;
+    margin-left: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
