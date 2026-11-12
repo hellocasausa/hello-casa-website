@@ -4,15 +4,26 @@
   --hc-navy-ink: #283a68;
   --hc-paper: #fffdfa;
   --hc-footer-text: #333765;
-  --hc-footer-logo-width: 260px;
+  --hc-footer-logo-width: 208px;
   --hc-footer-content-width: 1360px;
-  --hc-footer-col-gap: 50px;
-  --hc-footer-nav-gap: 30px;
-  --hc-footer-padding-top: 36px;
-  --hc-footer-padding-bottom: 30px;
+  --hc-footer-col-gap: 38px;
+  --hc-footer-nav-gap: 26px;
+  --hc-footer-padding-top: 26px;
+  --hc-footer-padding-bottom: 18px;
   --hc-footer-heading-size: 14px;
   --hc-footer-link-size: 15px;
   --hc-footer-art-x: 50%;
   --hc-footer-art-y: 67%;
   --hc-footer-wash: 0.18;
+  /* Shared homepage rhythm. Individual components own their specific geometry. */
+  --hc-space-1: 8px;
+  --hc-space-2: 16px;
+  --hc-space-3: 24px;
+  --hc-space-4: 32px;
+  --hc-space-5: 48px;
+  --hc-section-pad-desktop: clamp(32px, 3.4vw, 48px);
+  --hc-heading-section: clamp(30px, 2.45vw, 35px);
+  --hc-heading-editorial: clamp(27px, 2.2vw, 32px);
+  --hc-body-editorial: 15px;
+  --hc-steps-height: 128px;
 }

@@ -62,7 +62,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 13px;
+    gap: 11px;
     min-width: 0;
   }
   .hc-b-footer :is(.hc-b-footer__group, .hc-b-footer__newsletter) h2 {
@@ -101,11 +101,11 @@
   .hc-b-footer__newsletter {
     min-width: 0;
   }
-  .hc-b-footer__newsletter h2 {
-    margin: 0 0 10px !important;
+  #footer.hc-b-footer .hc-b-footer__newsletter h2 {
+    margin: 0 0 6px;
   }
   .hc-b-footer__newsletter p {
-    margin: 0 0 15px;
+    margin: 0 0 8px;
     font:
       500 14px/1.5 "HC Nunito",
       "Nunito Sans",
@@ -181,7 +181,7 @@
     justify-content: space-between;
     gap: 12px;
     border-top: 1px solid rgba(91, 85, 118, 0.24);
-    padding: 13px 0 17px;
+    padding: 10px 0 12px;
     font:
       600 11px/1.5 "HC Nunito",
       "Nunito Sans",
@@ -226,7 +226,7 @@
     width: calc(100% - 50px);
   }
   .hc-b-footer__main {
-    padding: 25px 0 21px;
+    padding: 24px 0 17px;
     column-gap: 20px;
   }
   .hc-b-footer__nav {

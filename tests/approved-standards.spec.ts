@@ -50,12 +50,12 @@ test("approved Atelier v4 geometry, copy, original imagery and responsive photo 
    expect(row.overlapY).toBeGreaterThanOrEqual(40);
   }
   if(width===1440){
-   expect(info.rows.map(x=>Math.round(x.w))).toEqual([321,297,352]);
-   expect(info.rows.map(x=>Math.round(x.h))).toEqual([413,470,426]);
+   expect(info.rows.map(x=>Math.round(x.w))).toEqual([276,255,303]);
+   expect(info.rows.map(x=>Math.round(x.h))).toEqual([355,404,366]);
   }
   if(width===1100){
-   expect(info.rows.map(x=>Math.round(x.w))).toEqual([275,254,301]);
-   expect(info.rows.map(x=>Math.round(x.h))).toEqual([354,402,365]);
+   expect(info.rows.map(x=>Math.round(x.w))).toEqual([236,219,259]);
+   expect(info.rows.map(x=>Math.round(x.h))).toEqual([304,346,314]);
   }
   if([901,1100,1440,1920].includes(width))
    await standard.screenshot({path:"test-results/approved-standards-desktop-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});

@@ -125,8 +125,7 @@
   align-items: start;
 }
 /* Desktop navigation additions are hidden in the existing tablet/mobile layout. */
-#hc-mobile-vertical .hc-tabs-heading,
-#hc-mobile-vertical .hc-tabs-tail {
+#hc-mobile-vertical .hc-tabs-heading {
   display: none;
 }
 .hc-choices {
@@ -1087,7 +1086,7 @@
 @media screen and (min-width: 901px) {
   /* One owned integrated-tab surface. Do not import experimental correction sheets. */
   #hc-mobile-vertical {
-    padding: 70px 0;
+    padding: var(--hc-section-pad-desktop) 0 var(--hc-space-5);
     background: linear-gradient(135deg, #f6fafc, #fffdf7);
   }
   #hc-mobile-vertical .hc-intro {
@@ -1116,13 +1115,13 @@
     align-self: stretch;
     min-width: 0;
     margin: 0;
-    padding: 27px 0 18px 20px;
+    padding: 22px 0 16px 20px;
     background: #fffefa;
     border-right: 1px solid #c8dce9;
   }
   #hc-mobile-vertical .hc-tabs-heading {
     display: block;
-    padding: 0 24px 23px 8px;
+    padding: 0 24px 17px 8px;
   }
   #hc-mobile-vertical .hc-tabs-eyebrow {
     color: #829ead;
@@ -1140,12 +1139,12 @@
   #hc-mobile-vertical .hc-choices {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
   }
   #hc-mobile-vertical .hc-choices .hc-card {
     display: flex;
-    min-height: 82px;
-    padding: 12px 19px 12px 14px;
+    min-height: 72px;
+    padding: 10px 19px 10px 14px;
     gap: 15px;
     border: 1px solid transparent;
     border-right: 0;
@@ -1193,20 +1192,6 @@
   #hc-mobile-vertical .hc-choices .hc-card-chevron {
     color: #9ab4c2;
     font-size: 22px;
-  }
-  #hc-mobile-vertical .hc-tabs-tail {
-    display: block;
-    padding: 43px 25px 0 8px;
-    margin: 9px 0 0;
-    font: 400 11px/1.65 "HC Nunito", "Nunito Sans", Arial, sans-serif;
-    color: #8a9ca8;
-  }
-  #hc-mobile-vertical .hc-tabs-tail::before {
-    content: "";
-    display: block;
-    height: 1px;
-    margin: 0 0 17px;
-    background: linear-gradient(to right, #d0e1ec, transparent);
   }
   #hc-mobile-vertical .hc-panel {
     grid-column: 2;

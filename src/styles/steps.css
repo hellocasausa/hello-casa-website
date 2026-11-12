@@ -1,7 +1,7 @@
 /* Owner: steps. Edit the authoritative rule for its scope; do not append correction sheets. */
 
 .steps {
-  height: 144px;
+  height: var(--hc-steps-height);
   background: #eaf4fb;
   display: grid;
   grid-template-columns: minmax(235px, 1.36fr) 3fr;

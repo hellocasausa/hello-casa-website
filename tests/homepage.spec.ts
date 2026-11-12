@@ -170,7 +170,7 @@ test("default checklist and contact fallback are usable without application Java
 
 // Measurements from the original embedded document, not implementation constants.
 import baseline from "./fixtures/b633-layout.json" with { type: "json" };
-test("Hero and Steps preserve measured B6.3.3 geometry", async ({ page }) => {
+test("Hero baseline and deliberate 16px desktop Steps rhythm adjustment", async ({ page }) => {
   for (const [width, reference] of Object.entries(baseline.measurements)) {
     await page.setViewportSize({ width: Number(width), height: 1000 });
     await page.evaluate(() => document.fonts.ready);
@@ -182,9 +182,9 @@ test("Hero and Steps preserve measured B6.3.3 geometry", async ({ page }) => {
       ["headline top", title.y, reference.titleY],
       ["headline height", title.height, reference.titleHeight],
       ["Steps inset", steps.x, reference.stepsTitleX],
-      ["Steps top", steps.y, reference.stepsTitleY],
+      ["Steps top", steps.y, reference.stepsTitleY - (Number(width)>750 ? 8 : 0)],
       ["Steps height", steps.height, reference.stepsTitleHeight],
-      ["Services start", services.y, reference.servicesTop],
+      ["Services start", services.y, reference.servicesTop - (Number(width)>750 ? 16 : 0)],
     ] as const) {
       expect(Math.abs(actual - expected), `${name} at ${width}px`).toBeLessThan(
         2,
