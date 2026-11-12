@@ -71,6 +71,7 @@ test("gallery previews all concepts at both desktop widths and retains functiona
     await frame.locator('button[data-focus="bathroom"]').click();
     await expect(frame.locator("#hc-name")).toContainText("Bathrooms focus");
     await expect(frame.locator('[data-task-id="deep-bath-001"]')).toHaveCount(1);
+    await frame.locator('button[data-focus="standard"]').click();
     for (const plan of ["maintenance", "deep", "moving", "guest", "office", "specialty"]) {
       await frame.locator('button[data-plan="' + plan + '"]').click();
       const ids = await frame.locator("[data-task-id]").evaluateAll(nodes => nodes.map(n => n.getAttribute("data-task-id")!));
