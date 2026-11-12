@@ -46,12 +46,49 @@ body.full .layout{display:block}body.full .sidebar{display:none}body.full .topba
 .review-pill{font-size:11px;color:#50748b;background:#edf7fb;border:1px solid #d4e7f0;border-radius:99px;padding:9px 13px;font-weight:800}
 .design-fig{position:relative;display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;border:1px solid #dbe8ef;background:#f8fbfc;border-radius:12px;padding:12px;color:#587c93;font-size:11px;line-height:1.5}
 .design-fig .glyph{font:400 25px/1 Georgia,serif;text-align:center;color:#84a9c4}
+
+/* Art-direction controls live only in the experimental host, never production styles. */
+.controls{display:grid;gap:11px;background:linear-gradient(180deg,#f8fcff,#fffefb);border:1px solid #d7e7ef;border-radius:16px;padding:15px 13px 14px}
+.controls h2{font:400 21px/1.2 Georgia,serif;color:#2d5876;margin:0 0 7px}
+.controls .helper{font-size:10px;color:#829ba8;line-height:1.6;margin:0}
+.photo-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.photo-choice button{padding:9px 4px;border:1px solid #dce7ee;border-radius:9px;background:#fff;color:#587b90;font-size:11px;font-weight:760}
+.photo-choice button[aria-pressed=true]{background:#e5f2fa;color:#264f6a;border-color:#92b7cd}
+.control-fields{display:grid;gap:8px}
+.control-row{display:grid;grid-template-columns:1fr auto;gap:5px 8px;align-items:center}
+.control-row label{font-size:11px;font-weight:670;color:#4b7089}
+.control-value{font-size:10px;color:#6d899d;font-weight:790;font-variant-numeric:tabular-nums;min-width:43px;text-align:right}
+.control-row input[type=range]{grid-column:1/-1;width:100%;height:14px;accent-color:#668eaa;cursor:pointer}
+.control-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.control-actions button{padding:9px 7px;border:1px solid #cbdce8;border-radius:9px;background:#fff;color:#37617b;font-size:10px;font-weight:760}
+.control-actions button:last-child{grid-column:1/-1;background:#eaf4fb}
+.microtext{font-size:10px;line-height:1.5;color:#8198a8;margin:0}
+body.full .layout{display:grid;grid-template-columns:294px minmax(0,1fr)}
+body.full .sidebar{display:flex}
+body.full .sidebar > :not(.controls){display:none}
+@media(max-width:700px){.controls{margin-top:10px}.sidebar{display:block}body.full .layout{display:block}body.full .sidebar{display:block}body.full .sidebar > :not(.controls){display:none}}
 </style></head><body>
 <header class="topbar"><div class="brand"><div class="brandicon">✧</div><div><div class="brandname">Hello Casa <span style="color:#829caf;font-weight:450">/ Design Studies</span></div><div class="brandsub">Standards · Adjustable Atelier v3</div></div></div><span class="statuspill">EXPLORATION ONLY</span></header>
 <div class="layout"><aside class="sidebar">
 <div><p class="kicker">DER-002 · Refinement 02</p><h1>The Adjustable<br>Atelier.</h1><p class="intro">The organic zigzag, now with image controls: resize, drag and fine-tune photographs without altering the website.</p></div>
 <div class="review-pill">Image controls · Browser only</div>
 <div class="design-fig"><span class="glyph">↘↖</span><span>Photographs and paragraph surfaces intersect, but each chapter has its own natural proportions.</span></div>
+<section class="controls" aria-label="Image art-direction controls">
+<div><p class="kicker">Image placement studio</p><h2>Fine-tune the photos.</h2><p class="helper">Choose a photograph, use the sliders, or drag it in the preview. Your changes stay in this browser.</p></div>
+<div class="photo-choice" role="group" aria-label="Choose photo">
+<button type="button" data-photo="0" aria-pressed="true">01</button><button type="button" data-photo="1" aria-pressed="false">02</button><button type="button" data-photo="2" aria-pressed="false">03</button></div>
+<div class="control-fields">
+<div class="control-row"><label for="photoWidth">Frame width</label><output class="control-value" id="photoWidthValue" for="photoWidth"></output><input type="range" id="photoWidth" data-prop="w" min="180" max="530" step="1"></div>
+<div class="control-row"><label for="photoHeight">Frame height</label><output class="control-value" id="photoHeightValue" for="photoHeight"></output><input type="range" id="photoHeight" data-prop="h" min="150" max="620" step="1"></div>
+<div class="control-row"><label for="photoX">Move horizontally</label><output class="control-value" id="photoXValue" for="photoX"></output><input type="range" id="photoX" data-prop="x" min="-180" max="180" step="1"></div>
+<div class="control-row"><label for="photoY">Move vertically</label><output class="control-value" id="photoYValue" for="photoY"></output><input type="range" id="photoY" data-prop="y" min="-180" max="180" step="1"></div>
+<div class="control-row"><label for="cropX">Crop focus · horizontal</label><output class="control-value" id="cropXValue" for="cropX"></output><input type="range" id="cropX" data-prop="cx" min="0" max="100" step="1"></div>
+<div class="control-row"><label for="cropY">Crop focus · vertical</label><output class="control-value" id="cropYValue" for="cropY"></output><input type="range" id="cropY" data-prop="cy" min="0" max="100" step="1"></div>
+<div class="control-row"><label for="photoZoom">Zoom inside frame</label><output class="control-value" id="photoZoomValue" for="photoZoom"></output><input type="range" id="photoZoom" data-prop="zoom" min="100" max="180" step="1"></div>
+</div>
+<div class="control-actions"><button type="button" id="resetPhoto">Reset this photo</button><button type="button" id="resetAllPhotos">Reset all photos</button><button type="button" id="copyPhotoSettings">Copy image settings</button></div>
+<p class="microtext" id="photoHint">Choose 01, 02 or 03. Drag photos directly in the preview. 1100px and 1440px have independent settings.</p>
+</section>
 <div class="line"></div>
 <div class="about"><p class="kicker">Design decisions</p><h2>Asymmetry, refined.</h2><p>The blue introductory banner now contains only the headline and subheader. A 6px deeper-blue line sits above the banner, anchored to its right edge.</p>
 <div class="spec"><span>Headings</span><span>Floating above paragraph cards, facing toward their images</span></div>
@@ -79,9 +116,83 @@ let width=url.get('width')==='1100'?1100:1440;
 if(url.get('mode')==='full')document.body.classList.add('full');
 const frame=$('frame'),shell=$('shell'),surface=$('surface'),stage=$('stage');
 let documentFrame=null,contentHeight=1300;
+
+const defaults={
+ 1100:[{w:263,h:286,x:0,y:0,cx:50,cy:37,zoom:100},{w:260,h:394,x:0,y:0,cx:50,cy:48,zoom:100},{w:309,h:221,x:0,y:0,cx:50,cy:62,zoom:100}],
+ 1440:[{w:292,h:308,x:0,y:0,cx:50,cy:37,zoom:100},{w:287,h:418,x:0,y:0,cx:50,cy:48,zoom:100},{w:352,h:249,x:0,y:0,cx:50,cy:62,zoom:100}]
+};
+const states=Object.fromEntries(Object.entries(defaults).map(([key,items])=>[key,items.map(item=>({...item}))]));
+let photoIndex=0;
+const meta=[
+ ['photoWidth','w','px'],['photoHeight','h','px'],['photoX','x','px'],['photoY','y','px'],
+ ['cropX','cx','%'],['cropY','cy','%'],['photoZoom','zoom','%']
+];
+function current(){return states[width][photoIndex]}
+function figures(){return documentFrame?[...documentFrame.querySelectorAll('.st-story .st-figure')]:[]}
+function applyPhoto(i){
+ const fig=figures()[i];if(!fig)return;
+ const item=states[width][i];
+ const img=fig.querySelector('img');
+ fig.style.width=item.w+'px';fig.style.height=item.h+'px';
+ fig.style.transform='translate('+item.x+'px,'+item.y+'px)';
+ img.style.objectPosition=item.cx+'% '+item.cy+'%';
+ img.style.transform='scale('+(item.zoom/100)+')';
+ fig.classList.toggle('is-selected',i===photoIndex);
+}
+function applyAll(){figures().forEach((fig,i)=>applyPhoto(i));requestAnimationFrame(measure)}
+function refreshControls(){
+ document.querySelectorAll('[data-photo]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.photo)===photoIndex)));
+ for(const [id,prop,unit] of meta){
+  const val=current()[prop];
+  $(id).value=String(val);
+  $(id+'Value').textContent=(prop==='x'||prop==='y')&&val>0?('+'+val+unit):(val+unit);
+ }
+ $('photoHint').textContent='Photo '+String(photoIndex+1).padStart(2,'0')+' selected · drag directly or adjust sliders. Independent '+width+'px settings.';
+}
+function selectPhoto(i){photoIndex=i;refreshControls();applyAll()}
+function syncEdit(prop,val){current()[prop]=Number(val);refreshControls();applyPhoto(photoIndex);measure()}
+for(const [id,prop] of meta)$(id).addEventListener('input',e=>syncEdit(prop,e.target.value));
+document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>selectPhoto(Number(b.dataset.photo))));
+$('resetPhoto').addEventListener('click',()=>{states[width][photoIndex]={...defaults[width][photoIndex]};selectPhoto(photoIndex)});
+$('resetAllPhotos').addEventListener('click',()=>{states[width]=defaults[width].map(p=>({...p}));selectPhoto(photoIndex)});
+$('copyPhotoSettings').addEventListener('click',async()=>{
+ const json=JSON.stringify({study:'Atelier v3',viewport:width,photos:states[width]},null,2);
+ try{await navigator.clipboard.writeText(json);$('photoHint').textContent='Copied image settings for '+width+'px.'}
+ catch(e){
+  const input=document.createElement('textarea');input.value=json;document.body.append(input);input.select();
+  try{document.execCommand('copy');$('photoHint').textContent='Copied image settings.'}catch(err){$('photoHint').textContent='Copy unavailable in this browser.'}
+  input.remove();
+ }
+});
+function setupImageDragging(){
+ figures().forEach((fig,i)=>{
+  fig.tabIndex=0;fig.setAttribute('aria-label','Select and drag photograph '+(i+1));
+  fig.dataset.photoIndex=String(i);
+  fig.querySelector('img').draggable=false;
+  fig.addEventListener('dragstart',e=>e.preventDefault());
+  fig.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectPhoto(i)}});
+  let drag=null;
+  fig.addEventListener('pointerdown',e=>{
+   e.preventDefault();selectPhoto(i);
+   drag={startX:e.clientX,startY:e.clientY,x:current().x,y:current().y};
+   try{fig.setPointerCapture(e.pointerId)}catch(err){}
+  });
+  fig.addEventListener('pointermove',e=>{
+   if(!drag)return;
+   const state=states[width][i];
+   state.x=Math.max(-180,Math.min(180,Math.round(drag.x+e.clientX-drag.startX)));
+   state.y=Math.max(-180,Math.min(180,Math.round(drag.y+e.clientY-drag.startY)));
+   applyPhoto(i);refreshControls();measure();
+  });
+  const finish=()=>{drag=null};
+  fig.addEventListener('pointerup',finish);fig.addEventListener('pointercancel',finish);
+  fig.addEventListener('lostpointercapture',finish);
+ });
+}
+
 function buttons(){
  document.querySelectorAll('[data-width]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.width)===width)));
- $('viewportLabel').textContent=width+'px · Atelier v2';
+ $('viewportLabel').textContent=width+'px · Atelier v3';
  $('fullLink').href='?width='+width+'&mode=full';
 }
 function fit(){
@@ -103,6 +214,9 @@ function measure(){
 frame.addEventListener('load',()=>{
  documentFrame=frame.contentDocument;
  if(!documentFrame?.body){$('status').dataset.error='true';$('statusText').textContent='Could not load study';return}
+ setupImageDragging();
+ applyAll();
+ refreshControls();
  const imgs=[...documentFrame.images];
  imgs.forEach(img=>img.addEventListener('load',measure,{once:true}));
  documentFrame.fonts?.ready.then(measure).catch(()=>{});
@@ -115,6 +229,8 @@ frame.srcdoc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 document.querySelectorAll('button[data-width]').forEach(button=>button.addEventListener('click',()=>{
  width=Number(button.dataset.width);
  buttons();
+ refreshControls();
+ applyAll();
  frame.style.width=width+'px';
  requestAnimationFrame(()=>{measure();setTimeout(measure,250);setTimeout(measure,850)});
 }));
