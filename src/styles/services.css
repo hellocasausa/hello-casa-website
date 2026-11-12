@@ -1292,6 +1292,9 @@
     margin-top: 12px;
   }
   #hc-mobile-vertical .hc-panel-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     padding: 15px 20px 18px;
     min-height: 0;
   }
