@@ -69,10 +69,21 @@ test("Atelier v3: blue header rule, image-facing headings and working photo plac
   const fig=frame.locator(".st-story--two .st-figure");
   const box=await fig.boundingBox();
   expect(box).not.toBeNull();
+  const probeBefore=await page.locator("#frame").evaluate((f:HTMLIFrameElement)=>{
+    const d=f.contentDocument!,figure=d.querySelector(".st-story--two .st-figure")!,rect=figure.getBoundingClientRect();
+    (d as any).__events=[];
+    for(const type of ["pointerdown","pointermove","mousedown","mousemove","pointerup"])
+      d.addEventListener(type,e=>(d as any).__events.push({type,target:(e.target as Element)?.className?.toString()?.slice(0,60),x:(e as MouseEvent).clientX,y:(e as MouseEvent).clientY}),true);
+    const hit=d.elementFromPoint(rect.x+rect.width/2,rect.y+rect.height/2);
+    return {rect:rect.toJSON(),hit:hit?.tagName,hitClass:hit?.className,viewport:{w:d.defaultView!.innerWidth,h:d.defaultView!.innerHeight}};
+  });
+  console.log("ATELIER_V3_POINTER_PROBE",JSON.stringify({box,probeBefore}));
   await page.mouse.move(box!.x+box!.width/2,box!.y+box!.height/2);
   await page.mouse.down();
   await page.mouse.move(box!.x+box!.width/2+42,box!.y+box!.height/2-19,{steps:6});
   await page.mouse.up();
+  const probeAfter=await page.locator("#frame").evaluate((f:HTMLIFrameElement)=>(f.contentDocument as any).__events);
+  console.log("ATELIER_V3_POINTER_EVENTS",JSON.stringify(probeAfter?.slice(0,25)));
   const dragged=await page.locator("#photoX").inputValue();
   console.log("ATELIER_V3_DRAG_X",dragged);
   expect(Number(dragged)).toBeGreaterThan(0);
