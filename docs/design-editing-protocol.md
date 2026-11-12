@@ -51,16 +51,15 @@ Retired `source-authored.css`, `native-layout.css`, `b633-parity.css` and extrac
 | --- | --- | --- | --- | --- |
 | HC-E-B3 | Performance and architecture consolidation; preserve approved appearance | Owner's Phase B.3 request | Implemented; automated visual/functional verification passed; PR review pending; not deployed | Approved checkpoint `e5953f2`; [before/after measurements](performance/results.md); 68 screenshot comparisons, seven functional tests and provider-sizing fixture; [implementation notes](performance/implementation-notes.md) |
 | HC-D-003 | Desktop Services (≥901px): quote CTA right; six plan names one line | Owner direct desktop-only design request, 2026-11-12 | Implemented; CTA verified in production build and Element Explorer browser; PR review pending; not deployed | `src/styles/services.css` now uses explicit two-column desktop grid for action row; [Chromium verification](https://github.com/hellocasausa/hello-casa-website/actions/runs/43298343160): right inset 20px at 1440px in live Explorer; direct homepage test spans 901/1100/1440/1920px; no tablet/mobile style edits |
+| HC-D-001 | Services Concept B — integrated tab spine and native checklist panel | Owner approved Concepts B + Atelier v4 on 2026-11-12 | Implemented in draft PR #1; awaits owner visual signoff; not merged/deployed | `src/components/markup/services.html` + authoritative `src/styles/services.css`; data/runtime unchanged (six plans, 129 IDs, Essential+); five desktop geometry checks, original tablet/mobile behavior; [browser QA](https://github.com/hellocasausa/hello-casa-website/actions/runs/43323403062). Rollback: `checkpoint/pre-services-standards-design-e20d6b5` | 
+| HC-D-002 | Standards — proportional Translucent Atelier v4 | Owner approved 2026-11-12 with full three-part editorial copy and photo placements | Implemented in draft PR #1; awaits owner visual signoff; not merged/deployed | `src/components/markup/standards.html` + entirely replaced `src/styles/standards.css`; 3 watercolor originals, 6 approved paragraphs, 1440px photo dimensions 321×413/297×470/352×426; cqw photo scaling, tablet/mobile reading flow; [browser QA](https://github.com/hellocasausa/hello-casa-website/actions/runs/43323403062). |
 | HC-T-002 | Trim blank space after footer in read-only previews | Owner's screenshot, 2026-11-12 | Implemented in preview tools; visual review pending; no production footer change | `preview/element-explorer.html` and `preview/visual-review.html` measure the actual bottom of `#footer` instead of inheriting an inflated iframe height |
 
-## Design requests under discussion — NOT approved implementations
+## Approved designs promoted from explorations
 
-| ID | Area | Concept | Status | Design/engineering note |
-|---|---|---|---|---|
-| HC-D-001 | Services | Introduce a white card/background plane behind the service cards | Idea only | Decide whether the plane wraps the entire Services catalog, the plan tabs/cards, or the active checklist. Add one intentional layout element and corresponding owned style instead of simulating a card with layered CSS pseudo-patches. |
-| HC-D-002 | Standards | Introduce additional cards in the Standards area | Idea only | Confirm the kinds of cards/content and their visual relationships. Implement as repeatable components/data entries, preserving intentional desktop/tablet/mobile hierarchy. |
+The exploratory records `HC-D-001` and `HC-D-002` are **resolved**: the owner explicitly selected **Services B / Integrated Tabs** and **Standards Proportional Atelier v4**. The native draft implementations replace those earlier proposals; consult the engineering change register above for the source of truth and the reference library for experimental A/B/C alternatives.
 
-These rows record ideas, not approval to edit the site.
+Implementation and ownership decisions, QA failures/fixes and responsive acceptance are retained in [the Services B + Atelier v4 promotion report](design-promotions/services-b-standards-v4.md). No experiment HTML/CSS is imported or shipped to the production site.
 
 ## Review checklist for every design revision
 
