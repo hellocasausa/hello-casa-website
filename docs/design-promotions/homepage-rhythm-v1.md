@@ -24,3 +24,7 @@
 ## Non-goals and safeguards
 
 No rewrite of the approved long-form Standards copy, no changes to original image files, no new typeface, no new CSS corrective sheet, no implementation of the disabled newsletter/placeholder links, and no merge or deployment.
+
+## Verified guardrail cleanup
+
+The previous newsletter heading margin used an allowlisted `!important` rule. The new more-specific component-owned selector safely removes that priority override, reducing the exception count from 17 to 16; the corresponding obsolete ledger row is removed. The responsive Services test records actual checklist-to-action whitespace for follow-up visual review.

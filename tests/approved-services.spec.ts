@@ -11,11 +11,12 @@ test("native approved Services B tabs join the checklist at desktop widths",asyn
   await expect(page.locator(".hc-tabs-heading")).toBeVisible();
   await expect(page.locator(".hc-tabs-heading h2")).toHaveText("A clean forevery chapter.");
   await expect(page.locator("#hc-mobile-vertical .hc-card")).toHaveCount(6);
+  await expect(page.locator(".hc-tabs-tail")).toHaveCount(0);
   const layout=await page.evaluate(()=>{
    const section=document.querySelector("#hc-mobile-vertical")!,shell=section.querySelector(".hc-bound")!,selector=section.querySelector(".hc-selector")!,panel=section.querySelector(".hc-panel")!,tab=section.querySelector('.hc-card[aria-selected="true"]')!,button=section.querySelector(".hc-panel-actions .hc-button")!,actions=section.querySelector(".hc-panel-actions")!;
    const r=(el:Element)=>el.getBoundingClientRect(),s=r(selector),p=r(panel),b=r(button),a=r(actions);
-   const style=getComputedStyle(tab),panelStyle=getComputedStyle(panel);
-   return {width:innerWidth,overflow:section.scrollWidth-section.clientWidth,layout:getComputedStyle(shell).display,selectorRight:s.right,panelLeft:p.left,selectorHeight:s.height,panelHeight:p.height,chosenTab:tab.getAttribute("data-plan"),activeBackground:style.backgroundColor,panelBackground:panelStyle.backgroundColor,buttonRightInset:a.right-b.right,labels:[...section.querySelectorAll(".hc-card-label")].map(el=>({scroll:el.scrollWidth,width:el.clientWidth}))};
+   const style=getComputedStyle(tab),panelStyle=getComputedStyle(panel),note=section.querySelector('.hc-footnote'),noteBottom=note?r(note).bottom:r(section.querySelector('.hc-panel-body')!).bottom;
+   return {width:innerWidth,overflow:section.scrollWidth-section.clientWidth,layout:getComputedStyle(shell).display,selectorRight:s.right,panelLeft:p.left,selectorHeight:s.height,panelHeight:p.height,chosenTab:tab.getAttribute("data-plan"),activeBackground:style.backgroundColor,panelBackground:panelStyle.backgroundColor,buttonRightInset:a.right-b.right,checklistToButtonGap:Math.round(a.top-noteBottom),labels:[...section.querySelectorAll(".hc-card-label")].map(el=>({scroll:el.scrollWidth,width:el.clientWidth}))};
   });
   console.log("APPROVED_SERVICES",width,JSON.stringify(layout));
   expect(layout.overflow).toBeLessThanOrEqual(3);

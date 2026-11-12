@@ -9,14 +9,6 @@
   },
   {
     "file": "footer.css",
-    "selector": ".hc-b-footer__newsletter h2",
-    "property": "margin",
-    "value": "0 0 10px",
-    "scope": "(min-width:751px)",
-    "reason": "Approved responsive/state cascade priority; retained after measured comparison"
-  },
-  {
-    "file": "footer.css",
     "selector": ".hc-b-footer__form-status[hidden]",
     "property": "display",
     "value": "none",
