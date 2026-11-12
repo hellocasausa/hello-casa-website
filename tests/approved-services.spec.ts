@@ -45,3 +45,28 @@ test("tablet and mobile use original Services layout and retain checklist runtim
   expect(check.overflow).toBeLessThanOrEqual(3);
  }
 });
+
+test("homepage spacing rhythm and footer at phone, tablet and desktop",async({page})=>{
+ for(const width of [390,820,1440]){
+  await page.setViewportSize({width,height:1000});
+  const metrics=await page.evaluate(()=>{
+   const box=(s:string)=>document.querySelector(s)!.getBoundingClientRect();
+   const st=box(".steps"),footer=box("#footer"),logo=box(".hc-b-footer__brand img"),panel=box("#hc-mobile-vertical .hc-panel-actions"),note=box(".hc-footnote");
+   const newsletter=document.querySelector(".hc-b-footer__newsletter");
+   const visible=!!newsletter&&getComputedStyle(newsletter).display!=="none";
+   const description=visible?box(".hc-b-footer__newsletter p"):null;
+   const form=visible?box(".hc-b-footer__newsletter form"):null;
+   return {stepsHeight:st.height,footerHeight:footer.height,logoWidth:logo.width,ctaGap:panel.top-note.bottom,newsletterGap:description&&form?form.top-description.bottom:null};
+  });
+  console.log("HOMEPAGE_RHYTHM",width,JSON.stringify(metrics));
+  expect(metrics.ctaGap).toBeLessThanOrEqual(30);
+  if(width===1440){
+   expect(Math.abs(metrics.stepsHeight-128)).toBeLessThanOrEqual(1);
+   expect(Math.abs(metrics.logoWidth-208)).toBeLessThanOrEqual(1);
+   expect(metrics.newsletterGap).not.toBeNull();
+   expect(metrics.newsletterGap!).toBeLessThanOrEqual(12);
+  }
+  await page.locator(".steps").screenshot({path:"test-results/approved-steps-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
+  await page.locator("#footer").screenshot({path:"test-results/approved-footer-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
+ }
+});
