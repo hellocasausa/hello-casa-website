@@ -5,8 +5,8 @@
 **Date:** 2026-11-12  
 **Origin:** Hello Casa reconstructed website, PR #1  
 **Primary domain:** Design systems → Composition → Navigation / Service selection → Content hierarchy  
-**Status:** Archived exploration; none approved for production implementation  
-**User preference:** Concept B currently favored; user also explicitly likes the colored tabs/tiles, especially in the alternate studies. No final design selection or approval to edit the website.
+**Status:** Concept B **approved for native integration** on 2026-11-12; implemented in draft PR #1, not merged or deployed. Concepts A/C archived as reusable alternatives.  
+**User preference:** Concept B selected and implemented; user also likes colored tabs/tiles as a separate potential refinement, not silently combined with B.
 
 ## Contents
 
