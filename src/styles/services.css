@@ -1292,11 +1292,11 @@
     margin-top: 12px;
   }
   #hc-mobile-vertical .hc-panel-actions {
-    justify-content: flex-end;
     padding: 15px 20px 18px;
     min-height: 0;
   }
   #hc-mobile-vertical .hc-panel-actions .hc-button {
+    margin-left: auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
