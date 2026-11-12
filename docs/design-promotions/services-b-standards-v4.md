@@ -54,7 +54,7 @@ Shared fonts and all other page sections remain under their existing owners. No 
 
 ## Verification and sign-off gate
 
-[Full native build, architecture and browser regression workflow](https://github.com/hellocasausa/hello-casa-website/actions/runs/43323403062) completed successfully, with 12 passing tests covering previous functional behavior, desktop composition, and mobile/tablet flow.
+[Full native build, architecture and browser regression workflow](https://github.com/hellocasausa/hello-casa-website/actions/runs/43324646462) completed successfully, with **14 passing tests** covering previous functional behavior, desktop composition, mobile/tablet flow, and both read-only previews loading the actual integrated design checkpoint.
 
 The visual and Element Explorer viewers are pinned to the integrated source snapshot. These viewers are read-only and are not substitutes for the production TypeScript or real Jotform submission verification.
 
