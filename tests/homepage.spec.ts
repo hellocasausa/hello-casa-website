@@ -192,3 +192,27 @@ test("Hero and Steps preserve measured B6.3.3 geometry", async ({ page }) => {
     }
   }
 });
+
+
+test("desktop Customize My Quote button aligns to the right edge", async ({
+  page,
+}) => {
+  for (const width of [901, 1100, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 1000 });
+    const actions = page.locator("#hc-mobile-vertical .hc-panel-actions");
+    const button = actions.locator(".hc-button");
+    await expect(button).toBeVisible();
+    const [rowBox, buttonBox] = await Promise.all([
+      actions.boundingBox(),
+      button.boundingBox(),
+    ]);
+    expect(rowBox, `actions at ${width}px`).not.toBeNull();
+    expect(buttonBox, `button at ${width}px`).not.toBeNull();
+    const rightInset =
+      rowBox!.x + rowBox!.width - (buttonBox!.x + buttonBox!.width);
+    expect(
+      Math.abs(rightInset - 20),
+      `desktop CTA right inset at ${width}px`,
+    ).toBeLessThanOrEqual(2);
+  }
+});
