@@ -1,6 +1,6 @@
 # Hello Casa — Services Design Remix Studies
 
-**Status:** Experimental art direction only. Not an approved production change.  
+**Status:** Archived experimental A/B/C gallery. Concept B approved for native integration on 2026-11-12, implemented in draft PR #1; no merge/deployment.  
 **Source:** Actual Services template, component CSS, fonts, tokens and six-plan checklist data from PR #1 at `b4749cafb4648938798875687eb52b7954beafba`.  
 **Interactive gallery:** [services-remix-gallery.html](services-remix-gallery.html)
 
@@ -53,4 +53,4 @@
 
 GitHub Actions experimental workflow [services-remix-gallery.yml](../../.github/workflows/services-remix-gallery.yml) uses Chromium to verify all three concepts at 1100 and 1440px, original plan and focus interactions, no horizontal overflow, disabled quote navigation, 129 unique task IDs and the aligned quote control. It preserves six screenshots as a review artifact.
 
-**Owner decision pending.** Do not promote any concept or design tokens to production until the owner selects and approves a direction. If approved, implement by editing the authoritative Services component and CSS owner, with production builds and responsive regressions. Keep the experiments as historical visual references rather than importing competing variation styles into the shipping website.
+**Owner decision:** Concept B selected and implemented in native Services markup/CSS. The original A/B/C gallery remains a historical visual reference; experiments are not imported into the shipping site. Colored tab ideas remain unapproved for this implementation.
