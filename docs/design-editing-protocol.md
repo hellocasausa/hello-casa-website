@@ -33,14 +33,23 @@ Avoid unnecessary wrappers as strongly as missing wrappers. A component should e
 
 ## Component ownership map (current PR #1)
 
-- Header/Hero/Steps: `scripts/build-page.ts` together with `src/components/native-layout.css`, `hero-fonts.css` and `b633-parity.css` for source matching. When editing, **consolidate** affected rules into their intended owner instead of adding another parity layer.
-- Services: `src/generated/services.html`, `src/components/services.ts`, `src/components/services.css`, `src/data/plans.json`; preserve all six plans, 129 source task IDs and accessibility.
-- Standards: `src/generated/standards.html` and owned layout styling; use separate reusable editorial/card primitives for deliberate new cards.
-- Contact: `src/generated/contact.html`, owned CSS and Jotform boundary; do not submit actual inquiries during visual tests.
-- Footer: `src/generated/footer.html`, `src/components/footer.css`; retain honest inactive destinations until connected.
-- Shared: `src/style.css`, `src/fonts.css`, `src/data/assets.json`, `public/assets/`.
+Phase B.3 consolidated the approved reconstruction into native component owners. Edit these current files directly; do not recreate retired override layers.
 
-The current reconstruction still has inherited rules in `source-authored.css`, `native-layout.css` and `b633-parity.css`. Those need gradual **regression-tested consolidation**; do not add even more competing ownership merely to make a requested change appear.
+- Header/Hero/Steps: `src/components/markup/header.html`, `hero.html`, `steps.html`, and corresponding `src/styles/header.css`, `hero.css`, `steps.css`.
+- Services: `src/components/markup/services.html`, `src/components/services.ts`, `src/styles/services.css`, `src/data/plans.json`; preserve all six plans, 129 source task IDs and accessibility.
+- Standards: `src/components/markup/standards.html` and `src/styles/standards.css`; use reusable editorial/card primitives for explicitly approved new cards.
+- Contact: `src/components/markup/contact.html`, `src/styles/contact.css` and the official Jotform boundary; do not submit actual inquiries during visual tests.
+- Footer: `src/components/markup/footer.html` and `src/styles/footer.css`; retain honest inactive destinations until connected.
+- Shared: `src/styles/foundation.css`, `tokens.css`, `fonts.css`, `src/main.ts`; `src/style.css` owns only import order.
+- Build: `scripts/build-page.ts` composes stable templates through explicit DOM operations. `scripts/prepare-assets.mjs` derives delivery copies from immutable originals in `assets/originals/`; active fonts/icons and delivery images are in `public/assets/`. `src/data/delivery.json` is generated, not hand-edited.
+
+Retired `source-authored.css`, `native-layout.css`, `b633-parity.css` and extraction templates remain recoverable in the approved checkpoint, rather than competing in the current build. See [CSS ownership](../src/styles/README.md) and the [Design Studio anti-accretion contract](design-studio/anti-accretion-architecture.md).
+
+## Engineering change register
+
+| ID | Scope | Authorization | Status | Evidence |
+| --- | --- | --- | --- | --- |
+| HC-E-B3 | Performance and architecture consolidation; preserve approved appearance | Owner's Phase B.3 request | Implemented; automated visual/functional verification passed; PR review pending; not deployed | Approved checkpoint `e5953f2`; [before/after measurements](performance/results.md); 68 screenshot comparisons, seven functional tests and provider-sizing fixture; [implementation notes](performance/implementation-notes.md) |
 
 ## Design requests under discussion — NOT approved implementations
 
