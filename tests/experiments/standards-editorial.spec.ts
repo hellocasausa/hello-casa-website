@@ -34,10 +34,10 @@ test("Standards editorial remixes render full approved copy and original imagery
         width + "px · " + concept.toUpperCase(),
       );
       await expect(frame.locator(".st-story")).toHaveCount(3);
-      await expect(frame.locator(".st-prose p")).toHaveCount(6);
+      await expect(frame.locator(".st-copy p")).toHaveCount(6);
       for (let i = 0; i < labels.length; i++) {
         await expect(frame.locator(".st-story").nth(i).locator("h3")).toHaveText(labels[i]);
-        await expect(frame.locator(".st-story").nth(i).locator(".st-prose p").first()).toContainText(firstWords[i]);
+        await expect(frame.locator(".st-story").nth(i).locator(".st-copy p").first()).toContainText(firstWords[i]);
       }
       await expect(frame.locator(".st-intro h2")).toHaveText("Care starts at home.");
       await expect(frame.locator(".st-intro .st-subtitle")).toHaveText(
