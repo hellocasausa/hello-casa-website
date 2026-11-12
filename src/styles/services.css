@@ -666,12 +666,18 @@
   }
 }
 @media (min-width: 901px) {
-  #hc-mobile-vertical .hc-card[data-plan="maintenance"] .hc-card-label span {
+  /* All desktop plan names share one uninterrupted label line. */
+  #hc-mobile-vertical .hc-card-label {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.28em;
+    white-space: nowrap;
+    letter-spacing: 0;
+  }
+  #hc-mobile-vertical .hc-card-label span {
     display: inline;
     white-space: nowrap;
-    word-break: keep-all;
-    font-size: 13px;
-    letter-spacing: 0;
   }
 }
 #hc-mobile-vertical #hc-name {
@@ -1286,6 +1292,7 @@
     margin-top: 12px;
   }
   #hc-mobile-vertical .hc-panel-actions {
+    justify-content: flex-end;
     padding: 15px 20px 18px;
     min-height: 0;
   }
