@@ -89,7 +89,7 @@ iframe{display:block;border:0;background:#fff}
       <div class="sep"></div>
       <input class="custom" id="customWidth" type="number" min="320" max="1920" step="1" value="820" aria-label="Custom viewport width in pixels" title="Viewport width in CSS pixels">
       <span class="toolbar-label">px</span>
-      <button id="pickMode" class="tool-button active" type="button" aria-pressed="true" title="Click the preview to select elements">⌖ Pick element · ON</button>
+      <button id="pickMode" class="tool-button active" type="button" aria-pressed="true" title="Switch between selecting element identifiers and trying service checklists">⌖ Inspect elements</button>
     </div>
     <div class="stage" id="stage"><div class="stage-inner"><div class="frame-shell" id="frameShell"><div class="frame-surface" id="frameSurface"><iframe id="site" sandbox="allow-same-origin" title="Read-only Hello Casa website"></iframe></div></div></div></div>
     <div class="status" id="status"><span class="signal"></span><span id="statusText">Loading current optimized PR #1 from GitHub…</span></div>
@@ -124,7 +124,7 @@ const map=[];SECTIONS.forEach(s=>s.items.forEach(pair=>map.push({section:s.name,
 const $=id=>document.getElementById(id);
 const status=$('status'), statusText=$('statusText'), elements=$('elements'), search=$('search'), filter=$('sectionFilter'), frame=$('site'), shell=$('frameShell'), surface=$('frameSurface'), stage=$('stage');
 const inspection=$('inspection'), custom=$('customWidth'), pick=$('pickMode');
-let viewport=820, sha=FALLBACK, root='', iframeDoc=null, selected=null, selectedItem=null, picked=true, outline=null, hoverOutline=null, stylesReady=false, bodyHeight=900, resizePending=false;
+let viewport=820, sha=FALLBACK, root='', iframeDoc=null, selected=null, selectedItem=null, picked=true, outline=null, hoverOutline=null, stylesReady=false, bodyHeight=900, resizePending=false, planData=[];
 SECTIONS.forEach(s=>{const o=document.createElement('option');o.value=s.name;o.textContent=s.name;filter.append(o)});
 function mark(text,mode){status.className='status'+(mode?' '+mode:'');statusText.textContent=text}
 function codeEscape(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -263,18 +263,69 @@ function changeWidth(n){
 }
 document.querySelectorAll('.view-button').forEach(b=>b.addEventListener('click',()=>changeWidth(b.dataset.size)));
 custom.addEventListener('change',()=>changeWidth(custom.value));
-pick.addEventListener('click',()=>{picked=!picked;pick.classList.toggle('active',picked);pick.setAttribute('aria-pressed',String(picked));pick.textContent=picked?'⌖ Pick element · ON':'⌖ Pick element · OFF';});
+pick.addEventListener('click',()=>{picked=!picked;pick.classList.toggle('active',picked);pick.setAttribute('aria-pressed',String(picked));pick.textContent=picked?'⌖ Inspect elements':'▶ Try checklists';toast(picked?'Inspect mode: click to identify components':'Checklist mode: choose a plan or an Essential+ focus');});
 window.addEventListener('resize',()=>fit());
+function connectChecklist(){
+ // A safe, read-only mirror of src/components/services.ts. Only browser-local
+ // text/ARIA/checklist nodes are updated: no repository or provider writes.
+ const d=iframeDoc,cards=[...d.querySelectorAll('[role="tab"][data-plan]')];
+ const dock=d.querySelector('#hc-focus-dock');
+ if(!cards.length||!dock||!Array.isArray(planData)||!planData.length)return;
+ let active=planData[0],focus='standard';
+ const escapeText=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function render(){
+  cards.forEach(b=>{const selected=b.dataset.plan===active.id;b.setAttribute('aria-selected',String(selected));b.tabIndex=selected?0:-1});
+  d.querySelector('#hc-name').textContent=active.name+(active.id==='maintenance'&&focus!=='standard'?' · '+(focus==='kitchen'?'Kitchen':'Bathrooms')+' focus':'');
+  d.querySelector('#hc-description').textContent=active.description;
+  const deep=planData.find(p=>p.id==='deep');
+  const groups=active.groups.map(g=>{
+   if(active.id==='maintenance'&&focus==='kitchen'&&g.title==='Kitchen')return {...deep.groups.find(dg=>dg.title==='Kitchen'),title:'Kitchen+'};
+   if(active.id==='maintenance'&&focus==='bathroom'&&g.title==='Bathrooms')return {...deep.groups.find(dg=>dg.title==='Bathrooms'),title:'Bathrooms+'};
+   return g;
+  });
+  const groupHTML=groups.map(g=>'<section class="hc-group hc-group-approved '+('conditional' in g?'hc-conditional':'')+'"><h4>'+escapeText(g.title)+('conditional' in g?' · if included':'')+'</h4><ul>'+g.items.map((t,i)=>'<li data-task-id="'+escapeText(g.taskIds[i])+'">'+escapeText(t)+'</li>').join('')+'</ul></section>').join('');
+  const extras=active.extras.length?'<aside class="hc-extras"><h4>Available additions</h4><p class="hc-extras-caption">Optional work · selected and quoted separately</p><ul class="hc-extras-list">'+active.extras.map(t=>'<li>'+escapeText(t)+'</li>').join('')+'</ul></aside>':'';
+  d.querySelector('#hc-detail-body').innerHTML='<div class="hc-grid hc-grid-approved">'+groupHTML+extras+'</div><p class="hc-footnote">'+escapeText(active.note)+'</p>';
+  dock.hidden=active.id!=='maintenance';
+  d.querySelector('#hc-details').setAttribute('aria-labelledby','hc-tab-'+active.id);
+  dock.querySelectorAll('[data-focus]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.focus===focus)));
+  const select=dock.querySelector('select');if(select)select.value=focus;
+  requestAnimationFrame(()=>{measure();positionMarkers()});
+ }
+ function choose(target){
+  const tab=target.closest('[role="tab"][data-plan]');
+  if(tab){const p=planData.find(p=>p.id===tab.dataset.plan);if(p){active=p;render()}return true}
+  const focusButton=target.closest('[data-focus]');
+  if(focusButton){focus=focusButton.dataset.focus;render();return true}
+  return false;
+ }
+ dock.querySelector('select')?.addEventListener('change',e=>{if(!picked){focus=e.target.value;render()}});
+ d.addEventListener('keydown',e=>{
+  if(picked)return;
+  const tab=e.target.closest?.('[role="tab"][data-plan]');
+  if(!tab)return;
+  const keys=['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'];
+  if(!keys.includes(e.key))return;
+  e.preventDefault();
+  const i=cards.indexOf(tab),n=e.key==='Home'?0:e.key==='End'?cards.length-1:(i+(['ArrowRight','ArrowDown'].includes(e.key)?1:-1)+cards.length)%cards.length;
+  cards[n].focus();active=planData.find(p=>p.id===cards[n].dataset.plan);render();
+ },true);
+ render();
+ return choose;
+}
 function attach(){
  iframeDoc=frame.contentDocument;
  if(!iframeDoc||!iframeDoc.body){mark('Preview loaded without an accessible document. Try opening this file in Chrome.','error');return}
  overlay();measure();
+ const chooseChecklist=connectChecklist();
+ iframeDoc.addEventListener('submit',e=>{e.preventDefault();e.stopImmediatePropagation()},true);
  iframeDoc.addEventListener('click',e=>{
   const target=e.target&&e.target.nodeType===1?e.target:null;
   if(!target||target.closest('.__ex_outline'))return;
+  if(!picked&&target.closest('select'))return;
   // Never navigate, submit forms or trigger live provider actions.
   e.preventDefault();e.stopImmediatePropagation();
-  if(!picked)return;
+  if(!picked){chooseChecklist?.(target);return}
   let el=target;
   if(el.tagName.toLowerCase()==='path'||el.tagName.toLowerCase()==='svg')el=el.closest('button')||el;
   if(el.tagName.toLowerCase()==='span'&&!el.id&&!el.classList.length)el=el.parentElement||el;
@@ -292,7 +343,7 @@ function attach(){
  if(iframeDoc.fonts?.ready)iframeDoc.fonts.ready.then(measure).catch(()=>{});
  const initial=iframeDoc.querySelector('.hero');
  if(initial)setSelected(initial,map.find(x=>x.selector==='.hero'),false);
- mark('Loaded optimized PR #1 · '+sha.slice(0,8)+' · '+map.length+' named elements · no site edits','ready');
+ mark('Loaded optimized PR #1 · '+sha.slice(0,8)+' · '+map.length+' named elements · inspect or try checklists · no site edits','ready');
  for(const wait of [500,1300,2600,4500])setTimeout(measure,wait);
 }
 async function start(){
@@ -307,7 +358,8 @@ async function start(){
    if(!res.ok)throw new Error(path+' HTTP '+res.status);
    return res.text();
   }
-  const [html,entryCss]=await Promise.all([get('index.html'),get('src/style.css')]);
+  const [html,entryCss,plansRaw]=await Promise.all([get('index.html'),get('src/style.css'),get('src/data/plans.json')]);
+  planData=JSON.parse(plansRaw);
   const importRe=/@import\s+(?:url\()?\s*["']([^"')]+)["']\s*\)?\s*;/g;
   const imports=[...entryCss.matchAll(importRe)].map(m=>m[1]);
   if(!imports.length)throw new Error('No CSS imports found in source');
