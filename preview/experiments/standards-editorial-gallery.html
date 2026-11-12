@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Hello Casa · Standards Editorial Design Studies</title><style>
+:root{color-scheme:light;--ink:#284f70;--muted:#7893a5;--border:#dce6ec;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#f5f8fb;color:var(--ink)}button{font:inherit;cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible{outline:3px solid #8dadd2;outline-offset:2px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border-bottom:1px solid var(--border);padding:15px 24px;min-height:78px}
+.brand{display:flex;gap:13px;align-items:center}.brandicon{border:1px solid #d4e5ef;background:#eaf4fb;width:42px;height:42px;display:grid;place-items:center;border-radius:13px;font:26px Georgia,serif}
+.brandname{font-size:17px;letter-spacing:-.03em;font-weight:750}.brandsub{font-size:11px;color:#8fa4b1;margin-top:3px}
+.statuspill{font-size:10px;font-weight:750;letter-spacing:.1em;padding:8px 12px;background:#f1f7f5;color:#53776c;border:1px solid #d5e8df;border-radius:99px}
+.layout{display:grid;grid-template-columns:294px minmax(0,1fr);min-height:calc(100vh - 78px)}
+.sidebar{padding:25px 20px 24px;background:white;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:19px}
+.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#84a0b0;margin:0 0 9px}
+.sidebar h1{font:400 25px/1.17 Georgia,serif;letter-spacing:-.04em;margin:0;color:#284f70}
+.intro{font-size:12px;color:#7891a1;line-height:1.7;margin:10px 0 0}
+.choices{display:grid;gap:9px}
+.choose{display:flex;width:100%;gap:11px;align-items:flex-start;text-align:left;padding:13px 12px;border-radius:13px;border:1px solid #dfe8ee;background:#fff;color:#345972}
+.choose[aria-pressed=true]{background:#f0f7fc;border-color:#aac8d9;box-shadow:0 3px 13px #557da617}
+.num{font:400 22px/1 Georgia,serif;color:#a1bac8;min-width:25px}
+.choose[aria-pressed=true] .num{color:#315f7f}
+.choosetitle{font-size:12px;font-weight:780;display:block;line-height:1.3}
+.choosesub{display:block;font-size:10.5px;color:#8da1ae;margin-top:5px;line-height:1.5}
+.line{height:1px;background:#e2eaf0}
+.about h2{font:400 22px/1.3 Georgia,serif;margin:0 0 9px;color:#2f5875}
+.about p{font-size:12px;line-height:1.66;color:#6f8a9d;margin:0 0 14px}
+.spec{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:6px 0;font-size:11px;border-bottom:1px solid #f2f5f7}
+.spec span:first-child{color:#537a91;font-weight:700}.spec span:last-child{color:#8ba1ae}
+.notice{font-size:11px;color:#7c95a3;line-height:1.65;padding:13px;border:1px solid #ddeaf0;border-radius:10px;background:#f7fbfd}
+.sidebarfooter{font-size:10px;line-height:1.6;color:#9baeba;margin-top:auto}
+.preview{min-width:0;background:linear-gradient(135deg,#f6faff 0%,#fff9f1 100%);display:flex;flex-direction:column}
+.toolbar{padding:12px 17px;background:#ffffffeb;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid #e0e9ef}
+.toolbartext{color:#8299a7;font-weight:750;font-size:11px;margin-right:3px}
+.sizebutton,.openbutton{background:white;border:1px solid #d9e6ef;border-radius:9px;padding:9px 13px;color:#4a718c;font-weight:750;font-size:11px}
+.sizebutton[aria-pressed=true]{background:#284f70;color:#fff;border-color:#284f70}
+.openbutton{margin-left:auto;text-decoration:none}
+.stage{flex:1;min-width:0;min-height:400px;overflow:auto;scrollbar-color:#bdccd7 transparent}
+.stageinner{min-height:100%;display:flex;justify-content:center;align-items:flex-start;padding:26px 16px 75px}
+.frameshell{position:relative;background:#fff;box-shadow:0 15px 44px #284f7025;border:1px solid #d7e1e9;flex:none}
+.framesurface{position:absolute;top:0;left:0;transform-origin:top left}
+iframe{display:block;border:0;background:#fff}
+.statusbar{min-height:45px;background:#fff;border-top:1px solid #dce6ec;display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px 18px;color:#7790a0;font-size:11px}
+.okdot{display:inline-block;background:#64ae92;width:7px;height:7px;border-radius:50%;margin-right:8px}.statusbar[data-error=true] .okdot{background:#cf7f75}
+.statusbar strong{color:#3d718e}
+body.full .layout{display:block}body.full .sidebar{display:none}body.full .topbar{min-height:57px;padding:8px 18px}body.full .stageinner{padding:12px 4px 80px}
+@media(max-width:980px){.layout{grid-template-columns:235px minmax(0,1fr)}.sidebar{padding:17px 12px}.choose{padding:10px 8px}.choosesub{font-size:9px}}
+@media(max-width:700px){.layout{display:block}.sidebar{padding:13px}.sidebar h1{font-size:20px}.intro,.notice,.line,.about,.sidebarfooter{display:none}.choices{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}.choose{padding:9px 6px;gap:5px}.num{font-size:16px;min-width:15px}.choosetitle{font-size:10px}.choosesub{display:none}.toolbar{padding:9px}.topbar{padding:10px}.brandname{font-size:14px}.statuspill{font-size:9px}.stageinner{padding:12px 5px 55px}}
+</style></head><body>
+<header class="topbar"><div class="brand"><div class="brandicon">✧</div><div><div class="brandname">Hello Casa <span style="color:#829caf;font-weight:450">/ Design Studies</span></div><div class="brandsub">Standards · Editorial compositions · 2026</div></div></div><span class="statuspill">EXPLORATION ONLY</span></header>
+<div class="layout">
+<aside class="sidebar">
+<div><p class="kicker">Reference Study · DER-002</p><h1>Care starts<br>at home.</h1><p class="intro">Three ways to connect photography, paragraphs and editorial headings into a single visual story. Same approved words; three entirely different relationships.</p></div>
+<div class="choices" aria-label="Design concept selector">
+ <button type="button" class="choose" data-concept="a" aria-pressed="true"><span class="num">01</span><span><span class="choosetitle">The Editorial Zigzag</span><span class="choosesub">Solid ivory cards, warm illustrated rhythm</span></span></button>
+ <button type="button" class="choose" data-concept="b" aria-pressed="false"><span class="num">02</span><span><span class="choosetitle">The Translucent Atelier</span><span class="choosesub">Frosted layers, soft overlap, atmosphere</span></span></button>
+ <button type="button" class="choose" data-concept="c" aria-pressed="false"><span class="num">03</span><span><span class="choosetitle">The Illustrated Journey</span><span class="choosesub">Asymmetrical chapters and expressive forms</span></span></button>
+</div>
+<div class="line"></div>
+<div class="about"><p class="kicker">Art direction</p><h2 id="conceptTitle"></h2><p id="conceptDescription"></p><div id="conceptSpecs"></div></div>
+<div class="notice">These are desktop-only composition studies at 1100px and 1440px. The actual Hello Casa photographs, color gradient, fonts and all three full descriptions are preserved. No publishing or content changes.</div>
+<div class="sidebarfooter">This gallery is isolated from PR #1's approved production website. Future design selections will require separate implementation approval.</div>
+</aside>
+<main class="preview">
+<div class="toolbar"><span class="toolbartext">Canvas width</span><button type="button" class="sizebutton" data-width="1100" aria-pressed="false">1100px</button><button type="button" class="sizebutton" data-width="1440" aria-pressed="true">1440px</button><a class="openbutton" id="fullLink" href="#" target="_blank" rel="noopener noreferrer">↗ Larger view</a></div>
+<div class="stage" id="stage"><div class="stageinner"><div class="frameshell" id="shell"><div class="framesurface" id="surface"><iframe sandbox="allow-same-origin" id="frame" loading="eager" title="Hello Casa Standards editorial concept"></iframe></div></div></div></div>
+<div class="statusbar" id="status"><span><span class="okdot"></span><span id="statusText">Preparing the three design studies…</span></span><strong id="viewportLabel">1440px · A</strong></div>
+</main>
+</div>
+<script>
+const STUDY_DATA={"sourceSha":"a204a3e78700346614a6c5955fa1495f85dd55f0","sourceUrl":"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/","heading":"Care starts at home.","subtitle":"Who comes through your door matters. So do the little details, and the freedom to change your plans.","stories":[{"eyebrow":"THOUGHTFULLY MATCHED","title":"Thoroughly Vetted Professionals","asset":"cd0fcbf858d74d7880e6.webp","alt":"Original Hello Casa watercolor illustration of a cleaning professional at work","paragraphs":["Inviting someone into your home is personal. We believe you should feel confident about who walks through your door, which is why we take the time to get to know the independent cleaning professionals we refer.","Experience and qualifications matter, but so does finding someone whose services are suited to your home. We consider your cleaning needs, schedule, and preferences when arranging a referral, rather than treating every household as though it were the same. Finding the right cleaner isn't simply about getting the work done. It's about finding someone who feels like the right fit."]},{"eyebrow":"HERE BEYOND THE MATCH","title":"Personalized Cleaning Profiles","asset":"f07a685256088a08fbc7.webp","alt":"Original Hello Casa watercolor illustration of a sunlit home interior","paragraphs":["It's often the little things that make the biggest difference. The room you'd rather leave untouched. The surfaces that need a little extra attention. The particular details that make your home feel cared for, just the way you like it. Your personalized cleaning profile brings those preferences together, helping us communicate what matters to you and carry those details forward as your needs evolve.","And our relationship doesn't have to end with the introduction. Whether you'd like to update your preferences, ask a question, or explore a different cleaner, Hello Casa remains a familiar point of contact along the way."]},{"eyebrow":"CLEAR FROM THE START","title":"No Long-Term Contracts","asset":"a8adff160b3ec0891aa3.webp","alt":"Original Hello Casa watercolor illustration of a sunlit neighborhood home","paragraphs":["Some weeks call for a little extra help. Others call for a fresh start, a regular routine, or simply one less thing on your to-do list. Whatever life looks like, your cleaning arrangements should have room to change with it. Choose a one-time cleaning or settle into a recurring schedule, without the pressure of a long-term commitment.","We help make the details clear from the beginning, from the services you're requesting to the proposed pricing and scheduling arrangements, so you can make decisions with confidence. No unnecessary commitments. No one-size-fits-all routines. Just the freedom to find the cleaning help you need, when you need it."]}]};
+const STUDY_CSS="\n@font-face{font-family:\"HC Libre\";src:url(\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/dbcc0e48671e24477635.woff2\") format(\"woff2\");font-display:swap;font-weight:400}\n@font-face{font-family:\"HC Nunito\";src:url(\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/0cdf1e4b27f7420b0ad3.woff2\") format(\"woff2\");font-display:swap;font-weight:300 900}\n:root{font-family:\"HC Nunito\",\"Nunito Sans\",Arial,sans-serif;--deep:#284f70;--ink:#365f7b;--quiet:#728da1;--warm:#fffefa}\n*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fffdfa}img{max-width:100%;display:block}p,h1,h2,h3,figure{margin:0}\n#standards{position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf5fa 0%,#f2f8f8 34%,#fff5e8 72%,#ffdfca 100%);padding:45px 0 85px}\n.st-shell{width:min(calc(100% - 88px),1210px);margin:0 auto}\n.st-intro{max-width:690px;margin-left:auto;text-align:right;position:relative;isolation:isolate}\n.st-intro .st-eyebrow{font-size:10px;letter-spacing:.17em;font-weight:800;color:#6a91a9;text-transform:uppercase;margin-bottom:12px}\n.st-intro h2{font:400 43px/1.18 \"HC Libre\",Georgia,serif;letter-spacing:-.047em;color:#254f70;margin:0 0 18px}\n.st-intro .st-subtitle{color:#587b94;font-size:17px;line-height:1.65;max-width:565px;margin-left:auto}\n.st-arc{height:2px;width:66px;background:#f1b88c;display:block;margin:0 0 12px auto}\n.st-list{display:grid}\n.st-story{position:relative}\n.st-heading h3{font:400 34px/1.21 \"HC Libre\",Georgia,serif;color:#284f70;letter-spacing:-.035em;text-wrap:balance}\n.st-number{font:400 39px/1 \"HC Libre\",Georgia,serif;color:#b2d0e3;letter-spacing:-.07em}\n.st-kicker{font:800 10px/1.45 \"HC Nunito\",sans-serif;color:#7091a5;letter-spacing:.17em;text-transform:uppercase}\n.st-kicker:before{content:\"\";display:block;height:2px;width:59px;background:#f1bb96;margin-bottom:11px}\n.st-figure{margin:0;overflow:hidden;border-radius:23px;box-shadow:0 15px 32px #426b8921;border:2px solid #ffffffaa;background:#f6f3ea}\n.st-figure img{width:100%;height:100%;object-fit:cover}\n.st-prose{font:450 16px/1.75 \"HC Nunito\",Arial,sans-serif;color:#496c84;letter-spacing:.002em}\n.st-prose p+p{margin-top:18px}\n/* A: Folio page rhythm; headings and photos stay together, text sits in an intentional solid surface. */\nbody[data-concept=a] #standards{padding-top:40px;padding-bottom:83px}\nbody[data-concept=a] .st-intro{padding:20px 28px 30px 38px;background:linear-gradient(120deg,#e4f2fbd9,#d2e8f6);border-radius:100px 0 0 100px;max-width:780px;margin-right:calc((min(1210px,100vw - 88px) - (100vw - 88px))/2 - 44px);border-top:1px solid #ffffffe1}\nbody[data-concept=a] .st-intro h2{font-size:42px;margin-bottom:12px}\nbody[data-concept=a] .st-intro .st-subtitle{font-size:16px;max-width:530px}\nbody[data-concept=a] .st-list{gap:76px;margin-top:62px}\nbody[data-concept=a] .st-story{display:grid;grid-template-columns:42% minmax(0,1fr);gap:38px;align-items:center}\nbody[data-concept=a] .st-story:nth-child(even){grid-template-columns:minmax(0,1fr) 42%}\nbody[data-concept=a] .st-story:nth-child(even) .st-visual{grid-column:2;grid-row:1;justify-self:end}\nbody[data-concept=a] .st-story:nth-child(even) .st-prose{grid-column:1;grid-row:1}\nbody[data-concept=a] .st-visual{padding:0 10px;max-width:100%}\nbody[data-concept=a] .st-heading{margin:0 0 25px}\nbody[data-concept=a] .st-heading h3{margin-top:8px}\nbody[data-concept=a] .st-number{display:none}\nbody[data-concept=a] .st-figure{width:315px;height:295px}\nbody[data-concept=a] .st-story:nth-child(2) .st-figure{width:335px;height:290px}\nbody[data-concept=a] .st-story:nth-child(3) .st-figure{width:342px;height:268px}\nbody[data-concept=a] .st-prose{background:rgba(255,254,250,.95);padding:35px 38px 38px;border:1px solid #dce7ee;border-radius:23px;box-shadow:0 9px 29px #6d8ba611;line-height:1.76}\nbody[data-concept=a] .st-story:nth-child(2) .st-prose{background:#fffefd}\nbody[data-concept=a] .st-story:nth-child(3) .st-prose{background:#fffdf8}\n/* B: Glass overlays float across a consistent rhythm of 2-column photographic vignettes. */\nbody[data-concept=b] #standards{padding-top:55px;padding-bottom:95px}\nbody[data-concept=b] .st-intro{padding:20px 0 17px;max-width:650px}\nbody[data-concept=b] .st-intro h2{font-size:48px}\nbody[data-concept=b] .st-intro .st-subtitle{font-size:17px}\nbody[data-concept=b] .st-list{gap:54px;margin-top:66px}\nbody[data-concept=b] .st-story{display:grid;grid-template-columns:33% minmax(0,1fr);gap:0;align-items:center;isolation:isolate}\nbody[data-concept=b] .st-story:nth-child(even){grid-template-columns:minmax(0,1fr) 33%}\nbody[data-concept=b] .st-story:nth-child(even) .st-visual{grid-column:2;grid-row:1;justify-self:end}\nbody[data-concept=b] .st-story:nth-child(even) .st-prose{grid-column:1;grid-row:1;margin-right:-51px;margin-left:0}\nbody[data-concept=b] .st-visual{grid-column:1;grid-row:1;align-self:center;z-index:0}\nbody[data-concept=b] .st-prose{grid-column:2;grid-row:1;background:rgba(255,255,253,.79);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid #fff;box-shadow:0 15px 40px #6b91ab19;border-radius:25px;padding:37px 42px;margin-left:-50px;position:relative;z-index:1}\nbody[data-concept=b] .st-heading{margin-bottom:22px}\nbody[data-concept=b] .st-heading h3{margin-top:8px;font-size:34px}\nbody[data-concept=b] .st-number{display:none}\nbody[data-concept=b] .st-figure{height:355px;width:100%;border-radius:30px;box-shadow:0 21px 39px #346d911c}\nbody[data-concept=b] .st-story:nth-child(2) .st-figure{height:350px}\nbody[data-concept=b] .st-story:nth-child(3) .st-figure{height:350px}\nbody[data-concept=b] .st-figure img{object-position:center 40%}\nbody[data-concept=b] .st-story:nth-child(2) .st-figure img{object-position:center 60%}\nbody[data-concept=b] .st-copy{font-size:16px;line-height:1.71}\nbody[data-concept=b] .st-prose p+p{margin-top:17px}\n/* C: Illustrated editorial chapters with numerals, asymmetric nested layouts and mixed surface treatments. */\nbody[data-concept=c] #standards{padding-top:48px;padding-bottom:100px}\nbody[data-concept=c] .st-intro{padding:0 0 27px;max-width:730px}\nbody[data-concept=c] .st-intro:after{content:\"\";position:absolute;left:-45px;top:4px;bottom:10px;width:1px;background:#a7c7d9}\nbody[data-concept=c] .st-intro h2{font-size:49px;margin-top:10px}\nbody[data-concept=c] .st-intro .st-subtitle{font-size:17px}\nbody[data-concept=c] .st-list{gap:66px;margin-top:63px}\nbody[data-concept=c] .st-story{display:grid;grid-template-columns:minmax(0,1fr) 34%;gap:36px;align-items:center}\nbody[data-concept=c] .st-story:nth-child(2){grid-template-columns:31% minmax(0,1fr)}\nbody[data-concept=c] .st-story:nth-child(2) .st-visual{grid-column:1;grid-row:1}\nbody[data-concept=c] .st-story:nth-child(2) .st-prose{grid-column:2;grid-row:1}\nbody[data-concept=c] .st-visual{grid-column:2;grid-row:1;position:relative;min-width:0}\nbody[data-concept=c] .st-prose{grid-column:1;grid-row:1;padding:35px 40px 36px;background:rgba(255,255,255,.88);border:1px solid #ffffffee;border-radius:5px 36px 5px 36px;box-shadow:0 15px 34px #528baa14}\nbody[data-concept=c] .st-story:nth-child(2) .st-prose{border-radius:36px 5px 36px 5px;background:rgba(255,254,250,.83);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}\nbody[data-concept=c] .st-story:nth-child(3) .st-prose{border-radius:12px 38px 12px 38px;background:#fffaf1ea}\nbody[data-concept=c] .st-heading{margin:0 0 23px}\nbody[data-concept=c] .st-heading h3{margin:10px 0 0;font-size:37px}\nbody[data-concept=c] .st-figure{width:100%;height:380px;border-radius:160px 160px 17px 17px;box-shadow:0 16px 31px #44677c26}\nbody[data-concept=c] .st-story:nth-child(2) .st-figure{border-radius:15px 15px 155px 155px;height:405px}\nbody[data-concept=c] .st-story:nth-child(3) .st-figure{border-radius:155px 15px 155px 15px;height:356px}\nbody[data-concept=c] .st-number{position:absolute;z-index:2;left:-36px;top:-25px;font-size:66px;color:#afc8d3;text-shadow:1px 1px #ffffff9e}\nbody[data-concept=c] .st-story:nth-child(2) .st-number{left:auto;right:-16px;top:-38px}\nbody[data-concept=c] .st-story:nth-child(3) .st-number{color:#cba993}\nbody[data-concept=c] .st-figure img{object-position:center 35%}\nbody[data-concept=c] .st-story:nth-child(3) .st-figure img{object-position:center 64%}\nbody[data-concept=c] .st-visual:after{content:\"\";position:absolute;bottom:-15px;left:30px;width:60%;height:1px;background:#e7b9a0}\n@media(max-width:1199px) and (min-width:901px){\n .st-shell{width:calc(100% - 60px)}\n .st-heading h3{font-size:30px}\n body[data-concept=a] .st-story{grid-template-columns:38% minmax(0,1fr);gap:25px}\n body[data-concept=a] .st-story:nth-child(even){grid-template-columns:minmax(0,1fr) 38%}\n body[data-concept=a] .st-prose{padding:27px 30px;font-size:15px;line-height:1.68}\n body[data-concept=a] .st-figure{max-width:100%}\n body[data-concept=b] .st-prose{padding:28px 32px;margin-left:-32px;font-size:15px;line-height:1.65}\n body[data-concept=b] .st-story:nth-child(even) .st-prose{margin-right:-32px}\n body[data-concept=b] .st-figure{height:365px}\n body[data-concept=c] .st-story{gap:24px;grid-template-columns:minmax(0,1fr) 34%}\n body[data-concept=c] .st-story:nth-child(2){grid-template-columns:31% minmax(0,1fr)}\n body[data-concept=c] .st-prose{padding:28px 32px;font-size:15px;line-height:1.65}\n body[data-concept=c] .st-heading h3{font-size:32px}\n body[data-concept=c] .st-figure{height:390px}\n}\n";
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const names={
+ a:{title:'The Editorial Zigzag',description:'Three calm, intentional spreads. The heading and picture belong together; a solid warm-white paragraph card sits beside each portrait. Alternating alignment creates the movement.',specs:[['Surface','Solid ivory editorial cards'],['Hierarchy','Eyebrow → serif headline → photo'],['Spacing','76px between chapters'],['Complexity','Low · two-column story component']]},
+ b:{title:'The Translucent Atelier',description:'Portraits sit behind lightly frosted editorial surfaces. Their overlap and translucent treatments let the blue-to-peach wash show through, creating atmospheric depth without hard panel boundaries.',specs:[['Surface','Translucent white · subtle blur'],['Hierarchy','Heading embedded in text layer'],['Spacing','54px between layered vignettes'],['Complexity','Medium · intentional overlap and stacking']]},
+ c:{title:'The Illustrated Journey',description:'Each chapter is a little illustrated scene. Curved image silhouettes, an oversized chapter number, and mixed text surfaces make the zigzag feel like a bespoke magazine feature.',specs:[['Surface','Mixed solid and translucent'],['Hierarchy','Number → editorial heading → story'],['Spacing','66px with offset silhouettes'],['Complexity','Medium · reusable chapter variations']]}
+};
+const params=new URLSearchParams(location.search);
+let concept=['a','b','c'].includes(params.get('concept'))?params.get('concept'):'a';
+let width=params.get('width')==='1100'?1100:1440;
+if(params.get('mode')==='full')document.body.classList.add('full');
+const frame=$('frame'),shell=$('shell'),surface=$('surface'),stage=$('stage');
+let studyDoc=null,contentHeight=1100,loaded=false;
+function textEscape(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function setLabels(){
+ const info=names[concept];$('conceptTitle').textContent=info.title;$('conceptDescription').textContent=info.description;
+ $('conceptSpecs').innerHTML=info.specs.map(([key,value])=>'<div class="spec"><span>'+textEscape(key)+'</span><span>'+textEscape(value)+'</span></div>').join('');
+ document.querySelectorAll('button[data-concept]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.concept===concept)));
+ document.querySelectorAll('button[data-width]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.width)===width)));
+ $('viewportLabel').textContent=width+'px · '+concept.toUpperCase();
+ $('fullLink').href='?concept='+concept+'&width='+width+'&mode=full';
+}
+function storyMarkup(story,i){
+ const head='<header class="st-heading"><p class="st-kicker">'+textEscape(story.eyebrow)+'</p><h3>'+textEscape(story.title)+'</h3></header>';
+ const photo='<figure class="st-figure"><img loading="eager" decoding="async" src="'+textEscape(STUDY_DATA.sourceUrl+story.asset)+'" alt="'+textEscape(story.alt)+'"></figure>';
+ const para='<div class="st-prose"><div class="st-copy">'+story.paragraphs.map(p=>'<p>'+textEscape(p)+'</p>').join('')+'</div></div>';
+ // A's heading belongs with photograph; B & C's headings live inside the paragraph surface.
+ const visual='<div class="st-visual"><span class="st-number" aria-hidden="true">0'+(i+1)+'</span>'+(concept==='a'?head:'')+photo+'</div>';
+ const prose=concept==='a'?para:para.replace('<div class="st-prose">','<div class="st-prose">'+head);
+ return '<article class="st-story st-story-'+(i+1)+'" aria-labelledby="study-title-'+(i+1)+'">'+visual+prose+'</article>';
+}
+function makeCanvas(){
+ const storyHtml=STUDY_DATA.stories.map(storyMarkup).join('');
+ const normalized=storyHtml.replaceAll('<h3>','<h3 id="temporary">');
+ // Mark the three semantic headings with stable unique IDs to maintain aria-labelledby.
+ let count=0;const keyed=normalized.replaceAll('id="temporary"',()=> 'id="study-title-'+(++count)+'"');
+ const intro='<header class="st-intro"><span class="st-arc" aria-hidden="true"></span><p class="st-eyebrow">OUR PROMISE, IN THREE PARTS</p><h2>'+textEscape(STUDY_DATA.heading)+'</h2><p class="st-subtitle">'+textEscape(STUDY_DATA.subtitle)+'</p></header>';
+ return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+STUDY_CSS+'</style></head><body data-concept="'+concept+'"><section id="standards" aria-label="Hello Casa standards editorial study"><div class="st-shell">'+intro+'<div class="st-list">'+keyed+'</div></div></section></body></html>';
+}
+function fit(){
+ const scale=Math.min(1,Math.max(280,stage.clientWidth-48)/width);
+ surface.style.width=width+'px';surface.style.height=contentHeight+'px';surface.style.transform='scale('+scale+')';
+ shell.style.width=Math.ceil(width*scale)+'px';shell.style.height=Math.ceil(contentHeight*scale)+'px';
+ frame.style.width=width+'px';frame.style.height=contentHeight+'px';
+}
+function measure(){
+ if(!studyDoc)return;
+ const section=studyDoc.getElementById('standards');
+ contentHeight=Math.ceil(section.getBoundingClientRect().height);
+ fit();
+}
+function load(){
+ loaded=false;studyDoc=null;$('statusText').textContent='Rendering Concept '+concept.toUpperCase()+'…';
+ frame.addEventListener('load',()=>{
+  studyDoc=frame.contentDocument;
+  if(!studyDoc?.body){$('status').dataset.error='true';$('statusText').textContent='Browser could not open preview document';return}
+  loaded=true;measure();
+  const imgs=[...studyDoc.images];
+  for(const img of imgs)img.addEventListener('load',measure,{once:true});
+  studyDoc.fonts?.ready.then(measure).catch(()=>{});
+  for(const delay of [150,500,1100])setTimeout(measure,delay);
+  $('status').dataset.error='false';
+  $('statusText').textContent='Concept '+concept.toUpperCase()+' · Original photographs · All copy preserved · No site edits';
+ },{once:true});
+ frame.srcdoc=makeCanvas();
+}
+document.querySelectorAll('button[data-concept]').forEach(b=>b.addEventListener('click',()=>{
+ if(concept===b.dataset.concept)return;concept=b.dataset.concept;setLabels();load();
+}));
+document.querySelectorAll('button[data-width]').forEach(b=>b.addEventListener('click',()=>{
+ width=Number(b.dataset.width);setLabels();frame.style.width=width+'px';
+ requestAnimationFrame(()=>{measure();setTimeout(measure,250);setTimeout(measure,750)});
+}));
+window.addEventListener('resize',fit);
+setLabels();load();
+})();
+</script></body></html>
