@@ -1,0 +1,35 @@
+name: Standards Editorial Remix Gallery — Experimental QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "preview/experiments/standards-editorial-gallery.html"
+      - "tests/experiments/standards-editorial.spec.ts"
+      - ".github/workflows/standards-editorial-gallery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  desktop-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Verify A/B/C artwork, full copy, and desktop compositions
+        run: npx playwright test tests/experiments/standards-editorial.spec.ts --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hello-casa-standards-editorial-six-screenshots
+          path: test-results/standards-*.png
+          if-no-files-found: ignore
