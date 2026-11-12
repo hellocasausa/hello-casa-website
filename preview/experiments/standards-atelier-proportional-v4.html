@@ -1,0 +1,297 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Hello Casa · Adjustable Atelier v4 · Proportional Composition Study</title><style>
+:root{color-scheme:light;--ink:#284f70;--muted:#7893a5;--border:#dce6ec;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#f5f8fb;color:var(--ink)}button{font:inherit;cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible{outline:3px solid #8dadd2;outline-offset:2px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border-bottom:1px solid var(--border);padding:15px 24px;min-height:78px}
+.brand{display:flex;gap:13px;align-items:center}.brandicon{border:1px solid #d4e5ef;background:#eaf4fb;width:42px;height:42px;display:grid;place-items:center;border-radius:13px;font:26px Georgia,serif}
+.brandname{font-size:17px;letter-spacing:-.03em;font-weight:750}.brandsub{font-size:11px;color:#8fa4b1;margin-top:3px}
+.statuspill{font-size:10px;font-weight:750;letter-spacing:.1em;padding:8px 12px;background:#f1f7f5;color:#53776c;border:1px solid #d5e8df;border-radius:99px}
+.layout{display:grid;grid-template-columns:294px minmax(0,1fr);min-height:calc(100vh - 78px)}
+.sidebar{padding:25px 20px 24px;background:white;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:19px}
+.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#84a0b0;margin:0 0 9px}
+.sidebar h1{font:400 25px/1.17 Georgia,serif;letter-spacing:-.04em;margin:0;color:#284f70}
+.intro{font-size:12px;color:#7891a1;line-height:1.7;margin:10px 0 0}
+.choices{display:grid;gap:9px}
+.choose{display:flex;width:100%;gap:11px;align-items:flex-start;text-align:left;padding:13px 12px;border-radius:13px;border:1px solid #dfe8ee;background:#fff;color:#345972}
+.choose[aria-pressed=true]{background:#f0f7fc;border-color:#aac8d9;box-shadow:0 3px 13px #557da617}
+.num{font:400 22px/1 Georgia,serif;color:#a1bac8;min-width:25px}
+.choose[aria-pressed=true] .num{color:#315f7f}
+.choosetitle{font-size:12px;font-weight:780;display:block;line-height:1.3}
+.choosesub{display:block;font-size:10.5px;color:#8da1ae;margin-top:5px;line-height:1.5}
+.line{height:1px;background:#e2eaf0}
+.about h2{font:400 22px/1.3 Georgia,serif;margin:0 0 9px;color:#2f5875}
+.about p{font-size:12px;line-height:1.66;color:#6f8a9d;margin:0 0 14px}
+.spec{display:grid;grid-template-columns:80px 1fr;gap:8px;padding:6px 0;font-size:11px;border-bottom:1px solid #f2f5f7}
+.spec span:first-child{color:#537a91;font-weight:700}.spec span:last-child{color:#8ba1ae}
+.notice{font-size:11px;color:#7c95a3;line-height:1.65;padding:13px;border:1px solid #ddeaf0;border-radius:10px;background:#f7fbfd}
+.sidebarfooter{font-size:10px;line-height:1.6;color:#9baeba;margin-top:auto}
+.preview{min-width:0;background:linear-gradient(135deg,#f6faff 0%,#fff9f1 100%);display:flex;flex-direction:column}
+.toolbar{padding:12px 17px;background:#ffffffeb;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid #e0e9ef}
+.toolbartext{color:#8299a7;font-weight:750;font-size:11px;margin-right:3px}
+.sizebutton,.openbutton{background:white;border:1px solid #d9e6ef;border-radius:9px;padding:9px 13px;color:#4a718c;font-weight:750;font-size:11px}
+.sizebutton[aria-pressed=true]{background:#284f70;color:#fff;border-color:#284f70}
+.openbutton{margin-left:auto;text-decoration:none}
+.stage{flex:1;min-width:0;min-height:400px;overflow:auto;scrollbar-color:#bdccd7 transparent}
+.stageinner{min-height:100%;display:flex;justify-content:center;align-items:flex-start;padding:26px 16px 75px}
+.frameshell{position:relative;background:#fff;box-shadow:0 15px 44px #284f7025;border:1px solid #d7e1e9;flex:none}
+.framesurface{position:absolute;top:0;left:0;transform-origin:top left}
+iframe{display:block;border:0;background:#fff}
+.statusbar{min-height:45px;background:#fff;border-top:1px solid #dce6ec;display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px 18px;color:#7790a0;font-size:11px}
+.okdot{display:inline-block;background:#64ae92;width:7px;height:7px;border-radius:50%;margin-right:8px}.statusbar[data-error=true] .okdot{background:#cf7f75}
+.statusbar strong{color:#3d718e}
+body.full .layout{display:block}body.full .sidebar{display:none}body.full .topbar{min-height:57px;padding:8px 18px}body.full .stageinner{padding:12px 4px 80px}
+@media(max-width:980px){.layout{grid-template-columns:235px minmax(0,1fr)}.sidebar{padding:17px 12px}.choose{padding:10px 8px}.choosesub{font-size:9px}}
+@media(max-width:700px){.layout{display:block}.sidebar{padding:13px}.sidebar h1{font-size:20px}.intro,.notice,.line,.about,.sidebarfooter{display:none}.choices{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}.choose{padding:9px 6px;gap:5px}.num{font-size:16px;min-width:15px}.choosetitle{font-size:10px}.choosesub{display:none}.toolbar{padding:9px}.topbar{padding:10px}.brandname{font-size:14px}.statuspill{font-size:9px}.stageinner{padding:12px 5px 55px}}
+
+/* Single-direction focused review: preserve the design-gallery controls and large view. */
+.review-pill{font-size:11px;color:#50748b;background:#edf7fb;border:1px solid #d4e7f0;border-radius:99px;padding:9px 13px;font-weight:800}
+.design-fig{position:relative;display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;border:1px solid #dbe8ef;background:#f8fbfc;border-radius:12px;padding:12px;color:#587c93;font-size:11px;line-height:1.5}
+.design-fig .glyph{font:400 25px/1 Georgia,serif;text-align:center;color:#84a9c4}
+
+/* Art-direction controls live only in the experimental host, never production styles. */
+.controls{display:grid;gap:11px;background:linear-gradient(180deg,#f8fcff,#fffefb);border:1px solid #d7e7ef;border-radius:16px;padding:15px 13px 14px}
+.controls h2{font:400 21px/1.2 Georgia,serif;color:#2d5876;margin:0 0 7px}
+.controls .helper{font-size:10px;color:#829ba8;line-height:1.6;margin:0}
+.photo-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.photo-choice button{padding:9px 4px;border:1px solid #dce7ee;border-radius:9px;background:#fff;color:#587b90;font-size:11px;font-weight:760}
+.photo-choice button[aria-pressed=true]{background:#e5f2fa;color:#264f6a;border-color:#92b7cd}
+.control-fields{display:grid;gap:8px}
+.control-row{display:grid;grid-template-columns:1fr auto;gap:5px 8px;align-items:center}
+.control-row label{font-size:11px;font-weight:670;color:#4b7089}
+.control-value{font-size:10px;color:#6d899d;font-weight:790;font-variant-numeric:tabular-nums;min-width:43px;text-align:right}
+.control-row input[type=range]{grid-column:1/-1;width:100%;height:14px;accent-color:#668eaa;cursor:pointer}
+.control-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.control-actions button{padding:9px 7px;border:1px solid #cbdce8;border-radius:9px;background:#fff;color:#37617b;font-size:10px;font-weight:760}
+.control-actions button:last-child{grid-column:1/-1;background:#eaf4fb}
+.microtext{font-size:10px;line-height:1.5;color:#8198a8;margin:0}
+body.full .layout{display:grid;grid-template-columns:294px minmax(0,1fr)}
+body.full .sidebar{display:flex}
+body.full .sidebar > :not(.controls){display:none}
+@media(max-width:700px){.controls{margin-top:10px}.sidebar{display:block}body.full .layout{display:block}body.full .sidebar{display:block}body.full .sidebar > :not(.controls){display:none}}
+</style></head><body>
+<header class="topbar"><div class="brand"><div class="brandicon">✧</div><div><div class="brandname">Hello Casa <span style="color:#829caf;font-weight:450">/ Design Studies</span></div><div class="brandsub">Standards · Adjustable Atelier v4</div></div></div><span class="statuspill">EXPLORATION ONLY</span></header>
+<div class="layout"><aside class="sidebar">
+<div><p class="kicker">DER-002 · Refinement 03</p><h1>The Refined<br>Atelier · v4</h1><p class="intro">Your chosen 1440px photo arrangement is now the starting point. The images and their relationships scale proportionally across both desktop views.</p></div>
+<div class="review-pill">Shared proportions · Both desktop views</div>
+<div class="design-fig"><span class="glyph">↘↖</span><span>Photographs and paragraph surfaces intersect, but each chapter has its own natural proportions.</span></div>
+<section class="controls" aria-label="Image art-direction controls">
+<div><p class="kicker">Image placement studio</p><h2>Fine-tune the photos.</h2><p class="helper">Choose a photograph, use the sliders, or drag it in the preview. Your changes stay in this browser.</p></div>
+<div class="photo-choice" role="group" aria-label="Choose photo">
+<button type="button" data-photo="0" aria-pressed="true">01</button><button type="button" data-photo="1" aria-pressed="false">02</button><button type="button" data-photo="2" aria-pressed="false">03</button></div>
+<div class="control-fields">
+<div class="control-row"><label for="photoWidth">Frame width</label><output class="control-value" id="photoWidthValue" for="photoWidth"></output><input type="range" id="photoWidth" data-prop="w" min="180" max="530" step="1"></div>
+<div class="control-row"><label for="photoHeight">Frame height</label><output class="control-value" id="photoHeightValue" for="photoHeight"></output><input type="range" id="photoHeight" data-prop="h" min="150" max="620" step="1"></div>
+<div class="control-row"><label for="photoX">Move horizontally</label><output class="control-value" id="photoXValue" for="photoX"></output><input type="range" id="photoX" data-prop="x" min="-180" max="180" step="1"></div>
+<div class="control-row"><label for="photoY">Move vertically</label><output class="control-value" id="photoYValue" for="photoY"></output><input type="range" id="photoY" data-prop="y" min="-180" max="180" step="1"></div>
+<div class="control-row"><label for="cropX">Crop focus · horizontal</label><output class="control-value" id="cropXValue" for="cropX"></output><input type="range" id="cropX" data-prop="cx" min="0" max="100" step="1"></div>
+<div class="control-row"><label for="cropY">Crop focus · vertical</label><output class="control-value" id="cropYValue" for="cropY"></output><input type="range" id="cropY" data-prop="cy" min="0" max="100" step="1"></div>
+<div class="control-row"><label for="photoZoom">Zoom inside frame</label><output class="control-value" id="photoZoomValue" for="photoZoom"></output><input type="range" id="photoZoom" data-prop="zoom" min="100" max="180" step="1"></div>
+</div>
+<div class="control-actions"><button type="button" id="resetPhoto">Reset this photo</button><button type="button" id="resetAllPhotos">Reset all photos</button><button type="button" id="copyPhotoSettings">Copy CSS changes</button><button type="button" id="copyComposition">Copy full composition</button></div>
+<p class="microtext" id="photoHint">Your 1440px photo settings are the baseline; resizing and dragging in either desktop view updates both proportionally.</p>
+</section>
+<div class="line"></div>
+<div class="about"><p class="kicker">Design decisions</p><h2>Asymmetry, refined.</h2><p>The blue introductory banner now contains only the headline and subheader. A solid-color blue banner, subtly compressed, with a 6px matching blue rule above it. No gradient overlay.</p>
+<div class="spec"><span>Headings</span><span>Floating above paragraph cards, facing toward their images</span></div>
+<div class="spec"><span>Surfaces</span><span>Translucent warm white, paragraphs only</span></div>
+<div class="spec"><span>Overlap</span><span>Photos intersect card edges; image positions are adjustable</span></div>
+<div class="spec"><span>Portrait</span><span>Second image intentionally tallest; third image cropped wide</span></div>
+<div class="spec"><span>Typography</span><span>Libre Baskerville + Nunito Sans</span></div>
+</div>
+<div class="notice">Desktop-only prototype. This version preserves the original photography, complete approved copy and gradient. No change to the live or reconstructed production section.</div>
+<div class="sidebarfooter">Archived original concepts A/B/C remain available separately as DER-002. The same image settings now scale between 1100px and 1440px; use Copy CSS or Copy Composition to preserve changes.</div>
+</aside>
+<main class="preview">
+<div class="toolbar"><span class="toolbartext">Canvas width</span><button type="button" class="sizebutton" data-width="1100" aria-pressed="false">1100px</button><button type="button" class="sizebutton" data-width="1440" aria-pressed="true">1440px</button><a class="openbutton" id="fullLink" href="#" target="_blank" rel="noopener noreferrer">↗ Larger view</a></div>
+<div class="stage" id="stage"><div class="stageinner"><div class="frameshell" id="shell"><div class="framesurface" id="surface"><iframe sandbox="allow-same-origin" id="frame" loading="eager" title="Hello Casa Standards refined Atelier desktop design"></iframe></div></div></div></div>
+<div class="statusbar" id="status"><span><span class="okdot"></span><span id="statusText">Preparing refined Atelier preview…</span></span><strong id="viewportLabel">1440px</strong></div>
+</main></div>
+<script>
+const PREVIEW_MARKUP="<section id=\"standards\" aria-label=\"Hello Casa Standards · Refined Translucent Atelier\"><div class=\"st-shell\"><div class=\"st-intro-wrap\"><span class=\"st-intro-rule\" aria-hidden=\"true\"></span><header class=\"st-intro\"><h2>Care starts at home.</h2><p>Who comes through your door matters.<span>So do the little details, &amp; the freedom to change your plans.</span></p></header></div><div class=\"st-stories\"><article class=\"st-story st-story--one\" aria-labelledby=\"story-heading-1\"><div class=\"st-visual\"><figure class=\"st-figure\"><img loading=\"eager\" decoding=\"async\" src=\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/cd0fcbf858d74d7880e6.webp\" alt=\"Original Hello Casa watercolor illustration of a cleaning professional at work\"></figure></div><div class=\"st-editorial\"><header class=\"st-heading\"><p class=\"st-kicker\">THOUGHTFULLY MATCHED</p><h3 id=\"story-heading-1\">Thoroughly Vetted Professionals</h3></header><div class=\"st-prose\"><div class=\"st-copy\"><p>Inviting someone into your home is personal. We believe you should feel confident about who walks through your door, which is why we take the time to get to know the independent cleaning professionals we refer.</p><p>Experience and qualifications matter, but so does finding someone whose services are suited to your home. We consider your cleaning needs, schedule, and preferences when arranging a referral, rather than treating every household as though it were the same. Finding the right cleaner isn&#39;t simply about getting the work done. It&#39;s about finding someone who feels like the right fit.</p></div></div></div></article><article class=\"st-story st-story--two\" aria-labelledby=\"story-heading-2\"><div class=\"st-visual\"><figure class=\"st-figure\"><img loading=\"eager\" decoding=\"async\" src=\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/f07a685256088a08fbc7.webp\" alt=\"Original Hello Casa watercolor illustration of a sunlit home interior\"></figure></div><div class=\"st-editorial\"><header class=\"st-heading\"><p class=\"st-kicker\">HERE BEYOND THE MATCH</p><h3 id=\"story-heading-2\">Personalized Cleaning Profiles</h3></header><div class=\"st-prose\"><div class=\"st-copy\"><p>It&#39;s often the little things that make the biggest difference. The room you&#39;d rather leave untouched. The surfaces that need a little extra attention. The particular details that make your home feel cared for, just the way you like it. Your personalized cleaning profile brings those preferences together, helping us communicate what matters to you and carry those details forward as your needs evolve.</p><p>And our relationship doesn&#39;t have to end with the introduction. Whether you&#39;d like to update your preferences, ask a question, or explore a different cleaner, Hello Casa remains a familiar point of contact along the way.</p></div></div></div></article><article class=\"st-story st-story--three\" aria-labelledby=\"story-heading-3\"><div class=\"st-visual\"><figure class=\"st-figure\"><img loading=\"eager\" decoding=\"async\" src=\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/a8adff160b3ec0891aa3.webp\" alt=\"Original Hello Casa watercolor illustration of a sunlit neighborhood home\"></figure></div><div class=\"st-editorial\"><header class=\"st-heading\"><p class=\"st-kicker\">CLEAR FROM THE START</p><h3 id=\"story-heading-3\">No Long-Term Contracts</h3></header><div class=\"st-prose\"><div class=\"st-copy\"><p>Some weeks call for a little extra help. Others call for a fresh start, a regular routine, or simply one less thing on your to-do list. Whatever life looks like, your cleaning arrangements should have room to change with it. Choose a one-time cleaning or settle into a recurring schedule, without the pressure of a long-term commitment.</p><p>We help make the details clear from the beginning, from the services you&#39;re requesting to the proposed pricing and scheduling arrangements, so you can make decisions with confidence. No unnecessary commitments. No one-size-fits-all routines. Just the freedom to find the cleaning help you need, when you need it.</p></div></div></div></article></div></div></section>";
+const PREVIEW_CSS="\n@font-face{font-family:\"HC Libre\";src:url(\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/dbcc0e48671e24477635.woff2\") format(\"woff2\");font-display:swap;font-weight:400}\n@font-face{font-family:\"HC Nunito\";src:url(\"https://raw.githubusercontent.com/hellocasausa/hello-casa-website/a204a3e78700346614a6c5955fa1495f85dd55f0/public/assets/0cdf1e4b27f7420b0ad3.woff2\") format(\"woff2\");font-display:swap;font-weight:300 900}\n:root{--hc-blue:#284f70;--hc-ink:#41677e;font-family:\"HC Nunito\",\"Nunito Sans\",Arial,sans-serif;color:var(--hc-ink);background:#fffdfa}\n*{box-sizing:border-box}html,body{margin:0;padding:0}h1,h2,h3,p,figure{margin:0}img{max-width:100%;display:block}\n#standards{position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf5fa 0%,#f2f8f8 34%,#fff5e8 72%,#ffdfca 100%);padding:39px 0 67px}\n.st-shell{width:min(calc(100% - 88px),1210px);margin:0 auto}\n.st-intro-wrap{position:relative;isolation:isolate;padding-top:19px}\n.st-intro-rule{position:absolute;z-index:1;left:auto;right:calc((min(1210px,100vw - 88px) - 100vw)/2);top:5px;width:min(548px,52vw);height:6px;background:#d8eaf7;border-radius:5px 0 0 5px}\n.st-intro{margin-left:auto;margin-right:calc((min(1210px,100vw - 88px) - 100vw)/2);width:min(720px,76vw);background:#d8eaf7;border:1px solid rgba(255,255,255,.8);border-right:0;border-radius:100px 0 0 100px;padding:19px clamp(32px,4vw,62px) 20px 58px;position:relative;text-align:right;box-shadow:0 7px 23px rgba(69,116,146,.06)}\n.st-intro h2{font:400 38px/1.17 \"HC Libre\",\"Libre Baskerville\",Georgia,serif;letter-spacing:-.045em;color:#284f70;margin:0 0 9px}\n.st-intro p{font:450 15.5px/1.5 \"HC Nunito\",\"Nunito Sans\",Arial,sans-serif;max-width:620px;margin-left:auto;color:#50758f}\n.st-intro p span{display:block}\n.st-stories{display:flex;flex-direction:column;gap:0;margin-top:38px}\n.st-story{position:relative;display:grid;grid-template-columns:292px minmax(0,1fr);align-items:center;column-gap:0;width:100%;min-width:0;margin-bottom:33px}\n.st-story--one{max-width:1110px;margin-left:8px}\n.st-story--two{max-width:1080px;margin-left:auto;margin-right:6px;grid-template-columns:minmax(0,1fr) 287px;margin-bottom:26px}\n.st-story--three{max-width:1135px;margin-left:1px;grid-template-columns:350px minmax(0,1fr);margin-bottom:0}\n.st-editorial{position:relative;min-width:0;grid-column:2;grid-row:1}\n.st-story--two .st-editorial{grid-column:1}\n.st-visual{grid-column:1;grid-row:1;min-width:0;align-self:end;transform:translateX(28px);position:relative;z-index:2}\n.st-story--two .st-visual{grid-column:2;transform:translateX(-28px);align-self:center;justify-self:end}\n.st-story--three .st-visual{align-self:center;transform:translateX(28px)}\n.st-heading{padding:0 12px 0 40px;text-align:left;margin:0 0 20px}\n.st-story--two .st-heading{padding:0 40px 0 12px;text-align:right}\n.st-heading .st-kicker{font:800 10px/1.4 \"HC Nunito\",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7594a6;display:block;margin-bottom:8px}\n.st-heading .st-kicker:before{content:\"\";display:block;width:58px;height:2px;background:#f4b88e;margin:0 auto 11px 0}\n.st-story--two .st-heading .st-kicker:before{margin:0 0 11px auto}\n.st-heading h3{font:400 clamp(29px,2.65vw,36px)/1.23 \"HC Libre\",\"Libre Baskerville\",Georgia,serif;color:#284f70;letter-spacing:-.035em;text-wrap:balance}\n.st-prose{background:rgba(255,255,253,.80);border:1px solid rgba(255,255,255,.93);-webkit-backdrop-filter:blur(11px);backdrop-filter:blur(11px);border-radius:22px;padding:25px 35px 27px 58px;box-shadow:0 12px 33px rgba(62,102,132,.115);font:450 16px/1.73 \"HC Nunito\",\"Nunito Sans\",sans-serif;letter-spacing:.002em;color:#486c84}\n.st-story--two .st-prose{padding:27px 60px 27px 37px;background:rgba(255,255,252,.82)}\n.st-story--three .st-prose{background:rgba(255,252,247,.77)}\n.st-copy p+p{margin-top:17px}\n.st-figure{margin:0;overflow:hidden;background:#eee9df;border:2px solid #fff9;box-shadow:0 15px 32px rgba(42,70,84,.14);border-radius:25px;position:relative}\n.st-figure img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none;-webkit-user-drag:none}\n.st-figure{cursor:grab;touch-action:none;user-select:none;will-change:transform}\n.st-figure:active{cursor:grabbing}\n.st-figure.is-selected{outline:2px dashed rgba(78,127,163,.7);outline-offset:5px}\n.st-figure:focus-visible{outline:3px solid #315c7c;outline-offset:6px}\n.st-story--one .st-figure{width:292px;height:308px}\n.st-story--one .st-figure img{object-position:center 37%}\n.st-story--two .st-figure{width:287px;height:418px;border-radius:26px}\n.st-story--two .st-figure img{object-position:center 48%}\n.st-story--three .st-figure{width:352px;height:249px;border-radius:23px}\n.st-story--three .st-figure img{object-position:center 62%}\n/* 1100px: retain the asymmetric photo dimensions without shrinking the copy arbitrarily. */\n@media(min-width:901px) and (max-width:1199px){\n .st-shell{width:calc(100% - 62px)}\n .st-intro{padding:18px 36px 20px 58px;width:720px;margin-right:calc((100vw - 62px - 100vw)/2)}\n .st-intro h2{font-size:36px}\n .st-intro-rule{left:auto;right:-31px;width:min(548px,52vw)}\n .st-story--one{grid-template-columns:253px minmax(0,1fr);margin-left:0}\n .st-story--one .st-figure{width:263px;height:286px}\n .st-story--two{grid-template-columns:minmax(0,1fr) 255px;margin-right:0}\n .st-story--two .st-figure{width:260px;height:394px}\n .st-story--three{grid-template-columns:298px minmax(0,1fr);margin-left:0}\n .st-story--three .st-figure{width:309px;height:221px}\n .st-story--one .st-visual,.st-story--three .st-visual{transform:translateX(24px)}\n .st-story--two .st-visual{transform:translateX(-24px)}\n .st-heading h3{font-size:30px}\n .st-heading{margin-bottom:16px}\n .st-prose{font-size:15.5px;line-height:1.64;padding:21px 27px 22px 46px}\n .st-story--two .st-prose{padding:22px 48px 22px 28px}\n .st-story{margin-bottom:29px}\n .st-story--two{margin-bottom:19px}\n .st-story--three{margin-bottom:0}\n}\n";
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const url=new URLSearchParams(location.search);
+let width=url.get('width')==='1100'?1100:1440;
+if(url.get('mode')==='full')document.body.classList.add('full');
+const frame=$('frame'),shell=$('shell'),surface=$('surface'),stage=$('stage');
+let documentFrame=null,contentHeight=1300;
+
+// One canonical owner-approved 1440px composition, scaled by content width
+// to the 1100px review. No independently drifting desktop configurations.
+const defaults=[
+ {w:321,h:413,x:-43,y:-12,cx:50,cy:37,zoom:100},
+ {w:297,h:470,x:26,y:1,cx:0,cy:48,zoom:100},
+ {w:352,h:426,x:-21,y:0,cx:52,cy:59,zoom:100}
+];
+const states=defaults.map(p=>({...p}));
+let photoIndex=0;
+const meta=[
+ ['photoWidth','w','px'],['photoHeight','h','px'],['photoX','x','px'],['photoY','y','px'],
+ ['cropX','cx','%'],['cropY','cy','%'],['photoZoom','zoom','%']
+];
+const scaledKeys=new Set(['w','h','x','y']);
+// Matches the content shell in the original responsive editorial CSS:
+// (1100 - 62) / 1210 for the narrow desktop, 1 at 1440.
+function scaleFor(w){return w===1100?(1100-62)/1210:1}
+function actual(item,prop,w=width){return scaledKeys.has(prop)?Math.round(item[prop]*scaleFor(w)):item[prop]}
+function current(){return states[photoIndex]}
+function figures(){return documentFrame?[...documentFrame.querySelectorAll('.st-story .st-figure')]:[]}
+function applyPhoto(i){
+ const fig=figures()[i];if(!fig)return;
+ const item=states[i],img=fig.querySelector('img');
+ fig.style.width=actual(item,'w')+'px';
+ fig.style.height=actual(item,'h')+'px';
+ fig.style.transform='translate('+actual(item,'x')+'px,'+actual(item,'y')+'px)';
+ img.style.objectPosition=item.cx+'% '+item.cy+'%';
+ img.style.transform='scale('+(item.zoom/100)+')';
+ fig.classList.toggle('is-selected',i===photoIndex);
+}
+function applyAll(){figures().forEach((f,i)=>applyPhoto(i));requestAnimationFrame(measure)}
+function refreshControls(){
+ document.querySelectorAll('[data-photo]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.photo)===photoIndex)));
+ for(const [id,prop,unit] of meta){
+  const val=actual(current(),prop);
+  $(id).value=String(val);
+  $(id+'Value').textContent=(prop==='x'||prop==='y')&&val>0?('+'+val+unit):(val+unit);
+ }
+ $('photoHint').textContent='Photo '+String(photoIndex+1).padStart(2,'0')+' selected · edits scale across 1100px and 1440px. Current: '+width+'px.';
+}
+function selectPhoto(i){photoIndex=i;refreshControls();applyAll()}
+function syncEdit(prop,val){
+ current()[prop]=scaledKeys.has(prop)?Math.round(Number(val)/scaleFor(width)*1000)/1000:Number(val);
+ refreshControls();applyPhoto(photoIndex);measure();
+}
+for(const [id,prop] of meta)$(id).addEventListener('input',e=>syncEdit(prop,e.target.value));
+document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>selectPhoto(Number(b.dataset.photo))));
+$('resetPhoto').addEventListener('click',()=>{states[photoIndex]={...defaults[photoIndex]};selectPhoto(photoIndex)});
+$('resetAllPhotos').addEventListener('click',()=>{states.splice(0,states.length,...defaults.map(p=>({...p})));selectPhoto(photoIndex)});
+// CSS output includes the exact proportional image values at both design widths,
+// plus the authoritative experimental layout CSS needed to reproduce surrounding
+// headings, translucent cards, overlaps and the banner.
+function makeImageCSS(){
+ const sections=['one','two','three'];
+ const declarationsFor=(w)=>{
+  const pieces=[];
+  for(let i=0;i<3;i++){
+   const p=states[i],sel='.st-story--'+sections[i]+' .st-figure',img=sel+' img';
+   const scaled=(key)=>actual(p,key,w);
+   pieces.push(sel+' { width:'+scaled('w')+'px; height:'+scaled('h')+'px; transform:translate('+scaled('x')+'px, '+scaled('y')+'px); }');
+   pieces.push(img+' { object-position:'+p.cx+'% '+p.cy+'%; transform:scale('+(p.zoom/100)+'); }');
+  }
+  return pieces.join('\n');
+ };
+ return '/* Atelier v4: original approved 1440px photo positions; 1100px uses 1038/1210 content-width scale. */\n'+
+ '@media (min-width:1200px) {\n'+declarationsFor(1440)+'\n}\n'+
+ '@media (min-width:901px) and (max-width:1199px) {\n'+declarationsFor(1100)+'\n}\n';
+}
+function geometry(){
+ if(!documentFrame)return null;
+ const rect=el=>{const r=el.getBoundingClientRect();return {x:Math.round(r.x*10)/10,y:Math.round(r.y*10)/10,w:Math.round(r.width*10)/10,h:Math.round(r.height*10)/10,right:Math.round(r.right*10)/10,bottom:Math.round(r.bottom*10)/10}};
+ return {viewport:width,section:rect(documentFrame.querySelector('#standards')),banner:rect(documentFrame.querySelector('.st-intro')),
+  chapters:[...documentFrame.querySelectorAll('.st-story')].map((el,i)=>{
+   const image=rect(el.querySelector('.st-figure')),card=rect(el.querySelector('.st-prose')),heading=rect(el.querySelector('.st-heading'));
+   return {chapter:i+1,figure:image,paragraphCard:card,heading,
+     overlapX:Math.max(0,Math.round(Math.min(image.right,card.right)-Math.max(image.x,card.x))),
+     overlapY:Math.max(0,Math.round(Math.min(image.bottom,card.bottom)-Math.max(image.y,card.y)))};
+  })
+ };
+}
+async function copyText(content){
+ try{await navigator.clipboard.writeText(content);return true}
+ catch(e){
+  const el=document.createElement('textarea');el.value=content;document.body.append(el);el.select();
+  let ok=false;try{ok=document.execCommand('copy')}catch(err){}
+  el.remove();return ok;
+ }
+}
+$('copyPhotoSettings').addEventListener('click',async()=>{
+ const success=await copyText(makeImageCSS());
+ $('photoHint').textContent=success?'Copied responsive CSS for BOTH desktop widths.':'Copy unavailable in this browser.';
+});
+$('copyComposition').addEventListener('click',async()=>{
+ // Export the entire coherent editorial system, not just photo overrides.
+ const full='/* Complete isolated Atelier v4 composition CSS. */\n'+PREVIEW_CSS+'\n\n'+makeImageCSS()+
+ '\n/* Layout measurements as inspected at '+width+'px */\n/*\n'+JSON.stringify({
+   study:'Atelier v4',baseViewport:1440,desktopScaling:scaleFor(1100),
+   reference1440:states.map(p=>({...p})),rendered:geometry()
+ },null,2)+'\n*/';
+ const success=await copyText(full);
+ $('photoHint').textContent=success?'Copied full CSS + component geometry for '+width+'px.':'Copy unavailable in this browser.';
+});
+function setupImageDragging(){
+ figures().forEach((fig,i)=>{
+  fig.tabIndex=0;fig.setAttribute('aria-label','Select and drag photograph '+(i+1));
+  fig.dataset.photoIndex=String(i);
+  fig.querySelector('img').draggable=false;
+  fig.addEventListener('dragstart',e=>e.preventDefault());
+  fig.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectPhoto(i)}});
+  let drag=null;
+  fig.addEventListener('pointerdown',e=>{
+   e.preventDefault();selectPhoto(i);
+   drag={startX:e.clientX,startY:e.clientY,x:actual(current(),'x'),y:actual(current(),'y')};
+   try{fig.setPointerCapture(e.pointerId)}catch(err){}
+  });
+  fig.addEventListener('pointermove',e=>{
+   if(!drag)return;
+   const state=states[i];
+   const offsetX=Math.max(-180,Math.min(180,Math.round(drag.x+e.clientX-drag.startX)));
+   const offsetY=Math.max(-180,Math.min(180,Math.round(drag.y+e.clientY-drag.startY)));
+   state.x=Math.round(offsetX/scaleFor(width)*1000)/1000;
+   state.y=Math.round(offsetY/scaleFor(width)*1000)/1000;
+   applyPhoto(i);refreshControls();measure();
+  });
+  const finish=()=>{drag=null};
+  fig.addEventListener('pointerup',finish);fig.addEventListener('pointercancel',finish);
+  fig.addEventListener('lostpointercapture',finish);
+ });
+}
+
+function buttons(){
+ document.querySelectorAll('[data-width]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.width)===width)));
+ $('viewportLabel').textContent=width+'px · Atelier v4';
+ $('fullLink').href='?width='+width+'&mode=full';
+}
+function fit(){
+ const scale=Math.min(1,Math.max(280,stage.clientWidth-46)/width);
+ surface.style.width=width+'px';
+ surface.style.height=contentHeight+'px';
+ surface.style.transform='scale('+scale+')';
+ shell.style.width=Math.ceil(width*scale)+'px';
+ shell.style.height=Math.ceil(contentHeight*scale)+'px';
+ frame.style.width=width+'px';
+ frame.style.height=contentHeight+'px';
+}
+function measure(){
+ if(!documentFrame)return;
+ const section=documentFrame.getElementById('standards');
+ contentHeight=Math.max(450,Math.ceil(section.getBoundingClientRect().height));
+ fit();
+}
+frame.addEventListener('load',()=>{
+ documentFrame=frame.contentDocument;
+ if(!documentFrame?.body){$('status').dataset.error='true';$('statusText').textContent='Could not load study';return}
+ setupImageDragging();
+ applyAll();
+ refreshControls();
+ const imgs=[...documentFrame.images];
+ imgs.forEach(img=>img.addEventListener('load',measure,{once:true}));
+ documentFrame.fonts?.ready.then(measure).catch(()=>{});
+ measure();
+ for(const interval of [150,500,1050])setTimeout(measure,interval);
+ $('status').dataset.error='false';
+ $('statusText').textContent='Atelier v4 · Proportional desktop images · No site edits';
+},{once:true});
+frame.srcdoc='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>'+PREVIEW_CSS+'</style></head><body>'+PREVIEW_MARKUP+'</body></html>';
+document.querySelectorAll('button[data-width]').forEach(button=>button.addEventListener('click',()=>{
+ width=Number(button.dataset.width);
+ buttons();
+ refreshControls();
+ applyAll();
+ frame.style.width=width+'px';
+ requestAnimationFrame(()=>{measure();setTimeout(measure,250);setTimeout(measure,850)});
+}));
+window.addEventListener('resize',fit);
+buttons();
+})();
+</script></body></html>
