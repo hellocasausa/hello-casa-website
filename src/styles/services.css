@@ -124,6 +124,11 @@
   gap: 22px;
   align-items: start;
 }
+/* Desktop navigation additions are hidden in the existing tablet/mobile layout. */
+#hc-mobile-vertical .hc-tabs-heading,
+#hc-mobile-vertical .hc-tabs-tail {
+  display: none;
+}
 .hc-choices {
   display: grid;
   grid-template-columns: 1fr;
@@ -547,45 +552,6 @@
   }
   #hc-mobile-vertical .hc-extras-list li {
     font-size: 10px;
-  }
-}
-@media (min-width: 901px) {
-  #hc-mobile-vertical .hc-bound {
-    display: grid;
-    grid-template-columns: minmax(255px, 296px) minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
-    column-gap: 22px;
-    row-gap: 15px;
-    align-items: start;
-  }
-  #hc-mobile-vertical .hc-intro {
-    grid-column: 1;
-    grid-row: 1;
-    margin: 0;
-    min-width: 0;
-    padding-top: 0;
-  }
-  #hc-mobile-vertical .hc-intro h2 {
-    max-width: 292px;
-    line-height: 1.2;
-    font-size: clamp(29px, 2.5vw, 35px);
-  }
-  #hc-mobile-vertical .hc-intro h2 br {
-    display: block;
-  }
-  #hc-mobile-vertical .hc-layout {
-    display: contents;
-  }
-  #hc-mobile-vertical .hc-selector {
-    grid-column: 1;
-    grid-row: 2;
-    min-width: 0;
-  }
-  #hc-mobile-vertical .hc-panel {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: start;
-    min-width: 0;
   }
 }
 @media (max-width: 900px) {
@@ -1119,13 +1085,27 @@
   }
 }
 @media screen and (min-width: 901px) {
+  /* One owned integrated-tab surface. Do not import experimental correction sheets. */
+  #hc-mobile-vertical {
+    padding: 70px 0;
+    background: linear-gradient(135deg, #f6fafc, #fffdf7);
+  }
   #hc-mobile-vertical .hc-intro {
     display: none;
   }
   #hc-mobile-vertical .hc-bound {
-    grid-template-columns: minmax(255px, 296px) minmax(0, 1fr);
+    display: grid;
+    grid-template-columns: 319px minmax(0, 1fr);
     grid-template-rows: auto;
-    row-gap: 0;
+    gap: 0;
+    align-items: stretch;
+    max-width: none;
+    width: min(calc(100% - 64px), 1230px);
+    border: 1px solid #c8dce9;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fffefa;
+    box-shadow: 0 13px 39px rgba(91, 140, 163, 0.09);
   }
   #hc-mobile-vertical .hc-layout {
     display: contents;
@@ -1133,17 +1113,114 @@
   #hc-mobile-vertical .hc-selector {
     grid-column: 1;
     grid-row: 1;
-    align-self: start;
+    align-self: stretch;
+    min-width: 0;
     margin: 0;
+    padding: 27px 0 18px 20px;
+    background: #fffefa;
+    border-right: 1px solid #c8dce9;
+  }
+  #hc-mobile-vertical .hc-tabs-heading {
+    display: block;
+    padding: 0 24px 23px 8px;
+  }
+  #hc-mobile-vertical .hc-tabs-eyebrow {
+    color: #829ead;
+    font: 800 10px/1.4 "HC Nunito", "Nunito Sans", Arial, sans-serif;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  #hc-mobile-vertical .hc-tabs-heading h2 {
+    font: 400 25px/1.2 "HC Libre", "Libre Baskerville", Georgia, serif;
+    color: #315473;
+    letter-spacing: -0.04em;
+    margin: 7px 0;
+  }
+  #hc-mobile-vertical .hc-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card {
+    display: flex;
+    min-height: 82px;
+    padding: 12px 19px 12px 14px;
+    gap: 15px;
+    border: 1px solid transparent;
+    border-right: 0;
+    border-radius: 13px 0 0 13px;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card:hover {
+    background: #f4f8fa;
+    transform: none;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card[aria-selected="true"],
+  #hc-mobile-vertical .hc-choices .hc-card[aria-selected="true"]:hover {
+    position: relative;
+    z-index: 2;
+    margin-right: -1px;
+    background: #f3fafe;
+    border-color: #b6d4e3;
+    box-shadow: inset 3px 0 0 #709dbb;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card[aria-selected="true"]::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    right: -2px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #f3fafe;
+  }
+  #hc-mobile-vertical .hc-choices .hc-icon {
+    border-radius: 12px;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card-label {
+    color: #315673;
+    font: 700 15px/1.25 "HC Nunito", "Nunito Sans", Arial, sans-serif;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card-label span {
+    display: inline;
+    white-space: nowrap;
+  }
+  #hc-mobile-vertical .hc-choices .hc-card-chevron {
+    color: #9ab4c2;
+    font-size: 22px;
+  }
+  #hc-mobile-vertical .hc-tabs-tail {
+    display: block;
+    padding: 43px 25px 0 8px;
+    margin: 9px 0 0;
+    font: 400 11px/1.65 "HC Nunito", "Nunito Sans", Arial, sans-serif;
+    color: #8a9ca8;
+  }
+  #hc-mobile-vertical .hc-tabs-tail::before {
+    content: "";
+    display: block;
+    height: 1px;
+    margin: 0 0 17px;
+    background: linear-gradient(to right, #d0e1ec, transparent);
   }
   #hc-mobile-vertical .hc-panel {
     grid-column: 2;
     grid-row: 1;
+    min-width: 0;
     min-height: 0;
-    align-self: start;
+    align-self: stretch;
+    border: 0;
+    border-radius: 0;
+    background: #f3fafe;
   }
   #hc-mobile-vertical .hc-panel-head {
     padding: 20px 23px 17px;
+    background: linear-gradient(180deg, #f3fafe, #f6fbff);
   }
   #hc-mobile-vertical .hc-panel-caption {
     display: none;
@@ -1297,6 +1374,7 @@
     align-items: center;
     padding: 15px 20px 18px;
     min-height: 0;
+    background: #f6fbff;
   }
   #hc-mobile-vertical .hc-panel-actions .hc-button {
     grid-column: 2;
