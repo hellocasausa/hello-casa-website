@@ -21,7 +21,7 @@ footer{font-size:11px;padding:15px;text-align:center;color:#6c8090}
 </head>
 <body>
 <header>
-<div class="brand">Hello Casa · approved design integration <div class="small">Services B + Standards Atelier v4 · draft PR #1</div></div>
+<div class="brand">Hello Casa · approved design integration <div class="small">Homepage Rhythm v1 · Services B + Standards Atelier v4 · draft PR #1</div></div>
 <div class="controls">
 <button data-width="390" aria-pressed="true">Phone</button>
 <button data-width="820" aria-pressed="false">Tablet</button>
@@ -41,7 +41,7 @@ const status=document.getElementById('status');
 const widths=[...document.querySelectorAll('[data-width]')];
 let desired=390,loaded=false;
 const project='https://raw.githubusercontent.com/hellocasausa/hello-casa-website/';
-const sha='728a82ba67f8b64cb06e7258b05c81dd5c7c07fa'; // immutable review source
+const sha='ec0b31d85e7f256da0c2b8d75f0ba5dbc68dfdc5'; // immutable review source
 const root=project+sha+'/';
 const get=async(path)=>{const res=await fetch(root+path,{cache:'no-store'});if(!res.ok)throw Error('Unable to fetch '+path+' ('+res.status+')');return res.text()};
 const absolutize=(raw)=>{
