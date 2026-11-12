@@ -6,6 +6,8 @@ on:
     paths:
       - "src/styles/services.css"
       - "tests/homepage.spec.ts"
+      - "tests/element-explorer.spec.ts"
+      - "preview/element-explorer.html"
       - ".github/workflows/desktop-cta.yml"
   workflow_dispatch:
 
@@ -25,5 +27,11 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - name: Assert actual desktop CTA geometry
-        run: npx playwright test tests/homepage.spec.ts -g "desktop Customize My Quote button aligns to the right edge" --reporter=line
+      - name: Assert actual desktop CTA geometry and Explorer rendering
+        run: npx playwright test tests/homepage.spec.ts tests/element-explorer.spec.ts -g "desktop Customize My Quote|Element Explorer actually renders" --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: desktop-cta-visual-proof
+          path: test-results/element-explorer-desktop.png
+          if-no-files-found: ignore
