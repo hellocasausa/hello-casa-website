@@ -45,10 +45,10 @@ test("Atelier v3: blue header rule, image-facing headings and working photo plac
   // Start with photo 02 at 1440px. Its slider changes must reach the actual iframe.
   await page.locator('button[data-photo="1"]').click();
   await expect(page.locator("#photoWidthValue")).toHaveText("287px");
-  await page.locator("#photoWidth").fill("332");
-  await page.locator("#photoY").fill("24");
-  await page.locator("#cropX").fill("63");
-  await page.locator("#photoZoom").fill("127");
+  await page.locator("#photoWidth").evaluate((input:HTMLInputElement) => {input.value="332";input.dispatchEvent(new Event("input",{bubbles:true}));});
+  await page.locator("#photoY").evaluate((input:HTMLInputElement) => {input.value="24";input.dispatchEvent(new Event("input",{bubbles:true}));});
+  await page.locator("#cropX").evaluate((input:HTMLInputElement) => {input.value="63";input.dispatchEvent(new Event("input",{bubbles:true}));});
+  await page.locator("#photoZoom").evaluate((input:HTMLInputElement) => {input.value="127";input.dispatchEvent(new Event("input",{bubbles:true}));});
   const changed=await frame.locator(".st-story--two .st-figure").evaluate(el=>{
     const w=el.ownerDocument!.defaultView!;
     const img=el.querySelector("img")!;
