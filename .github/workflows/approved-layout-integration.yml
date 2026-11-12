@@ -10,6 +10,10 @@ on:
       - "src/styles/standards.css"
       - "tests/approved-services.spec.ts"
       - "tests/approved-standards.spec.ts"
+      - "tests/approved-previews.spec.ts"
+      - "preview/visual-review.html"
+      - "preview/element-explorer.html"
+      - "index.html"
       - ".github/workflows/approved-layout-integration.yml"
   workflow_dispatch:
 permissions:
@@ -31,7 +35,7 @@ jobs:
       - name: Architecture guardrails
         run: npm run check:architecture
       - name: Functional and layout regressions
-        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts --reporter=line
+        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts tests/approved-previews.spec.ts --reporter=line
       - uses: actions/upload-artifact@v4
         if: always()
         with:
