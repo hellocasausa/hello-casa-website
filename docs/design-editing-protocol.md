@@ -50,7 +50,7 @@ Retired `source-authored.css`, `native-layout.css`, `b633-parity.css` and extrac
 | ID | Scope | Authorization | Status | Evidence |
 | --- | --- | --- | --- | --- |
 | HC-E-B3 | Performance and architecture consolidation; preserve approved appearance | Owner's Phase B.3 request | Implemented; automated visual/functional verification passed; PR review pending; not deployed | Approved checkpoint `e5953f2`; [before/after measurements](performance/results.md); 68 screenshot comparisons, seven functional tests and provider-sizing fixture; [implementation notes](performance/implementation-notes.md) |
-| HC-D-003 | Desktop Services (at least 901px): align Customize My Quote right; display all six plan labels on one line | Owner's direct desktop-only design instruction, 2026-11-12 | Source implemented on PR #1; browser visual review pending; not deployed | Edit existing authoritative rules in `src/styles/services.css` only; keep tablet/mobile unchanged; no new CSS correction layers |
+| HC-D-003 | Desktop Services (≥901px): quote CTA right; six plan names one line | Owner direct desktop-only design request, 2026-11-12 | Implemented; CTA verified in production build and Element Explorer browser; PR review pending; not deployed | `src/styles/services.css` now uses explicit two-column desktop grid for action row; [Chromium verification](https://github.com/hellocasausa/hello-casa-website/actions/runs/43298343160): right inset 20px at 1440px in live Explorer; direct homepage test spans 901/1100/1440/1920px; no tablet/mobile style edits |
 | HC-T-002 | Trim blank space after footer in read-only previews | Owner's screenshot, 2026-11-12 | Implemented in preview tools; visual review pending; no production footer change | `preview/element-explorer.html` and `preview/visual-review.html` measure the actual bottom of `#footer` instead of inheriting an inflated iframe height |
 
 ## Design requests under discussion — NOT approved implementations
@@ -78,3 +78,7 @@ These rows record ideas, not approval to edit the site.
 Model each component and design property canonically (not as accumulated DOM/CSS patches). Editing an existing property replaces its current value; inserting a new card creates a structured component instance with stable identity. The editor needs explicit responsive inheritance, undo/redo kept separate from exported code, predictable serialization, clean asset references and deterministic production export. It must support the same structural additions and reductions as direct hand editing.
 
 **Anti-accretion acceptance test:** Perform many edit/revert/save/export cycles on a component. Final source/output complexity should remain proportional to the *current* design—not to the number of edits that produced it.
+
+
+### Desktop alignment review outcome (2026-11-12)
+Several initial source-only alignment attempts were incorrectly reported as resolved without checking the rendered preview. The final source uses an explicit desktop grid column; the element explorer is pinned to a known commit and displays measured right-edge geometry. GitHub Actions now runs an actual Chromium test for both the compiled homepage and the read-only Explorer, with screenshot artifact. **Do not claim a visual fix until the rendered target—not merely the CSS declaration—passes verification.**
