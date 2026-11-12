@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hello Casa · PR #1 Visual Preview</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#274b6a;background:#f4f7fa}
+*{box-sizing:border-box}body{margin:0}header{position:sticky;top:0;z-index:10;padding:11px 14px;background:#fff;box-shadow:0 2px 14px #21395018;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{font-size:14px;font-weight:750;letter-spacing:.01em}.small{font-size:11px;color:#64798b}.controls{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-left:auto}
+button,a.action{color:#274b6a;appearance:none;background:#eef3f8;border:1px solid #cad7e1;padding:9px 11px;border-radius:9px;font-size:12px;font-weight:650;text-decoration:none;cursor:pointer}
+button[aria-pressed=true]{background:#274b6a;color:#fff;border-color:#274b6a}
+#status{margin:9px auto;max-width:900px;padding:0 12px;font-size:12px;color:#57738c;min-height:18px}
+#stage{max-width:100vw;overflow-x:auto;display:flex;justify-content:center;align-items:flex-start;min-height:70vh}
+#canvas{position:relative;flex:none;transform-origin:top left;background:#fff;box-shadow:0 7px 30px #21395024}
+iframe{display:block;border:0;background:#fff}
+footer{font-size:11px;padding:15px;text-align:center;color:#6c8090}
+@media(max-width:500px){header{padding:9px}.controls{margin-left:0}.brand{width:100%}button,a.action{font-size:11px;padding:8px}}
+</style>
+</head>
+<body>
+<header>
+<div class="brand">Hello Casa · reconstructed homepage <div class="small">Pull request #1 · read-only visual preview</div></div>
+<div class="controls">
+<button data-width="390" aria-pressed="true">Phone</button>
+<button data-width="820" aria-pressed="false">Tablet</button>
+<button data-width="1440" aria-pressed="false">Desktop</button>
+<a class="action" href="https://github.com/hellocasausa/hello-casa-website/pull/1" target="_blank" rel="noopener noreferrer">View PR</a>
+</div>
+</header>
+<div id="status" role="status">Fetching the reconstructed site from GitHub…</div>
+<div id="stage"><div id="canvas"><iframe id="site" title="Hello Casa reconstructed website — visual preview" referrerpolicy="no-referrer" loading="eager"></iframe></div></div>
+<footer>Visual inspection of the PR's actual HTML, CSS and images. Interactive TypeScript is not compiled in this viewer; use the Vite development build to test behavior. This does not publish or change the live website.</footer>
+<script>
+(async()=>{
+const frame=document.getElementById('site');
+const canvas=document.getElementById('canvas');
+const stage=document.getElementById('stage');
+const status=document.getElementById('status');
+const widths=[...document.querySelectorAll('[data-width]')];
+let desired=390,loaded=false;
+const project='https://raw.githubusercontent.com/hellocasausa/hello-casa-website/';
+let sha='e5953f2d0d4375daf5a8462c9343d71785e5f81b';
+try{
+  const pr=await fetch('https://api.github.com/repos/hellocasausa/hello-casa-website/pulls/1',{cache:'no-store'});
+  if(pr.ok){const info=await pr.json();if(info.head?.sha)sha=info.head.sha;}
+}catch(_){}
+const root=project+sha+'/';
+const get=async(path)=>{const res=await fetch(root+path,{cache:'no-store'});if(!res.ok)throw Error('Unable to fetch '+path+' ('+res.status+')');return res.text()};
+const absolutize=(raw)=>{
+ if(/^(?:data:|https?:|blob:|#|about:)/i.test(raw))return raw;
+ const p=raw.replace(/^\/+/, '');
+ if(p.startsWith('assets/'))return root+'public/'+p;
+ if(p.startsWith('public/'))return root+p;
+ return root+p;
+};
+async function style(path,seen=new Set()){
+ if(seen.has(path))return '';seen.add(path);
+ let css=await get(path);
+ let output='',prior=0;
+ const importPattern=/@import\s+(?:url\()?\s*["']([^"'\)]+)["']\s*\)?\s*;/g;
+ for(const m of css.matchAll(importPattern)){
+  output+=css.slice(prior,m.index);
+  if(m[1].startsWith('./')||m[1].startsWith('../')){
+   const resolved=new URL(m[1],root+path).pathname.split('/').slice(4).join('/');
+   output+='\n'+await style(resolved,seen)+'\n';
+  }else if(m[1].startsWith('/')) output+='\n'+await style(m[1].slice(1),seen)+'\n';
+  else output+=m[0];
+  prior=m.index+m[0].length;
+ }
+ output+=css.slice(prior);
+ return output.replace(/url\(\s*(["']?)([^)"']+)\1\s*\)/g,(_,q,u)=>{
+  if(/^(?:data:|https?:|blob:|#)/i.test(u))return 'url('+JSON.stringify(u)+')';
+  if(u.startsWith('/assets/')) return 'url('+JSON.stringify(root+'public'+u)+')';
+  if(u.startsWith('../assets/')) return 'url('+JSON.stringify(root+'public/assets/'+u.split('/').pop())+')';
+  return 'url('+JSON.stringify(new URL(u,root+path).href)+')';
+ });
+}
+function sizeFrame(){
+ const screenWidth=Math.max(320,stage.clientWidth-12),scale=Math.min(1,screenWidth/desired);
+ canvas.style.width=desired+'px';
+ canvas.style.transform='scale('+scale+')';
+ canvas.style.marginRight=(desired*(scale-1))+'px';
+ const doc=frame.contentDocument;
+ const height=doc?Math.max(doc.documentElement.scrollHeight,doc.body?.scrollHeight||0,650):800;
+ frame.style.width=desired+'px';frame.style.height=height+'px';
+ canvas.style.height=height+'px';stage.style.height=Math.max(height*scale,550)+'px';
+}
+widths.forEach(b=>b.addEventListener('click',()=>{
+ desired=Number(b.dataset.width);
+ widths.forEach(other=>other.setAttribute('aria-pressed',String(other===b)));
+ sizeFrame();
+ setTimeout(sizeFrame,250);
+}));
+window.addEventListener('resize',sizeFrame);
+try{
+ const [html,css]=await Promise.all([get('index.html'),style('src/style.css')]);
+ const doc=new DOMParser().parseFromString(html,'text/html');
+ doc.querySelectorAll('script,link[rel=stylesheet]').forEach(x=>x.remove());
+ doc.querySelectorAll('[src],[href],[srcset],[poster]').forEach(el=>{
+  for(const a of ['src','href','poster']){
+   const v=el.getAttribute(a);
+   if(v&&v.startsWith('/assets/'))el.setAttribute(a,absolutize(v));
+  }
+  const set=el.getAttribute('srcset');
+  if(set)el.setAttribute('srcset',set.replace(/\/assets\/[^,\s]+/g,m=>absolutize(m)));
+ });
+ const sty=doc.createElement('style');sty.textContent=css;doc.head.appendChild(sty);
+ const base=doc.createElement('base');base.href=root;doc.head.prepend(base);
+ frame.srcdoc='<!doctype html>\n'+doc.documentElement.outerHTML;
+ frame.addEventListener('load',()=>{loaded=true;sizeFrame();status.textContent='Loaded current PR #1 source · '+sha.slice(0,8)+' · visual-only preview';let n=0;const id=setInterval(()=>{sizeFrame();if(++n>10)clearInterval(id)},400);});
+}catch(error){
+ status.textContent='Could not load the GitHub assets: '+error.message+'. Check that this file is opened in a browser with internet access.';
+}
+})();
+</script>
+</body>
+</html>
