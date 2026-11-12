@@ -1,0 +1,40 @@
+name: Approved Services and Standards Integration QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "src/components/markup/services.html"
+      - "src/styles/services.css"
+      - "src/components/markup/standards.html"
+      - "src/styles/standards.css"
+      - "tests/approved-services.spec.ts"
+      - "tests/approved-standards.spec.ts"
+      - ".github/workflows/approved-layout-integration.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-layout-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Native build and types
+        run: npm run build
+      - name: Architecture guardrails
+        run: npm run check:architecture
+      - name: Functional and layout regressions
+        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: approved-native-layout-desktop-screenshots
+          path: test-results/approved-*.png
+          if-no-files-found: ignore
