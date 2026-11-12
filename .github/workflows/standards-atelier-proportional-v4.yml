@@ -1,0 +1,33 @@
+name: Atelier v4 — Proportional Desktop & Composition Export QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "preview/experiments/standards-atelier-proportional-v4.html"
+      - "tests/experiments/standards-atelier-proportional-v4.spec.ts"
+      - ".github/workflows/standards-atelier-proportional-v4.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Check layout geometry, shared image values and full CSS export
+        run: npx playwright test tests/experiments/standards-atelier-proportional-v4.spec.ts --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atelier-v4-proportional-desktop-previews
+          path: test-results/atelier-v4-*.png
+          if-no-files-found: ignore
