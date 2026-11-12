@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hello Casa · PR #1 Visual Preview</title>
+<title>Hello Casa · Approved Services + Standards Review</title>
 <meta name="robots" content="noindex,nofollow">
 <style>
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#274b6a;background:#f4f7fa}
@@ -21,7 +21,7 @@ footer{font-size:11px;padding:15px;text-align:center;color:#6c8090}
 </head>
 <body>
 <header>
-<div class="brand">Hello Casa · reconstructed homepage <div class="small">Pull request #1 · read-only visual preview</div></div>
+<div class="brand">Hello Casa · approved design integration <div class="small">Services B + Standards Atelier v4 · draft PR #1</div></div>
 <div class="controls">
 <button data-width="390" aria-pressed="true">Phone</button>
 <button data-width="820" aria-pressed="false">Tablet</button>
@@ -29,7 +29,7 @@ footer{font-size:11px;padding:15px;text-align:center;color:#6c8090}
 <a class="action" href="https://github.com/hellocasausa/hello-casa-website/pull/1" target="_blank" rel="noopener noreferrer">View PR</a>
 </div>
 </header>
-<div id="status" role="status">Fetching the reconstructed site from GitHub…</div>
+<div id="status" role="status">Loading integrated design checkpoint from GitHub…</div>
 <div id="stage"><div id="canvas"><iframe id="site" title="Hello Casa reconstructed website — visual preview" referrerpolicy="no-referrer" loading="eager"></iframe></div></div>
 <footer>Visual inspection of the PR's actual HTML, CSS and images. Interactive TypeScript is not compiled in this viewer; use the Vite development build to test behavior. This does not publish or change the live website.</footer>
 <script>
@@ -41,7 +41,7 @@ const status=document.getElementById('status');
 const widths=[...document.querySelectorAll('[data-width]')];
 let desired=390,loaded=false;
 const project='https://raw.githubusercontent.com/hellocasausa/hello-casa-website/';
-const sha='fb98c0f3fd5830685e603a376018fceb336469a7'; // immutable review source
+const sha='728a82ba67f8b64cb06e7258b05c81dd5c7c07fa'; // immutable review source
 const root=project+sha+'/';
 const get=async(path)=>{const res=await fetch(root+path,{cache:'no-store'});if(!res.ok)throw Error('Unable to fetch '+path+' ('+res.status+')');return res.text()};
 const absolutize=(raw)=>{
