@@ -44,6 +44,11 @@ test("Standards editorial remixes render full approved copy and original imagery
         "Who comes through your door matters. So do the little details, and the freedom to change your plans.",
       );
       await expect(frame.locator(".st-figure img")).toHaveCount(3);
+      await expect.poll(() =>
+        frame.locator(".st-figure img").evaluateAll(
+          imgs => imgs.filter(img => (img as HTMLImageElement).naturalWidth > 0).length
+        ), {timeout:15000}
+      ).toBe(3);
       const measurements = await page.locator("#frame").evaluate((el: HTMLIFrameElement) => {
         const d = el.contentDocument!;
         const w = d.defaultView!;
@@ -92,14 +97,13 @@ test("Standards editorial remixes render full approved copy and original imagery
       expect(measurements.images.every(im => im.loaded)).toBeTruthy();
       expect(measurements.images.every(im => im.src.includes("/public/assets/"))).toBeTruthy();
       expect(measurements.rows.every(row => row.textFits && row.height > 250)).toBeTruthy();
-      // Across all concepts, the photographic and text columns alternate L/R/L.
+      // A/B read image-left, image-right, image-left; C deliberately reverses.
       for (let i = 0; i < 3; i++) {
+        const imageOnRight = concept === "c" ? i !== 1 : i === 1;
         expect(
-          i === 1
-            ? measurements.rows[i].visualLeft > measurements.rows[i].paragraphLeft
-            : measurements.rows[i].visualLeft < measurements.rows[i].paragraphLeft,
+          measurements.rows[i].visualLeft > measurements.rows[i].paragraphLeft,
           "image/text zigzag for " + concept + " row " + (i + 1),
-        ).toBeTruthy();
+        ).toBe(imageOnRight);
       }
       await page.locator("#frame").screenshot({
         path: "test-results/standards-" + concept + "-" + width + ".png",
