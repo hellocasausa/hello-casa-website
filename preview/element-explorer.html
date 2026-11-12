@@ -72,7 +72,7 @@ iframe{display:block;border:0;background:#fff}
 <body>
 <div class="app">
 <header class="topbar">
-  <div class="brand"><div class="mark">✧</div><div><div class="brandname">Hello Casa <span style="font-weight:450;color:#8296a6">/ Element Explorer</span></div><div class="subheading">Native reconstruction · Interactive code map</div></div></div>
+  <div class="brand"><div class="mark">✧</div><div><div class="brandname">Hello Casa <span style="font-weight:450;color:#8296a6">/ Element Explorer</span></div><div class="subheading">Pinned source 4bd2d6c · Interactive code map</div></div></div>
   <div class="topright"><span class="pill">READ-ONLY</span><a class="link" href="https://github.com/hellocasausa/hello-casa-website/pull/1" target="_blank" rel="noopener noreferrer">View PR #1 ↗</a></div>
 </header>
 <div class="main">
@@ -92,7 +92,7 @@ iframe{display:block;border:0;background:#fff}
       <button id="pickMode" class="tool-button active" type="button" aria-pressed="true" title="Switch between selecting element identifiers and trying service checklists">▶ Try checklists</button>
     </div>
     <div class="stage" id="stage"><div class="stage-inner"><div class="frame-shell" id="frameShell"><div class="frame-surface" id="frameSurface"><iframe id="site" sandbox="allow-same-origin" title="Read-only Hello Casa website"></iframe></div></div></div></div>
-    <div class="status" id="status"><span class="signal"></span><span id="statusText">Loading current optimized PR #1 from GitHub…</span></div>
+    <div class="status" id="status"><span class="signal"></span><span id="statusText">Loading pinned website snapshot…</span><span id="ctaStatus" style="margin-left:auto;font-weight:760;white-space:nowrap;color:#315f80">CTA: measuring…</span></div>
   </main>
   <aside class="panel details" id="details" aria-label="Selected element details">
     <div class="eyebrow">02 / Inspector</div><h2>Element details</h2><div id="inspection"><p class="help">Select an element in the directory, or turn on <strong>Pick element</strong> and click the website.</p><p class="help">This inspector only reads the current rendering. It never changes the website's files or settings.</p></div>
@@ -103,7 +103,7 @@ iframe{display:block;border:0;background:#fff}
 <script>
 (function(){
 'use strict';
-const REPO='hellocasausa/hello-casa-website', FALLBACK='fb98c0f3fd5830685e603a376018fceb336469a7';
+const REPO='hellocasausa/hello-casa-website', FALLBACK='4bd2d6c5adb35a0ee348abde3220374ccb680992';
 const SECTIONS=[
  {name:'Navigation',file:'header.css',items:[
  ['Header navigation','.hc-nav-v7'],['Logo / wordmark','.hc-float-logo'],['Navigation links','.hc-float-links'],['Get a Quote button','.hc-float-quote'],['Mobile menu toggle','.hc-float-toggle'],['Mobile dropdown','#hc-nav-dropdown-v7']]},
@@ -248,6 +248,20 @@ function fit(){
  surface.style.width=viewport+'px';surface.style.height=bodyHeight+'px';surface.style.transform='scale('+scale+')';surface.dataset.scale=scale;
  shell.style.width=Math.ceil(viewport*scale)+'px';shell.style.height=Math.ceil(bodyHeight*scale)+'px';
 }
+function verifyCTA(){
+ const label=$('ctaStatus');
+ if(!iframeDoc||!label)return;
+ if(viewport<901){label.textContent='Desktop CTA check: switch to Desktop';label.style.color='#748a9b';return}
+ const row=iframeDoc.querySelector('#hc-mobile-vertical .hc-panel-actions');
+ const cta=row?.querySelector('.hc-button');
+ if(!row||!cta){label.textContent='CTA geometry: element missing';label.style.color='#ae514a';return}
+ const parent=row.getBoundingClientRect(),child=cta.getBoundingClientRect();
+ const inset=Math.round((parent.right-child.right)*10)/10;
+ const layout=iframeDoc.defaultView.getComputedStyle(row).display;
+ const pass=Math.abs(inset-20)<=2;
+ label.textContent=(pass?'✓ CTA aligned':'✕ CTA misaligned')+' · '+inset+'px right inset · '+layout+' · '+viewport+'px';
+ label.style.color=pass?'#327755':'#b34c3d';
+}
 function measure(){
  if(!iframeDoc)return;
  const d=iframeDoc;
@@ -258,7 +272,7 @@ function measure(){
    ? footer.getBoundingClientRect().bottom+d.defaultView.scrollY
    : Math.max(d.body?.scrollHeight||0,d.documentElement?.scrollHeight||0);
  bodyHeight=Math.max(1,Math.ceil(contentEnd)+1);
- frame.style.width=viewport+'px';frame.style.height=bodyHeight+'px';fit();positionMarkers();
+ frame.style.width=viewport+'px';frame.style.height=bodyHeight+'px';fit();positionMarkers();verifyCTA();
 }
 function changeWidth(n){
  viewport=Math.min(1920,Math.max(320,Number(n)||820));custom.value=viewport;
