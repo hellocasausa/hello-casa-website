@@ -50,6 +50,8 @@ Retired `source-authored.css`, `native-layout.css`, `b633-parity.css` and extrac
 | ID | Scope | Authorization | Status | Evidence |
 | --- | --- | --- | --- | --- |
 | HC-E-B3 | Performance and architecture consolidation; preserve approved appearance | Owner's Phase B.3 request | Implemented; automated visual/functional verification passed; PR review pending; not deployed | Approved checkpoint `e5953f2`; [before/after measurements](performance/results.md); 68 screenshot comparisons, seven functional tests and provider-sizing fixture; [implementation notes](performance/implementation-notes.md) |
+| HC-D-003 | Desktop Services (at least 901px): align Customize My Quote right; display all six plan labels on one line | Owner's direct desktop-only design instruction, 2026-11-12 | Source implemented on PR #1; browser visual review pending; not deployed | Edit existing authoritative rules in `src/styles/services.css` only; keep tablet/mobile unchanged; no new CSS correction layers |
+| HC-T-002 | Trim blank space after footer in read-only previews | Owner's screenshot, 2026-11-12 | Implemented in preview tools; visual review pending; no production footer change | `preview/element-explorer.html` and `preview/visual-review.html` measure the actual bottom of `#footer` instead of inheriting an inflated iframe height |
 
 ## Design requests under discussion — NOT approved implementations
 
