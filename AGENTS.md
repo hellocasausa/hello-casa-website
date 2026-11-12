@@ -34,6 +34,12 @@ These external source files are not yet committed to this repository. If inacces
 - Keep the repository free of credentials, secrets, customer submissions and confidential business records. **The repository is currently public.**
 - No live deployment, route changes or provider configuration changes without explicit approval.
 
+## Ongoing owner-directed design edits (before Design Studio 2.0)
+
+Read and follow [`docs/design-editing-protocol.md`](docs/design-editing-protocol.md) when an approved request changes the reconstructed website's layout, styles, structure, artwork, components, responsive behavior or content. The assistant may implement ordinary approved changes directly in this repository; there is no requirement to route routine changes through Codex.
+
+Distinguish **ideas** from **approved modifications**. Structural requests may require deliberate new elements or reusable components; do not attempt every new visual concept as an appended CSS override. Update the canonical owner, preserve clean responsive inheritance, record the change and verify fidelity. Owner-approved post-reconstruction edits supersede B6.3.3 **only in their explicitly changed scope**; protect all unrelated original design. Do not merge or deploy without separate authorization.
+
 ## Execution
 
 Build the actual integrated homepage and source project; **do not initiate another broad forensic investigation**. Follow the blueprint, using section-by-section implementation internally as useful but deliver a cohesive site.
