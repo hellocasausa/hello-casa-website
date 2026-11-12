@@ -251,8 +251,14 @@ function fit(){
 function measure(){
  if(!iframeDoc)return;
  const d=iframeDoc;
- const currentHeight=Math.max(d.body?.scrollHeight||0,d.documentElement?.scrollHeight||0,950);
- bodyHeight=currentHeight;frame.style.width=viewport+'px';frame.style.height=bodyHeight+'px';fit();positionMarkers();
+ // Measure the actual end of website content, not the iframe's previous height.
+ // scrollHeight can include that previous height and retain a false blank tail.
+ const footer=d.querySelector('#footer');
+ const contentEnd=footer
+   ? footer.getBoundingClientRect().bottom+d.defaultView.scrollY
+   : Math.max(d.body?.scrollHeight||0,d.documentElement?.scrollHeight||0);
+ bodyHeight=Math.max(1,Math.ceil(contentEnd)+1);
+ frame.style.width=viewport+'px';frame.style.height=bodyHeight+'px';fit();positionMarkers();
 }
 function changeWidth(n){
  viewport=Math.min(1920,Math.max(320,Number(n)||820));custom.value=viewport;
