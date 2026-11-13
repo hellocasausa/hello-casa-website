@@ -31,6 +31,8 @@ jobs:
         run: npm run check:architecture
       - name: Generate isolated mobile comparison from the approved checklist renderer
         run: node scripts/build-mobile-concepts.ts
+      - name: Generate seven mobile Standards concepts from the original first paragraphs
+        run: node scripts/build-mobile-standards.ts
       - name: Compile GitHub Pages site under project path
         run: npx vite build --base=/hello-casa-website/
       - name: Verify built interactive review and asset paths
@@ -39,6 +41,10 @@ jobs:
           test -f dist/mobile-concepts/index.html
           test -f dist/mobile-concepts/concept.html
           test -f dist/mobile-concepts/services-data.json
+          test -f dist/mobile-standards/index.html
+          test -f dist/mobile-standards/concept.html
+          test -f dist/mobile-standards/data.json
+          node -e "const d=require('./dist/mobile-standards/data.json');if(d.stories.length!==3||d.stories.some(s=>!s.paragraph||!s.image))process.exit(1)"
           node -e "const d=require('./dist/mobile-concepts/services-data.json');if(d.taskIdCount!==129||d.plans.length!==6)process.exit(1)"
           test -f dist/index.html
           ls dist/assets/index-*.js > /dev/null
