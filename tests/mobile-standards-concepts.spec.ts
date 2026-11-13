@@ -11,7 +11,7 @@ const source=[...document.querySelectorAll(".st-story")].map((s,i)=>({
  second:s.querySelectorAll(".st-copy p")[1]!.textContent!.trim(),
  image:s.querySelector(".st-figure img")!.getAttribute("src")!
 }));
-test.beforeEach(async({page})=>{await page.goto("/mobile-standards/");});
+test.beforeEach(async({page})=>{await page.goto("/mobile-standards/index.html");});
 test("all seven comparisons use exactly original first paragraphs and three watercolor assets",async({page})=>{
  test.setTimeout(120000);
  const frame=page.frameLocator("#design-frame");
