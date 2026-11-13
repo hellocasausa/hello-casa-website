@@ -349,7 +349,7 @@
     bottom: auto;
   }
   .benefits li {
-    font-size: clamp(8.5px, 1.7vw, 11px);
+    font-size: clamp(8.5px, 1.7vw, 9.5px);
   }
 }
 @media (max-width: 750px) {
