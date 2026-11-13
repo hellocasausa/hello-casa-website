@@ -57,7 +57,13 @@ test("homepage spacing rhythm and footer at phone, tablet and desktop",async({pa
   await page.setViewportSize({width,height:1000});
   const metrics=await page.evaluate(()=>{
    const box=(s:string)=>document.querySelector(s)!.getBoundingClientRect();
-   const st=box(".steps"),footer=box("#footer"),logo=box(".hc-b-footer__brand img"),panel=box("#hc-mobile-vertical .hc-panel-actions"),note=box(".hc-footnote");
+   const st=box(".steps"),footer=box("#footer"),logo=box(".hc-b-footer__brand img"),panel=box("#hc-mobile-vertical .hc-panel-actions");
+    const noteEl=document.querySelector<HTMLElement>("#hc-mobile-vertical .hc-footnote")!;
+    // The approved Featured mobile layout hides the redundant Essential note;
+    // measure from its last visible checklist group instead of a zero-size hidden box.
+    const note=getComputedStyle(noteEl).display==="none"
+      ? box("#hc-mobile-vertical .hc-grid-approved")
+      : noteEl.getBoundingClientRect();
    const newsletter=document.querySelector(".hc-b-footer__newsletter");
    const visible=!!newsletter&&getComputedStyle(newsletter).display!=="none";
    const description=visible?box(".hc-b-footer__newsletter p"):null;
