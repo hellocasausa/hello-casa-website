@@ -343,6 +343,11 @@
     top: calc(20.52vw);
     height: 29px;
   }
+  .benefits {
+    /* Keep the trust row consistently just below the absolute-positioned CTA. */
+    top: calc(31.2vw + 45px);
+    bottom: auto;
+  }
 }
 @media (max-width: 750px) {
   .hero {

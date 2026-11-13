@@ -701,7 +701,7 @@
   }
   /* Keep the Jotform embed functional; place its backup action next to
      the supporting copy rather than after an unrendered tall iframe. */
-  #contact.hc-contact-new .hc-jotform-embed {
+  #contact.hc-contact-new #hc-contact-jotform.hc-jotform-embed {
     display: flex;
     flex-direction: column;
     align-items: stretch;
