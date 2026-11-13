@@ -222,7 +222,7 @@
     width:calc(100% + 20px);
     margin-left:-20px;
     letter-spacing:-.018em;
-    font-size:clamp(11.1px,3.48vw,13.6px);
+    font-size:clamp(11px,3.4vw,13.3px);
   }
   #standards .st-stories{
     position:relative;
