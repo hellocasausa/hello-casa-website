@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 /**
  * Native Contact form. The public Vite settings contain ONLY an endpoint URL and
  * Turnstile site key, never Airtable credentials.
@@ -31,6 +32,7 @@ export function bindContactForm() {
   verification.append(widget);
   const script = document.createElement("script");
   script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+  script.onload = () => { button.disabled = false; };
   script.async = true;
   script.defer = true;
   script.onerror = () => {
