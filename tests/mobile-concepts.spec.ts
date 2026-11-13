@@ -92,10 +92,6 @@ test("Featured Service displays the original six small cards, uses focus buttons
  for(const width of [320,375,390]){
   await page.setViewportSize({width,height:800});
   await expect(page.locator(".feature-header")).toBeVisible();
-  for(const selector of [".feature-header",".hc-focus-wrap",".service-panel"]){
-   await expect(page.locator(selector)).toHaveCSS("background-color","rgb(243, 250, 254)");
-  }
-  await expect(page.locator(".feature-header")).toHaveCSS("background-image","none");
   await expect(page.locator(".feature-header")).toContainText("SELECT YOUR PLAN");
   await expect(page.locator(".feature-name")).toHaveText("Essential Clean");
   await expect(page.locator(".panel-head")).toHaveCount(0);

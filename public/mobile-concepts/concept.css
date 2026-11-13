@@ -20,10 +20,9 @@
 .variant-ribbon .selector-zone{padding:12px 11px 0;background:#fbfdff}.variant-ribbon .shell-label{padding:0 3px}.variant-ribbon .svc-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}.variant-ribbon .svc-option{border-radius:10px 10px 0 0;border-color:#d7e5ed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 3px 9px;min-height:87px;gap:5px}.variant-ribbon .svc-option .ico{width:29px;height:29px;flex-basis:29px;border-radius:8px}.variant-ribbon .svc-option .ico img{width:22px;height:22px}.variant-ribbon .svc-option .name{font-size:10.5px;line-height:1.18;font-weight:750;max-width:90px}.variant-ribbon .nav-chevron{display:none}.variant-ribbon .svc-option[aria-selected=true]{border-bottom:3px solid #729eb9;background:var(--icon-bg,#f2fbff)}.variant-ribbon .service-panel{border-top:1px solid #d5e6ee}
 /* Featured Service: restored always-visible original six small cards (3×2).
    The featured header supplies the only primary plan title; the checklist follows directly. */
-.variant-featured{--hc-featured-checklist-bg:#f3fafe}
 html[data-concept="featured"] .concept-intro{display:none}
 html[data-concept="featured"] #concept-root{padding-top:15px}
-.variant-featured .feature-header{margin:11px;border:1px solid #d6e6ed;background:var(--hc-featured-checklist-bg);border-radius:15px;padding:18px 14px;display:flex;align-items:center;gap:13px}
+.variant-featured .feature-header{margin:11px;border:1px solid #d6e6ed;background:linear-gradient(125deg,var(--active-color),#fffdfa 96%);border-radius:15px;padding:18px 14px;display:flex;align-items:center;gap:13px}
 .variant-featured .feature-header .featured-icon{width:63px;height:63px;flex:0 0 63px;display:grid;place-items:center;border-radius:15px;background:#ffffffaf;border:1px solid #ffffffd8}
 .variant-featured .featured-icon img{width:47px;height:47px;object-fit:contain}
 .variant-featured .feature-copy{min-width:0;flex:1}
@@ -38,8 +37,7 @@ html[data-concept="featured"] #concept-root{padding-top:15px}
 .variant-featured .svc-option .name{font-size:10px;line-height:1.1}
 .variant-featured .nav-chevron{display:none}
 .variant-featured .panel-head{display:none}
-.variant-featured .service-panel{border-top:1px solid #d4e6ee;background:var(--hc-featured-checklist-bg)}
-.variant-featured .hc-focus-wrap{background:var(--hc-featured-checklist-bg)}
+.variant-featured .service-panel{border-top:1px solid #d4e6ee}
 .variant-featured .service-panel .panel-body{padding-top:13px}
 .variant-featured .service-panel .focus-host{padding-top:14px}
 .variant-featured .hc-focus-wrap .hc-focus-label{margin:0 0 10px}

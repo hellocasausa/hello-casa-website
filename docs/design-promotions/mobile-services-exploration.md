@@ -47,7 +47,3 @@ For Essential Clean within this concept only, the redundant select dropdown is r
 Keyboard behavior: the six visible cards are ordinary accessible tabs with their existing active state and keyboard arrow/Home/End selection. No hidden navigation menu is used. The source-generated Essential+ explanatory footnote is suppressed **only in Concept 04's rendered Essential Clean checklist**; the canonical note and all other concepts remain unchanged.
 
 Concepts 01–03 remain unchanged as comparison references. No production mobile integration or Hero/tablet follow-up was authorized.
-
-## Featured Service palette simplification
-
-In the approved experimental refinement, the SELECT YOUR PLAN illustrated top card and the Optional: Partial deep clean focus container now share exactly the checklist surface color (`#f3fafe`). The featured header gradient has been removed; the six smaller service tabs retain their individual pastel colors and active states. This applies to Concept 04 only, with no production homepage change.
