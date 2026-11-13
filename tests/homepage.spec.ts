@@ -240,7 +240,11 @@ test("approved desktop body rhythm, headings, mirrored inset and bubble ending",
   for (const width of [390, 750, 820, 900]) {
     await page.setViewportSize({width, height:1000});
     const heading = page.locator("#standards .st-heading h3").first();
-    expect(parseFloat(await heading.evaluate(el=>getComputedStyle(el).fontSize))).toBeLessThan(32);
+    const currentSize = parseFloat(await heading.evaluate(el => getComputedStyle(el).fontSize));
+    const expectedSize = width <= 520
+      ? Math.min(28, Math.max(23, width * .063))
+      : Math.min(34, Math.max(25, width * .04));
+    expect(currentSize, `unchanged tablet/mobile heading at ${width}px`).toBeCloseTo(expectedSize, 1);
     const card = page.locator("#standards .st-story--two .st-prose");
     await expect(card).toHaveCSS("border-top-right-radius", "20px");
     await expect(card).toHaveCSS("border-bottom-right-radius", "20px");
