@@ -670,7 +670,7 @@
   }
   #contact.hc-contact-new .hc-contact-heading-stage::before {
     top: -14px;
-    left: 22px;
+    left: 0;
     width: 66%;
     height: 4px;
   }

@@ -96,10 +96,19 @@ test("full Services section screenshots at 320, 375 and 390px",async({page})=>{
  await native.locator("#hc-mobile-vertical").screenshot({path:"test-results/mobile-services-grid-current-390.png",animations:"disabled"});
 });
 
-test("approved homepage retains the original mobile one-column checklist",async({page})=>{
+test("approved homepage uses two columns at 375 and 390px, falling back at 320px",async({page})=>{
  await page.goto("/");
- await page.setViewportSize({width:390,height:850});
- const grid=page.locator("#hc-mobile-vertical .hc-grid-approved");
- await expect(grid).toBeVisible();
- expect(await grid.evaluate(el=>getComputedStyle(el).gridTemplateColumns.trim().split(/\s+/).length)).toBe(1);
+ for(const width of [320,375,390]){
+  await page.setViewportSize({width,height:850});
+  const grid=page.locator("#hc-mobile-vertical .hc-grid-approved");
+  await expect(grid).toBeVisible();
+  const style=await grid.evaluate(el=>({
+   columns:getComputedStyle(el).gridTemplateColumns.trim().split(/\s+/).length,
+   size:getComputedStyle(el.querySelector(".hc-group-approved li")!).fontSize,
+   overflow:document.documentElement.scrollWidth-innerWidth
+  }));
+  expect(style.columns).toBe(width===320?1:2);
+  expect(style.size).toBe(width===320?"12.5px":"11.5px");
+  expect(style.overflow).toBeLessThanOrEqual(2);
+ }
 });

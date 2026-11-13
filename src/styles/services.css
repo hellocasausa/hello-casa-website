@@ -1775,3 +1775,66 @@
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-wrap { padding-inline: 7px; }
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-btn { padding-inline: 9px; }
 }
+
+/* Approved mobile grid: actual native checklist, identical to the isolated
+   reviewed concept. Task data, IDs and selection runtime are unchanged.
+   At <375px, preserve the existing full-width single-column cards. */
+@media (min-width:375px) and (max-width:750px){
+  #hc-mobile-vertical .hc-grid-approved{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    align-items:start;
+    gap:8px;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-group-approved{
+    min-width:0;
+    grid-column:auto;
+    padding:11px 9px;
+    border-radius:12px;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-group-approved h4{
+    font-size:9.5px;
+    line-height:1.25;
+    margin:0 0 8px;
+    padding:0;
+    letter-spacing:.06em;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-group-approved ul{gap:6px}
+  #hc-mobile-vertical .hc-grid-approved .hc-group-approved li{
+    font-size:11.5px;
+    font-weight:450;
+    line-height:1.45;
+    padding-left:13px;
+    overflow-wrap:break-word;
+    hyphens:none;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-group-approved li::before{
+    font-size:10px;
+    left:0;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-extras{
+    min-width:0;
+    grid-column:auto;
+    margin:0;
+    padding:11px 9px;
+    border-radius:12px;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-extras h4{
+    font-size:9.5px;
+    margin-bottom:6px;
+    letter-spacing:.05em;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-extras-caption{
+    font-size:10px;
+    line-height:1.45;
+    margin-bottom:9px;
+  }
+  #hc-mobile-vertical .hc-grid-approved .hc-extras-list{gap:5px}
+  #hc-mobile-vertical .hc-grid-approved .hc-extras-list li{
+    padding:4px 6px;
+    font-size:9.7px;
+    line-height:1.35;
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+}

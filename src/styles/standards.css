@@ -263,7 +263,7 @@
     z-index:2;
     width:auto;
     margin:0 0 10px;
-    padding:0 0 0 35px;
+    padding:0 0 0 25px;
     text-align:left;
   }
   #standards .st-heading::before{
@@ -275,7 +275,7 @@
   }
   #standards .st-story--two .st-heading{
     text-align:right;
-    padding:0 35px 0 0;
+    padding:0 25px 0 0;
   }
   #standards .st-story--two .st-heading::before{left:auto;right:0}
   #standards .st-heading .st-kicker{
@@ -284,7 +284,8 @@
     line-height:1.35;
     margin:0 0 7px;
   }
-  #standards .st-heading .st-kicker::before{
+  #standards .st-story .st-heading .st-kicker::before{
+    /* Match the #3 decorative line exactly across all three stories. */
     width:39px;
     height:2px;
     margin:0 0 8px;

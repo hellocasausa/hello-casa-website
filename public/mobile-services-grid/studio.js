@@ -20,12 +20,12 @@ var rulePromise=fetch("./grid-overlay.css",{cache:"no-store"}).then(function(r){
 function columns(){return layout==="current"||width<375?1:2;}
 function labels(){
  var n=columns();
- document.getElementById("preview-title").textContent=layout==="current"?"Current single-column checklist":"Proposed compact checklist";
+ document.getElementById("preview-title").textContent=layout==="current"?"Previous single-column checklist":"Approved compact checklist";
  document.getElementById("columns").textContent=String(n);
  document.getElementById("task-size").textContent=n===2?"11.5px":"12.5px";
  document.getElementById("check-size").textContent=n===2?"10px":"11px";
  document.getElementById("design-description").textContent=
-  layout==="current"?"Existing homepage checklist layout. The six service tiles, focus controls and real checklist are unchanged. Compare the amount of scrolling with the proposed version.":
+  layout==="current"?"Previous single-column presentation for reference. The six service tiles, focus controls and real checklist stay the same. Compare scrolling with the approved two-column version.":
   width<375?"The 320px version intentionally uses the existing single-column checklist, protecting the longest task descriptions from cramped wrapping.":
   "Two actual checklist cards per row, with modestly smaller type, checkmarks and padding. All task descriptions and additions are unchanged; switch plans to see how other checklists fit.";
  widthBtns.forEach(function(b){b.setAttribute("aria-pressed",String(Number(b.dataset.width)===width));});

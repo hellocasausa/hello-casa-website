@@ -115,3 +115,26 @@ html.hc-services-study #hc-mobile-vertical .hc-bound{
     grid-column:auto!important;
   }
 }
+
+/* Following approval, Current becomes a historical one-column comparison only:
+   the live native homepage uses two columns at phone widths >=375px. */
+@media (min-width:375px) and (max-width:750px){
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved{
+    padding:15px 14px!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved h4{
+    font-size:10.5px!important;
+    margin-bottom:12px!important;
+    letter-spacing:.085em!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved li{
+    font-size:12.5px!important;
+    line-height:1.42!important;
+    padding-left:18px!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved ul{gap:9px!important}
+}
