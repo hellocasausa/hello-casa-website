@@ -1,0 +1,162 @@
+/* Hello Casa — seven isolated, source-grounded Standards design studies.
+   Owns no approved site CSS. All seven intentionally display ONE paragraph only. */
+@font-face{font-family:"HC Nunito";src:url("../assets/0cdf1e4b27f7420b0ad3.woff2") format("woff2");font-style:normal;font-weight:300 900;font-display:swap}
+@font-face{font-family:"HC Libre";src:url("../assets/dbcc0e48671e24477635.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+:root{color:#476c84;font-family:"HC Nunito","Nunito Sans",sans-serif;background:#f1f8fa;font-synthesis:none}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;width:100%;min-width:0;overflow-x:hidden}
+body{background:#f1f8fa}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible{outline:3px solid #285d82;outline-offset:3px}
+figure,h2,h3,p{margin:0}
+.loading{padding:24px 14px;font-size:13px;text-align:center}
+.standards-study{min-height:100vh;overflow:hidden;padding:21px 0 38px;background:linear-gradient(180deg,#ebf6fb 0%,#f4f8f8 38%,#fff6e8 76%,#ffe5d2 100%)}
+.section-top{position:relative;margin:0 0 26px;padding-top:14px}
+.section-accent{position:absolute;right:0;top:0;width:66%;height:4px;background:#d7eaf6;border-radius:6px 0 0 6px}
+.section-intro{width:calc(100% - 17px);margin-left:auto;padding:21px 20px 22px 34px;min-height:130px;border:1px solid #ffffffb9;border-right:0;border-radius:78px 0 0 78px;background:#d8eaf7;box-shadow:0 10px 24px #456c8611;text-align:right}
+.section-intro h2{font:400 25px/1.17 "HC Libre",Georgia,serif;letter-spacing:-.045em;color:#284f70;margin-bottom:8px;text-wrap:balance}
+.section-intro p{font:450 13px/1.48 "HC Nunito",sans-serif;color:#50758f;max-width:305px;margin-left:auto;text-wrap:pretty}
+.section-intro p span{display:block}
+.stories{--ink:#284f70;--kicker:#7795a8;--paper:#ffffffeb;--shadow:0 11px 28px #35597214;position:relative;padding:0 14px}
+.story{position:relative;margin:0 0 27px;min-width:0}
+.story:last-child{margin-bottom:0}
+.story-figure{position:relative;margin:0;overflow:hidden;background:#ebeced;border:1.5px solid #ffffffdb;border-radius:21px;box-shadow:0 12px 24px #284b6a1e;z-index:2}
+.story-figure img{display:block;width:100%;height:100%;object-fit:cover}
+.story--1 img{object-position:50% 38%}
+.story--2 img{object-position:50% 48%}
+.story--3 img{object-position:52% 48%}
+.story-heading{min-width:0}
+.story-kicker{font:800 9.5px/1.35 "HC Nunito",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--kicker);margin:0 0 7px}
+.story-kicker::before{content:"";display:block;width:39px;height:2px;background:#f5b992;margin:0 0 8px}
+.story-heading h3{font:400 25px/1.17 "HC Libre",Georgia,serif;letter-spacing:-.04em;color:var(--ink);text-wrap:balance;overflow-wrap:normal}
+.story-copy{font:450 14px/1.55 "HC Nunito",sans-serif;color:#496f89;background:var(--paper);border:1px solid #ffffffef;box-shadow:var(--shadow);border-radius:19px;padding:19px 19px 20px;min-width:0}
+.story-copy p{margin:0;overflow-wrap:break-word}
+
+/* 01 — Editorial Postcard: small portrait + heading in the SAME row; full-width note below. */
+.variant-postcard .story{padding:5px 0 0}
+.variant-postcard .postcard-row{display:grid;grid-template-columns:112px minmax(0,1fr);align-items:center;gap:12px;margin:0 4px 0}
+.variant-postcard .story--2 .postcard-row{grid-template-columns:minmax(0,1fr) 112px}
+.variant-postcard .postcard-row .story-figure{width:112px;height:136px}
+.variant-postcard .story--2 .postcard-row .story-figure{grid-column:2;grid-row:1}
+.variant-postcard .story--2 .postcard-row .story-heading{grid-column:1;grid-row:1;text-align:right}
+.variant-postcard .story--2 .story-kicker::before{margin-left:auto}
+.variant-postcard .story-heading h3{font-size:22px}
+.variant-postcard .story-copy{position:relative;z-index:1;margin-top:10px;padding:17px 18px 18px}
+.variant-postcard .story--1 .story-copy{border-top-left-radius:7px}
+.variant-postcard .story--2 .story-copy{border-top-right-radius:7px}
+.variant-postcard .story--3 .story-copy{border-top-left-radius:7px}
+
+/* 02 — Illustrated Chapters: compact landscape photographic header connected to a caption/card. */
+.variant-chapters{padding:0 17px}
+.variant-chapters .story{border:1px solid #ffffffb9;border-radius:20px;overflow:hidden;background:#ffffffb2;box-shadow:0 12px 30px #2f566d11;margin-bottom:19px}
+.variant-chapters .story-figure{width:100%;height:178px;box-shadow:none;border:0;border-radius:0}
+.variant-chapters .story--2 .story-figure img{object-position:50% 35%}
+.variant-chapters .story--3 .story-figure img{object-position:50% 43%}
+.variant-chapters .story-heading{padding:19px 19px 8px}
+.variant-chapters .story-heading h3{font-size:24px}
+.variant-chapters .story-copy{padding:0 19px 20px;border:0;border-radius:0;background:transparent;box-shadow:none}
+
+/* 03 — Three-Story Gallery: all three topics visible but only ONE editorial panel open. */
+.variant-gallery{padding:0 15px}
+.gallery-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-bottom:12px}
+.gallery-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:58px;padding:8px 2px;background:#ffffffba;border:1px solid #d6e7ef;color:#466f8a;border-radius:11px;font-size:12px;font-weight:750;min-width:0}
+.gallery-tab[aria-selected=true]{background:#dceef8;border-color:#8db6cb;box-shadow:inset 0 0 0 1px #aacbdc}
+.gallery-tab .tab-index{font:400 17px/1 "HC Libre",Georgia,serif;color:#6a98b7}
+.gallery-panel{background:#fffffff0;border:1px solid #e0eaed;border-radius:21px;overflow:hidden;box-shadow:var(--shadow)}
+.gallery-title{padding:18px 18px 13px;position:relative}
+.gallery-title .story-heading{max-width:calc(100% - 30px)}
+.gallery-title .story-heading h3{font-size:25px}
+.gallery-count{position:absolute;right:16px;top:19px;font-size:10px;color:#9bb1c1;letter-spacing:.08em}
+.variant-gallery .story-figure{width:calc(100% - 30px);height:215px;margin:0 auto;border-radius:15px}
+.variant-gallery .story-figure img{object-position:center 38%}
+.variant-gallery .story-copy{padding:18px 19px 22px;background:transparent;border:0;border-radius:0;box-shadow:none}
+
+/* 04 — Illustrated Accordion: three image-title strips, only chosen paragraph expands. */
+.variant-accordion{padding:0 14px}
+.accordion-list{border:1px solid #e5ebee;border-radius:19px;background:#fffcf9cf;padding:8px;box-shadow:var(--shadow)}
+.accordion-item{border-bottom:1px solid #dfe9ed;padding:0}
+.accordion-item:last-child{border-bottom:0}
+.accordion-heading{font:inherit}
+.accordion-trigger{display:flex;width:100%;gap:12px;align-items:center;min-height:88px;padding:11px 7px;text-align:left;background:transparent;border:0;color:var(--ink)}
+.accordion-item.is-open .accordion-trigger{background:#eaf5fb91;border-radius:12px}
+.accordion-thumb{width:69px;height:72px;flex:0 0 69px;border-radius:12px;box-shadow:0 5px 15px #284b6a14}
+.accordion-label{min-width:0;flex:1}
+.accordion-label .story-kicker{display:block;font-size:8px;letter-spacing:.095em;margin-bottom:6px}
+.accordion-label .story-kicker::before{width:28px;margin-bottom:6px}
+.accordion-label .acc-title{display:block;font:400 20px/1.18 "HC Libre",Georgia,serif;letter-spacing:-.035em}
+.accordion-icon{font-size:21px;color:#7e9eb1;flex:0 0 15px}
+.accordion-detail[hidden]{display:none}
+.accordion-detail{padding:3px 8px 15px}
+.accordion-detail .story-copy{padding:15px 17px;border-radius:14px;background:#fff;box-shadow:none;font-size:13.5px;line-height:1.55}
+
+/* 05 — Interlocking Postcards: large portrait overlapping left/right opposite-edge copy. */
+.variant-interlocking{padding:0 13px}
+.variant-interlocking .story{margin-bottom:34px}
+.variant-interlocking .story-heading{margin:0 7px 12px}
+.variant-interlocking .story--2 .story-heading{text-align:right}
+.variant-interlocking .story--2 .story-kicker::before{margin-left:auto}
+.variant-interlocking .story-heading h3{font-size:24px}
+.variant-interlocking .story-figure{width:62%;height:223px;margin-left:5px;border-radius:22px}
+.variant-interlocking .story--2 .story-figure{margin-left:auto;margin-right:5px}
+.variant-interlocking .story-copy{position:relative;z-index:3;margin-top:-27px;margin-left:28px;width:calc(100% - 28px);padding:18px 18px 19px;background:#fffffff0}
+.variant-interlocking .story--2 .story-copy{margin-left:0;margin-right:28px;border-top-right-radius:7px}
+.variant-interlocking .story--1 .story-copy,.variant-interlocking .story--3 .story-copy{border-top-left-radius:7px}
+
+/* 06 — Puzzle Corners: actual image occupies an upper corner of a joined note panel. */
+.variant-corners{padding:0 12px}
+.variant-corners .story{margin-bottom:19px}
+.variant-corners .puzzle-wrap{padding:11px;background:#fffffff2;border:1px solid #ffffffec;border-radius:19px;box-shadow:var(--shadow)}
+.variant-corners .puzzle-top{display:grid;grid-template-columns:123px minmax(0,1fr);gap:12px;align-items:center}
+.variant-corners .story--2 .puzzle-top{grid-template-columns:minmax(0,1fr) 123px}
+.variant-corners .story-figure{width:123px;height:147px;border-radius:14px;box-shadow:0 7px 16px #284b6a19}
+.variant-corners .story--2 .story-figure{grid-column:2;grid-row:1}
+.variant-corners .story--2 .story-heading{grid-column:1;grid-row:1;text-align:right}
+.variant-corners .story--2 .story-kicker::before{margin-left:auto}
+.variant-corners .story-heading h3{font-size:20px}
+.variant-corners .story-kicker{font-size:8px;letter-spacing:.095em}
+.variant-corners .story-copy{margin-top:10px;padding:12px 6px 8px;background:transparent;box-shadow:none;border:0;border-top:1px solid #e6eff2;border-radius:0;font-size:13.5px;line-height:1.55}
+
+/* 07 — Cascading Zigzag: alternating positions connected by a gentle threaded path. */
+.variant-cascade{padding:0 13px}
+.variant-cascade::before{content:"";position:absolute;top:36px;bottom:44px;left:50%;width:1px;background:linear-gradient(#8db3c8 0%,#e9b6a0 52%,#b8d3c0 100%);opacity:.42;z-index:0}
+.variant-cascade .story{margin:0 0 37px;isolation:isolate}
+.variant-cascade .cascade-heading{display:flex;gap:8px;align-items:flex-start;position:relative;z-index:2;margin-bottom:10px}
+.variant-cascade .story--2 .cascade-heading{flex-direction:row-reverse;text-align:right}
+.variant-cascade .story--2 .story-kicker::before{margin-left:auto}
+.variant-cascade .story-index{font:400 23px/1.1 "HC Libre",Georgia,serif;color:#a2b9c6;padding-top:11px;flex:0 0 26px}
+.variant-cascade .story-heading h3{font-size:22px}
+.variant-cascade .cascade-photo{position:relative;z-index:2}
+.variant-cascade .story-figure{width:64%;height:197px;margin:0 0 0 3px;border-radius:20px}
+.variant-cascade .story--2 .story-figure{margin:0 3px 0 auto}
+.variant-cascade .story-copy{position:relative;z-index:3;margin-top:-26px;margin-left:21px;width:calc(100% - 21px);padding:17px 17px 18px;background:#fffffff2}
+.variant-cascade .story--2 .story-copy{margin-left:0;margin-right:21px}
+.variant-cascade .story--1 .story-copy,.variant-cascade .story--3 .story-copy{border-top-left-radius:6px}
+.variant-cascade .story--2 .story-copy{border-top-right-radius:6px}
+.variant-cascade .story:not(:last-child)::after{content:"";position:absolute;bottom:-28px;left:50%;width:11px;height:11px;margin-left:-5px;border-radius:50%;border:2px solid #fff;background:#d0e4ef;box-shadow:0 0 0 1px #c4d6df;z-index:3}
+
+/* 320px: decrease photo/head widths without shrinking paragraph readability excessively. */
+@media(max-width:340px){
+ .section-intro{padding-left:25px;padding-right:16px}
+ .section-intro h2{font-size:23px}
+ .section-intro p{font-size:12.5px}
+ .stories{padding-left:10px;padding-right:10px}
+ .story-heading h3{font-size:23px}
+ .story-copy{font-size:13.5px;padding-left:15px;padding-right:15px}
+ .variant-postcard .postcard-row{grid-template-columns:96px minmax(0,1fr);gap:10px}
+ .variant-postcard .story--2 .postcard-row{grid-template-columns:minmax(0,1fr) 96px}
+ .variant-postcard .postcard-row .story-figure{width:96px;height:132px}
+ .variant-postcard .story-heading h3{font-size:20px}
+ .variant-chapters .story-figure{height:164px}
+ .variant-gallery .story-figure{height:190px}
+ .variant-accordion .acc-title{font-size:18px}
+ .variant-accordion .accordion-thumb{width:61px;flex-basis:61px}
+ .variant-interlocking .story-figure{height:209px}
+ .variant-interlocking .story-heading h3{font-size:22px}
+ .variant-corners .puzzle-top{grid-template-columns:110px minmax(0,1fr);gap:9px}
+ .variant-corners .story--2 .puzzle-top{grid-template-columns:minmax(0,1fr) 110px}
+ .variant-corners .story-figure{width:110px;height:145px}
+ .variant-corners .story-heading h3{font-size:19px}
+ .variant-cascade .story-heading h3{font-size:21px}
+ .variant-cascade .story-figure{height:182px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
