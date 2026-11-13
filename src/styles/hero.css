@@ -369,8 +369,8 @@
 /* Tablet: keep the approved hero headline scale; reconnect copy, CTA and trust row. */
 @media (min-width: 751px) and (max-width: 900px) {
   .hero {
-    height: clamp(388px, 48vw, 432px);
-    min-height: 388px;
+    height: clamp(350px, 43.5vw, 389px);
+    min-height: 350px;
   }
   .hero-copy {
     left: 7%;

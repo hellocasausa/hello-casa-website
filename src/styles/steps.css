@@ -350,14 +350,14 @@
 @media (min-width: 751px) and (max-width: 900px) {
   .steps {
     padding-inline: var(--hc-tablet-gutter);
-    grid-template-columns: minmax(188px, 1.08fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: 230px repeat(3, minmax(0, 1fr));
     gap: 0;
   }
   .steps-heading { padding: 0 0 0 19px; }
   .steps h2, .steps h2 span {
     font-size: var(--hc-tablet-heading);
     line-height: 1.16;
-    white-space: normal;
+    white-space: nowrap;
   }
   .steps li { padding-inline: 6px; gap: 6px; }
   .steps .step-number {

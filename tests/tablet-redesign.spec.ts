@@ -56,7 +56,32 @@ test("tablet design has unified rhythm and live native Services at 751, 768, 820
   await expect(page.locator("#contact .hc-card-desc")).toHaveCSS("font-size","16px");
   await expect(page.locator("#contact .hc-card-desc")).toHaveCSS("line-height","24px");
   await expect(page.locator("#contact #hc-contact-jotform")).toHaveCSS("overflow","visible");
-  await expect(page.locator("#footer .hc-b-footer__brand img")).toHaveCSS("width","180px");
+  const line=await page.locator(".steps h2").evaluate(el=>{
+    const range=document.createRange();
+    range.selectNodeContents(el.firstChild);
+    const titleRects=Array.from(range.getClientRects());
+    const lineTwo=el.querySelector("span").getBoundingClientRect();
+    const first=titleRects[0];
+    return {lines:titleRects.length,firstBottom:first.bottom,secondTop:lineTwo.top};
+  });
+  expect(line.lines,"A Fresh Start must occupy a single line at "+width).toBe(1);
+  expect(line.secondTop,"In 3 steps should appear below the first line at "+width).toBeGreaterThanOrEqual(line.firstBottom-1);
+  const heroInset=hero.heroBottom-hero.trustBottom;
+  expect(heroInset,"hero footer space should be economical at "+width).toBeGreaterThanOrEqual(12);
+  expect(heroInset,"hero footer space should be economical at "+width).toBeLessThanOrEqual(38);
+  await expect(page.locator("#footer .hc-b-footer__brand img")).toHaveCSS("width","156px");
+  await expect(page.locator("#footer .hc-b-footer__newsletter")).toBeHidden();
+  const footer=await page.locator("#footer").evaluate(el=>{
+    const logo=el.querySelector(".hc-b-footer__brand").getBoundingClientRect();
+    const nav=el.querySelector(".hc-b-footer__nav").getBoundingClientRect();
+    const legal=el.querySelector(".hc-b-footer__legal").getBoundingClientRect();
+    return {logoX:logo.x,logoRight:logo.right,logoTop:logo.top,navX:nav.x,navTop:nav.top,legalTop:legal.top,navBottom:nav.bottom,overflow:el.scrollWidth-el.clientWidth};
+  });
+  expect(footer.logoX).toBeLessThan(footer.navX);
+  expect(footer.navX-footer.logoRight).toBeGreaterThanOrEqual(16);
+  expect(Math.abs(footer.navTop-footer.logoTop)).toBeLessThanOrEqual(2);
+  expect(footer.legalTop).toBeGreaterThanOrEqual(footer.navBottom);
+  expect(footer.overflow).toBeLessThanOrEqual(2);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);
  }
 });

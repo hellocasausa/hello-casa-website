@@ -59,3 +59,8 @@ The preview compiles Vite into the project subpath, including its images and Jav
 ## Tablet visual design batch
 
 The independent tablet layout (751–900px) now inherits the cohesive desktop Services selector/checklist composition and uses 28px section and Standards editorial headings, a shared 29px page gutter (48px to Steps/Contact heading text), restrained numbered Steps, improved hero description and CTA with integrated trust row, alternating Standards photography/narrative, a balanced Contact composition and full-height form frame, and a refined footer. The Hero headline font size is intentionally unchanged. This work stays on draft PR #1. Test responsive preview at https://hellocasausa.github.io/hello-casa-website/review/ when published. No production deployment.
+
+
+### Approved tablet follow-up: Steps, Hero bottom, and footer
+
+At 751–900px, Steps keeps the 28px heading with “A Fresh Start,” forced onto one row and “In 3 steps” on the next; a 230px first grid track preserves the shared Contact inset. The Hero ends closer to its trust-benefit row by shortening the section height while preserving the established hero text, CTA and benefit positions. The tablet footer hides the newsletter and uses one horizontal logo → Explore → Support → Jobs row with the legal links beneath; its logo is 156px wide (down from 180px), preserving the illustrated background. Desktop and phone are not changed. These changes were approved as one batch and are verified at 751, 768, 820 and 900px.
