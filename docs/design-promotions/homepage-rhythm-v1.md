@@ -65,3 +65,5 @@ Desktop scope is 901px and above; tablet and mobile retain their existing styles
 - A desktop-and-tablet browser regression covers the full batch at seven desktop widths and four smaller widths.
 
 All edits live in the existing source owners, without another corrective stylesheet. Previous committed implementation remains recoverable at the `checkpoint/pre-desktop-body-16px-c48a706` branch.
+
+**Batch preview source pin:** `a6325a70d483abe388a8070ed80602c9484ff930` (one immutable snapshot for review, same native CSS as the batch).

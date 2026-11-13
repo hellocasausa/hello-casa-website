@@ -41,7 +41,7 @@ const status=document.getElementById('status');
 const widths=[...document.querySelectorAll('[data-width]')];
 let desired=390,loaded=false;
 const project='https://raw.githubusercontent.com/hellocasausa/hello-casa-website/';
-const sha='ee3c4aea102279a9558daa06157bfbcdc03cb125'; // immutable review source
+const sha='a6325a70d483abe388a8070ed80602c9484ff930'; // immutable review source
 const root=project+sha+'/';
 const get=async(path)=>{const res=await fetch(root+path,{cache:'no-store'});if(!res.ok)throw Error('Unable to fetch '+path+' ('+res.status+')');return res.text()};
 const absolutize=(raw)=>{
