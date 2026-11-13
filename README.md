@@ -46,3 +46,12 @@ Compared local screenshots against the extracted baseline at 350, 390, 430, 750,
 ## Phase B.3 optimization and editor architecture
 
 The owner-approved reconstruction is frozen at branch `checkpoint/phase-b3-approved-e5953f2`. Performance, visual-regression methodology and measured results are in [docs/performance](docs/performance/README.md). The future editor's implementation contract is [anti-accretion architecture](docs/design-studio/anti-accretion-architecture.md). No editor is implemented here. Run `npm run check:architecture` for deterministic generation, font registration and cascade guards. See [measured results](docs/performance/results.md) and [remaining opportunities](docs/performance/implementation-notes.md).
+
+
+## Online responsive design review (GitHub Pages)
+
+The draft branch phase-b/homepage-reconstruction has a new same-origin interactive review interface at public/review/index.html. Once GitHub Pages is enabled for this repository, its official hosting address will be https://hellocasausa.github.io/hello-casa-website/review/ with Desktop (1440px), Tablet (820px), and Mobile (390px) buttons. You can also open the complete native site at https://hellocasausa.github.io/hello-casa-website/ .
+
+One-time GitHub setup: open repository Settings > Pages > Build and deployment > Source, and choose GitHub Actions. Since this repository does not yet have Pages enabled, the first publication cannot complete until this setting is enabled. After enabling, rerun the Publish Hello Casa responsive review to GitHub Pages workflow (or push another draft update). The source branch automatically updates the review on each push without merging or deploying the real Hello Casa domain. This GitHub Pages project is public, like the repository. Both HTML pages specify noindex; this is not access control.
+
+The preview compiles Vite into the project subpath, including its images and JavaScript; the controls resize a same-origin iframe showing the real built website. The original Contact Jotform embed remains an external dependency. The viewer does not alter the live website.

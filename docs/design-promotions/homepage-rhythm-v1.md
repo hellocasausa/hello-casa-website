@@ -90,3 +90,8 @@ Rollback checkpoint: `checkpoint/pre-standards-narrow-card-guest-v1-7b14a9a`.
 Rollback reference: `checkpoint/pre-standards-width-spacing-corners-9a2e1ed`.
 
 **Current visual-review and element-explorer source pin:** `d2cd91a464df99e7c46ed8cc8b9dfb2c27b681fb` (desktop Standards width, spacing and second-photo corner refinement).
+
+
+## GitHub Pages responsive viewer and white-card correction
+
+The white card beneath Personalized Cleaning Profiles no longer has the oversized left pill. All Standards text cards now use consistent 22px corners, and its internal left padding has returned to 30px (26px at narrower desktops). Photo geometry and tablet/mobile overrides are unchanged. The actual responsive preview is now built into public/review/index.html with 1440/820/390px viewport presets and same-origin native site rendering. GitHub Pages workflow is .github/workflows/publish-review.yml; repo owner must enable Pages with GitHub Actions as Source once. No production deployment is involved.
