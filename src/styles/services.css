@@ -1769,4 +1769,9 @@
   #hc-mobile-vertical .hc-choices .hc-card-label { font-size: 9.5px; }
   #hc-mobile-vertical .hc-choices .hc-card { padding: 5px 2px; }
   #hc-mobile-vertical #hc-feature-title { font-size: 17px; }
+  /* Keep three content-width focus controls on a single row at 320px.
+     Only the surrounding horizontal gutters and pill padding contract. */
+  #hc-mobile-vertical .hc-v93-focus-dock { padding-inline: 6px; }
+  #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-wrap { padding-inline: 7px; }
+  #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-btn { padding-inline: 9px; }
 }
