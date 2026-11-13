@@ -88,3 +88,5 @@ Rollback checkpoint: `checkpoint/pre-standards-narrow-card-guest-v1-7b14a9a`.
 - Tablet and mobile overrides remain intact. Browser tests verify the three expanded text tracks, image dimensions, full paragraphs, separation, photograph corners and responsive noninterference.
 
 Rollback reference: `checkpoint/pre-standards-width-spacing-corners-9a2e1ed`.
+
+**Current visual-review and element-explorer source pin:** `d2cd91a464df99e7c46ed8cc8b9dfb2c27b681fb` (desktop Standards width, spacing and second-photo corner refinement).
