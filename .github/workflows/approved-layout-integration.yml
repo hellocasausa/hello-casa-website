@@ -17,6 +17,7 @@ on:
       - "tests/mobile-concepts.spec.ts"
       - "tests/native-mobile-featured.spec.ts"
       - "tests/mobile-standards-concepts.spec.ts"
+      - "tests/native-mobile-standards.spec.ts"
       - "scripts/build-mobile-standards.ts"
       - "public/mobile-standards/**"
       - "src/components/services.ts"
@@ -51,7 +52,7 @@ jobs:
       - name: Generate experimental mobile Standards variants from original imagery and first paragraphs
         run: node scripts/build-mobile-standards.ts
       - name: Functional and layout regressions
-        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts tests/approved-previews.spec.ts tests/hosted-review.spec.ts tests/tablet-redesign.spec.ts tests/mobile-concepts.spec.ts tests/native-mobile-featured.spec.ts tests/mobile-standards-concepts.spec.ts --reporter=line
+        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts tests/approved-previews.spec.ts tests/hosted-review.spec.ts tests/tablet-redesign.spec.ts tests/mobile-concepts.spec.ts tests/native-mobile-featured.spec.ts tests/mobile-standards-concepts.spec.ts tests/native-mobile-standards.spec.ts --reporter=line
       - uses: actions/upload-artifact@v4
         if: always()
         with:

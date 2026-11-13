@@ -27,3 +27,7 @@ The browser suite checks 320px, 375px and 390px widths, three actual original wa
 No changes have been made to the production homepage Standards markup, Styles, mobile/tablet/desktop responsive rules, original second paragraphs, or any other existing component. The study lives only at public/mobile-standards/. A user review and explicit approval are required before selecting any composition for integration.
 
 The previously noted mobile Hero trust-row spacing and mobile Services page rhythm remain separate pending design feedback; this study does not modify them.
+
+## Approved mobile homepage integration — Cascading Zigzag
+
+The owner selected **Concept 07 (Cascading Zigzag)** for the real mobile Standards section. Mobile ≤750px now uses three alternating image/white-card compositions with a subtle connecting vertical line and small sequence markers, and displays only the first existing paragraph of each of the three selling points. The second paragraphs remain in the canonical HTML and continue to display at tablet/desktop widths. The mobile 'Care starts at home.' capsule is shallower, and the complete sentence 'So do the little details, & the freedom to change your plans.' is intended to occupy a single line across the full phone width. Original images, typography families, headlines, colors and approved text are retained. Tablet and desktop Standards rules remain unchanged. This is a GitHub draft-branch responsive review candidate, not a production release.

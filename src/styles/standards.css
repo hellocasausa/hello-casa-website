@@ -69,8 +69,8 @@
  .st-story--two{margin-bottom:52px}
  .st-story--three{margin-bottom:0}
 }
-/* Tablet/phone: preserve all full-length copy and the image/card relationship,
-   but let semantic stories flow naturally instead of using fixed-height artwork. */
+/* Shared narrower screens: preserve semantic story order. Tablet keeps both
+   paragraphs; phone composition further down uses only the first visually. */
 @media(max-width:900px){
  #standards{padding:28px 0 44px}
  .st-shell{width:min(calc(100% - 40px),690px);container-type:normal}
@@ -186,21 +186,205 @@
   .st-copy p+p { margin-top: 14px; }
 }
 
-@media(max-width:520px){
- #standards{padding:20px 0 36px}
- .st-shell{width:calc(100% - 30px)}
- .st-intro-rule{right:-15px}
- .st-intro{width:calc(100% + 15px);margin-right:-15px;padding:21px 17px 21px 34px;border-radius:58px 0 0 58px}
- .st-intro h2{font-size:clamp(23px,7vw,30px)}
- .st-intro p{font-size:13px;line-height:1.55}
- .st-stories{margin-top:30px}
- .st-story,.st-story--two,.st-story--three{margin-bottom:36px}
- .st-story--three{margin-bottom:0}
- .st-heading,.st-story--two .st-heading{padding:0 5px;margin-bottom:15px}
- .st-heading h3{font-size:clamp(23px,6.3vw,28px)}
- .st-heading .st-kicker{font-size:9px}
- .st-figure{width:min(65vw,265px)}
- .st-story--two .st-figure{width:min(61vw,242px)}
- .st-story--three .st-figure{width:min(68vw,282px)}
- .st-prose,.st-story--two .st-prose{padding:36px 19px 22px;font-size:14px;line-height:1.62}
+/* Phone: approved Cascading Zigzag (Concept 07).
+   One first paragraph per story is displayed. Both original paragraphs
+   remain in native markup for tablet/desktop; no copy is discarded. */
+@media(max-width:750px){
+  #standards{padding:18px 0 36px}
+  #standards .st-shell{width:calc(100% - 26px);container-type:normal}
+  #standards .st-intro-wrap{padding-top:12px}
+  #standards .st-intro-rule{
+    top:0;right:-13px;width:66%;height:4px;
+  }
+  #standards .st-intro{
+    width:calc(100% - 1px + 13px);
+    margin-right:-13px;
+    margin-left:auto;
+    padding:16px 12px 15px 24px;
+    border-radius:76px 0 0 76px;
+    min-height:0;
+    text-align:right;
+  }
+  #standards .st-intro h2{
+    font-size:clamp(23px,6.4vw,27px);
+    line-height:1.2;
+    margin-bottom:7px;
+  }
+  #standards .st-intro p{
+    max-width:none;
+    font-size:clamp(12px,3.3vw,13px);
+    line-height:1.45;
+  }
+  #standards .st-intro p span{
+    display:block;
+    white-space:nowrap;
+    text-wrap:nowrap;
+    letter-spacing:-.022em;
+    font-size:clamp(9.3px,2.85vw,11.75px);
+  }
+  #standards .st-stories{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    padding:0 13px;
+    margin-top:27px;
+    counter-reset:standard-story;
+  }
+  #standards .st-stories::before{
+    content:"";
+    position:absolute;
+    top:36px;bottom:44px;left:50%;width:1px;
+    background:linear-gradient(#8db3c8 0%,#e9b6a0 52%,#b8d3c0 100%);
+    opacity:.42;
+    pointer-events:none;
+  }
+  #standards .st-story,
+  #standards .st-story--two,
+  #standards .st-story--three{
+    position:relative;
+    isolation:isolate;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    width:100%;
+    max-width:none;
+    margin:0 0 37px;
+    gap:0;
+    counter-increment:standard-story;
+    min-height:0;
+  }
+  #standards .st-story--three{margin-bottom:0}
+  #standards .st-story:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    bottom:-28px;
+    left:50%;
+    width:11px;height:11px;
+    margin-left:-5px;
+    border-radius:50%;
+    border:2px solid #fff;
+    background:#d0e4ef;
+    box-shadow:0 0 0 1px #c4d6df;
+    z-index:3;
+    pointer-events:none;
+  }
+  #standards .st-editorial{display:contents}
+  #standards .st-heading,
+  #standards .st-story--two .st-heading{
+    order:0;
+    align-self:stretch;
+    position:relative;
+    z-index:2;
+    width:auto;
+    margin:0 0 10px;
+    padding:0 0 0 35px;
+    text-align:left;
+  }
+  #standards .st-heading::before{
+    content:counter(standard-story,decimal-leading-zero);
+    position:absolute;
+    top:10px;left:0;
+    font:400 23px/1.1 "HC Libre","Libre Baskerville",Georgia,serif;
+    color:#a2b9c6;
+  }
+  #standards .st-story--two .st-heading{
+    text-align:right;
+    padding:0 35px 0 0;
+  }
+  #standards .st-story--two .st-heading::before{left:auto;right:0}
+  #standards .st-heading .st-kicker{
+    font-size:9.5px;
+    letter-spacing:.14em;
+    line-height:1.35;
+    margin:0 0 7px;
+  }
+  #standards .st-heading .st-kicker::before{
+    width:39px;
+    height:2px;
+    margin:0 0 8px;
+  }
+  #standards .st-story--two .st-heading .st-kicker::before{margin:0 0 8px auto}
+  #standards .st-heading h3{
+    font-size:22px;
+    line-height:1.17;
+    letter-spacing:-.04em;
+    text-wrap:balance;
+  }
+  #standards .st-visual,
+  #standards .st-story--two .st-visual,
+  #standards .st-story--three .st-visual{
+    order:1;
+    grid-column:auto;
+    grid-row:auto;
+    align-self:stretch;
+    position:relative;
+    width:100%;
+    z-index:2;
+    margin:0;
+    transform:none;
+  }
+  #standards .st-figure,
+  #standards .st-story--two .st-figure,
+  #standards .st-story--three .st-figure{
+    width:min(64%,250px);
+    max-width:100%;
+    height:clamp(175px,51vw,215px);
+    aspect-ratio:auto;
+    margin:0 0 0 3px;
+    transform:none;
+    border:1.5px solid #ffffffdb;
+    border-radius:20px;
+    box-shadow:0 12px 24px #284b6a1e;
+  }
+  #standards .st-story--two .st-figure{
+    margin-left:auto;
+    margin-right:3px;
+  }
+  #standards .st-figure img{object-position:50% 38%}
+  #standards .st-story--two .st-figure img{object-position:50% 48%}
+  #standards .st-story--three .st-figure img{object-position:52% 48%}
+  #standards .st-prose,
+  #standards .st-story--two .st-prose,
+  #standards .st-story--three .st-prose{
+    order:2;
+    position:relative;
+    z-index:3;
+    width:calc(100% - 21px);
+    min-width:0;
+    margin:-26px 0 0 21px;
+    padding:17px 17px 18px;
+    border:1px solid #ffffffef;
+    border-radius:19px;
+    border-top-left-radius:6px;
+    background:#fffffff2;
+    box-shadow:0 11px 28px #35597214;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    font:450 14px/1.55 "HC Nunito","Nunito Sans",sans-serif;
+    letter-spacing:0;
+    color:#496f89;
+  }
+  #standards .st-story--two .st-prose{
+    margin-left:0;
+    margin-right:21px;
+    border-top-left-radius:19px;
+    border-top-right-radius:6px;
+  }
+  #standards .st-copy p + p{display:none}
+}
+@media(max-width:340px){
+  #standards .st-intro{padding-left:18px;padding-right:10px}
+  #standards .st-intro h2{font-size:23px}
+  #standards .st-stories{padding-inline:9px}
+  #standards .st-heading h3{font-size:21px}
+  #standards .st-figure,
+  #standards .st-story--two .st-figure,
+  #standards .st-story--three .st-figure{height:182px}
+  #standards .st-prose,
+  #standards .st-story--two .st-prose,
+  #standards .st-story--three .st-prose{
+    padding:17px 15px 18px;
+    font-size:13.5px;
+  }
 }
