@@ -73,7 +73,7 @@ html.hc-services-study #hc-mobile-vertical .hc-bound{
     line-height:1.45!important;
     padding-left:13px!important;
     overflow-wrap:break-word!important;
-    hyphens:auto;
+    hyphens:none;
   }
   html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved li::before{
     font-size:10px!important;
