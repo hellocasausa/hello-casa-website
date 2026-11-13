@@ -219,8 +219,8 @@
     display:block;
     white-space:nowrap;
     text-wrap:nowrap;
-    width:calc(100% + 12px);
-    margin-left:-12px;
+    width:calc(100% + 20px);
+    margin-left:-20px;
     letter-spacing:-.018em;
     font-size:clamp(11.1px,3.48vw,13.6px);
   }
