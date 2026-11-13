@@ -9,6 +9,7 @@ on:
       - "src/components/markup/standards.html"
       - "src/styles/standards.css"
       - "tests/approved-services.spec.ts"
+      - "tests/homepage.spec.ts"
       - "tests/approved-standards.spec.ts"
       - "tests/approved-previews.spec.ts"
       - "public/review/index.html"
@@ -66,5 +67,7 @@ jobs:
         if: always()
         with:
           name: approved-native-layout-desktop-screenshots
-          path: test-results/approved-*.png
+          path: |
+            test-results/approved-*.png
+            test-results/mobile-type-*.png
           if-no-files-found: ignore
