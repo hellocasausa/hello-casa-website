@@ -1663,13 +1663,13 @@
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 13px 12px 0;
+    padding: 12px 12px 0;
   }
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-wrap {
     display: block;
     border: 1px solid #dbe8ed;
     border-radius: 12px;
-    padding: 12px;
+    padding: 11px 12px;
     background: var(--hc-feature-white);
     box-shadow: none;
   }
@@ -1677,31 +1677,36 @@
     font: 800 10.5px/1.35 "HC Nunito", "Nunito Sans", sans-serif;
     letter-spacing: .06em;
     text-transform: uppercase;
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: #315a79;
     text-align: left;
   }
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-controls {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+    width: 100%;
   }
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-btn {
-    min-height: 52px;
-    height: auto;
+    flex: 0 0 auto;
+    width: auto;
     min-width: 0;
-    padding: 7px 3px;
+    min-height: 36px;
+    height: 36px;
+    padding: 0 12px;
     background: var(--hc-feature-white);
     border: 1px solid #d5e5ee;
-    border-radius: 999px;
+    border-radius: 18px;
     color: #46718d;
-    font: 750 10px/1.25 "HC Nunito", "Nunito Sans", sans-serif;
-    white-space: normal;
+    font: 750 11px/1.2 "HC Nunito", "Nunito Sans", sans-serif;
+    white-space: nowrap;
   }
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-btn[aria-pressed="true"] {
-    border-color: #81adc5;
-    background: #dbeef8;
-    box-shadow: inset 0 0 0 1px #abcbdc;
+    border-color: #99bacd;
+    background: #eaf4fb;
+    box-shadow: none;
   }
   #hc-mobile-vertical .hc-v93-focus-dock .hc-focus-help,
   #hc-mobile-vertical[data-active-plan="maintenance"] .hc-footnote { display: none; }

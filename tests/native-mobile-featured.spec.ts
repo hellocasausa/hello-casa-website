@@ -25,8 +25,21 @@ test("native Featured Service uses six canonical tabs, mobile focus buttons, and
   expect(grid,"three service columns at "+width+"px").toBe(3);
   await expect(section.locator(".hc-v93-focus-select")).toBeHidden();
   await expect(section.locator(".hc-v93-focus-dock .hc-focus-btn")).toHaveCount(3);
-  for(const focusBtn of await section.locator(".hc-v93-focus-dock .hc-focus-btn").all())
-    await expect(focusBtn).toHaveCSS("border-radius","999px");
+  for(const focusBtn of await section.locator(".hc-v93-focus-dock .hc-focus-btn").all()){
+    await expect(focusBtn).toHaveCSS("border-radius","18px");
+    await expect(focusBtn).toHaveCSS("height","36px");
+    await expect(focusBtn).toHaveCSS("font-size","11px");
+  }
+  const controls=await section.locator(".hc-v93-focus-dock .hc-focus-controls").evaluate(el=>{
+    const rect=el.getBoundingClientRect();
+    const b=[...el.querySelectorAll("button")].map(x=>x.getBoundingClientRect());
+    return {gap:parseFloat(getComputedStyle(el).gap),display:getComputedStyle(el).display,
+      widths:b.map(x=>x.width),within:b.every(x=>x.left>=rect.left-1&&x.right<=rect.right+1)};
+  });
+  expect(controls.gap).toBe(6);
+  expect(controls.display).toBe("flex");
+  expect(controls.within,"compact controls fit at "+width+"px").toBe(true);
+  expect(Math.max(...controls.widths),"no oversized focus buttons at "+width+"px").toBeLessThanOrEqual(112);
   await expect(section.locator(".hc-panel-actions .hc-button")).toHaveCSS("border-radius","999px");
   await expect(section.locator(".hc-selector")).toHaveCSS("background-color","rgb(243, 250, 254)");
   await expect(section.locator(".hc-v93-focus-dock .hc-focus-help")).toBeHidden();

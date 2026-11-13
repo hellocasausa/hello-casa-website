@@ -17,7 +17,11 @@ test("approved Atelier v4 geometry, copy, original imagery and responsive photo 
   await expect(page.locator(".st-intro p span")).toHaveCSS("display","block");
   await expect(page.locator(".st-copy p")).toHaveCount(6);
   await expect(page.locator(".st-story")).toHaveCount(3);
-  for(let i=0;i<3;i++)await expect(page.locator(".st-story").nth(i).locator("h3")).toHaveText(headings[i]);
+  for(let i=0;i<3;i++){
+    const story=page.locator(".st-story").nth(i);
+    await expect(story.locator("h3 .st-title-original")).toHaveText(headings[i]);
+    await expect(story.locator("h3 .st-title-mobile")).toBeHidden();
+  }
   await expect.poll(()=>page.locator(".st-figure img").evaluateAll(imgs=>imgs.filter(i=>(i as HTMLImageElement).naturalWidth>0).length),{timeout:15000}).toBe(3);
   const info=await standard.evaluate(el=>{
    const w=el.ownerDocument.defaultView!,shell=el.querySelector(".st-shell")!,intro=el.querySelector(".st-intro")!,line=el.querySelector(".st-intro-rule")!,ir=intro.getBoundingClientRect(),lr=line.getBoundingClientRect();

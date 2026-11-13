@@ -12,6 +12,7 @@
 .st-intro p{font:450 14.5px/1.5 "HC Nunito","Nunito Sans",Arial,sans-serif;max-width:620px;margin-left:auto;color:#50758f}
 .st-intro p span{display:block}
 .st-intro-mobile{display:none}
+.st-title-mobile{display:none}
 .st-stories{display:flex;flex-direction:column;gap:0;margin-top:32px}
 .st-story{position:relative;display:grid;grid-template-columns:calc(24.1322cqw * var(--st-story-scale)) minmax(0,1fr);align-items:center;column-gap:0;width:100%;min-width:0;margin-bottom:60px}
 .st-story--one{max-width:992px;margin-left:8px}
@@ -191,6 +192,8 @@
    One first paragraph per story is displayed. Both original paragraphs
    remain in native markup for tablet/desktop; no copy is discarded. */
 @media(max-width:750px){
+  #standards .st-title-original{display:none}
+  #standards .st-title-mobile{display:inline}
   #standards{padding:18px 0 36px}
   #standards .st-shell{width:calc(100% - 26px);container-type:normal}
   #standards .st-intro-wrap{padding-top:12px}

@@ -700,30 +700,8 @@
     font-weight: 400;
     margin: 0 0 8px;
   }
-  /* Keep the Jotform embed functional; place its backup action next to
-     the supporting copy rather than after an unrendered tall iframe. */
-  #contact.hc-contact-new #hc-contact-jotform.hc-jotform-embed {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-height: 0;
-  }
-  #contact.hc-contact-new .contact-fallback {
-    order: -1;
-    align-self: flex-start;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: 9px 15px;
-    margin: 0 0 9px;
-    border: 1px solid #ead78a;
-    border-radius: 999px;
-    background: #fff0ae;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-  }
+  /* The canonical Jotform embed follows the supporting copy directly.
+     The redundant open-in-new-tab fallback is intentionally removed. */
 }
 @media screen and (max-width: 750px) {
   #contact .hc-card-desc .hc104-question {
@@ -840,11 +818,4 @@
 
 .hc-contact-new {
   position: relative;
-}
-.contact-fallback {
-  display: block;
-  text-align: center;
-  font-size: 12px;
-  margin: 12px 0;
-  color: #294b6f;
 }

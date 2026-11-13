@@ -165,7 +165,7 @@ test("compact navigation closes on Escape and selection; destinations and newsle
   );
   expect(await page.locator(".hc-b-footer__pending a").count()).toBe(0);
 });
-test("default checklist and contact fallback are usable without application JavaScript", async ({
+test("default checklist and Jotform embed exist without application JavaScript", async ({
   browser,
 }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
@@ -173,9 +173,10 @@ test("default checklist and contact fallback are usable without application Java
   await p.goto(process.env.TEST_BASE_URL || "http://127.0.0.1:5173");
   await expect(p.locator("[data-task-id]")).toHaveCount(20);
   await expect(p.locator(".hc-button")).toBeVisible();
-  await expect(p.locator(".contact-fallback")).toHaveAttribute(
-    "href",
-    "https://form.jotform.com/262930639373060",
+  await expect(p.locator(".contact-fallback")).toHaveCount(0);
+  await expect(p.locator("#hc-contact-jotform script")).toHaveAttribute(
+    "src",
+    "https://form.jotform.com/jsform/262930639373060",
   );
   await context.close();
 });

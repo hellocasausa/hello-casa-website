@@ -18,7 +18,7 @@ const records=[...document.querySelectorAll(".st-story")].map((story,i)=>{
  const original=source?.getAttribute("src");
  const image=delivery[original]?.src||original;
  if(!image||!image.startsWith("/assets/"))throw Error("Missing canonical picture for story "+(i+1));
- const title=story.querySelector(".st-heading h3")?.textContent?.trim();
+ const title=story.querySelector(".st-title-original")?.textContent?.trim();
  const eyebrow=story.querySelector(".st-kicker")?.textContent?.trim();
  const paragraph=paragraphs[0]?.textContent?.trim();
  if(!title||!eyebrow||!paragraph)throw Error("Missing approved copy for story "+(i+1));

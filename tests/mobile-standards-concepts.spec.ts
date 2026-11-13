@@ -6,7 +6,7 @@ const widths=[320,375,390] as const;
 const {document}=parseHTML("<html><body>"+fs.readFileSync("src/components/markup/standards.html","utf8")+"</body></html>");
 const source=[...document.querySelectorAll(".st-story")].map((s,i)=>({
  eyebrow:s.querySelector(".st-kicker")!.textContent!.trim(),
- title:s.querySelector(".st-heading h3")!.textContent!.trim(),
+ title:s.querySelector(".st-title-original")!.textContent!.trim(),
  first:s.querySelector(".st-copy p")!.textContent!.trim(),
  second:s.querySelectorAll(".st-copy p")[1]!.textContent!.trim(),
  image:s.querySelector(".st-figure img")!.getAttribute("src")!

@@ -4,7 +4,8 @@ const firstParagraphs=[
  "It's often the little things that make the biggest difference.",
  "Some weeks call for a little extra help."
 ];
-const headings=["Thoroughly Vetted Professionals","Personalized Cleaning Profiles","No Long-Term Contracts"];
+const headings=["Vetted professionals","Personalized cleaning profiles","No long term contracts"];
+const originalHeadings=["Thoroughly Vetted Professionals","Personalized Cleaning Profiles","No Long-Term Contracts"];
 test.beforeEach(async({page})=>{
  await page.goto("/");
  await page.evaluate(()=>document.fonts.ready);
@@ -75,7 +76,8 @@ test("approved Cascading Zigzag is native mobile Standards, first paragraph only
     expect(row.imageWidth).toBeGreaterThan(130);
   }
   for(let i=0;i<3;i++){
-    await expect(section.locator(".st-story").nth(i).locator("h3")).toHaveText(headings[i]);
+    await expect(section.locator(".st-story").nth(i).locator("h3 .st-title-mobile")).toHaveText(headings[i]);
+    await expect(section.locator(".st-story").nth(i).locator("h3 .st-title-original")).toBeHidden();
     await expect(section.locator(".st-story").nth(i).locator(".st-copy p").first()).toContainText(firstParagraphs[i]);
   }
  }
@@ -90,6 +92,12 @@ test("desktop and tablet retain both paragraphs and their original Standards geo
   await expect(page.locator("#standards .st-intro-original")).toBeVisible();
   await expect(page.locator("#standards .st-intro-mobile")).toBeHidden();
   await expect(page.locator("#standards .st-intro-original span")).toHaveText("So do the little details, & the freedom to change your plans.");
+  for(let i=0;i<3;i++){
+    const story=page.locator("#standards .st-story").nth(i);
+    await expect(story.locator(".st-title-original")).toBeVisible();
+    await expect(story.locator(".st-title-original")).toHaveText(originalHeadings[i]);
+    await expect(story.locator(".st-title-mobile")).toBeHidden();
+  }
   const photo=await page.locator("#standards .st-story--one .st-figure").evaluate(el=>el.getBoundingClientRect().height);
   expect(photo).toBeGreaterThan(200);
  }
