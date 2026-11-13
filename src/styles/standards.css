@@ -219,8 +219,10 @@
     display:block;
     white-space:nowrap;
     text-wrap:nowrap;
-    letter-spacing:-.022em;
-    font-size:clamp(9.3px,2.85vw,11.75px);
+    width:calc(100% + 12px);
+    margin-left:-12px;
+    letter-spacing:-.018em;
+    font-size:clamp(11.1px,3.48vw,13.6px);
   }
   #standards .st-stories{
     position:relative;
