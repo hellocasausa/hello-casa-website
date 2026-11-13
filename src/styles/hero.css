@@ -401,8 +401,8 @@
   .book-arrow { width: 16px; height: 16px; }
   .benefits {
     left: 7%;
-    top: auto;
-    bottom: 19px;
+    top: clamp(308px, 38.6vw, 340px);
+    bottom: auto;
     width: 78%;
     justify-content: flex-start;
     align-items: center;

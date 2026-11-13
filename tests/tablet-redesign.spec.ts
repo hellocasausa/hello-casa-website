@@ -20,13 +20,16 @@ test("tablet design has unified rhythm and live native Services at 751, 768, 820
    const b=e.querySelector(".book-now").getBoundingClientRect(),t=e.querySelector(".benefits").getBoundingClientRect(),h=e.getBoundingClientRect();
    return {buttonBottom:b.bottom,trustTop:t.top,trustBottom:t.bottom,heroBottom:h.bottom};
   });
-  expect(hero.trustTop-hero.buttonBottom,"trust row beneath CTA at "+width).toBeGreaterThanOrEqual(7);
+  const trustGap=hero.trustTop-hero.buttonBottom;
+  expect(trustGap,"trust row beneath CTA at "+width).toBeGreaterThanOrEqual(12);
+  expect(trustGap,"trust row visibly connected to CTA at "+width).toBeLessThanOrEqual(65);
   expect(hero.trustBottom,"trust row within hero at "+width).toBeLessThanOrEqual(hero.heroBottom+1);
   const steps=page.locator(".steps h2"),contact=page.locator("#contact .hc-contact-heading-stage h2");
   await expect(steps).toHaveCSS("font-size","28px");
   await expect(contact).toHaveCSS("font-size","28px");
-  const [a,b]=await Promise.all([steps.boundingBox(),contact.boundingBox()]);
+  const [a,b,card]=await Promise.all([steps.boundingBox(),contact.boundingBox(),page.locator("#contact .hc-contact-card").boundingBox()]);
   expect(Math.abs(a.x-b.x),"shared Steps and Contact inset at "+width).toBeLessThanOrEqual(2);
+  expect(b.x+b.width,"Contact title must end before the form card at "+width).toBeLessThanOrEqual(card.x-8);
   await expect(page.locator(".steps .step-number").first()).toHaveCSS("width","39px");
   await expect(page.locator("#hc-mobile-vertical .hc-tabs-heading")).toBeVisible();
   await expect(page.locator("#hc-mobile-vertical .hc-tabs-heading h2")).toHaveCSS("font-size","28px");

@@ -786,6 +786,7 @@
   #contact.hc-contact-new .hc-contact-heading-stage h2 {
     font-size: var(--hc-tablet-heading);
     line-height: 1.17;
+    max-width: 300px;
   }
   #contact.hc-contact-new .hc-photo-scene { margin-top: 22px; }
   #contact.hc-contact-new .hc-photo-scene img { aspect-ratio: 1.19; }
