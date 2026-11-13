@@ -257,7 +257,7 @@
 }
 @media (max-width: 750px) {
   .steps {
-    padding: clamp(17px, 4.6vw, 23px) clamp(17px, 5vw, 23px) 20px;
+    padding: clamp(17px, 4.6vw, 23px) clamp(17px, 5vw, 23px) 7px;
     min-height: 0;
     background: linear-gradient(180deg, #eaf4fb 0%, #eaf4fb 71%, #f7fbfa 100%);
   }

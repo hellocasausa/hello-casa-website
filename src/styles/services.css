@@ -1506,7 +1506,8 @@
 @media (max-width: 750px) {
   #hc-mobile-vertical {
     --hc-feature-white: #fff;
-    padding: 18px 12px 36px;
+    --hc-feature-surface: #f3fafe;
+    padding: 8px 12px 36px;
   }
   #hc-mobile-vertical .hc-bound {
     width: min(100%, 440px);
@@ -1514,7 +1515,7 @@
     border: 1px solid #d6e3e9;
     border-radius: 19px;
     overflow: hidden;
-    background: var(--hc-feature-white);
+    background: var(--hc-feature-surface);
     box-shadow: 0 12px 28px rgba(47, 96, 112, .04);
   }
   #hc-mobile-vertical .hc-layout {
@@ -1576,7 +1577,7 @@
     padding: 2px 11px 12px;
     margin: 0;
     border: 0;
-    background: var(--hc-feature-white);
+    background: var(--hc-feature-surface);
     min-width: 0;
   }
   #hc-mobile-vertical .hc-choices {
@@ -1692,7 +1693,7 @@
     padding: 7px 3px;
     background: var(--hc-feature-white);
     border: 1px solid #d5e5ee;
-    border-radius: 9px;
+    border-radius: 999px;
     color: #46718d;
     font: 750 10px/1.25 "HC Nunito", "Nunito Sans", sans-serif;
     white-space: normal;
@@ -1753,7 +1754,7 @@
     margin: 0;
     padding: 12px 16px;
     border: 1px solid #ead78a;
-    border-radius: 11px;
+    border-radius: 999px;
     font-size: 13px;
     font-weight: 750;
     box-shadow: none;

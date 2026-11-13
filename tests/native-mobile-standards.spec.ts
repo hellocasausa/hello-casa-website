@@ -18,7 +18,7 @@ test("approved Cascading Zigzag is native mobile Standards, first paragraph only
   await expect(section.locator(".st-copy p")).toHaveCount(6);
   const layout=await section.evaluate(el=>{
     const intro=el.querySelector(".st-intro")!;
-    const phrase=el.querySelector(".st-intro p span")!;
+    const phrase=el.querySelector(".st-intro-mobile")!;
     const range=document.createRange();range.selectNodeContents(phrase);
     const spanWidth=phrase.getBoundingClientRect().width,actualTextWidth=range.getBoundingClientRect().width;
     const rows=[...el.querySelectorAll(".st-story")].map(story=>{
@@ -42,6 +42,11 @@ test("approved Cascading Zigzag is native mobile Standards, first paragraph only
       phraseHeight:phrase.getBoundingClientRect().height,
       phraseLineHeight:parseFloat(getComputedStyle(phrase).lineHeight),
       phraseNoWrap:getComputedStyle(phrase).whiteSpace,
+      mobileText:phrase.textContent?.trim(),
+      originalHidden:getComputedStyle(el.querySelector(".st-intro-original")!).display==="none",
+      threadDecoration:getComputedStyle(el.querySelector(".st-stories")!,"::before").content,
+      dotDecoration:getComputedStyle(el.querySelector(".st-story")!,"::after").content,
+      counterContent:getComputedStyle(el.querySelector(".st-heading")!,"::before").content,
       phraseTextWidth:actualTextWidth,
       phraseWidth:spanWidth,
       phraseScrollWidth:phrase.scrollWidth,
@@ -49,11 +54,16 @@ test("approved Cascading Zigzag is native mobile Standards, first paragraph only
       overflow:document.documentElement.scrollWidth-innerWidth
     };
   });
+  expect(layout.mobileText).toBe("The little details matter.");
+  expect(layout.originalHidden).toBe(true);
+  expect(layout.threadDecoration).toBe("none");
+  expect(layout.dotDecoration).toBe("none");
+  expect(layout.counterContent).not.toContain("decimal-leading-zero");
   expect(layout.phraseNoWrap).toBe("nowrap");
   expect(layout.phraseHeight,"one text line "+width).toBeLessThanOrEqual(layout.phraseLineHeight+2);
   expect(layout.phraseTextWidth,"phrase does not clip at "+width).toBeLessThanOrEqual(layout.phraseWidth+1);
   expect(layout.phraseScrollWidth).toBeLessThanOrEqual(layout.phraseWidth+1);
-  expect(layout.introHeight,"compact intro "+width).toBeLessThanOrEqual(150);
+  expect(layout.introHeight,"compact intro "+width).toBeLessThanOrEqual(110);
   expect(layout.overflow,"no overflow at "+width).toBeLessThanOrEqual(2);
   expect(layout.rows.map(x=>x.visible)).toEqual([[true,false],[true,false],[true,false]]);
   expect(layout.rows[0].side,"image 1 left").toBeLessThan(-8);
@@ -77,8 +87,9 @@ test("desktop and tablet retain both paragraphs and their original Standards geo
    await expect(story.locator(".st-copy p")).toHaveCount(2);
    await expect(story.locator(".st-copy p").nth(1)).toBeVisible();
   }
-  const intro=await page.locator("#standards .st-intro p span").evaluate(el=>getComputedStyle(el).whiteSpace);
-  expect(intro).not.toBe("nowrap");
+  await expect(page.locator("#standards .st-intro-original")).toBeVisible();
+  await expect(page.locator("#standards .st-intro-mobile")).toBeHidden();
+  await expect(page.locator("#standards .st-intro-original span")).toHaveText("So do the little details, & the freedom to change your plans.");
   const photo=await page.locator("#standards .st-story--one .st-figure").evaluate(el=>el.getBoundingClientRect().height);
   expect(photo).toBeGreaterThan(200);
  }

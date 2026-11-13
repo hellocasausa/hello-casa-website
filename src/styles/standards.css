@@ -11,6 +11,7 @@
 .st-intro h2{font:400 var(--hc-heading-section)/1.17 "HC Libre","Libre Baskerville",Georgia,serif;letter-spacing:-.045em;color:#284f70;margin:0 0 9px}
 .st-intro p{font:450 14.5px/1.5 "HC Nunito","Nunito Sans",Arial,sans-serif;max-width:620px;margin-left:auto;color:#50758f}
 .st-intro p span{display:block}
+.st-intro-mobile{display:none}
 .st-stories{display:flex;flex-direction:column;gap:0;margin-top:32px}
 .st-story{position:relative;display:grid;grid-template-columns:calc(24.1322cqw * var(--st-story-scale)) minmax(0,1fr);align-items:center;column-gap:0;width:100%;min-width:0;margin-bottom:60px}
 .st-story--one{max-width:992px;margin-left:8px}
@@ -200,7 +201,7 @@
     width:calc(100% - 1px + 13px);
     margin-right:-13px;
     margin-left:auto;
-    padding:16px 12px 15px 24px;
+    padding:12px 16px 11px 24px;
     border-radius:76px 0 0 76px;
     min-height:0;
     text-align:right;
@@ -208,21 +209,16 @@
   #standards .st-intro h2{
     font-size:clamp(23px,6.4vw,27px);
     line-height:1.2;
-    margin-bottom:7px;
+    margin-bottom:5px;
   }
-  #standards .st-intro p{
-    max-width:none;
-    font-size:clamp(12px,3.3vw,13px);
-    line-height:1.45;
-  }
-  #standards .st-intro p span{
+  #standards .st-intro .st-intro-original{display:none}
+  #standards .st-intro .st-intro-mobile{
     display:block;
+    max-width:none;
+    font-size:clamp(12px,3.4vw,13.4px);
+    line-height:1.45;
+    letter-spacing:0;
     white-space:nowrap;
-    text-wrap:nowrap;
-    width:calc(100% + 20px);
-    margin-left:-20px;
-    letter-spacing:-.018em;
-    font-size:clamp(11px,3.4vw,13.3px);
   }
   #standards .st-stories{
     position:relative;
@@ -234,12 +230,7 @@
     counter-reset:standard-story;
   }
   #standards .st-stories::before{
-    content:"";
-    position:absolute;
-    top:36px;bottom:44px;left:50%;width:1px;
-    background:linear-gradient(#8db3c8 0%,#e9b6a0 52%,#b8d3c0 100%);
-    opacity:.42;
-    pointer-events:none;
+    content:none;
   }
   #standards .st-story,
   #standards .st-story--two,
@@ -258,18 +249,7 @@
   }
   #standards .st-story--three{margin-bottom:0}
   #standards .st-story:not(:last-child)::after{
-    content:"";
-    position:absolute;
-    bottom:-28px;
-    left:50%;
-    width:11px;height:11px;
-    margin-left:-5px;
-    border-radius:50%;
-    border:2px solid #fff;
-    background:#d0e4ef;
-    box-shadow:0 0 0 1px #c4d6df;
-    z-index:3;
-    pointer-events:none;
+    content:none;
   }
   #standards .st-editorial{display:contents}
   #standards .st-heading,
@@ -284,7 +264,7 @@
     text-align:left;
   }
   #standards .st-heading::before{
-    content:counter(standard-story,decimal-leading-zero);
+    content:counter(standard-story) ".";
     position:absolute;
     top:10px;left:0;
     font:400 23px/1.1 "HC Libre","Libre Baskerville",Georgia,serif;

@@ -25,6 +25,10 @@ test("native Featured Service uses six canonical tabs, mobile focus buttons, and
   expect(grid,"three service columns at "+width+"px").toBe(3);
   await expect(section.locator(".hc-v93-focus-select")).toBeHidden();
   await expect(section.locator(".hc-v93-focus-dock .hc-focus-btn")).toHaveCount(3);
+  for(const focusBtn of await section.locator(".hc-v93-focus-dock .hc-focus-btn").all())
+    await expect(focusBtn).toHaveCSS("border-radius","999px");
+  await expect(section.locator(".hc-panel-actions .hc-button")).toHaveCSS("border-radius","999px");
+  await expect(section.locator(".hc-selector")).toHaveCSS("background-color","rgb(243, 250, 254)");
   await expect(section.locator(".hc-v93-focus-dock .hc-focus-help")).toBeHidden();
   await expect(section.locator(".hc-footnote")).toBeHidden();
   const neutral=await section.evaluate(el=>{
@@ -35,7 +39,7 @@ test("native Featured Service uses six canonical tabs, mobile focus buttons, and
   });
   expect(neutral.gradient).toContain("rgb(255, 255, 255)");
   expect(neutral.focus).toBe(neutral.checklist);
-  expect(neutral.wrapper).toBe(neutral.checklist);
+  expect(neutral.wrapper).toBe("rgb(243, 250, 254)");
   expect(neutral.overflow).toBeLessThanOrEqual(2);
   expect(neutral.docOverflow).toBeLessThanOrEqual(2);
   await section.locator('[data-plan="deep"]').click();
@@ -74,12 +78,15 @@ test("three phone Hero benefits stay on one line below Book Now",async({page})=>
      return {text:span.textContent,top:r.top,scroll:span.scrollWidth,width:span.clientWidth};
    });
    return {spans,benefitTop:row.top,benefitBottom:row.bottom,bookBottom:button.bottom,
+    bookLeft:button.left,benefitLeft:row.left,benefitRight:row.right,heroRight:h.right,
     heroBottom:h.bottom,docOverflow:document.documentElement.scrollWidth-innerWidth};
   });
   expect(g.spans.map(x=>x.text)).toEqual(["Custom checklists","Vetted cleaners","No contracts"]);
   expect(Math.max(...g.spans.map(x=>x.top))-Math.min(...g.spans.map(x=>x.top)),"single trust row at "+width).toBeLessThanOrEqual(4);
   expect(g.spans.every(x=>x.scroll<=x.width+1),"no label wrap/clip at "+width).toBe(true);
-  expect(g.bookBottom,"no Hero CTA collision at "+width).toBeLessThanOrEqual(g.benefitTop+2);
+  expect(Math.abs(g.benefitLeft-g.bookLeft),"checkmarks align with Book Now at "+width).toBeLessThanOrEqual(2);
+  expect(g.benefitRight-g.benefitLeft,"naturally grouped checkmarks at "+width).toBeLessThan(width*.84);
+  expect(g.bookBottom+3,"checkmarks sit below CTA at "+width).toBeLessThanOrEqual(g.benefitTop);
   expect(g.benefitBottom,"benefits stay within Hero at "+width).toBeLessThanOrEqual(g.heroBottom+2);
   expect(g.docOverflow).toBeLessThanOrEqual(2);
  }
