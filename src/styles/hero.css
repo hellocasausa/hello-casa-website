@@ -348,6 +348,9 @@
     top: calc(31.2vw + 45px);
     bottom: auto;
   }
+  .benefits li {
+    font-size: clamp(8.5px, 1.7vw, 11px);
+  }
 }
 @media (max-width: 750px) {
   .hero {
