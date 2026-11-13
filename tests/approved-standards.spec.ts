@@ -61,7 +61,7 @@ test("approved Atelier v4 geometry, copy, original imagery and responsive photo 
    await standard.screenshot({path:"test-results/approved-standards-desktop-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
  }
 });
-test("all approved full-length Standards copy remains readable on tablet and phone",async({page})=>{
+test("approved Standards copy remains readable on tablet and mobile Cascading Zigzag",async({page})=>{
  test.setTimeout(90000);
  for(const width of [320,350,390,430,750,751,820,900]){
   await page.setViewportSize({width,height:900});
@@ -140,6 +140,6 @@ test("desktop Standards rows have more breathing room and the second photo uses 
  }
  for (const width of [390,750,820,900]){
    await page.setViewportSize({width,height:950});
-   await expect(page.locator("#standards .st-story--two .st-prose")).toHaveCSS("border-top-left-radius","20px");
+   await expect(page.locator("#standards .st-story--two .st-prose")).toHaveCSS("border-top-left-radius",width<=750?"19px":"20px");
  }
 });

@@ -257,13 +257,11 @@ test("approved desktop body rhythm, headings, mirrored inset and bubble ending",
     const currentSize = parseFloat(await heading.evaluate(el => getComputedStyle(el).fontSize));
     const expectedSize = width >= 751
       ? 28
-      : width <= 520
-        ? Math.min(28, Math.max(23, width * .063))
-        : Math.min(34, Math.max(25, width * .04));
-    expect(currentSize, `unchanged tablet/mobile heading at ${width}px`).toBeCloseTo(expectedSize, 1);
+      : 22;
+    expect(currentSize, `approved tablet/mobile heading at ${width}px`).toBeCloseTo(expectedSize, 1);
     const card = page.locator("#standards .st-story--two .st-prose");
-    await expect(card).toHaveCSS("border-top-right-radius", "20px");
-    await expect(card).toHaveCSS("border-bottom-right-radius", "20px");
+    await expect(card).toHaveCSS("border-top-right-radius", width<=750?"6px":"20px");
+    await expect(card).toHaveCSS("border-bottom-right-radius", width<=750?"19px":"20px");
   }
 });
 

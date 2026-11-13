@@ -23,14 +23,15 @@ test("approved Cascading Zigzag is native mobile Standards, first paragraph only
     const spanWidth=phrase.getBoundingClientRect().width,actualTextWidth=range.getBoundingClientRect().width;
     const rows=[...el.querySelectorAll(".st-story")].map(story=>{
       const photo=story.querySelector(".st-figure")!.getBoundingClientRect();
-      const prose=story.querySelector(".st-prose")!.getBoundingClientRect();
+      const proseEl=story.querySelector(".st-prose")!;
+      const prose=proseEl.getBoundingClientRect();
       const shell=story.getBoundingClientRect();
       const paras=[...story.querySelectorAll(".st-copy p")];
       return {
         side:(photo.left+photo.right)/2-(shell.left+shell.right)/2,
         overlap:Math.max(0,Math.min(prose.bottom,photo.bottom)-Math.max(prose.top,photo.top)),
         visible:paras.map(p=>getComputedStyle(p).display!=="none"),
-        bg:getComputedStyle(prose).backgroundColor,
+        bg:getComputedStyle(proseEl).backgroundColor,
         textFits:paras[0].getBoundingClientRect().bottom<=prose.bottom+2,
         imageWidth:photo.width,
         imageHeight:photo.height
