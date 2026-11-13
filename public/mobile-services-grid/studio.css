@@ -1,0 +1,32 @@
+@font-face{font-family:"HC Nunito";src:url("../assets/0cdf1e4b27f7420b0ad3.woff2") format("woff2");font-style:normal;font-weight:300 900;font-display:swap}
+@font-face{font-family:"HC Libre";src:url("../assets/dbcc0e48671e24477635.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+:root{color:#2b5574;background:#f6fafb;font-family:"HC Nunito","Nunito Sans",sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-width:290px;background:linear-gradient(122deg,#f8fcff,#f8faf7 54%,#fff2e7)}
+button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #387198;outline-offset:3px}
+.masthead{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px clamp(14px,4vw,50px);background:#ffffffdc;border-bottom:1px solid #deeaf0}
+.lockup{display:flex;align-items:center;gap:10px}.asterisk{font-size:26px;color:#dfad7e}.lockup strong{display:block;font:400 18px/1.15 "HC Libre",Georgia,serif;letter-spacing:-.04em}.lockup small{display:block;margin-top:2px;color:#879cac;font-size:11px}
+.home-link{font-size:11.5px;color:#446c87;text-underline-offset:4px}
+.studio{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(285px,405px) minmax(330px,1fr);gap:clamp(20px,4vw,65px);padding:clamp(18px,3.8vw,48px) clamp(12px,4vw,50px);align-items:start}
+.introduction{padding-top:14px}.eyebrow,.control-label,.note-heading{font-size:10px;font-weight:850;letter-spacing:.15em;color:#7a9baf;margin:0 0 11px}
+.introduction h1{font:400 clamp(31px,3.4vw,43px)/1.15 "HC Libre",Georgia,serif;letter-spacing:-.04em;margin:0 0 17px;color:#294d6c}.introduction h1 em{color:#7ca4bd;font-weight:400;font-style:normal}
+.introduction>p:not(.eyebrow):not(.safety){font-size:13px;line-height:1.72;max-width:385px;color:#668399;margin:0 0 24px}
+.selector-cluster{margin:0 0 18px}.control-label{margin-bottom:8px}
+.segmented{display:flex;flex-wrap:wrap;gap:5px;border:1px solid #dce9ef;padding:5px;border-radius:12px;background:#eaf3f8;width:fit-content;max-width:100%}
+.segmented button{flex:0 1 auto;min-height:39px;padding:8px 12px;border:1px solid transparent;border-radius:9px;background:transparent;color:#587d98;font-size:11.5px;font-weight:750;white-space:nowrap}
+.segmented button[aria-pressed=true]{background:white;border-color:#d3e4ed;box-shadow:0 2px 8px #1d52700f;color:#254f6f}
+.widths button{min-width:64px}
+.study-notes{border-radius:17px;border:1px solid #e9e5dd;background:#fffdf9;padding:20px 19px;box-shadow:0 8px 23px #2f536609}
+.note-heading{color:#b18c70;margin:0 0 7px}.study-notes>p:not(.note-heading){font-size:12px;line-height:1.65;color:#6e899b;margin:0 0 15px}
+.specs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.specs div{border-top:1px solid #e9e8e2;padding-top:9px}.specs span{display:block;color:#94a5af;font-size:10px;margin-bottom:6px}.specs strong{display:block;color:#335c78;font-size:15px}
+.safety{font-size:10.5px;line-height:1.68;color:#8298a7;margin:16px 3px}
+.preview-area{border:1px solid #dfebf0;border-radius:19px;background:#fffefcf2;padding:18px 12px 21px;box-shadow:0 20px 52px #2f577913;min-width:0}
+.preview-head{max-width:545px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 12px;padding:0 8px}.preview-head .eyebrow{font-size:9px;margin:0 0 5px}.preview-head h2{font:400 19px/1.25 "HC Libre",Georgia,serif;margin:0}.status{font-size:10px;color:#7c9bad;text-align:right}.status[data-ready=true]{color:#537a63}
+.stage{display:flex;justify-content:center;align-items:start;padding:10px 0 17px;overflow:hidden;min-height:440px}
+.phone-holder{position:relative;flex:none}.phone-shell{position:absolute;left:0;top:0;overflow:hidden;border:6px solid #315773;border-radius:22px;box-shadow:0 18px 36px #214d6d24;transform-origin:top left;background:#f2f8fc}
+.phone-shell iframe{display:block;width:100%;border:0;background:#f4faff;overflow:hidden}
+.preview-bottom{max-width:535px;margin:auto;padding:1px 7px 14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:10.5px;color:#8ca1ae}
+.readme{max-width:535px;margin:0 auto;color:#708da1;font-size:11.5px;line-height:1.6;background:#f3f9fc;border:1px solid #dfeaf0;padding:13px 15px;border-radius:11px}.readme strong{color:#345f7f}
+@media(max-width:900px){.studio{grid-template-columns:1fr;max-width:620px;gap:19px}.introduction{padding-top:0}.introduction h1{font-size:34px}.introduction>p:not(.eyebrow):not(.safety){max-width:520px}.preview-area{padding:13px 10px 19px}}
+@media(max-width:430px){.masthead{padding:11px}.lockup strong{font-size:16px}.lockup small{font-size:10px}.home-link{font-size:10px}.studio{padding:21px 6px}.introduction{padding:0 8px}.introduction h1{font-size:30px}.segmented{gap:3px;padding:4px}.segmented button{padding:7px 8px;font-size:10px}.widths button{min-width:59px}.preview-head{padding:0 3px}.preview-head h2{font-size:17px}.preview-area{border-radius:14px;padding:12px 5px 17px}.stage{padding:7px 0 13px}.specs span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
