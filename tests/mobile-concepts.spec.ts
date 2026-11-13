@@ -9,38 +9,25 @@ test("four isolated mobile concepts reuse the actual approved checklist and cont
   await page.locator('[data-concept="'+variant+'"]').click();
   await expect(page.locator('[data-concept="'+variant+'"]')).toHaveAttribute("aria-pressed","true");
   await expect(frame.locator("#services-app")).toHaveAttribute("aria-busy","false");
+  await expect(frame.locator(".svc-option")).toHaveCount(6);
+  await expect(frame.locator(".svc-option")).toContainText([
+   "Essential Clean","Deep Detail","Moving Reset","Guest Turnover","Office Fresh","Specialty Clean"
+  ]);
   if(variant==="featured"){
    await expect(frame.locator(".concept-intro")).toBeHidden();
-   await expect(frame.locator(".selector-zone")).toHaveCount(0);
    await expect(frame.locator(".panel-head")).toHaveCount(0);
    await expect(frame.locator(".feature-name")).toHaveText("Essential Clean");
-   await expect(frame.locator(".feature-trigger")).toContainText("SELECT YOUR PLAN");
-   await expect(frame.locator(".feature-trigger")).toHaveAttribute("aria-expanded","false");
-   await expect(frame.locator(".feature-menu")).toBeHidden();
+   await expect(frame.locator(".feature-header")).toContainText("SELECT YOUR PLAN");
+   await expect(frame.locator(".selector-zone")).toBeVisible();
+   await expect(frame.locator(".svc-nav")).toHaveCSS("grid-template-columns",/\d+.*\d+/);
+   await expect(frame.locator(".shell-label")).toHaveCount(0);
    await expect(frame.locator("#essential-focus")).toHaveCount(0);
-   await frame.locator(".feature-trigger").click();
-   await expect(frame.locator(".feature-menu")).toBeVisible();
-   await expect(frame.locator(".feature-option")).toHaveCount(5);
-   await expect(frame.locator(".feature-option-name")).toHaveText([
-    "Deep Detail","Moving Reset","Guest Turnover","Office Fresh","Specialty Clean"
-   ]);
-   await frame.locator(".feature-option").first().press("Escape");
-   await expect(frame.locator(".feature-menu")).toBeHidden();
-   await expect(frame.locator(".feature-trigger")).toBeFocused();
-  } else {
-   await expect(frame.locator(".svc-option")).toHaveCount(6);
-   await expect(frame.locator(".svc-option")).toContainText([
-    "Essential Clean","Deep Detail","Moving Reset","Guest Turnover","Office Fresh","Specialty Clean"
-   ]);
+   await expect(frame.locator(".hc-footnote")).toHaveCount(0);
+  } else if(variant==="atlas"){
+   await expect(frame.locator(".hc-footnote")).toContainText("Essential+ focuses on one area per visit");
   }
   const selectPlan=async(id:string)=>{
-   if(variant==="featured"){
-    await frame.locator(".feature-trigger").click();
-    await expect(frame.locator(".feature-menu")).toBeVisible();
-    await frame.locator('.feature-option[data-plan="'+id+'"]').click();
-    await expect(frame.locator(".feature-menu")).toBeHidden();
-    await expect(frame.locator(".feature-trigger")).toBeFocused();
-   }else await frame.locator('[data-plan="'+id+'"]').click();
+   await frame.locator('[data-plan="'+id+'"]').click();
   };
   const expectPlan=async(name:string)=>{
    if(variant==="featured")await expect(frame.locator(".feature-name")).toHaveText(name);
@@ -100,32 +87,31 @@ test("mobile Services design study captures four review screenshots at 390px",as
  }
 });
 
-test("Featured Service offers keyboard-accessible plan choices without duplicate headings",async({page})=>{
+test("Featured Service displays the original six small cards, uses focus buttons only, and omits the Essential note",async({page})=>{
  await page.goto("/mobile-concepts/concept.html?design=featured");
  for(const width of [320,375,390]){
   await page.setViewportSize({width,height:800});
-  await expect(page.locator(".feature-trigger")).toHaveCount(1);
+  await expect(page.locator(".feature-header")).toBeVisible();
+  await expect(page.locator(".feature-header")).toContainText("SELECT YOUR PLAN");
   await expect(page.locator(".feature-name")).toHaveText("Essential Clean");
   await expect(page.locator(".panel-head")).toHaveCount(0);
   await expect(page.locator(".concept-intro")).toBeHidden();
-  await expect(page.locator(".feature-menu")).toBeHidden();
-  await page.locator(".feature-trigger").focus();
-  await page.keyboard.press("ArrowDown");
-  await expect(page.locator(".feature-menu")).toBeVisible();
-  await expect(page.locator(".feature-option").first()).toBeFocused();
-  await page.keyboard.press("ArrowDown");
-  await expect(page.locator(".feature-option").nth(1)).toBeFocused();
-  await page.keyboard.press("Escape");
-  await expect(page.locator(".feature-menu")).toBeHidden();
-  await expect(page.locator(".feature-trigger")).toBeFocused();
-  await page.locator(".feature-trigger").click();
-  await page.locator('[data-plan="specialty"]').click();
-  await expect(page.locator(".feature-name")).toHaveText("Specialty Clean");
-  await expect(page.locator('[data-task-id^="specialty-"]').first()).toBeVisible();
-  await expect(page.locator(".feature-trigger")).toHaveAttribute("aria-expanded","false");
+  await expect(page.locator(".svc-option")).toHaveCount(6);
+  await expect(page.locator(".svc-nav")).toHaveCSS("display","grid");
+  const columns=await page.locator(".svc-nav").evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(" ").length);
+  expect(columns,"3 columns at "+width+"px").toBe(3);
+  await expect(page.locator("#essential-focus")).toHaveCount(0);
+  await expect(page.locator(".hc-focus-btn")).toHaveCount(3);
+  await expect(page.locator(".hc-footnote")).toHaveCount(0);
+  await expect(page.getByText("Essential+ focuses on one area per visit", {exact:false})).toHaveCount(0);
+  await page.locator('[data-plan="deep"]').focus();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator('[data-plan="moving"]')).toBeFocused();
+  await expect(page.locator(".feature-name")).toHaveText("Moving Reset");
+  await page.keyboard.press("Home");
+  await expect(page.locator('[data-plan="maintenance"]')).toBeFocused();
+  await expect(page.locator(".feature-name")).toHaveText("Essential Clean");
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
-  expect(overflow).toBeLessThanOrEqual(1);
-  await page.locator(".feature-trigger").click();
-  await page.locator('[data-plan="maintenance"]').click();
+  expect(overflow,"horizontal overflow at "+width+"px").toBeLessThanOrEqual(1);
  }
 });
