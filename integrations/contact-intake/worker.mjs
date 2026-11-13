@@ -35,7 +35,7 @@ export default {
 
     const path = new URL(request.url).pathname;
     if (path !== "/api/contact") return respond(404, { ok: false }, origin);
-    if (request.method === "OPTIONS") return respond(204, {}, origin);
+    if (request.method === "OPTIONS") return respond(200, {}, origin);
     if (request.method !== "POST") return respond(405, { ok: false }, origin);
 
     if (!env.AIRTABLE_PAT || !env.TURNSTILE_SECRET ||
