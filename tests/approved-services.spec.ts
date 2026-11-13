@@ -31,10 +31,11 @@ test("native approved Services B tabs join the checklist at desktop widths",asyn
   await page.locator("#hc-mobile-vertical").screenshot({path:"test-results/approved-services-"+width+".png",animations:"disabled"});
  }
 });
-test("tablet and mobile use original Services layout and retain checklist runtime",async({page})=>{
+test("tablet inherits connected desktop Services layout, phone retains compact tiles",async({page})=>{
  for(const width of [350,390,750,751,820,900]){
   await page.setViewportSize({width,height:950});
-  await expect(page.locator(".hc-tabs-heading")).toBeHidden();
+  if(width<=750) await expect(page.locator(".hc-tabs-heading")).toBeHidden();
+  else await expect(page.locator(".hc-tabs-heading")).toBeVisible();
   await expect(page.locator(".hc-tabs-tail")).toBeHidden();
   const section=page.locator("#hc-mobile-vertical");
   await expect(page.locator('[data-plan="deep"]')).toBeVisible();
@@ -43,6 +44,11 @@ test("tablet and mobile use original Services layout and retain checklist runtim
   await page.locator('[data-plan="maintenance"]').click();
   const check=await section.evaluate(el=>({overflow:el.scrollWidth-el.clientWidth}));
   expect(check.overflow).toBeLessThanOrEqual(3);
+  if(width>750){
+    await expect(page.locator("#hc-mobile-vertical .hc-bound")).toHaveCSS("display","grid");
+    await expect(page.locator("#hc-mobile-vertical .hc-layout")).toHaveCSS("display","contents");
+    await expect(page.locator("#hc-mobile-vertical .hc-choices")).toHaveCSS("flex-direction","column");
+  }
  }
 });
 

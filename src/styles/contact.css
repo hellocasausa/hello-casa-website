@@ -769,6 +769,53 @@
     overflow: visible;
   }
 }
+
+/* Tablet Contact: same page gutters as Steps, balanced image/card and unclipped form. */
+@media (min-width: 751px) and (max-width: 900px) {
+  #contact.hc-contact-new .hc-contact-inner {
+    width: calc(100% - 2 * var(--hc-tablet-gutter));
+    grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+    gap: 24px;
+    padding: 48px 0 56px;
+    --hc-contact-gutter: var(--hc-tablet-gutter);
+    --hc-contact-gap: 24px;
+  }
+  #contact.hc-contact-new .hc-contact-heading-stage {
+    padding-left: calc(var(--hc-contact-gutter) + 19px);
+  }
+  #contact.hc-contact-new .hc-contact-heading-stage h2 {
+    font-size: var(--hc-tablet-heading);
+    line-height: 1.17;
+  }
+  #contact.hc-contact-new .hc-photo-scene { margin-top: 22px; }
+  #contact.hc-contact-new .hc-photo-scene img { aspect-ratio: 1.19; }
+  #contact.hc-contact-new .hc-contact-card {
+    padding: 24px 22px 26px;
+    overflow: visible;
+    max-height: none;
+  }
+  #contact.hc-contact-new .hc-card-title {
+    font: 400 23px/1.24 "HC Libre", "Libre Baskerville", Georgia, serif;
+    text-align: center;
+    margin: 0 0 10px;
+  }
+  #contact.hc-contact-new .hc-card-desc {
+    font: 400 16px/1.5 "HC Nunito", "Nunito Sans", Arial, sans-serif;
+    margin: 0 0 17px;
+  }
+  #contact.hc-contact-new #hc-contact-jotform {
+    overflow: visible;
+    min-height: 0;
+    max-height: none;
+  }
+  #contact.hc-contact-new #hc-contact-jotform iframe {
+    display: block;
+    max-width: 100%;
+    min-height: 650px;
+    border: 0;
+  }
+}
+
 .hc-contact-new {
   position: relative;
 }

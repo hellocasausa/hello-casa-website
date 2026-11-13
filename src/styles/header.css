@@ -215,3 +215,19 @@
 .hc-nav-v7 {
   --hc-v88-header-cta: #fff0ae;
 }
+
+/* Tablet uses one clear navigation action; quote access remains in Services. */
+@media (min-width: 751px) and (max-width: 900px) {
+  .hc-nav-v7 {
+    left: 7%;
+    width: 86%;
+    gap: 12px;
+  }
+  .hc-nav-v7 .hc-float-quote { display: none; }
+  .hc-nav-v7 .hc-float-right { margin-left: auto; }
+  .hc-nav-v7 .hc-float-toggle {
+    width: 42px;
+    height: 42px;
+    display: flex;
+  }
+}

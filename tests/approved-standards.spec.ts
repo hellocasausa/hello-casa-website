@@ -80,9 +80,11 @@ test("all approved full-length Standards copy remains readable on tablet and pho
   console.log("APPROVED_STANDARDS_MOBILE",width,JSON.stringify(info));
   expect(info.overflow).toBeLessThanOrEqual(3);
   for(const story of info.stories){
-   expect(story.layout).toBe("flex");
-   expect(story.headingBeforePhoto).toBe(true);
-   expect(story.photoBeforeParagraph).toBe(true);
+   expect(story.layout).toBe(width<=750?"flex":"grid");
+   if(width<=750){
+    expect(story.headingBeforePhoto).toBe(true);
+    expect(story.photoBeforeParagraph).toBe(true);
+   }
    expect(story.paragraphsInside).toBe(true);
    expect(story.cardTextSize).toBeGreaterThanOrEqual(14);
    expect(story.headingVisible).toBe(true);
