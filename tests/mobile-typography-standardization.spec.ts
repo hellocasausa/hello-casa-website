@@ -26,7 +26,7 @@ test("mobile typography uses the approved fixed pixel sizes and the Contact line
   });
   expect(lead.margin).toBe("22px");
   expect(lead.top).toBe("-14px");
-  expect(lead.left).toBe("22px");
+  expect(lead.left).toBe("0px");
   expect(lead.height).toBe("4px");
   expect(lead.ruleWidth).toBeGreaterThan(lead.hostWidth*.64);
   expect(lead.ruleWidth).toBeLessThan(lead.hostWidth*.68);
