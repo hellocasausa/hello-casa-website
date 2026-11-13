@@ -1,7 +1,7 @@
 import {test,expect} from "@playwright/test";
 test("GitHub responsive viewer renders the actual interactive site at three design widths",async({page})=>{
  await page.route("https://form.jotform.com/**",r=>r.abort());
- await page.goto("/review/");
+ await page.goto("/review/index.html");
  await expect(page.locator("#site")).toHaveAttribute("src","../");
  const site=page.frameLocator("#site");
  await expect(site.locator(".st-story")).toHaveCount(3);
