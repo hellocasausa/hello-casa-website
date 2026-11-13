@@ -69,3 +69,8 @@ At 751–900px, Steps keeps the 28px heading with “A Fresh Start,” forced on
 ## Mobile Services design exploration (isolated, not production)
 
 The four interactive mobile concepts are reviewed at https://hellocasausa.github.io/hello-casa-website/mobile-concepts/ . Their content is generated at build time by `node scripts/build-mobile-concepts.ts` from the approved plans, checklist code, plan artwork and quote link. This does not alter the actual mobile website. See docs/design-promotions/mobile-services-exploration.md.
+
+
+## Mobile integration candidate
+
+The approved Featured Service experiment has been integrated as a responsive ≤750px styling and header around the same canonical six tabs, focus controls, checklist renderer and Jotform CTA. Desktop/tablet Services are unchanged. The duplicate old mobile introduction is removed. The mobile Hero benefits and the tablet Standards introduction have been revised for the owner's approved batch. Verify at /review/?view=mobile and /review/?view=tablet before merging PR #1. No deployment to the production Hello Casa site is authorized by this integration.

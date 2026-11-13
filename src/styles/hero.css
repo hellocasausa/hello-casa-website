@@ -240,12 +240,13 @@
     left: 4.8%;
     top: auto;
     bottom: 0;
-    width: 74%;
-    align-items: flex-start;
-    gap: 10px;
+    width: 93%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
   }
   .benefits li {
-    white-space: normal;
+    white-space: nowrap;
     align-items: flex-start;
     gap: 7px;
     font:
@@ -253,7 +254,8 @@
       sans-serif;
   }
   .benefits li span {
-    max-width: 68px;
+    max-width: none;
+    white-space: nowrap;
   }
   .benefits img {
     width: 10px;

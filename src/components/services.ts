@@ -56,7 +56,21 @@ export function bindServices() {
   let active = plans[0],
     focus: Focus = "standard";
   const dock = document.querySelector<HTMLElement>("#hc-focus-dock")!;
+  const featuredTitle = document.querySelector<HTMLElement>("#hc-feature-title")!;
+  const featuredDescription = document.querySelector<HTMLElement>("#hc-feature-description")!;
+  const featuredIcon = document.querySelector<HTMLImageElement>("#hc-feature-image")!;
+  const servicesSection = document.querySelector<HTMLElement>("#hc-mobile-vertical")!;
   const render = () => {
+    // One authoritative plan state drives the existing native desktop/tablet
+    // tabs and the new mobile-only illustrated Featured Service header.
+    featuredTitle.textContent = active.name;
+    featuredDescription.textContent = active.description;
+    servicesSection.dataset.activePlan = active.id;
+    const selectedTab = cards.find((b) => b.dataset.plan === active.id);
+    const selectedIcon = selectedTab?.querySelector<HTMLImageElement>(".hc-icon img")?.getAttribute("src");
+    if (selectedIcon) featuredIcon.setAttribute("src", selectedIcon);
+    const selectedBg = selectedTab?.style.getPropertyValue("--icon-bg").trim();
+    servicesSection.style.setProperty("--hc-feature-accent", selectedBg || "#edf7fe");
     cards.forEach((b) => {
       const selected = b.dataset.plan === active.id;
       b.setAttribute("aria-selected", String(selected));
