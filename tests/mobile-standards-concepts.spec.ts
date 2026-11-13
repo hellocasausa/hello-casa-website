@@ -98,15 +98,17 @@ test("zigzag variants visibly alternate image side left-right-left at 320 and 39
   }
  }
 });
-test("captures all seven Standards preview screenshots at 390px",async({page})=>{
+test("captures true full-page screenshots for all seven Standards designs at 390px",async({page})=>{
  test.setTimeout(120000);
- const frame=page.frameLocator("#design-frame");
  for(const variant of variants){
-  await page.locator('[data-design="'+variant+'"]').click();
-  await expect(frame.locator("#standards-root")).toHaveAttribute("aria-busy","false");
-  await frame.locator("body").screenshot({path:"test-results/approved-standards-concept-"+variant+"-390.png",animations:"disabled"});
+  await page.setViewportSize({width:390,height:850});
+  await page.goto("/mobile-standards/concept.html?design="+variant);
+  await expect(page.locator("#standards-root")).toHaveAttribute("aria-busy","false");
+  await page.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.images].map(x=>x.decode().catch(()=>{})));});
+  await page.screenshot({path:"test-results/approved-standards-concept-"+variant+"-390.png",fullPage:true,animations:"disabled"});
  }
 });
+
 test("the approved homepage Standards remains unchanged with both original paragraphs",async({page})=>{
  await page.goto("/");
  await page.setViewportSize({width:390,height:850});

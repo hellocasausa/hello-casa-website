@@ -16,7 +16,7 @@ figure,h2,h3,p{margin:0}
 .section-intro{width:calc(100% - 17px);margin-left:auto;padding:21px 20px 22px 34px;min-height:130px;border:1px solid #ffffffb9;border-right:0;border-radius:78px 0 0 78px;background:#d8eaf7;box-shadow:0 10px 24px #456c8611;text-align:right}
 .section-intro h2{font:400 25px/1.17 "HC Libre",Georgia,serif;letter-spacing:-.045em;color:#284f70;margin-bottom:8px;text-wrap:balance}
 .section-intro p{font:450 13px/1.48 "HC Nunito",sans-serif;color:#50758f;max-width:305px;margin-left:auto;text-wrap:pretty}
-.section-intro p span{display:block}
+.section-intro p span{display:block;text-wrap:balance}
 .stories{--ink:#284f70;--kicker:#7795a8;--paper:#ffffffeb;--shadow:0 11px 28px #35597214;position:relative;padding:0 14px}
 .story{position:relative;margin:0 0 27px;min-width:0}
 .story:last-child{margin-bottom:0}
