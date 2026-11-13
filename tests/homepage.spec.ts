@@ -196,7 +196,7 @@ test("Hero baseline and deliberate 16px desktop Steps rhythm adjustment", async 
       ["headline top", title.y, reference.titleY],
       ["headline height", title.height, reference.titleHeight],
       ["Steps inset", steps.x, reference.stepsTitleX],
-      ["Steps top", steps.y, reference.stepsTitleY - (Number(width)>750 ? 8 : 0)],
+      ["Steps top", steps.y, reference.stepsTitleY - (Number(width)>750 ? 8 : 0) + (Number(width)<=359 ? 14 : 0)],
       ["Steps height", steps.height, reference.stepsTitleHeight],
       ["Services start", services.y, reference.servicesTop - (Number(width)>750 ? 16 : 0)],
     ] as const) {

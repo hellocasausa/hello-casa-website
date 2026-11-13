@@ -12,7 +12,8 @@ test("approved Atelier v4 geometry, copy, original imagery and responsive photo 
   const standard=page.locator("#standards");
   await expect(standard).toBeVisible();
   await expect(page.locator(".st-intro h2")).toHaveText("Care starts at home.");
-  await expect(page.locator(".st-intro p")).toHaveText("Who comes through your door matters.So do the little details, & the freedom to change your plans.");
+  await expect(page.locator(".st-intro-original")).toHaveText("Who comes through your door matters.So do the little details, & the freedom to change your plans.");
+   await expect(page.locator(".st-intro-mobile")).toBeHidden();
   await expect(page.locator(".st-intro p span")).toHaveCSS("display","block");
   await expect(page.locator(".st-copy p")).toHaveCount(6);
   await expect(page.locator(".st-story")).toHaveCount(3);
