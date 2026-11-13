@@ -12,8 +12,8 @@ test("tablet design has unified rhythm and live native Services at 751, 768, 820
   await expect(page.locator(".hc-nav-v7 .hc-float-toggle")).toBeVisible();
   const titleSize=parseFloat(await page.locator(".hero h1").evaluate(e=>getComputedStyle(e).fontSize));
   expect(titleSize).toBeCloseTo(width*.0379447,1);
-  await expect(page.locator(".hero-copy p")).toHaveCSS("font-size","16px");
-  await expect(page.locator(".hero-copy p")).toHaveCSS("line-height","24px");
+  await expect(page.locator(".hero .hero-desktop-copy")).toHaveCSS("font-size","16px");
+  await expect(page.locator(".hero .hero-desktop-copy")).toHaveCSS("line-height","24px");
   await expect(page.locator(".book-now")).toHaveCSS("font-size","15px");
   await expect(page.locator(".book-now")).toHaveCSS("height","44px");
   const hero=await page.locator(".hero").evaluate(e=>{
@@ -55,13 +55,6 @@ test("tablet design has unified rhythm and live native Services at 751, 768, 820
   await expect(page.locator("#contact #hc-contact-jotform")).toHaveCSS("overflow","visible");
   await expect(page.locator("#footer .hc-b-footer__brand img")).toHaveCSS("width","180px");
   expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);
-  if(width===820){
-   await page.screenshot({path:"test-results/approved-tablet-full-820.png",fullPage:true,animations:"disabled",style:".skip-link{visibility:hidden!important}"});
-   await page.locator("#hc-mobile-vertical").screenshot({path:"test-results/approved-tablet-services-820.png",animations:"disabled"});
-   await page.locator("#standards").screenshot({path:"test-results/approved-tablet-standards-820.png",animations:"disabled"});
-   await page.locator("#contact").screenshot({path:"test-results/approved-tablet-contact-820.png",animations:"disabled"});
-   await page.locator("#footer").screenshot({path:"test-results/approved-tablet-footer-820.png",animations:"disabled"});
-  }
  }
 });
 test("existing phone and desktop style boundaries stay in their correct composition",async({page})=>{
@@ -73,4 +66,15 @@ test("existing phone and desktop style boundaries stay in their correct composit
   if(width>=901) await expect(page.locator(".st-intro h2")).toHaveCSS("font-size","32px");
   if(width<=750) await expect(page.locator("#standards .st-story").first()).toHaveCSS("display","flex");
  }
+});
+
+test("tablet visual checkpoint captures full homepage and key compositions at 820px",async({page})=>{
+ test.setTimeout(60000);
+ await page.setViewportSize({width:820,height:900});
+ await page.evaluate(()=>document.fonts.ready);
+ await page.screenshot({path:"test-results/approved-tablet-full-820.png",fullPage:true,animations:"disabled",style:".skip-link{visibility:hidden!important}"});
+ await page.locator("#hc-mobile-vertical").screenshot({path:"test-results/approved-tablet-services-820.png",animations:"disabled"});
+ await page.locator("#standards").screenshot({path:"test-results/approved-tablet-standards-820.png",animations:"disabled"});
+ await page.locator("#contact").screenshot({path:"test-results/approved-tablet-contact-820.png",animations:"disabled"});
+ await page.locator("#footer").screenshot({path:"test-results/approved-tablet-footer-820.png",animations:"disabled"});
 });

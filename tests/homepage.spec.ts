@@ -180,6 +180,8 @@ test("default checklist and contact fallback are usable without application Java
 import baseline from "./fixtures/b633-layout.json" with { type: "json" };
 test("Hero baseline and deliberate 16px desktop Steps rhythm adjustment", async ({ page }) => {
   for (const [width, reference] of Object.entries(baseline.measurements)) {
+    // Tablet composition is intentionally revised; original baseline still validates phone and desktop.
+    if (Number(width) >= 751 && Number(width) <= 900) continue;
     await page.setViewportSize({ width: Number(width), height: 1000 });
     await page.evaluate(() => document.fonts.ready);
     const title = (await page.locator(".hero h1").boundingBox())!,
@@ -249,9 +251,11 @@ test("approved desktop body rhythm, headings, mirrored inset and bubble ending",
     await page.setViewportSize({width, height:1000});
     const heading = page.locator("#standards .st-heading h3").first();
     const currentSize = parseFloat(await heading.evaluate(el => getComputedStyle(el).fontSize));
-    const expectedSize = width <= 520
-      ? Math.min(28, Math.max(23, width * .063))
-      : Math.min(34, Math.max(25, width * .04));
+    const expectedSize = width >= 751
+      ? 28
+      : width <= 520
+        ? Math.min(28, Math.max(23, width * .063))
+        : Math.min(34, Math.max(25, width * .04));
     expect(currentSize, `unchanged tablet/mobile heading at ${width}px`).toBeCloseTo(expectedSize, 1);
     const card = page.locator("#standards .st-story--two .st-prose");
     await expect(card).toHaveCSS("border-top-right-radius", "20px");
