@@ -103,11 +103,12 @@ test("narrower Standards cards retain image dimensions, all text and left-facing
      fits:paragraphs.every(p=>p.getBoundingClientRect().bottom<=card.bottom+2),
      paragraphCount:paragraphs.length};
  }));
- // Relative to earlier desktop text tracks of approximately [859,833,846]px.
- const before=[859,833,846];
+ // Cards are approximately 15% wider than the preceding narrower-card revision,
+ // with original illustration dimensions unchanged.
+ const prior=[895-251.15,872-246.82,924-289.0];
  widths.forEach((row,i)=>{
-   expect(row.width/before[i],`text card ${i+1} width ratio`).toBeGreaterThan(0.72);
-   expect(row.width/before[i],`text card ${i+1} width ratio`).toBeLessThan(0.78);
+   expect(row.width/prior[i],`text card ${i+1} expansion vs prior revision`).toBeGreaterThan(1.145);
+   expect(row.width/prior[i],`text card ${i+1} expansion vs prior revision`).toBeLessThan(1.155);
    expect(row.fits).toBe(true);
    expect(row.paragraphCount).toBe(2);
  });
@@ -117,4 +118,26 @@ test("narrower Standards cards retain image dimensions, all text and left-facing
  await expect(second).toHaveCSS("border-bottom-left-radius","100px");
  await expect(second).toHaveCSS("border-top-right-radius","22px");
  await expect(second).toHaveCSS("border-bottom-right-radius","22px");
+});
+
+test("desktop Standards rows have more breathing room and the second photo uses matching corners", async ({page})=>{
+ for (const width of [1000,1100,1199,1200,1440,1920]){
+   await page.setViewportSize({width,height:950});
+   const rows=await page.locator("#standards .st-story").evaluateAll(items=>items.map(item=>{
+     const b=item.getBoundingClientRect(),photo=item.querySelector(".st-figure")!;
+     return {top:b.top,bottom:b.bottom,marginBottom:parseFloat(getComputedStyle(item).marginBottom),
+       photoRadius:getComputedStyle(photo).borderTopLeftRadius,
+       cardWidth:item.querySelector(".st-prose")!.getBoundingClientRect().width};
+   }));
+   expect(rows[0].marginBottom,`first composition spacing ${width}`).toBeGreaterThanOrEqual(55);
+   expect(rows[1].marginBottom,`second composition spacing ${width}`).toBeGreaterThanOrEqual(52);
+   expect(rows[2].marginBottom).toBe(0);
+   expect(rows[1].photoRadius).toBe("23px");
+   expect(rows[1].top-rows[0].bottom,`gap between first and second at ${width}`).toBeGreaterThanOrEqual(52);
+   expect(rows[2].top-rows[1].bottom,`gap between second and third at ${width}`).toBeGreaterThanOrEqual(49);
+ }
+ for (const width of [390,750,820,900]){
+   await page.setViewportSize({width,height:950});
+   await expect(page.locator("#standards .st-story--two .st-prose")).toHaveCSS("border-top-left-radius","20px");
+ }
 });

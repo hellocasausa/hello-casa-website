@@ -12,10 +12,10 @@
 .st-intro p{font:450 14.5px/1.5 "HC Nunito","Nunito Sans",Arial,sans-serif;max-width:620px;margin-left:auto;color:#50758f}
 .st-intro p span{display:block}
 .st-stories{display:flex;flex-direction:column;gap:0;margin-top:32px}
-.st-story{position:relative;display:grid;grid-template-columns:calc(24.1322cqw * var(--st-story-scale)) minmax(0,1fr);align-items:center;column-gap:0;width:100%;min-width:0;margin-bottom:23px}
-.st-story--one{max-width:895px;margin-left:8px}
-.st-story--two{max-width:872px;margin-left:auto;margin-right:6px;grid-template-columns:minmax(0,1fr) calc(23.719cqw * var(--st-story-scale));margin-bottom:18px}
-.st-story--three{max-width:924px;margin-left:1px;grid-template-columns:calc(27.769cqw * var(--st-story-scale)) minmax(0,1fr);margin-bottom:0}
+.st-story{position:relative;display:grid;grid-template-columns:calc(24.1322cqw * var(--st-story-scale)) minmax(0,1fr);align-items:center;column-gap:0;width:100%;min-width:0;margin-bottom:60px}
+.st-story--one{max-width:992px;margin-left:8px}
+.st-story--two{max-width:966px;margin-left:auto;margin-right:6px;grid-template-columns:minmax(0,1fr) calc(23.719cqw * var(--st-story-scale));margin-bottom:55px}
+.st-story--three{max-width:1019px;margin-left:1px;grid-template-columns:calc(27.769cqw * var(--st-story-scale)) minmax(0,1fr);margin-bottom:0}
 .st-editorial{position:relative;min-width:0;grid-column:2;grid-row:1}
 .st-story--two .st-editorial{grid-column:1}
 .st-visual{grid-column:1;grid-row:1;min-width:0;align-self:end;transform:translateX(calc(2.314cqw * var(--st-story-scale)));position:relative;z-index:2}
@@ -50,7 +50,7 @@
  --photo-x:calc(-1.735537cqw * var(--st-story-scale));--photo-y:calc(0cqw * var(--st-story-scale));
  --crop-x:52%;--crop-y:59%;
 }
-.st-story--two .st-figure{border-radius:26px}
+.st-story--two .st-figure{border-radius:23px}
 .st-story--three .st-figure{border-radius:23px}
 @media(min-width:901px) and (max-width:1100px){
  #standards{--st-intro-text-inset:48px}
@@ -65,8 +65,8 @@
  .st-heading{margin-bottom:13px}
  .st-prose{padding:19px 25px 20px 40px}
  .st-story--two .st-prose{padding:20px 34px 20px 76px}
- .st-story{margin-bottom:21px}
- .st-story--two{margin-bottom:16px}
+ .st-story{margin-bottom:55px}
+ .st-story--two{margin-bottom:52px}
  .st-story--three{margin-bottom:0}
 }
 /* Tablet/phone: preserve all full-length copy and the image/card relationship,

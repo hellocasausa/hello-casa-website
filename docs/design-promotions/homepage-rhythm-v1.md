@@ -79,3 +79,12 @@ All edits live in the existing source owners, without another corrective stylesh
 Rollback checkpoint: `checkpoint/pre-standards-narrow-card-guest-v1-7b14a9a`.
 
 **Current batch preview source pin:** `92f10df0c041ee910a7c3329b9767ee5285fecdc` (approved narrower Standards cards, left-facing second card bubble, and Guest Final Touches in fourth position).
+
+## Owner-requested Standards composition refinement: width, spacing and photo corners
+
+- Desktop only: expand the three text-card tracks approximately 15% relative to the prior narrowed-card version, via story max widths **992px, 966px and 1019px**. Keep photo positions, dimensions, imagery, text, type and the left-facing white-card bubble unchanged.
+- Increase separation *between compositions* to 60px / 55px bottom margin at wide desktop and 55px / 52px at narrower desktop; keep the third composition without extra bottom margin.
+- The second (staircase) photograph now has 23px rounded corners, matching the restrained other photo treatment instead of its previous 26px radius. The white text-card left-facing bubble is unchanged.
+- Tablet and mobile overrides remain intact. Browser tests verify the three expanded text tracks, image dimensions, full paragraphs, separation, photograph corners and responsive noninterference.
+
+Rollback reference: `checkpoint/pre-standards-width-spacing-corners-9a2e1ed`.
