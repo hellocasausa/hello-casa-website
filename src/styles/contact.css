@@ -674,7 +674,7 @@
     height: 3px;
   }
   #contact.hc-contact-new .hc-contact-card {
-    padding-top: 22px;
+    padding-top: 14px;
   }
 }
 @media screen and (max-width: 350px) {
@@ -690,18 +690,38 @@
 }
 @media (max-width: 750px) {
   #contact.hc-contact-new .hc-card-title {
-    font-family: "HC Nunito", "Nunito Sans", Arial, sans-serif;
-    font-size: clamp(19px, 5.25vw, 21px);
-    font-weight: 600;
-    line-height: 1.28;
-    margin: 0 0 7px;
+    display: none;
   }
   #contact.hc-contact-new .hc-card-desc {
     font-family: "HC Nunito", "Nunito Sans", Arial, sans-serif;
     font-size: clamp(11.8px, 3.22vw, 12.6px);
     line-height: 1.48;
     font-weight: 400;
-    margin: 0 0 14px;
+    margin: 0 0 8px;
+  }
+  /* Keep the Jotform embed functional; place its backup action next to
+     the supporting copy rather than after an unrendered tall iframe. */
+  #contact.hc-contact-new .hc-jotform-embed {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+  #contact.hc-contact-new .contact-fallback {
+    order: -1;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 9px 15px;
+    margin: 0 0 9px;
+    border: 1px solid #ead78a;
+    border-radius: 999px;
+    background: #fff0ae;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
   }
 }
 @media screen and (max-width: 750px) {

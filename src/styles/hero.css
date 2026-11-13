@@ -239,17 +239,17 @@
   .benefits {
     left: 5.23%;
     top: auto;
-    bottom: 6px;
+    bottom: 14px;
     width: max-content;
     max-width: calc(100% - 10.46%);
     justify-content: flex-start;
     align-items: center;
-    gap: clamp(7px, 2.2vw, 12px);
+    gap: clamp(3px, 1.1vw, 6px);
   }
   .benefits li {
     white-space: nowrap;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     font:
       500 clamp(8px, 2.21vw, 11px)/1.4 "dm-sans",
       sans-serif;
@@ -259,8 +259,8 @@
     white-space: nowrap;
   }
   .benefits img {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     margin-top: 0;
   }
 }

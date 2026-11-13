@@ -1563,7 +1563,7 @@
     margin: 0 0 5px;
   }
   #hc-mobile-vertical #hc-feature-title {
-    font: 400 22px/1.18 "HC Libre", "Libre Baskerville", Georgia, serif;
+    font: 400 18px/1.2 "HC Libre", "Libre Baskerville", Georgia, serif;
     letter-spacing: -.035em;
     margin: 0 0 4px;
     color: #274b6a;
@@ -1763,5 +1763,5 @@
 @media (max-width: 340px) {
   #hc-mobile-vertical .hc-choices .hc-card-label { font-size: 9.5px; }
   #hc-mobile-vertical .hc-choices .hc-card { padding: 5px 2px; }
-  #hc-mobile-vertical #hc-feature-title { font-size: 20px; }
+  #hc-mobile-vertical #hc-feature-title { font-size: 17px; }
 }
