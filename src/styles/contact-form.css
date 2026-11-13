@@ -1,0 +1,134 @@
+/* Native Contact fields — scoped to the approved Contact card. */
+.hc-contact-new .hc-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  font-family: "HC Nunito", "Nunito Sans", sans-serif;
+}
+.hc-contact-new .hc-contact-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 12px;
+  row-gap: 15px;
+}
+.hc-contact-new .hc-contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.hc-contact-new .hc-contact-field-full {
+  grid-column: 1 / -1;
+}
+.hc-contact-new .hc-contact-field > label {
+  color: #274b6a;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.hc-contact-new .hc-contact-optional {
+  font-weight: 400;
+  color: #58748a;
+}
+.hc-contact-new .hc-contact-field input,
+.hc-contact-new .hc-contact-field textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c3d4df;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.87);
+  color: #274b6a;
+  font: 400 14px/1.5 "HC Nunito", "Nunito Sans", sans-serif;
+  padding: 12px 14px;
+  box-shadow: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.hc-contact-new .hc-contact-field textarea {
+  min-height: 112px;
+  resize: vertical;
+}
+.hc-contact-new .hc-contact-field input::placeholder,
+.hc-contact-new .hc-contact-field textarea::placeholder {
+  color: #7f95a5;
+}
+.hc-contact-new .hc-contact-field input:focus-visible,
+.hc-contact-new .hc-contact-field textarea:focus-visible,
+.hc-contact-new .hc-contact-consent input:focus-visible,
+.hc-contact-new .hc-contact-submit:focus-visible {
+  outline: 2px solid #274b6a;
+  outline-offset: 3px;
+}
+.hc-contact-new .hc-contact-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #385c77;
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.hc-contact-new .hc-contact-consent input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin: 2px 0 0;
+  accent-color: #274b6a;
+}
+.hc-contact-new .hc-contact-trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hc-contact-new .hc-contact-submit {
+  border: 1px solid #274b6a;
+  background: #274b6a;
+  color: white;
+  border-radius: 999px;
+  padding: 13px 24px;
+  min-height: 47px;
+  width: 100%;
+  font: 700 14px/1.3 "HC Nunito", "Nunito Sans", sans-serif;
+  letter-spacing: .015em;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+.hc-contact-new .hc-contact-submit:hover:not(:disabled) {
+  background: #416986;
+  transform: translateY(-1px);
+}
+.hc-contact-new .hc-contact-submit:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+.hc-contact-new .hc-contact-verification {
+  min-height: 0;
+}
+.hc-contact-new .hc-contact-status {
+  color: #385c77;
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin: 0;
+}
+.hc-contact-new .hc-contact-status[hidden] {
+  display: none;
+}
+.hc-contact-new .hc-contact-status[data-state="error"] {
+  color: #8c393c;
+}
+.hc-contact-new .hc-contact-status[data-state="success"] {
+  color: #225d4b;
+}
+@media (max-width: 750px) {
+  .hc-contact-new .hc-contact-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 12px;
+  }
+  .hc-contact-new .hc-contact-form { gap: 13px; }
+  .hc-contact-new .hc-contact-field input,
+  .hc-contact-new .hc-contact-field textarea { font-size: 14px; }
+}
