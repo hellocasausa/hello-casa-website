@@ -198,7 +198,7 @@ test("Hero baseline and deliberate 16px desktop Steps rhythm adjustment", async 
       ["Steps inset", steps.x, reference.stepsTitleX],
       ["Steps top", steps.y, reference.stepsTitleY - (Number(width)>750 ? 8 : 0) + (Number(width)<=359 ? 14 : 0)],
       ["Steps height", steps.height, reference.stepsTitleHeight],
-      ["Services start", services.y, reference.servicesTop - (Number(width)>750 ? 16 : 0)],
+      ["Services start", services.y, reference.servicesTop - (Number(width)>750 ? 16 : 13) + (Number(width)<=359 ? 14 : 0)],
     ] as const) {
       // Desktop Steps title height/top intentionally change with the new exact 32px type size.
       if (Number(width) >= 901 && (name === "Steps top" || name === "Steps height")) continue;

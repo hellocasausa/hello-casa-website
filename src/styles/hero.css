@@ -239,7 +239,7 @@
   .benefits {
     left: 5.23%;
     top: auto;
-    bottom: 8px;
+    bottom: 6px;
     width: max-content;
     max-width: calc(100% - 10.46%);
     justify-content: flex-start;
