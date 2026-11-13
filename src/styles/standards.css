@@ -207,7 +207,7 @@
     text-align:right;
   }
   #standards .st-intro h2{
-    font-size:clamp(23px,6.4vw,27px);
+    font-size:20px;
     line-height:1.2;
     margin-bottom:5px;
   }
@@ -288,7 +288,7 @@
   }
   #standards .st-story--two .st-heading .st-kicker::before{margin:0 0 8px auto}
   #standards .st-heading h3{
-    font-size:22px;
+    font-size:20px;
     line-height:1.17;
     letter-spacing:-.04em;
     text-wrap:balance;
@@ -357,9 +357,9 @@
 }
 @media(max-width:340px){
   #standards .st-intro{padding-left:18px;padding-right:10px}
-  #standards .st-intro h2{font-size:23px}
+  #standards .st-intro h2{font-size:20px}
   #standards .st-stories{padding-inline:9px}
-  #standards .st-heading h3{font-size:21px}
+  #standards .st-heading h3{font-size:20px}
   #standards .st-figure,
   #standards .st-story--two .st-figure,
   #standards .st-story--three .st-figure{height:182px}

@@ -268,9 +268,10 @@
     margin: 0;
     padding: 0;
   }
+  .steps-heading p { font-size: 9.5px; }
   .steps h2 {
     font:
-      400 clamp(17.5px, 5.25vw, 22px)/1.14 "HC Libre",
+      400 20px/1.14 "HC Libre",
       serif;
     letter-spacing: -0.035em;
     margin: 0;
@@ -281,7 +282,7 @@
   }
   .steps h2 span {
     display: block;
-    font-size: 0.89em;
+    font-size: 18px;
     line-height: 1.18;
     font-weight: 400;
     white-space: nowrap;
@@ -313,7 +314,7 @@
     height: clamp(30px, 9.2vw, 39px);
     flex: 0 0 clamp(30px, 9.2vw, 39px);
     font:
-      400 clamp(18px, 5.35vw, 23px)/1 "HC Libre",
+      400 18px/1 "HC Libre",
       serif;
     margin: 0;
     background: #fff;

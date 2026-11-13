@@ -257,7 +257,7 @@ test("approved desktop body rhythm, headings, mirrored inset and bubble ending",
     const currentSize = parseFloat(await heading.evaluate(el => getComputedStyle(el).fontSize));
     const expectedSize = width >= 751
       ? 28
-      : 22;
+      : 20;
     expect(currentSize, `approved tablet/mobile heading at ${width}px`).toBeCloseTo(expectedSize, 1);
     const card = page.locator("#standards .st-story--two .st-prose");
     await expect(card).toHaveCSS("border-top-right-radius", width<=750?"6px":"20px");

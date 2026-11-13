@@ -649,7 +649,7 @@
 @media screen and (max-width: 750px) {
   #contact.hc-contact-new .hc-contact-heading-stage h2 {
     font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
-    font-size: clamp(17.5px, 5.25vw, 22px);
+    font-size: 20px;
     font-weight: 400;
     font-style: normal;
     line-height: 1.14;
@@ -657,21 +657,22 @@
   }
   #contact.hc-contact-new .hc-contact-eyebrow {
     font-family: "HC Nunito", "Nunito Sans", Arial, sans-serif;
-    font-size: clamp(8px, 2.35vw, 10px);
+    font-size: 9.5px;
     line-height: 1.25;
     letter-spacing: 0.175em;
     font-weight: 800;
     margin-bottom: 5px;
   }
   #contact.hc-contact-new .hc-contact-heading-stage {
-    margin-top: 10px;
+    margin-top: 22px;
     padding: 18px 22px 16px;
     min-height: 0;
   }
   #contact.hc-contact-new .hc-contact-heading-stage::before {
-    top: -12px;
-    left: 0;
-    height: 3px;
+    top: -14px;
+    left: 22px;
+    width: 66%;
+    height: 4px;
   }
   #contact.hc-contact-new .hc-contact-card {
     padding-top: 14px;

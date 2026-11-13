@@ -39,3 +39,7 @@ At ≤750px, the owner requested a tighter Standards introduction with **"The li
 ## Mobile contact, benefits and selected-plan type refinement
 
 Owner's subsequent review: remove the `Leave a little note.` heading only on mobile and collapse its top padding. Keep the canonical external Jotform embed intact, but present the backup contact-form link immediately after the supporting copy as a visible pill CTA on mobile, avoiding the misleading empty space above the link when the external embed has not rendered. Adjust the three Hero benefit checkmarks upward, and tighten their horizontal spacing while keeping all three labels on one line and aligned with Book Now. Reduce the Featured Service illustrated header plan title from 22px to 18px on mobile (17px at ≤340px). No desktop/tablet edits and no production website merge.
+
+## Mobile typography standardization (November 2026)
+
+On the GitHub review branch, mobile (≤750px) Standards, Steps, Contact and Featured Service eyebrow labels now use exactly 9.5px; the Steps first line is 20px, its second line 18px, and steps numbers 18px. All Standards story headlines, “Care starts at home.” and the Contact section main heading are 20px. Standards body paragraphs remain **14px / 1.55 line-height (21.7px)** on phones (16px / 1.5 on tablets). Contact’s coral decorative line is now 4px high, inset 22px from the left and preceded by more space above its header, echoing the Standards intro. No desktop/tablet changes or production deployment.
