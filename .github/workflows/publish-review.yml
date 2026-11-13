@@ -29,11 +29,17 @@ jobs:
         run: npm run build
       - name: Verify source architecture
         run: npm run check:architecture
+      - name: Generate isolated mobile comparison from the approved checklist renderer
+        run: node scripts/build-mobile-concepts.ts
       - name: Compile GitHub Pages site under project path
         run: npx vite build --base=/hello-casa-website/
       - name: Verify built interactive review and asset paths
         run: |
           test -f dist/review/index.html
+          test -f dist/mobile-concepts/index.html
+          test -f dist/mobile-concepts/concept.html
+          test -f dist/mobile-concepts/services-data.json
+          node -e "const d=require('./dist/mobile-concepts/services-data.json');if(d.taskIdCount!==129||d.plans.length!==6)process.exit(1)"
           test -f dist/index.html
           ls dist/assets/index-*.js > /dev/null
           grep -q '/hello-casa-website/assets/' dist/index.html

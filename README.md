@@ -64,3 +64,8 @@ The independent tablet layout (751–900px) now inherits the cohesive desktop Se
 ### Approved tablet follow-up: Steps, Hero bottom, and footer
 
 At 751–900px, Steps keeps the 28px heading with “A Fresh Start,” forced onto one row and “In 3 steps” on the next; a 230px first grid track preserves the shared Contact inset. The Hero ends closer to its trust-benefit row by shortening the section height while preserving the established hero text, CTA and benefit positions. The tablet footer hides the newsletter and uses one horizontal logo → Explore → Support → Jobs row with the legal links beneath; its logo is 156px wide (down from 180px), preserving the illustrated background. Desktop and phone are not changed. These changes were approved as one batch and are verified at 751, 768, 820 and 900px.
+
+
+## Mobile Services design exploration (isolated, not production)
+
+The four interactive mobile concepts are reviewed at https://hellocasausa.github.io/hello-casa-website/mobile-concepts/ . Their content is generated at build time by `node scripts/build-mobile-concepts.ts` from the approved plans, checklist code, plan artwork and quote link. This does not alter the actual mobile website. See docs/design-promotions/mobile-services-exploration.md.
