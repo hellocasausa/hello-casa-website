@@ -239,8 +239,8 @@ test("approved desktop body rhythm, headings, mirrored inset and bubble ending",
     expect(left && right).not.toBeNull();
     expect(Math.abs(left!.x - (width - (right!.x + right!.width))), `mirrored heading insets at ${width}px`).toBeLessThanOrEqual(2);
     const radius = page.locator("#standards .st-story--two .st-prose");
-    await expect(radius).toHaveCSS("border-top-left-radius", "100px");
-    await expect(radius).toHaveCSS("border-bottom-left-radius", "100px");
+    await expect(radius).toHaveCSS("border-top-left-radius", "22px");
+    await expect(radius).toHaveCSS("border-bottom-left-radius", "22px");
     await expect(radius).toHaveCSS("border-top-right-radius", "22px");
     await expect(radius).toHaveCSS("border-bottom-right-radius", "22px");
     await expect(page.locator(".st-intro h2")).toHaveCSS("font-size", "32px");

@@ -91,7 +91,7 @@ test("all approved full-length Standards copy remains readable on tablet and pho
    await page.locator("#standards").screenshot({path:"test-results/approved-standards-mobile-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
  }
 });
-test("narrower Standards cards retain image dimensions, all text and left-facing bubble", async ({page})=>{
+test("Standards cards retain image dimensions, all text and consistent corners", async ({page})=>{
  await page.setViewportSize({width:1440,height:950});
  const stories=page.locator("#standards .st-story");
  await expect(stories).toHaveCount(3);
@@ -114,8 +114,8 @@ test("narrower Standards cards retain image dimensions, all text and left-facing
  });
  expect(widths.map(row=>Math.round(row.photoWidth))).toEqual([276,255,303]);
  const second=stories.nth(1).locator(".st-prose");
- await expect(second).toHaveCSS("border-top-left-radius","100px");
- await expect(second).toHaveCSS("border-bottom-left-radius","100px");
+ await expect(second).toHaveCSS("border-top-left-radius","22px");
+ await expect(second).toHaveCSS("border-bottom-left-radius","22px");
  await expect(second).toHaveCSS("border-top-right-radius","22px");
  await expect(second).toHaveCSS("border-bottom-right-radius","22px");
 });
