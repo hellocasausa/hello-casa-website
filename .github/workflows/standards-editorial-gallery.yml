@@ -1,0 +1,45 @@
+name: Standards Editorial Remix Gallery — Experimental QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "preview/experiments/standards-editorial-gallery.html"
+      - "tests/experiments/standards-editorial.spec.ts"
+      - ".github/workflows/standards-editorial-gallery.yml"
+      - "preview/experiments/DER-002-reference-manifest.md"
+      - "preview/experiments/standards-editorial-notes.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  desktop-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Verify A/B/C artwork, full copy, and desktop compositions
+        run: npx playwright test tests/experiments/standards-editorial.spec.ts --reporter=line
+      - name: Assemble DER-002 design reference package
+        if: success()
+        run: |
+          mkdir -p design-reference-DER-002
+          cp preview/experiments/standards-editorial-gallery.html design-reference-DER-002/
+          cp preview/experiments/standards-editorial-notes.md design-reference-DER-002/
+          cp preview/experiments/DER-002-reference-manifest.md design-reference-DER-002/
+          cp test-results/standards-*.png design-reference-DER-002/
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: DER-002-Hello-Casa-Standards-Editorial-References
+          path: design-reference-DER-002/
+          if-no-files-found: error

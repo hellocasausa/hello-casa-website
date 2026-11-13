@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="robots" content="noindex,nofollow">
+ <title>Hello Casa — Mobile Services Grid Study</title>
+ <link rel="stylesheet" href="./studio.css">
+ <script src="./studio.js" defer></script>
+</head>
+<body>
+ <header class="masthead">
+  <div class="lockup"><span class="asterisk" aria-hidden="true">✦</span><div><strong>hello casa</strong><small>Services / Layout Studio</small></div></div>
+  <a href="../review/?view=mobile" class="home-link">Back to homepage preview</a>
+ </header>
+ <main class="studio">
+  <section class="introduction">
+   <p class="eyebrow">MOBILE DESIGN EXPLORATION · ISOLATED PREVIEW</p>
+   <h1>More room for <em>the little details.</em></h1>
+   <p>Compare the complete Services section with its current one-column checklist and a more compact two-column arrangement. Every plan, focus button, checklist task and Available Addition comes from the actual Hello Casa website.</p>
+   <div class="selector-cluster">
+    <p class="control-label">CHECKLIST ARRANGEMENT</p>
+    <div class="segmented" role="group" aria-label="Checklist arrangement">
+     <button type="button" data-layout="current" aria-pressed="false">Previous · One column</button>
+     <button type="button" data-layout="proposed" aria-pressed="true">Proposed · Two columns</button>
+    </div>
+   </div>
+   <div class="selector-cluster">
+    <p class="control-label">PHONE WIDTH</p>
+    <div class="segmented widths" role="group" aria-label="Phone viewport">
+     <button type="button" data-width="320" aria-pressed="false">320px</button>
+     <button type="button" data-width="375" aria-pressed="false">375px</button>
+     <button type="button" data-width="390" aria-pressed="true">390px</button>
+    </div>
+   </div>
+   <div class="study-notes" aria-live="polite">
+    <p class="note-heading">WHAT TO LOOK FOR</p>
+    <p id="design-description">At 390px, each checklist row can hold two cards. Task labels, checkmarks and internal spacing are gently reduced while the full content stays intact.</p>
+    <div class="specs">
+     <div><span>Card columns</span><strong id="columns">2</strong></div>
+     <div><span>Task font</span><strong id="task-size">11.5px</strong></div>
+     <div><span>Checkmarks</span><strong id="check-size">10px</strong></div>
+    </div>
+   </div>
+   <p class="safety">✦ Experimental presentation only. No changes to the approved Services styles, content, or production website. All six plans and original tasks remain interactive.</p>
+  </section>
+  <section class="preview-area" aria-labelledby="preview-title">
+   <div class="preview-head">
+    <div><p class="eyebrow">LIVE CANONICAL COMPONENT</p><h2 id="preview-title">Proposed two-column checklist</h2></div>
+    <span class="status" id="preview-status" role="status">Loading preview…</span>
+   </div>
+   <div class="stage" id="stage">
+    <div class="phone-holder" id="phone-holder">
+     <div class="phone-shell" id="phone-shell">
+      <iframe id="native-services" src="../" title="Interactive native Hello Casa Services section" loading="eager"></iframe>
+     </div>
+    </div>
+   </div>
+   <div class="preview-bottom">
+    <span id="viewport-info">390px design viewport</span>
+    <span>Scroll the page to see every checklist card</span>
+   </div>
+   <p class="readme">Try changing plans, including <strong>Guest Turnover</strong>, and selecting <strong>Kitchen +</strong> or <strong>Bathrooms +</strong> under Essential Clean. At 320px the proposed layout intentionally returns to one column for readability. The quote button retains the approved form link.</p>
+  </section>
+ </main>
+</body>
+</html>

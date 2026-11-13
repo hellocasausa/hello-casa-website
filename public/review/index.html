@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Hello Casa — Responsive Design Review</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#284966;background:#f3f7fa}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #627cdb;outline-offset:3px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#fff;padding:14px clamp(15px,3vw,42px);border-bottom:1px solid #dce7ee;box-shadow:0 2px 12px #253a5510}
+.title h1{font-family:Georgia,serif;font-size:20px;font-weight:400;margin:0;color:#274b6a}
+.title p{color:#6a8297;font-size:12px;line-height:1.5;margin:4px 0 0}
+.controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.preset{padding:10px 13px;border:1px solid #cedce7;border-radius:9px;color:#3c627c;background:#f6f9fc;font-size:13px;font-weight:650}
+.preset[aria-pressed="true"]{background:#274b6a;border-color:#274b6a;color:#fff}
+.open-site{color:#274b6a;text-decoration:underline;text-underline-offset:3px;font-size:12px;margin-left:7px}
+.details{padding:13px 16px 0;text-align:center;color:#6e8494;font-size:12px}
+.stage{width:100%;padding:24px 12px 48px;display:flex;justify-content:center;align-items:flex-start;overflow:hidden;min-height:70vh}
+.holder{position:relative;flex:none;transition:width .2s ease,height .2s ease}
+.device{position:absolute;top:0;left:0;transform-origin:top left;box-shadow:0 15px 48px #173b5a25,0 0 0 1px #bccbd6;border-radius:12px;overflow:hidden;background:white}
+.device iframe{display:block;width:100%;height:100%;border:0;background:white}
+.disclaimer{text-align:center;padding:0 20px 25px;color:#7890a1;font-size:11px}
+@media(max-width:620px){.topbar{align-items:flex-start;gap:13px}.controls{gap:5px}.preset{padding:9px 10px;font-size:12px}.open-site{margin-left:0}.stage{padding-top:15px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="title"><h1>Hello Casa · Design Review</h1><p>Reconstructed homepage · Draft only · Not the live website</p></div>
+ <nav class="controls" aria-label="Screen size preview">
+  <button class="preset" data-view="desktop" aria-pressed="true" type="button">Desktop</button>
+  <button class="preset" data-view="tablet" aria-pressed="false" type="button">Tablet</button>
+  <button class="preset" data-view="mobile" aria-pressed="false" type="button">Mobile</button>
+  <a class="open-site" href="../" target="_blank" rel="noopener">Open full website</a>
+ </nav>
+</header>
+<div id="details" class="details" role="status" aria-live="polite">Desktop · 1440px design viewport</div>
+<main class="stage" id="stage">
+ <div id="holder" class="holder"><div id="device" class="device">
+  <iframe id="site" title="Interactive Hello Casa website at selected design width" src="../" loading="eager"></iframe>
+ </div></div>
+</main>
+<p class="disclaimer">Switch screen sizes above. Scroll inside the preview to explore the full page and interact with the service checklist.</p>
+<script>
+(function(){
+ "use strict";
+ var sizes={desktop:1440,tablet:820,mobile:390},height=820;
+ var stage=document.getElementById("stage"),holder=document.getElementById("holder"),device=document.getElementById("device"),frame=document.getElementById("site"),caption=document.getElementById("details");
+ var buttons=Array.from(document.querySelectorAll("[data-view]"));
+ var requested=new URL(location.href).searchParams.get("view");
+ var active=Object.prototype.hasOwnProperty.call(sizes,requested)?requested:"desktop";
+ function layout(){
+  var width=sizes[active],available=Math.max(290,stage.clientWidth-24),scale=Math.min(1,available/width);
+  holder.style.width=Math.ceil(width*scale)+"px";holder.style.height=Math.ceil(height*scale)+"px";
+  device.style.width=width+"px";device.style.height=height+"px";device.style.transform="scale("+scale+")";
+  frame.style.width=width+"px";frame.style.height=height+"px";frame.setAttribute("width",String(width));
+  caption.textContent=active.charAt(0).toUpperCase()+active.slice(1)+" · "+width+"px design viewport"+(scale<1?" · scaled to fit":"");
+ }
+ function select(view){
+  active=view;buttons.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.view===view));});
+  var url=new URL(location.href);url.searchParams.set("view",view);history.replaceState(null,"",url.pathname+url.search+url.hash);
+  layout();
+ }
+ buttons.forEach(function(b){b.addEventListener("click",function(){select(b.dataset.view);});});
+ window.addEventListener("resize",layout,{passive:true});select(active);
+})();
+</script>
+</body>
+</html>

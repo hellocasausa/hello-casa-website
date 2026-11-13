@@ -1,0 +1,130 @@
+[
+  {
+    "file": "footer.css",
+    "selector": "#footer.hc-b-footer",
+    "property": "height",
+    "value": "auto",
+    "scope": "(min-width:751px)",
+    "reason": "Approved responsive/state cascade priority; retained after measured comparison"
+  },
+  {
+    "file": "footer.css",
+    "selector": ".hc-b-footer__form-status[hidden]",
+    "property": "display",
+    "value": "none",
+    "scope": "(min-width:751px)",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "footer.css",
+    "selector": ".hc-b-footer__art",
+    "property": "height",
+    "value": "100%",
+    "scope": "(min-width:751px)",
+    "reason": "Approved responsive/state cascade priority; retained after measured comparison"
+  },
+  {
+    "file": "foundation.css",
+    "selector": "[hidden]",
+    "property": "display",
+    "value": "none",
+    "scope": "base",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "foundation.css",
+    "selector": "*,\n  *:before,\n  *:after",
+    "property": "transition",
+    "value": "none",
+    "scope": "(prefers-reduced-motion:reduce)",
+    "reason": "Approved responsive/state cascade priority; retained after measured comparison"
+  },
+  {
+    "file": "header.css",
+    "selector": ".hc-nav-v7 .hc-float-dropdown[hidden]",
+    "property": "display",
+    "value": "none",
+    "scope": "(min-width:751px)",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical",
+    "property": "background",
+    "value": "linear-gradient(\n      180deg,\n      #f7fbfa 0%,\n      #fffaf1 50%,\n      #fffdf8 100%\n    )",
+    "scope": "(max-width:750px)",
+    "reason": "Approved responsive/state cascade priority; retained after measured comparison"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-choices .hc-card:focus-visible",
+    "property": "outline",
+    "value": "2px solid #294b6f",
+    "scope": "base",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-choices .hc-card:focus-visible",
+    "property": "outline-offset",
+    "value": "3px",
+    "scope": "base",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-panel-actions .hc-button",
+    "property": "transition",
+    "value": "background-color 0.18s ease,\n      transform 0.18s ease,\n      box-shadow 0.18s ease",
+    "scope": "screen and (max-width:750px)",
+    "reason": "Approved responsive/state cascade priority; retained after measured comparison"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-panel-actions .hc-button:focus-visible",
+    "property": "outline",
+    "value": "2px solid #294b6f",
+    "scope": "screen and (max-width:750px)",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-panel-actions .hc-button:focus-visible",
+    "property": "outline-offset",
+    "value": "3px",
+    "scope": "screen and (max-width:750px)",
+    "reason": "Accessibility/focus visibility contract"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-v93-focus-dock .hc-focus-btn:focus-visible",
+    "property": "outline",
+    "value": "2px solid #294b6f",
+    "scope": "screen and (min-width:751px)",
+    "reason": "Accessibility/focus visibility contract; extended to the approved connected tablet Services composition"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-v93-focus-dock .hc-focus-btn:focus-visible",
+    "property": "outline-offset",
+    "value": "2px",
+    "scope": "screen and (min-width:751px)",
+    "reason": "Accessibility/focus visibility contract; extended to the approved connected tablet Services composition"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-mobile-vertical .hc-panel-actions .hc-button",
+    "property": "transition",
+    "value": "background-color 0.18s ease,\n      box-shadow 0.18s ease",
+    "scope": "screen and (min-width:751px)",
+    "reason": "Approved responsive/state cascade priority; retained after measured comparison; extended to the approved connected tablet Services composition"
+  },
+  {
+    "file": "services.css",
+    "selector": "#hc-focus-dock[hidden]",
+    "property": "display",
+    "value": "none",
+    "scope": "base",
+    "reason": "Accessibility/focus visibility contract"
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "sourceSha256": "fa13b63fb8c8cf8b829cc6f3ba532ea2ce55b7b1a7d6793a3c302c31c14ba62b",
+  "measurements": {
+    "350": {
+      "titleX": 18.296875,
+      "titleY": 41.359375,
+      "titleHeight": 36.4375,
+      "stepsTitleX": 17.5,
+      "stepsTitleY": 188.921875,
+      "stepsTitleHeight": 40.234375,
+      "servicesTop": 300.09375
+    },
+    "390": {
+      "titleX": 20.390625,
+      "titleY": 47.625,
+      "titleHeight": 40.59375,
+      "stepsTitleX": 19.5,
+      "stepsTitleY": 211.40625,
+      "stepsTitleHeight": 44.8125,
+      "servicesTop": 328.8125
+    },
+    "430": {
+      "titleX": 22.484375,
+      "titleY": 51.90625,
+      "titleHeight": 44.78125,
+      "stepsTitleX": 21.5,
+      "stepsTitleY": 230.984375,
+      "stepsTitleHeight": 48.171875,
+      "servicesTop": 357.375
+    },
+    "750": {
+      "titleX": 39.21875,
+      "titleY": 86.0625,
+      "titleHeight": 78.09375,
+      "stepsTitleX": 23,
+      "stepsTitleY": 391.421875,
+      "stepsTitleHeight": 48.171875,
+      "servicesTop": 519.40625
+    },
+    "751": {
+      "titleX": 93.703125,
+      "titleY": 74.421875,
+      "titleHeight": 60.40625,
+      "stepsTitleX": 26,
+      "stepsTitleY": 342.765625,
+      "stepsTitleHeight": 60.3125,
+      "servicesTop": 440.78125
+    },
+    "900": {
+      "titleX": 112.296875,
+      "titleY": 94.9375,
+      "titleHeight": 72.40625,
+      "stepsTitleX": 44,
+      "stepsTitleY": 397.5,
+      "stepsTitleHeight": 62.625,
+      "servicesTop": 496.671875
+    },
+    "901": {
+      "titleX": 112.421875,
+      "titleY": 95.078125,
+      "titleHeight": 72.46875,
+      "stepsTitleX": 44,
+      "stepsTitleY": 397.828125,
+      "stepsTitleHeight": 62.6875,
+      "servicesTop": 497.03125
+    },
+    "1100": {
+      "titleX": 137.25,
+      "titleY": 122.484375,
+      "titleHeight": 88.46875,
+      "stepsTitleX": 44,
+      "stepsTitleY": 467.0625,
+      "stepsTitleHeight": 69.59375,
+      "servicesTop": 569.71875
+    },
+    "1440": {
+      "titleX": 179.6875,
+      "titleY": 169.3125,
+      "titleHeight": 115.8125,
+      "stepsTitleX": 164,
+      "stepsTitleY": 586.28125,
+      "stepsTitleHeight": 79.46875,
+      "servicesTop": 693.875
+    }
+  }
+}

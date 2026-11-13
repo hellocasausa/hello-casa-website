@@ -1,0 +1,529 @@
+[
+  {
+    "id": "maintenance",
+    "catalogId": "essential",
+    "name": "Essential Clean",
+    "catalogName": "Essential",
+    "description": "Everyday upkeep",
+    "groups": [
+      {
+        "title": "All Rooms",
+        "icon": "⌂",
+        "items": [
+          "Beds made",
+          "Reachable vents & cobwebs dusted",
+          "Mirrors & glass polished",
+          "Reachable surfaces wiped",
+          "Furniture & electronics dusted",
+          "Trash bins emptied & relined",
+          "Floors swept, mopped or vacuumed"
+        ],
+        "taskIds": [
+          "essential-all-001",
+          "essential-all-002",
+          "essential-all-003",
+          "essential-all-004",
+          "essential-all-005",
+          "essential-all-006",
+          "essential-all-007"
+        ]
+      },
+      {
+        "title": "Kitchen",
+        "icon": "◌",
+        "items": [
+          "Load dishes into dishwasher",
+          "Range hood wiped",
+          "Stovetop cleaned",
+          "Appliance exteriors wiped",
+          "Microwave interior & exterior cleaned",
+          "Countertops & backsplash wiped",
+          "Cabinet exteriors wiped",
+          "Sink & faucet polished"
+        ],
+        "taskIds": [
+          "essential-kit-001",
+          "essential-kit-002",
+          "essential-kit-003",
+          "essential-kit-004",
+          "essential-kit-005",
+          "essential-kit-006",
+          "essential-kit-007",
+          "essential-kit-008"
+        ]
+      },
+      {
+        "title": "Bathrooms",
+        "icon": "✧",
+        "items": [
+          "Tub & shower scrubbed",
+          "Toilets cleaned & sanitized",
+          "Cabinet exteriors wiped",
+          "Countertops wiped",
+          "Sink & faucet polished"
+        ],
+        "taskIds": [
+          "essential-bath-001",
+          "essential-bath-002",
+          "essential-bath-003",
+          "essential-bath-004",
+          "essential-bath-005"
+        ]
+      }
+    ],
+    "extras": [
+      "Interior oven",
+      "Interior fridge",
+      "Interior cabinets",
+      "Interior windows",
+      "Blinds",
+      "Baseboards",
+      "Patio / balcony",
+      "Garage sweeping"
+    ],
+    "note": "Essential+ focuses on one area per visit: kitchen OR bathrooms. Additional requests are confirmed during quoting.",
+    "sourceVersion": "HC-CHECKLIST-2026-10-27-consolidated-v4"
+  },
+  {
+    "id": "deep",
+    "catalogId": "deep",
+    "name": "Deep Detail",
+    "catalogName": "Deep Detail",
+    "description": "A deeper clean",
+    "groups": [
+      {
+        "title": "All Rooms",
+        "icon": "⌂",
+        "items": [
+          "Beds made",
+          "Reachable vents & cobwebs dusted",
+          "Mirrors & glass polished",
+          "Reachable surfaces cleaned",
+          "Furniture & electronics dusted",
+          "Light switches & fixtures wiped",
+          "Doors & frames cleaned",
+          "Trash bins emptied, cleaned & relined",
+          "Floors swept, mopped or vacuumed"
+        ],
+        "taskIds": [
+          "deep-all-001",
+          "deep-all-002",
+          "deep-all-003",
+          "deep-all-004",
+          "deep-all-005",
+          "deep-all-006",
+          "deep-all-007",
+          "deep-all-008",
+          "deep-all-009"
+        ]
+      },
+      {
+        "title": "Kitchen",
+        "icon": "◌",
+        "items": [
+          "Load dishes into dishwasher",
+          "Rangehood and exhaust vents degreased",
+          "Stovetop scrubbed & degreased",
+          "Appliance exteriors detailed, including refrigerator top",
+          "Microwave interior & exterior cleaned",
+          "Countertops & backsplash detailed",
+          "Cabinet fronts & handles detailed",
+          "Sink, faucet & edges detailed"
+        ],
+        "taskIds": [
+          "deep-kit-001",
+          "deep-kit-002",
+          "deep-kit-003",
+          "deep-kit-004",
+          "deep-kit-005",
+          "deep-kit-006",
+          "deep-kit-007",
+          "deep-kit-008"
+        ]
+      },
+      {
+        "title": "Bathrooms",
+        "icon": "✧",
+        "items": [
+          "Tub, shower, tracks & buildup detailed",
+          "Toilets cleaned & sanitized",
+          "Cabinet fronts & handles detailed",
+          "Countertops detailed",
+          "Sink, faucet & edges detailed"
+        ],
+        "taskIds": [
+          "deep-bath-001",
+          "deep-bath-002",
+          "deep-bath-003",
+          "deep-bath-004",
+          "deep-bath-005"
+        ]
+      }
+    ],
+    "extras": [
+      "Interior oven",
+      "Interior fridge",
+      "Interior cabinets",
+      "Interior windows",
+      "Blinds",
+      "Baseboards",
+      "Patio / balcony",
+      "Garage sweeping"
+    ],
+    "note": "Interior oven, refrigerator, cabinets, windows and other optional additions are not part of Deep Detail by default.",
+    "sourceVersion": "HC-CHECKLIST-2026-10-27-consolidated-v4"
+  },
+  {
+    "id": "moving",
+    "catalogId": "moving",
+    "name": "Moving Reset",
+    "catalogName": "Moving Reset",
+    "description": "A fresh start",
+    "groups": [
+      {
+        "title": "All Rooms",
+        "icon": "⌂",
+        "items": [
+          "Reachable vents & cobwebs dusted",
+          "Blinds cleaned",
+          "Interior windows & tracks cleaned",
+          "Mirrors & glass polished",
+          "Reachable surfaces & shelves cleaned",
+          "Light switches & fixtures wiped",
+          "Doors & frames cleaned",
+          "Baseboards cleaned",
+          "Floors swept, mopped or vacuumed"
+        ],
+        "taskIds": [
+          "moving-all-001",
+          "moving-all-002",
+          "moving-all-003",
+          "moving-all-004",
+          "moving-all-005",
+          "moving-all-006",
+          "moving-all-007",
+          "moving-all-008",
+          "moving-all-009"
+        ]
+      },
+      {
+        "title": "Kitchen",
+        "icon": "◌",
+        "items": [
+          "Rangehood and exhaust vents degreased",
+          "Refrigerator cleaned: interior, exterior & top",
+          "Backsplash & grout detailed",
+          "Stovetop scrubbed & degreased",
+          "Oven and racks degreased",
+          "Cabinets & drawers cleaned inside & out",
+          "Countertops cleaned",
+          "Sink, faucet & edges detailed"
+        ],
+        "taskIds": [
+          "moving-kit-001",
+          "moving-kit-002",
+          "moving-kit-003",
+          "moving-kit-004",
+          "moving-kit-005",
+          "moving-kit-006",
+          "moving-kit-007",
+          "moving-kit-008"
+        ]
+      },
+      {
+        "title": "Bathrooms",
+        "icon": "✧",
+        "items": [
+          "Tub, shower, tracks & buildup detailed",
+          "Cabinets & drawers cleaned inside & out",
+          "Toilets cleaned & sanitized",
+          "Countertops cleaned",
+          "Sink, faucet & edges detailed"
+        ],
+        "taskIds": [
+          "moving-bath-001",
+          "moving-bath-002",
+          "moving-bath-003",
+          "moving-bath-004",
+          "moving-bath-005"
+        ]
+      }
+    ],
+    "extras": [
+      "Exterior windows",
+      "Patio / balcony",
+      "Garage sweeping"
+    ],
+    "note": "Designed for an empty property. Optional outdoor areas, garage sweeping and exterior windows require agreement.",
+    "sourceVersion": "HC-CHECKLIST-2026-10-27-consolidated-v4"
+  },
+  {
+    "id": "guest",
+    "catalogId": "vacation",
+    "name": "Guest Turnover",
+    "catalogName": "Guest Ready",
+    "description": "Turnover cleaning",
+    "groups": [
+      {
+        "title": "All Rooms",
+        "icon": "⌂",
+        "items": [
+          "Used linens removed & laundered (as agreed)",
+          "Fresh linens installed & beds made",
+          "Furniture & surfaces wiped",
+          "Electronics & décor dusted",
+          "Mirrors & glass polished",
+          "Pillows & décor arranged",
+          "Trash bins emptied & relined",
+          "Floors swept, mopped or vacuumed"
+        ],
+        "taskIds": [
+          "vacation-all-001",
+          "vacation-all-002",
+          "vacation-all-003",
+          "vacation-all-004",
+          "vacation-all-005",
+          "vacation-all-006",
+          "vacation-all-007",
+          "vacation-all-008"
+        ]
+      },
+      {
+        "title": "Kitchen",
+        "icon": "◌",
+        "items": [
+          "Dishes washed & put away",
+          "Refrigerator inspected & cleared",
+          "Small appliances & fridge wiped (inside & out)",
+          "Sink, stovetop & counters cleaned",
+          "Host-provided kitchen essentials restocked"
+        ],
+        "taskIds": [
+          "vacation-kit-001",
+          "vacation-kit-002",
+          "vacation-kit-003",
+          "vacation-kit-004",
+          "vacation-kit-005"
+        ]
+      },
+      {
+        "title": "Bathrooms",
+        "icon": "✧",
+        "items": [
+          "Used towels laundered & put away (as agreed)",
+          "Shower & tub cleaned; hair & residue removed",
+          "Toilets cleaned & sanitized",
+          "Countertops cleaned",
+          "Sink & faucet cleaned",
+          "Fresh towels displayed",
+          "Host-provided toiletries restocked"
+        ],
+        "taskIds": [
+          "vacation-bath-001",
+          "vacation-bath-002",
+          "vacation-bath-003",
+          "vacation-bath-004",
+          "vacation-bath-005",
+          "vacation-bath-006",
+          "vacation-bath-007"
+        ]
+      },
+      {
+        "title": "Outdoor Areas",
+        "icon": "☼",
+        "items": [
+          "Outdoor furniture wiped & arranged",
+          "Visible debris removed",
+          "Outdoor trash handled",
+          "Patio & walkways swept"
+        ],
+        "taskIds": [
+          "vacation-out-001",
+          "vacation-out-002",
+          "vacation-out-003",
+          "vacation-out-004"
+        ],
+        "conditional": "guestOutdoor"
+      },
+      {
+        "title": "Final Touches",
+        "icon": "✓",
+        "items": [
+          "Forgotten belongings checked",
+          "Damaged items reported",
+          "Host-provided supplies checked",
+          "Thermostat adjusted",
+          "Doors & windows secured"
+        ],
+        "taskIds": [
+          "vacation-final-001",
+          "vacation-final-002",
+          "vacation-final-003",
+          "vacation-final-004",
+          "vacation-final-005"
+        ]
+      }
+    ],
+    "extras": [],
+    "note": "Laundry is handled as agreed, using the property’s available time and equipment. Outdoor tasks apply only when included in the turnover request.",
+    "sourceVersion": "HC-CHECKLIST-2026-10-27-consolidated-v4"
+  },
+  {
+    "id": "office",
+    "catalogId": "office",
+    "name": "Office Fresh",
+    "catalogName": "Office Fresh",
+    "description": "Workspace cleaning",
+    "groups": [
+      {
+        "title": "All Rooms",
+        "icon": "⌂",
+        "items": [
+          "Reception & common areas tidied",
+          "Reachable vents & cobwebs dusted",
+          "Furniture & electronics dusted",
+          "Desks & office surfaces wiped",
+          "Trash & recycling emptied & relined",
+          "Floors swept, mopped or vacuumed"
+        ],
+        "taskIds": [
+          "office-all-001",
+          "office-all-002",
+          "office-all-003",
+          "office-all-004",
+          "office-all-005",
+          "office-all-006"
+        ]
+      },
+      {
+        "title": "Kitchen / Breakroom",
+        "icon": "◌",
+        "items": [
+          "Appliance exteriors wiped",
+          "Microwave interior & exterior cleaned",
+          "Tables & countertops wiped",
+          "Cabinet exteriors wiped",
+          "Sink & faucet cleaned"
+        ],
+        "taskIds": [
+          "office-kit-001",
+          "office-kit-002",
+          "office-kit-003",
+          "office-kit-004",
+          "office-kit-005"
+        ]
+      },
+      {
+        "title": "Bathrooms",
+        "icon": "✧",
+        "items": [
+          "Toilets cleaned & sanitized",
+          "Mirrors & glass polished",
+          "Countertops cleaned",
+          "Sink & faucet cleaned",
+          "Restock toilet paper & supplies (client-provided)"
+        ],
+        "taskIds": [
+          "office-bath-001",
+          "office-bath-002",
+          "office-bath-003",
+          "office-bath-004",
+          "office-bath-005"
+        ]
+      }
+    ],
+    "extras": [
+      "Interior fridge",
+      "Interior windows",
+      "High-touch surface detailing"
+    ],
+    "note": "Restocking uses client-provided supplies. Breakroom and restroom scope depends on the workspace.",
+    "sourceVersion": "HC-CHECKLIST-2026-10-27-consolidated-v4"
+  },
+  {
+    "id": "specialty",
+    "catalogId": "specialty",
+    "name": "Specialty Clean",
+    "catalogName": "Specialty Clean",
+    "description": "Custom cleaning",
+    "groups": [
+      {
+        "title": "All Rooms",
+        "icon": "⌂",
+        "items": [
+          "Beds made",
+          "Reachable vents & cobwebs dusted",
+          "Mirrors & glass polished",
+          "Reachable surfaces wiped",
+          "Furniture & electronics dusted",
+          "Trash bins emptied & relined",
+          "Floors swept, mopped or vacuumed"
+        ],
+        "taskIds": [
+          "specialty-essential-all-001",
+          "specialty-essential-all-002",
+          "specialty-essential-all-003",
+          "specialty-essential-all-004",
+          "specialty-essential-all-005",
+          "specialty-essential-all-006",
+          "specialty-essential-all-007"
+        ]
+      },
+      {
+        "title": "Kitchen",
+        "icon": "◌",
+        "items": [
+          "Load dishes into dishwasher",
+          "Range hood wiped",
+          "Stovetop cleaned",
+          "Appliance exteriors wiped",
+          "Microwave interior & exterior cleaned",
+          "Countertops & backsplash wiped",
+          "Cabinet exteriors wiped",
+          "Sink & faucet polished"
+        ],
+        "taskIds": [
+          "specialty-essential-kit-001",
+          "specialty-essential-kit-002",
+          "specialty-essential-kit-003",
+          "specialty-essential-kit-004",
+          "specialty-essential-kit-005",
+          "specialty-essential-kit-006",
+          "specialty-essential-kit-007",
+          "specialty-essential-kit-008"
+        ]
+      },
+      {
+        "title": "Bathrooms",
+        "icon": "✧",
+        "items": [
+          "Tub & shower scrubbed",
+          "Toilets cleaned & sanitized",
+          "Cabinet exteriors wiped",
+          "Countertops wiped",
+          "Sink & faucet polished"
+        ],
+        "taskIds": [
+          "specialty-essential-bath-001",
+          "specialty-essential-bath-002",
+          "specialty-essential-bath-003",
+          "specialty-essential-bath-004",
+          "specialty-essential-bath-005"
+        ]
+      }
+    ],
+    "extras": [
+      "Interior oven",
+      "Interior fridge",
+      "Interior cabinets",
+      "Interior windows",
+      "Blinds",
+      "Baseboards",
+      "Patio / balcony",
+      "Garage sweeping",
+      "Laundry & linens"
+    ],
+    "note": "The Essential-level baseline is a starting point; the custom tasks and final scope are agreed during quoting.",
+    "sourceVersion": "HC-CHECKLIST-2026-10-27-consolidated-v4"
+  }
+]

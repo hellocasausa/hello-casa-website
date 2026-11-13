@@ -1,0 +1,233 @@
+/* Owner: header. Edit the authoritative rule for its scope; do not append correction sheets. */
+
+@media (min-width: 751px) {
+  .hc-nav-v7,
+  .hc-nav-v7 * {
+    box-sizing: border-box;
+  }
+  .hc-nav-v7 {
+    z-index: 100;
+    position: absolute;
+    top: 12px;
+    left: 12.5%;
+    transform: none;
+    width: 75%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font-family: "HC Nunito", "Nunito Sans", Arial, sans-serif;
+    color: #274b6a;
+  }
+  .hc-nav-v7 a {
+    text-decoration: none;
+    color: #274b6a;
+  }
+  .hc-nav-v7 a:focus-visible,
+  .hc-nav-v7 button:focus-visible {
+    outline: 2px solid #315a77;
+    outline-offset: 4px;
+  }
+  .hc-nav-v7 .hc-float-logo {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    min-width: 165px;
+  }
+  .hc-nav-v7 .hc-float-logo img {
+    display: block;
+    width: 173px;
+    height: auto;
+    max-height: 55px;
+    object-fit: contain;
+  }
+  .hc-nav-v7 .hc-float-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 1 auto;
+    gap: clamp(20px, 2.6vw, 40px);
+    margin-right: clamp(12px, 2.5vw, 35px);
+  }
+  .hc-nav-v7 .hc-float-links a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    white-space: nowrap;
+  }
+  .hc-nav-v7 .hc-float-links a:hover {
+    color: #123c5c;
+  }
+  .hc-nav-v7 .hc-float-right {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 12px;
+  }
+  .hc-nav-v7 .hc-float-quote {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 144px;
+    height: 44px;
+    padding: 0 21px;
+    border-radius: 999px;
+    background: #fff0ae;
+    border: 1px solid #f0dca5;
+    color: #274b6a;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.012em;
+    white-space: nowrap;
+    box-shadow: 0 2px 7px rgba(70, 84, 96, 0.025);
+    transition:
+      background-color 0.2s,
+      transform 0.2s;
+  }
+  .hc-nav-v7 .hc-float-quote:hover {
+    background: #ffe69b;
+    transform: translateY(-1px);
+  }
+  .hc-nav-v7 .hc-float-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(62, 100, 125, 0.16);
+    background: rgba(255, 255, 255, 0.34);
+    cursor: pointer;
+  }
+  .hc-nav-v7 .hc-float-toggle span {
+    display: block;
+    width: 17px;
+    height: 2px;
+    background: #274b6a;
+    border-radius: 3px;
+  }
+  .hc-nav-v7 .hc-float-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 7px);
+    width: 210px;
+    padding: 9px;
+    background: #fff;
+    border: 1px solid #dceaf0;
+    border-radius: 13px;
+    box-shadow: 0 12px 30px rgba(39, 75, 106, 0.12);
+  }
+  .hc-nav-v7 .hc-float-dropdown[hidden] {
+    display: none !important;
+  }
+  .hc-nav-v7 .hc-float-dropdown a {
+    display: block;
+    padding: 10px 13px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .hc-nav-v7 .hc-float-dropdown a:hover {
+    background: #edf6fb;
+  }
+}
+@media (min-width: 751px) and (max-width: 1100px) {
+  .hc-nav-v7 {
+    top: 7px;
+    height: 60px;
+  }
+  .hc-nav-v7 .hc-float-logo {
+    min-width: 135px;
+  }
+  .hc-nav-v7 .hc-float-logo img {
+    width: 145px;
+    max-height: 47px;
+  }
+  .hc-nav-v7 .hc-float-links {
+    display: none;
+  }
+  .hc-nav-v7 .hc-float-toggle {
+    display: flex;
+  }
+  .hc-nav-v7 .hc-float-quote {
+    min-width: 125px;
+    height: 39px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+}
+.hc-nav-v7 .hc-float-quote {
+  background-color: var(--hc-v88-header-cta);
+  border-color: color-mix(in srgb, var(--hc-v88-header-cta), #d6a85f 28%);
+}
+.hc-nav-v7 .hc-float-quote:hover {
+  background-color: color-mix(in srgb, var(--hc-v88-header-cta), #d59b42 18%);
+}
+@media screen and (min-width: 901px) {
+  .hc-nav-v7 .hc-float-quote {
+    border: 1px solid #e9d68c;
+    border-radius: 999px;
+    font-family: "HC Nunito", "Nunito Sans", Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(12px, 0.93vw, 14px);
+    letter-spacing: -0.012em;
+    box-shadow: 0 3px 10px rgba(75, 65, 41, 0.045);
+  }
+}
+@media (max-width: 750px) {
+  .hc-nav-v7 {
+    display: flex;
+    width: auto;
+  }
+  .hc-float-links,
+  .hc-float-right,
+  .hc-float-dropdown {
+    display: none;
+  }
+  .hc-nav-v7 {
+    left: 15.42px;
+    top: 10px;
+    height: 22px;
+  }
+  .hc-float-logo {
+    min-width: 0;
+  }
+  .hc-float-logo img {
+    width: 80px;
+    max-height: 27px;
+  }
+  .hc-nav-v7 {
+    position: absolute;
+    z-index: 100;
+  }
+}
+.hc-nav-v7 {
+  --hc-v88-header-cta: #fff0ae;
+}
+
+/* Tablet uses one clear navigation action; quote access remains in Services. */
+@media (min-width: 751px) and (max-width: 900px) {
+  .hc-nav-v7 {
+    left: 7%;
+    width: 86%;
+    gap: 12px;
+  }
+  .hc-nav-v7 .hc-float-quote { display: none; }
+  .hc-nav-v7 .hc-float-right { margin-left: auto; }
+  .hc-nav-v7 .hc-float-toggle {
+    width: 42px;
+    height: 42px;
+    display: flex;
+  }
+}

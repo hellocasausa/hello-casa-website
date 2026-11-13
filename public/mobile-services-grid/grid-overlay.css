@@ -1,0 +1,140 @@
+/* REVIEW-ONLY. Injected into the native reconstructed website's same-origin iframe.
+   This file is never imported by src/styles or its production build. */
+html.hc-services-study,
+html.hc-services-study body {
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow-x:hidden!important;
+  background:#f5faff!important;
+}
+html.hc-services-study body > header,
+html.hc-services-study body > footer,
+html.hc-services-study body > .skip-link,
+html.hc-services-study main > :not(#services) {
+  display:none!important;
+}
+html.hc-services-study body > main {
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  min-height:0!important;
+  height:auto!important;
+}
+html.hc-services-study #services{
+  display:block!important;
+  grid-area:auto!important;
+  position:static!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  min-height:0!important;
+}
+html.hc-services-study #hc-mobile-vertical{
+  padding:18px 12px 24px!important;
+  width:100%!important;
+  min-height:0!important;
+  margin:0!important;
+  background:linear-gradient(180deg,#eaf5fb 0%,#f4fbfe 60%,#fff9ee 100%)!important;
+}
+html.hc-services-study #hc-mobile-vertical .hc-bound{
+  max-width:440px!important;
+}
+@media(min-width:375px) and (max-width:750px){
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    align-items:start!important;
+    gap:8px!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved{
+    min-width:0!important;
+    grid-column:auto!important;
+    padding:11px 9px!important;
+    border-radius:12px!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved h4{
+    font-size:9.5px!important;
+    line-height:1.25!important;
+    margin:0 0 8px!important;
+    padding:0!important;
+    letter-spacing:.06em!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved ul{
+    gap:6px!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved li{
+    font-size:11.5px!important;
+    font-weight:450!important;
+    line-height:1.45!important;
+    padding-left:13px!important;
+    overflow-wrap:break-word!important;
+    hyphens:none;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved li::before{
+    font-size:10px!important;
+    left:0!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-extras{
+    min-width:0!important;
+    grid-column:auto!important;
+    margin:0!important;
+    padding:11px 9px!important;
+    border-radius:12px!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-extras h4{
+    font-size:9.5px!important;
+    margin-bottom:6px!important;
+    letter-spacing:.05em!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-extras-caption{
+    font-size:10px!important;
+    line-height:1.45!important;
+    margin-bottom:9px!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-extras-list{
+    gap:5px!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-extras-list li{
+    padding:4px 6px!important;
+    font-size:9.7px!important;
+    line-height:1.35!important;
+    max-width:100%!important;
+    overflow-wrap:anywhere!important;
+  }
+}
+@media(max-width:374px){
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  html.hc-services-study[data-layout="proposed"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved{
+    grid-column:auto!important;
+  }
+}
+
+/* Following approval, Current becomes a historical one-column comparison only:
+   the live native homepage uses two columns at phone widths >=375px. */
+@media (min-width:375px) and (max-width:750px){
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved{
+    padding:15px 14px!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved h4{
+    font-size:10.5px!important;
+    margin-bottom:12px!important;
+    letter-spacing:.085em!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved li{
+    font-size:12.5px!important;
+    line-height:1.42!important;
+    padding-left:18px!important;
+  }
+  html.hc-services-study[data-layout="current"] #hc-mobile-vertical .hc-grid-approved .hc-group-approved ul{gap:9px!important}
+}

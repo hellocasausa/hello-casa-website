@@ -1,0 +1,58 @@
+@font-face{font-family:"HC Nunito";src:url("../assets/0cdf1e4b27f7420b0ad3.woff2") format("woff2");font-style:normal;font-weight:300 900;font-display:swap}
+@font-face{font-family:"HC Libre";src:url("../assets/dbcc0e48671e24477635.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+:root{color:#2a4f70;font-family:"HC Nunito","Nunito Sans",sans-serif;background:#f6fafb;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-width:300px;min-height:100vh;background:linear-gradient(110deg,#f8fcff,#f9fbfa 54%,#fff3e8)}
+a,button{font:inherit}a{color:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible{outline:3px solid #346486;outline-offset:3px}
+.topbar{height:auto;min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px clamp(15px,3.4vw,51px);border-bottom:1px solid #dce8eb;background:#ffffffd6}
+.brand{display:flex;align-items:center;gap:12px}.brand .star{font-size:24px;color:#e6ac79}
+.brand-words strong{display:block;font:400 18px/1.15 "HC Libre",Georgia,serif;letter-spacing:-.04em}
+.brand-words small{display:block;color:#8498a5;font-size:11px;margin-top:3px}
+.back{font-size:11.5px;font-weight:750;text-decoration:none;border-bottom:1px solid #9cb8c9;padding-bottom:3px}
+.studio{max-width:1390px;margin:0 auto;padding:clamp(20px,3vw,46px) clamp(12px,3.5vw,55px);display:grid;grid-template-columns:minmax(290px,410px) minmax(340px,1fr);gap:clamp(20px,4.4vw,76px);align-items:start}
+.selection{padding:12px 0}
+.eyebrow,.group-label,.notes-label,.preview-eyebrow{font-size:10px;letter-spacing:.16em;font-weight:850;color:#7698a9;text-transform:uppercase}
+.eyebrow{margin:0 0 12px}
+.selection h1{font:400 clamp(31px,3.4vw,43px)/1.18 "HC Libre",Georgia,serif;letter-spacing:-.04em;margin:0 0 15px}
+.selection h1 em{font-style:normal;color:#759cb5}
+.intro{font-size:13px;line-height:1.7;color:#6a8598;margin:0 0 24px;max-width:390px}
+.intro strong{color:#365e7d}
+.option-group{margin:0 0 19px}
+.group-label{margin:0 0 9px;font-size:10px}
+.group-label span{color:#e1af80}
+.option-grid{display:grid;grid-template-columns:1fr;gap:7px}
+.option{display:flex;gap:11px;align-items:center;border:1px solid #dbe7ed;border-radius:11px;padding:10px 13px;min-height:60px;background:#ffffffd9;color:#2f5b7a;text-align:left;transition:background .2s,border-color .2s}
+.option:hover{border-color:#9cbdcf}
+.option[aria-pressed=true]{background:#e8f4fb;border-color:#8ab1c9;box-shadow:inset 0 0 0 1px #b2cedc}
+.option .number{font:400 20px/1.15 "HC Libre",Georgia,serif;color:#8caec1;min-width:24px}
+.option[aria-pressed=true] .number{color:#37698a}
+.option-copy{flex:1;min-width:0}
+.option-copy strong{display:block;font-size:13px;line-height:1.28;color:#315978}
+.option-copy small{display:block;font-size:10.5px;color:#7a95a5;margin-top:3px}
+.indicator{color:#86aabc;font-size:15px}
+.notes{background:#fffdf9;border:1px solid #efe5da;padding:17px 19px;border-radius:14px;margin:19px 0 0}
+.notes-label{color:#bc987a;margin:0 0 7px}
+.notes h2{font:400 22px/1.2 "HC Libre",Georgia,serif;margin:0 0 9px}
+.notes>p:not(.notes-label){font-size:12px;line-height:1.6;color:#7390a1;margin:0 0 12px}
+.assessment-line{display:grid;grid-template-columns:80px 1fr;gap:9px;font-size:11px;line-height:1.5;margin:6px 0}
+.assessment-line strong{color:#365e7b}.assessment-line span{color:#7591a1}
+.safe-note{font-size:10.5px;line-height:1.6;color:#8ca0ad;margin:15px 3px}
+.preview{border:1px solid #e1eced;background:#ffffffc9;box-shadow:0 18px 48px #3059790d;border-radius:20px;padding:19px 16px 22px;min-width:0}
+.preview-top{display:flex;align-items:center;justify-content:space-between;gap:15px;max-width:565px;margin:auto;padding:3px 8px 14px}
+.preview-eyebrow{margin:0 0 6px;font-size:9px}
+.preview-top h2{font:400 19px/1.25 "HC Libre",Georgia,serif;letter-spacing:-.03em;margin:0}
+.sizes{display:flex;gap:3px;flex-shrink:0;border-radius:10px;background:#eaf1f5;padding:4px}
+.sizes button{background:transparent;border:0;border-radius:7px;color:#6b8c9f;font-size:11px;min-width:40px;min-height:34px;padding:7px}
+.sizes button[aria-pressed=true]{background:#fff;color:#2e5d7e;box-shadow:0 1px 5px #183e5b16;font-weight:850}
+.stage{min-height:350px;display:flex;align-items:flex-start;justify-content:center;padding:11px 0 18px;overflow:hidden}
+.device-holder{position:relative;flex:none}
+.phone{position:absolute;left:0;top:0;transform-origin:top left;overflow:hidden;border:7px solid #284c6a;border-radius:27px;background:#eaf5fa;box-shadow:0 18px 45px #284c6a27}
+.phone iframe{width:100%;height:100%;display:block;background:#f1f8fa;border:0}
+.preview-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;max-width:560px;margin:0 auto;padding:3px 8px 14px;font-size:11px;color:#7895a8}
+.preview-bottom a{font-weight:800;color:#346482;text-underline-offset:3px}
+.review-hint{background:#f5fafc;border:1px solid #e0ebf0;border-radius:11px;padding:13px 15px;max-width:560px;margin:auto;color:#738e9e;font-size:11.5px;line-height:1.65}
+.review-hint strong{color:#426c87}
+@media(max-width:900px){.studio{grid-template-columns:1fr;max-width:620px;gap:22px}.selection{padding:0}.selection h1{font-size:35px}.option-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.option{min-height:73px;padding:10px}.option .number{font-size:16px;min-width:18px}.option-copy strong{font-size:11.5px}.option-copy small{font-size:10px}.indicator{display:none}.notes{margin-top:17px}.safe-note{margin-bottom:0}}
+@media(max-width:430px){.studio{padding:17px 7px 28px}.topbar{padding:13px}.brand-words strong{font-size:16px}.brand-words small{font-size:10px}.back{font-size:10px}.selection{padding:0 6px}.selection h1{font-size:31px}.option{gap:6px;padding:9px 7px;min-height:75px}.option-copy small{font-size:9.5px}.preview{padding:11px 6px 19px;border-radius:15px}.preview-top{padding:4px 3px 12px}.preview-top h2{font-size:16px}.sizes button{min-width:35px;padding:6px}.stage{padding-inline:0}.review-hint{margin-inline:4px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}

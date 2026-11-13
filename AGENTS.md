@@ -11,7 +11,7 @@ Reconstruct the *approved* Hello Casa homepage as a clean, maintainable, Wix-ind
 - **Source workspace and historical comparisons:** https://drive.google.com/drive/folders/18Qa1d6yQVT4x6dj9Ly03phGlRqmxK7kQ
 - **Astra Phase 1 editor findings (context, not a work order):** https://drive.google.com/file/d/1ueydpO96huYGNnmke1KZm6Wxqz4YlFrs/view
 
-The Phase A blueprint is based on **B6.3.3's embedded website snapshot**, which might predate the newest *approved* HTML preview revisions to Footer, Contact and selling-point copy. Before declaring completion, incorporate later approved source references if supplied and document any baseline conflicts. Do not silently revert newer approved design decisions.
+The primary visual authority is **the website embedded in Design Studio B6.3.3**, the exact source investigated by Astra and used for the Phase A blueprint. Continue refining the existing native reconstruction against that embedded website's actual assets, CSS, positioning, artwork and responsive behavior. The separate v11.0 and v11.2 standalone previews are historical references only; do not apply their designs unless a specific newer approved change is explicitly identified and authorized. Do not restart the reconstruction, merge PR #1 or deploy. This source-priority clarification was supplied by the owner on 12 November 2026.
 
 These external source files are not yet committed to this repository. If inaccessible in the coding environment, request their actual bytes or a connector-mediated export; do not invent missing code, images or fonts.
 
@@ -33,6 +33,12 @@ These external source files are not yet committed to this repository. If inacces
 - Core features must work without Wix or Design Studio. Keep the original B6.3.3 source untouched. Do not add the old editor bridge or visual-selection overlays to the public build.
 - Keep the repository free of credentials, secrets, customer submissions and confidential business records. **The repository is currently public.**
 - No live deployment, route changes or provider configuration changes without explicit approval.
+
+## Ongoing owner-directed design edits (before Design Studio 2.0)
+
+Read and follow [`docs/design-editing-protocol.md`](docs/design-editing-protocol.md) when an approved request changes the reconstructed website's layout, styles, structure, artwork, components, responsive behavior or content. The assistant may implement ordinary approved changes directly in this repository; there is no requirement to route routine changes through Codex.
+
+Distinguish **ideas** from **approved modifications**. Structural requests may require deliberate new elements or reusable components; do not attempt every new visual concept as an appended CSS override. Update the canonical owner, preserve clean responsive inheritance, record the change and verify fidelity. Owner-approved post-reconstruction edits supersede B6.3.3 **only in their explicitly changed scope**; protect all unrelated original design. Do not merge or deploy without separate authorization.
 
 ## Execution
 

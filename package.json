@@ -1,0 +1,40 @@
+{
+  "name": "hello-casa-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "generate": "node scripts/prepare-assets.mjs && node scripts/build-page.ts",
+    "build": "npm run generate && tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "playwright test",
+    "perf:capture": "node scripts/perf/capture.mjs",
+    "check:architecture": "node scripts/check-architecture.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellocasausa/hello-casa-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/hellocasausa/hello-casa-website/issues"
+  },
+  "homepage": "https://github.com/hellocasausa/hello-casa-website#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "lighthouse": "^13.6.0",
+    "linkedom": "^0.18.15",
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0",
+    "postcss": "^8.5.32",
+    "prettier": "^3.10.1",
+    "sharp": "^0.35.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  },
+  "private": true
+}

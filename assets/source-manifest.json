@@ -1,0 +1,254 @@
+[
+  {
+    "path": "/assets/e0bc0011c882a6723825.jpg",
+    "sha256": "e0bc0011c882a672382585afe7f0f5cd43318c6d37e48926e22cff1037dd5b98",
+    "bytes": 1499,
+    "role": "assets/embedded/e0bc0011c882a6723825.jpg"
+  },
+  {
+    "path": "/assets/66cc86d7868066733001.png",
+    "sha256": "66cc86d7868066733001a82def36d8dcf74e3fb0c974b4cf0a145cd5946cca02",
+    "bytes": 5348,
+    "role": "assets/embedded/66cc86d7868066733001.png"
+  },
+  {
+    "path": "/assets/dd62b141d72c6db446d0.png",
+    "sha256": "dd62b141d72c6db446d02feb315831bfa8dea701bb830dcd6cd565389c158a40",
+    "bytes": 338612,
+    "role": "Hello Casa"
+  },
+  {
+    "path": "/assets/4b34eb02453bfa150696.png",
+    "sha256": "4b34eb02453bfa150696032df8fd683e80cc75695c977f8c10dd6e5fe601b8c0",
+    "bytes": 585791,
+    "role": "portal-placeholder.png"
+  },
+  {
+    "path": "/assets/cd0fcbf858d74d7880e6.png",
+    "sha256": "cd0fcbf858d74d7880e6117765df93206e5c1782b63e6caf8cfd5fb0bcf0d87a",
+    "bytes": 506696,
+    "role": "An original Hello Casa cleaning moment"
+  },
+  {
+    "path": "/assets/f07a685256088a08fbc7.png",
+    "sha256": "f07a685256088a08fbc7922f1f0ec260307f0c02064696a50984dfb292baff6a",
+    "bytes": 480767,
+    "role": "Sunlit watercolor home interior"
+  },
+  {
+    "path": "/assets/a8adff160b3ec0891aa3.png",
+    "sha256": "a8adff160b3ec0891aa325bf82aa7ef4484f32add1695672a26015937ecc6ab3",
+    "bytes": 559718,
+    "role": "Sunlit watercolor neighborhood"
+  },
+  {
+    "path": "/assets/0914a207ac7fe63a496e.png",
+    "sha256": "0914a207ac7fe63a496e5113ac178b04f0493b4c4f3743812cc8ea9e83f0b73e",
+    "bytes": 283274,
+    "role": "Sunlit entryway with an open door welcoming someone home"
+  },
+  {
+    "path": "/assets/1d0f706de9c29a4714cf.png",
+    "sha256": "1d0f706de9c29a4714cf86cc840dc45e4d25fa2419a88121832253cfc0af590b",
+    "bytes": 1866712,
+    "role": ""
+  },
+  {
+    "path": "/assets/4f118aaeafd542721b74.png",
+    "sha256": "4f118aaeafd542721b7440b088f81d7ebd6e44e12b30e91dd25dfa8f0d408ac9",
+    "bytes": 565491,
+    "role": "Hello Casa"
+  },
+  {
+    "path": "/assets/0cdf1e4b27f7420b0ad3.woff2",
+    "sha256": "0cdf1e4b27f7420b0ad37ad1d6bac03f7470438bc8f49de10bcf1440dc4fd37b",
+    "bytes": 31040,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/dbcc0e48671e24477635.woff2",
+    "sha256": "dbcc0e48671e24477635ad90429f23e1dc948d3726b0a9487e79ce8e1a9112d5",
+    "bytes": 17404,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/98396cc7a6298243c2d3.woff2",
+    "sha256": "98396cc7a6298243c2d32ad9d77f3a331fb1c033dcabc9ae0cbdb550e2d37265",
+    "bytes": 18204,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/32421467ccdb39737f9d.woff2",
+    "sha256": "32421467ccdb39737f9d7aa26c357076e4f082566f8e28d458182c66f49dd3cc",
+    "bytes": 20656,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/d9075ef709afe117129e.woff2",
+    "sha256": "d9075ef709afe117129ecac9de13564e4c2c1781a43c79d22c598600272c7669",
+    "bytes": 36816,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/065eaa0701b9a388e762.woff2",
+    "sha256": "065eaa0701b9a388e762258b44694870b473157481985b41538fd06a3cfd3bbd",
+    "bytes": 39648,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/8e915393da9c685c5ada.woff2",
+    "sha256": "8e915393da9c685c5adaa0dd08c24436a794e12394be326e7e13847b51fe1c0c",
+    "bytes": 8836,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/405af85e451191b214f8.woff2",
+    "sha256": "405af85e451191b214f850b2444069e85f917280ac24343970411a68b29c029f",
+    "bytes": 9476,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/868fe383df55f68daa2f.woff2",
+    "sha256": "868fe383df55f68daa2f14ca5ecdc2f3f527cc60590649b2ff301a3720aa3353",
+    "bytes": 21028,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/944af1f7ae5ca3b4db90.woff2",
+    "sha256": "944af1f7ae5ca3b4db908e14061dde319fcfc7d19ce349b6afd4ef17a013df70",
+    "bytes": 23360,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/1e9980fffc6e5926fd7b.woff2",
+    "sha256": "1e9980fffc6e5926fd7b892df2b7b118e4904787f854a53f78e1757381c7efc1",
+    "bytes": 20464,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/88248d744389391819bf.woff2",
+    "sha256": "88248d744389391819bfaea38914de0a7ea5eb109a03d760ba61c3b61a16f6c1",
+    "bytes": 22924,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/d700c3704d0bc4778401.woff2",
+    "sha256": "d700c3704d0bc47784014976d40d39c099481996f94881b94974724e3e02d1c3",
+    "bytes": 38340,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/9d9e2b8593cc936ff58c.woff2",
+    "sha256": "9d9e2b8593cc936ff58c8c09deb828bd2dda095cf0c18a9d48e71eb1fcca4acb",
+    "bytes": 38988,
+    "role": "embedded"
+  },
+  {
+    "path": "/assets/benefit.svg",
+    "sha256": "10d690e060f93dc21e539f98ef0b7b54b03ef5bfd2e860ea0e924841022138a3",
+    "bytes": 584,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/embedded/074532506a18b6c381ee.png",
+    "sha256": "074532506a18b6c381ee227b6023f3730714571f1b3dd99f4eb3f1811f75ce4b",
+    "bytes": 3874,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/embedded/5d607e9b608b9067f198.png",
+    "sha256": "5d607e9b608b9067f198373cd00b3a93097bd3ffc1564c7e9f856199d0ef4526",
+    "bytes": 2086,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/embedded/6d9764dcf79e0c5bd4a8.png",
+    "sha256": "6d9764dcf79e0c5bd4a89e773a886a2e4c1b1d6f2c32bea06bb86561112e684c",
+    "bytes": 4864,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/embedded/7bfee1f95889b8a658a4.png",
+    "sha256": "7bfee1f95889b8a658a405414143ef3dff48b403563919cf57cb26ed1e0cd3f9",
+    "bytes": 3640,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/embedded/8f1d7bbc170e2af0fa43.png",
+    "sha256": "8f1d7bbc170e2af0fa432d641c10c7b3494891896c3cfb1ccca63f1b3e5df31e",
+    "bytes": 4158,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/embedded/e8b26025978a3da2a8ba.png",
+    "sha256": "e8b26025978a3da2a8baa8a5ed8c3883568dc0a8403956dc8c3169957550490e",
+    "bytes": 4379,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/footer-mobile-logo-original.png",
+    "sha256": "7544d6bbabde07a0c8eeff26b7faa706484da6df6ead2397f75eb3edcb3a89c6",
+    "bytes": 478476,
+    "role": "Exact source-referenced Wix CDN original"
+  },
+  {
+    "path": "/assets/footer-mobile-original.jpg",
+    "sha256": "51f73934a6fcbb5bb9fad156fea84168ee1e1bef08699ab22fd3390e1709d717",
+    "bytes": 1186186,
+    "role": "Exact source-referenced Wix CDN original"
+  },
+  {
+    "path": "/assets/166048b1b494b546d686.woff2",
+    "sha256": "166048b1b494b546d686a6442bac330a2ffeaa0afaf5a58d7ed0116d602296d2",
+    "bytes": 10280,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/1c1e239c9d51fc5a63be.woff2",
+    "sha256": "1c1e239c9d51fc5a63bec5b30ff7735cab549406fcebc5dc49d2e94620b9c733",
+    "bytes": 22828,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/6fa7bd9c6fa88424c444.woff2",
+    "sha256": "6fa7bd9c6fa88424c4447ed83af706b1ddf2635f42911c7387c9c157b243469c",
+    "bytes": 33052,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/b574a08426ceb1c7ab8b.woff2",
+    "sha256": "b574a08426ceb1c7ab8b0f653df5d214e87ba3b023aca8e646fbc6602cf98f0b",
+    "bytes": 17308,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/cb5007e3b73519338740.woff2",
+    "sha256": "cb5007e3b735193387401cad907393e4d43b7e621cb64400c2b0e48d3ac5dfac",
+    "bytes": 29384,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/db54c83b4d309f39eb8f.woff2",
+    "sha256": "db54c83b4d309f39eb8f5277daffd63bbd1ccf18333abe5548a4c1848275b227",
+    "bytes": 16388,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/f073912fb0548bfc2211.woff2",
+    "sha256": "f073912fb0548bfc221166b720276c8d6a34a8d43ee68c3d9dabe21b2559fce9",
+    "bytes": 27308,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/f0835adbca74926ddea2.woff2",
+    "sha256": "f0835adbca74926ddea297bd5743a2bd937947a66f80af4fd1386ea431891d1c",
+    "bytes": 11516,
+    "role": "Source vector / plan icon"
+  },
+  {
+    "path": "/assets/fcdbf7c9a4d2cd79b922.woff2",
+    "sha256": "fcdbf7c9a4d2cd79b92263577fdeb4f572d0f8175915b5833ecf82cf117b787f",
+    "bytes": 21584,
+    "role": "Source vector / plan icon"
+  }
+]

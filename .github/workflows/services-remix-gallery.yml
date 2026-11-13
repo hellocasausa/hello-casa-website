@@ -1,0 +1,45 @@
+name: Services Remix Gallery — Experimental Visual QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "preview/experiments/services-remix-gallery.html"
+      - "tests/experiments/services-remixes.spec.ts"
+      - ".github/workflows/services-remix-gallery.yml"
+      - "preview/experiments/services-remix-notes.md"
+      - "preview/experiments/DER-001-reference-manifest.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Test A/B/C at 1100px and 1440px
+        run: npx playwright test tests/experiments/services-remixes.spec.ts --reporter=line
+      - name: Assemble the reference archive
+        if: success()
+        run: |
+          mkdir -p design-reference-DER-001
+          cp preview/experiments/services-remix-gallery.html design-reference-DER-001/
+          cp preview/experiments/services-remix-notes.md design-reference-DER-001/
+          cp preview/experiments/DER-001-reference-manifest.md design-reference-DER-001/
+          cp test-results/remix-*.png design-reference-DER-001/
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: DER-001-Hello-Casa-Services-Design-References
+          path: design-reference-DER-001/
+          if-no-files-found: error

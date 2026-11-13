@@ -1,0 +1,78 @@
+name: Approved Services and Standards Integration QA
+on:
+  push:
+    branches:
+      - phase-b/homepage-reconstruction
+    paths:
+      - "src/components/markup/services.html"
+      - "src/styles/services.css"
+      - "src/components/markup/standards.html"
+      - "src/styles/standards.css"
+      - "tests/approved-services.spec.ts"
+      - "tests/homepage.spec.ts"
+      - "tests/approved-standards.spec.ts"
+      - "tests/approved-previews.spec.ts"
+      - "public/review/index.html"
+      - "tests/hosted-review.spec.ts"
+      - "tests/tablet-redesign.spec.ts"
+      - "tests/mobile-concepts.spec.ts"
+      - "tests/native-mobile-featured.spec.ts"
+      - "tests/mobile-standards-concepts.spec.ts"
+      - "tests/native-mobile-standards.spec.ts"
+      - "tests/mobile-contact-hero-polish.spec.ts"
+      - "tests/mobile-typography-standardization.spec.ts"
+      - "src/styles/contact.css"
+      - "scripts/build-mobile-standards.ts"
+      - "public/mobile-standards/**"
+      - "src/components/services.ts"
+      - "src/styles/hero.css"
+      - "scripts/build-mobile-concepts.ts"
+      - "public/mobile-concepts/**"
+      - "public/mobile-services-grid/**"
+      - "tests/mobile-services-grid-preview.spec.ts"
+      - "tests/release-mobile-integration.spec.ts"
+      - "preview/visual-review.html"
+      - "preview/element-explorer.html"
+      - "index.html"
+      - ".github/workflows/approved-layout-integration.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-layout-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Native build and types
+        run: npm run build
+      - name: Architecture guardrails
+        run: npm run check:architecture
+      - name: Generate experimental mobile variants from canonical Services
+        run: node scripts/build-mobile-concepts.ts
+      - name: Generate experimental mobile Standards variants from original imagery and first paragraphs
+        run: node scripts/build-mobile-standards.ts
+      - name: Functional and layout regressions
+        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts tests/approved-previews.spec.ts tests/hosted-review.spec.ts tests/tablet-redesign.spec.ts tests/mobile-concepts.spec.ts tests/native-mobile-featured.spec.ts tests/mobile-standards-concepts.spec.ts tests/native-mobile-standards.spec.ts tests/mobile-contact-hero-polish.spec.ts tests/mobile-typography-standardization.spec.ts tests/mobile-services-grid-preview.spec.ts tests/release-mobile-integration.spec.ts --reporter=line
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hello-casa-downloadable-preview
+          path: dist/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: approved-native-layout-desktop-screenshots
+          path: |
+            test-results/approved-*.png
+            test-results/mobile-type-*.png
+            test-results/mobile-services-grid-*.png
+            test-results/release-*.png
+          if-no-files-found: ignore
