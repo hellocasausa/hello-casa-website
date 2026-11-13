@@ -4,7 +4,7 @@ var models={
  atlas:{title:"Compact Atlas",summary:"Six friendly pastel tiles sit inside one connected service and checklist surface.",strength:"All six plans visible with familiar icons",tradeoff:"Uses more vertical space than compact tabs"},
  index:{title:"Editorial Index",summary:"A refined service-menu index opens its full checklist immediately beneath the selected row.",strength:"Elegant reading flow and generous labels",tradeoff:"Changing plans may involve more scrolling"},
  ribbon:{title:"Service Ribbon",summary:"A tight six-tab palette joins directly to the checklist, with a continuous selected state.",strength:"The most economical navigation footprint",tradeoff:"Longer names require careful 320px typography"},
- featured:{title:"Featured Service",summary:"A larger plan introduction adds personality before the compact six-plan navigation and checklist.",strength:"Strong visual storytelling and active-plan clarity",tradeoff:"A taller introduction than the ribbon"}
+ featured:{title:"Featured Service",summary:"One illustrated plan selector opens the other five choices; the full checklist begins immediately beneath it.",strength:"A single elegant title with no duplicated navigation",tradeoff:"Other plans are revealed on tap rather than always visible"}
 };
 var choices=Array.from(document.querySelectorAll("[data-concept]")),sizes=Array.from(document.querySelectorAll("[data-width]"));
 var frame=document.getElementById("design-frame"),stage=document.getElementById("phone-stage"),holder=document.getElementById("phone-holder"),body=document.getElementById("phone-body");
