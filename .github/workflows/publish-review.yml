@@ -42,6 +42,9 @@ jobs:
           test -f dist/mobile-concepts/concept.html
           test -f dist/mobile-concepts/services-data.json
           test -f dist/mobile-standards/index.html
+          test -f dist/mobile-services-grid/index.html
+          test -f dist/mobile-services-grid/studio.js
+          test -f dist/mobile-services-grid/grid-overlay.css
           test -f dist/mobile-standards/concept.html
           test -f dist/mobile-standards/data.json
           node -e "const d=require('./dist/mobile-standards/data.json');if(d.stories.length!==3||d.stories.some(s=>!s.paragraph||!s.image))process.exit(1)"
