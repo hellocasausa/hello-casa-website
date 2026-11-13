@@ -744,9 +744,10 @@
     margin: 0 0 11px;
   }
   #contact.hc-contact-new .hc-card-desc {
+    font-size: 16px;
+    line-height: 1.5;
     margin-top: 0;
     margin-bottom: 18px;
-    line-height: 1.65;
   }
   #contact.hc-contact-new .hc-card-desc .hc104-closing {
     display: inline;

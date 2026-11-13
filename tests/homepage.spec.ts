@@ -211,6 +211,42 @@ test("all primary section headings use exactly 32px on desktop", async ({page}) 
   }
 });
 
+
+test("approved desktop body rhythm, headings, mirrored inset and bubble ending", async ({page}) => {
+  for (const width of [901, 1000, 1100, 1101, 1200, 1440, 1920]) {
+    await page.setViewportSize({width, height:1000});
+    await page.evaluate(() => document.fonts.ready);
+    for (const selector of [".hero .hero-desktop-copy", "#standards .st-prose", "#contact .hc-card-desc"]) {
+      const target = page.locator(selector).first();
+      await expect(target, `${selector} at ${width}px`).toHaveCSS("font-size", "16px");
+      await expect(target).toHaveCSS("line-height", "24px");
+    }
+    await expect(page.locator("#standards .st-heading h3").first()).toHaveCSS("font-size", "32px");
+    for (const heading of await page.locator("#standards .st-heading h3").all()) {
+      await expect(heading).toHaveCSS("font-size", "32px");
+      await expect(heading).toHaveCSS("font-weight", "400");
+    }
+    const left = await page.locator("#contact .hc-contact-heading-stage h2").boundingBox();
+    const right = await page.locator("#standards .st-intro h2").boundingBox();
+    expect(left && right).not.toBeNull();
+    expect(Math.abs(left!.x - (width - (right!.x + right!.width))), `mirrored heading insets at ${width}px`).toBeLessThanOrEqual(2);
+    const radius = page.locator("#standards .st-story--two .st-prose");
+    await expect(radius).toHaveCSS("border-top-right-radius", "100px");
+    await expect(radius).toHaveCSS("border-bottom-right-radius", "100px");
+    await expect(radius).toHaveCSS("border-top-left-radius", "22px");
+    await expect(radius).toHaveCSS("border-bottom-left-radius", "22px");
+    await expect(page.locator(".st-intro h2")).toHaveCSS("font-size", "32px");
+  }
+  for (const width of [390, 750, 820, 900]) {
+    await page.setViewportSize({width, height:1000});
+    const heading = page.locator("#standards .st-heading h3").first();
+    expect(parseFloat(await heading.evaluate(el=>getComputedStyle(el).fontSize))).toBeLessThan(32);
+    const card = page.locator("#standards .st-story--two .st-prose");
+    await expect(card).toHaveCSS("border-top-right-radius", "20px");
+    await expect(card).toHaveCSS("border-bottom-right-radius", "20px");
+  }
+});
+
 test("desktop Customize My Quote button aligns to the right edge", async ({
   page,
 }) => {

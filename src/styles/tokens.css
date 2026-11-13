@@ -24,6 +24,6 @@
   --hc-section-pad-desktop: clamp(32px, 3.4vw, 48px);
   --hc-heading-section: 32px;
   --hc-heading-editorial: clamp(27px, 2.2vw, 32px);
-  --hc-body-editorial: 15px;
+  --hc-body-editorial: 16px;
   --hc-steps-height: 128px;
 }

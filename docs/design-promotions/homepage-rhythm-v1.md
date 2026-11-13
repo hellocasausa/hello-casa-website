@@ -53,3 +53,15 @@ The primary homepage **section-heading** role is now a fixed **32px**, not a flu
 - `So, tell us about your home.`
 
 Component and editorial **feature** headings remain separate roles; notably `No Long-Term Contracts` is not a primary section header. Tablet and phone heading overrides are retained unchanged. Implementation is in the existing CSS owners; no additional override stylesheet was introduced. A browser regression verifies exactly 32px and weight 400 at 901, 1000, 1100, 1440 and 1920px. Rollback branch: `checkpoint/pre-desktop-headings-32px-6fafd80`.
+
+## Approved desktop typography and geometry batch
+
+Desktop scope is 901px and above; tablet and mobile retain their existing styles.
+
+- **Section and Standards editorial headings:** exactly 32px, weight 400, Libre Baskerville. All three Standards feature headings now share the exact section-heading size.
+- **Hero descriptive paragraph, all six Standards narrative paragraphs, and Contact supporting copy:** 16px, 1.5 line-height (24px), without modifying wording.
+- **Standards introductory capsule:** its right-hand text inset mirrors the actual left inset of “So, tell us about your home.” The introductory capsule retains its right flush placement and rounded shape; its width only expands as needed on extra-wide screens to prevent the mirrored gutter from crowding the contents.
+- **Personalized Cleaning Profiles:** white card's right end uses 100px rounded corners, leaving its left corners, padding and photo stacking unchanged. On tablet and mobile, the existing 20px rounded corners remain.
+- A desktop-and-tablet browser regression covers the full batch at seven desktop widths and four smaller widths.
+
+All edits live in the existing source owners, without another corrective stylesheet. Previous committed implementation remains recoverable at the `checkpoint/pre-desktop-body-16px-c48a706` branch.
