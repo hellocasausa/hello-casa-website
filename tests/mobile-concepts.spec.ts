@@ -9,10 +9,43 @@ test("four isolated mobile concepts reuse the actual approved checklist and cont
   await page.locator('[data-concept="'+variant+'"]').click();
   await expect(page.locator('[data-concept="'+variant+'"]')).toHaveAttribute("aria-pressed","true");
   await expect(frame.locator("#services-app")).toHaveAttribute("aria-busy","false");
-  await expect(frame.locator(".svc-option")).toHaveCount(6);
-  await expect(frame.locator(".svc-option")).toContainText([
-   "Essential Clean","Deep Detail","Moving Reset","Guest Turnover","Office Fresh","Specialty Clean"
-  ]);
+  if(variant==="featured"){
+   await expect(frame.locator(".concept-intro")).toBeHidden();
+   await expect(frame.locator(".selector-zone")).toHaveCount(0);
+   await expect(frame.locator(".panel-head")).toHaveCount(0);
+   await expect(frame.locator(".feature-name")).toHaveText("Essential Clean");
+   await expect(frame.locator(".feature-trigger")).toContainText("SELECT YOUR PLAN");
+   await expect(frame.locator(".feature-trigger")).toHaveAttribute("aria-expanded","false");
+   await expect(frame.locator(".feature-menu")).toBeHidden();
+   await expect(frame.locator("#essential-focus")).toHaveCount(0);
+   await frame.locator(".feature-trigger").click();
+   await expect(frame.locator(".feature-menu")).toBeVisible();
+   await expect(frame.locator(".feature-option")).toHaveCount(5);
+   await expect(frame.locator(".feature-option-name")).toHaveText([
+    "Deep Detail","Moving Reset","Guest Turnover","Office Fresh","Specialty Clean"
+   ]);
+   await frame.locator(".feature-option").first().press("Escape");
+   await expect(frame.locator(".feature-menu")).toBeHidden();
+   await expect(frame.locator(".feature-trigger")).toBeFocused();
+  } else {
+   await expect(frame.locator(".svc-option")).toHaveCount(6);
+   await expect(frame.locator(".svc-option")).toContainText([
+    "Essential Clean","Deep Detail","Moving Reset","Guest Turnover","Office Fresh","Specialty Clean"
+   ]);
+  }
+  const selectPlan=async(id:string)=>{
+   if(variant==="featured"){
+    await frame.locator(".feature-trigger").click();
+    await expect(frame.locator(".feature-menu")).toBeVisible();
+    await frame.locator('.feature-option[data-plan="'+id+'"]').click();
+    await expect(frame.locator(".feature-menu")).toBeHidden();
+    await expect(frame.locator(".feature-trigger")).toBeFocused();
+   }else await frame.locator('[data-plan="'+id+'"]').click();
+  };
+  const expectPlan=async(name:string)=>{
+   if(variant==="featured")await expect(frame.locator(".feature-name")).toHaveText(name);
+   else await expect(frame.locator(".panel-head h2")).toHaveText(name);
+  };
   for(const width of widths){
    await page.locator('[data-width="'+width+'"]').click();
    await expect(page.locator("#design-frame")).toHaveAttribute("width",String(width));
@@ -26,22 +59,26 @@ test("four isolated mobile concepts reuse the actual approved checklist and cont
    await expect(tasks.first()).toHaveAttribute("data-task-id",/^essential-/);
    expect(await tasks.count()).toBe(20);
   }
-  await frame.locator('[data-plan="deep"]').click();
-  await expect(frame.locator(".panel-head h2")).toHaveText("Deep Detail");
+  await selectPlan("deep");
+  await expectPlan("Deep Detail");
   await expect(frame.locator('[data-task-id="deep-all-001"]')).toBeVisible();
   await expect(frame.locator(".hc-extras-list li")).toHaveCount(8);
   await expect(frame.locator(".quote-cta")).toHaveAttribute("href","https://form.jotform.com/262983802449064");
   await expect(frame.locator(".quote-cta")).toHaveAttribute("target","_blank");
-  await frame.locator('[data-plan="guest"]').click();
-  await expect(frame.locator(".panel-head h2")).toHaveText("Guest Turnover");
+  await selectPlan("guest");
+  await expectPlan("Guest Turnover");
   await expect(frame.locator(".hc-group h4")).toHaveText(["All Rooms","Kitchen","Bathrooms","Final Touches"]);
   await expect(frame.locator('[data-task-id^="vacation-out-"]')).toHaveCount(0);
-  await frame.locator('[data-plan="maintenance"]').click();
+  await selectPlan("maintenance");
+  await expectPlan("Essential Clean");
   await expect(frame.locator(".hc-focus-btn")).toHaveCount(3);
+  if(variant==="featured")await expect(frame.locator("#essential-focus")).toHaveCount(0);
+  else await expect(frame.locator("#essential-focus")).toHaveCount(1);
   await frame.locator('[data-focus="kitchen"]').click();
   await expect(frame.locator(".hc-group h4")).toContainText(["All Rooms","Kitchen+","Bathrooms"]);
   await expect(frame.locator('[data-task-id="deep-kit-001"]')).toBeVisible();
-  await frame.locator("#essential-focus").selectOption("bathroom");
+  if(variant==="featured")await frame.locator('[data-focus="bathroom"]').click();
+  else await frame.locator("#essential-focus").selectOption("bathroom");
   await expect(frame.locator('[data-task-id="deep-bath-001"]')).toBeVisible();
   await expect(frame.locator('[data-task-id="essential-kit-001"]')).toBeVisible();
  }
@@ -60,5 +97,35 @@ test("mobile Services design study captures four review screenshots at 390px",as
   await page.locator('[data-concept="'+variant+'"]').click();
   await expect(page.frameLocator("#design-frame").locator("#services-app")).toHaveAttribute("aria-busy","false");
   await page.locator("#phone-body").screenshot({path:"test-results/approved-mobile-concept-"+variant+"-390.png",animations:"disabled"});
+ }
+});
+
+test("Featured Service offers keyboard-accessible plan choices without duplicate headings",async({page})=>{
+ await page.goto("/mobile-concepts/concept.html?design=featured");
+ for(const width of [320,375,390]){
+  await page.setViewportSize({width,height:800});
+  await expect(page.locator(".feature-trigger")).toHaveCount(1);
+  await expect(page.locator(".feature-name")).toHaveText("Essential Clean");
+  await expect(page.locator(".panel-head")).toHaveCount(0);
+  await expect(page.locator(".concept-intro")).toBeHidden();
+  await expect(page.locator(".feature-menu")).toBeHidden();
+  await page.locator(".feature-trigger").focus();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.locator(".feature-menu")).toBeVisible();
+  await expect(page.locator(".feature-option").first()).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.locator(".feature-option").nth(1)).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".feature-menu")).toBeHidden();
+  await expect(page.locator(".feature-trigger")).toBeFocused();
+  await page.locator(".feature-trigger").click();
+  await page.locator('[data-plan="specialty"]').click();
+  await expect(page.locator(".feature-name")).toHaveText("Specialty Clean");
+  await expect(page.locator('[data-task-id^="specialty-"]').first()).toBeVisible();
+  await expect(page.locator(".feature-trigger")).toHaveAttribute("aria-expanded","false");
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
+  expect(overflow).toBeLessThanOrEqual(1);
+  await page.locator(".feature-trigger").click();
+  await page.locator('[data-plan="maintenance"]').click();
  }
 });
