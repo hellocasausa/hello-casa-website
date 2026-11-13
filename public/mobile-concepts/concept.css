@@ -18,30 +18,26 @@
 .variant-index{background:#fffefa}.variant-index .selector-zone{padding:13px 13px 7px}.variant-index .shell-label{padding:0 3px}.variant-index .svc-nav{display:flex;flex-direction:column;gap:0}.variant-index .index-item{border-top:1px solid #dce7ec;padding:3px 0}.variant-index .svc-option{border:0;background:transparent;width:100%;border-radius:6px;box-shadow:none!important;min-height:57px;padding:7px 5px}.variant-index .svc-option:hover{background:#f7fbfd}.variant-index .index-number{font:400 15px/1 "HC Libre",Georgia,serif;color:#84a5b9;width:24px;flex:0 0 24px}.variant-index .svc-option .ico{width:30px;height:30px;flex-basis:30px;border-radius:7px}.variant-index .svc-option .ico img{width:23px;height:23px}.variant-index .svc-option .name{font:400 18px/1.28 "HC Libre",Georgia,serif;letter-spacing:-.03em}.variant-index .svc-option[aria-expanded=true] .name{color:#234b70}.variant-index .nav-chevron{font-size:18px}.variant-index .service-panel{margin:3px 0 11px;border:1px solid #d7e7ee;border-radius:13px;overflow:hidden;box-shadow:0 9px 20px #264b6a09}
 .variant-index .panel-head{padding:13px 12px 9px}.variant-index .panel-head h2{font-size:19px}.variant-index .panel-body{padding:10px}.variant-index .hc-group{padding:12px}.variant-index .panel-actions{padding:12px 10px}
 .variant-ribbon .selector-zone{padding:12px 11px 0;background:#fbfdff}.variant-ribbon .shell-label{padding:0 3px}.variant-ribbon .svc-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}.variant-ribbon .svc-option{border-radius:10px 10px 0 0;border-color:#d7e5ed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 3px 9px;min-height:87px;gap:5px}.variant-ribbon .svc-option .ico{width:29px;height:29px;flex-basis:29px;border-radius:8px}.variant-ribbon .svc-option .ico img{width:22px;height:22px}.variant-ribbon .svc-option .name{font-size:10.5px;line-height:1.18;font-weight:750;max-width:90px}.variant-ribbon .nav-chevron{display:none}.variant-ribbon .svc-option[aria-selected=true]{border-bottom:3px solid #729eb9;background:var(--icon-bg,#f2fbff)}.variant-ribbon .service-panel{border-top:1px solid #d5e6ee}
-/* Featured Service: one title, one selection surface, and the canonical checklist beneath. */
+/* Featured Service: restored always-visible original six small cards (3×2).
+   The featured header supplies the only primary plan title; the checklist follows directly. */
 html[data-concept="featured"] .concept-intro{display:none}
 html[data-concept="featured"] #concept-root{padding-top:15px}
-.variant-featured .feature-select{position:relative;padding:11px 11px 0;background:#fffdf9}
-.variant-featured .feature-screenreader-heading{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.variant-featured .feature-trigger{width:100%;margin:0;border:1px solid #d6e6ed;background:linear-gradient(125deg,var(--active-color),#fffdfa 96%);border-radius:15px;padding:18px 14px;display:flex;align-items:center;gap:13px;text-align:left;color:var(--ink);min-height:106px}
-.variant-featured .feature-trigger:hover{border-color:#83adc5}
-.variant-featured .feature-trigger[aria-expanded=true]{border-color:#729eb9;border-bottom-right-radius:7px;border-bottom-left-radius:7px}
-.variant-featured .featured-icon{width:63px;height:63px;flex:0 0 63px;display:grid;place-items:center;border-radius:15px;background:#ffffffaf;border:1px solid #ffffffd8}
+.variant-featured .feature-header{margin:11px;border:1px solid #d6e6ed;background:linear-gradient(125deg,var(--active-color),#fffdfa 96%);border-radius:15px;padding:18px 14px;display:flex;align-items:center;gap:13px}
+.variant-featured .feature-header .featured-icon{width:63px;height:63px;flex:0 0 63px;display:grid;place-items:center;border-radius:15px;background:#ffffffaf;border:1px solid #ffffffd8}
 .variant-featured .featured-icon img{width:47px;height:47px;object-fit:contain}
-.variant-featured .feature-copy{display:flex;flex-direction:column;min-width:0;flex:1}
-.variant-featured .feature-copy .meta{font-size:9px;margin:0 0 5px}
+.variant-featured .feature-copy{min-width:0;flex:1}
+.variant-featured .feature-header .meta{font-size:9px;margin:0 0 5px}
 .variant-featured .feature-name{font:400 22px/1.18 "HC Libre",Georgia,serif;color:var(--ink);letter-spacing:-.035em;margin:0 0 4px}
-.variant-featured .feature-description{font-size:12px;line-height:1.4;color:#5e7e91}
-.variant-featured .feature-toggle-icon{align-self:center;flex:0 0 18px;color:#4f7791;font-size:24px;line-height:1}
-.variant-featured .feature-menu{background:#ffffff;display:grid;gap:5px;padding:9px 8px 12px;border:1px solid #bfd9e7;border-radius:0 0 13px 13px;box-shadow:0 10px 23px #294b6a13;margin:0 1px 0}
-.variant-featured .feature-menu[hidden]{display:none}
-.variant-featured .feature-option{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;min-height:48px;background:var(--tile);border:1px solid #d9e8ee;border-radius:10px;color:#315c78;text-align:left}
-.variant-featured .feature-option:hover{border-color:#83aec6}
-.variant-featured .feature-option .ico{width:32px;height:32px;flex:0 0 32px;border-radius:9px}
-.variant-featured .feature-option .ico img{width:25px;height:25px}
-.variant-featured .feature-option-name{font-size:12px;font-weight:750;flex:1}
-.variant-featured .feature-option-arrow{font-size:17px;color:#7ba1b8}
-.variant-featured .service-panel{border-top:0;background:#f3fafe}
+.variant-featured .feature-description{font-size:12px;line-height:1.4;margin:0;color:#5e7e91}
+.variant-featured .selector-zone{padding:2px 11px 12px}
+.variant-featured .svc-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+.variant-featured .svc-option{display:flex;flex-direction:column;gap:3px;align-items:center;justify-content:center;text-align:center;padding:5px 4px;min-height:59px;border-radius:9px}
+.variant-featured .svc-option .ico{width:24px;height:24px;flex-basis:24px;border-radius:6px}
+.variant-featured .svc-option .ico img{width:19px;height:19px}
+.variant-featured .svc-option .name{font-size:10px;line-height:1.1}
+.variant-featured .nav-chevron{display:none}
+.variant-featured .panel-head{display:none}
+.variant-featured .service-panel{border-top:1px solid #d4e6ee}
 .variant-featured .service-panel .panel-body{padding-top:13px}
 .variant-featured .service-panel .focus-host{padding-top:14px}
 .variant-featured .hc-focus-wrap .hc-focus-label{margin:0 0 10px}

@@ -40,10 +40,10 @@ The following are **documented, not implemented**: (1) keep Custom checklists on
 
 ## Featured Service — owner-reviewed refinement
 
-Concept 04 was selected as the most promising direction for refinement. At the owner's request, this experimental concept now removes the generic "OUR SERVICES / Cleaning, your way" introduction, the permanently visible "EXPLORE OTHER PLANS" six-tile grid, and the duplicate "YOUR CLEANING CHECKLIST / [Plan name] / [Description]" panel header. Its existing illustrated selected-plan card now acts as a button labelled **SELECT YOUR PLAN**; tapping or pressing it opens the five other service choices. Thus the current plan is shown just once when collapsed, while all six are still reachable via the current-plan trigger plus the other five options. The actual full checklist, additions and original quote CTA remain unchanged.
+Concept 04 was selected for refinement. The owner clarified that the six **small original 3×2 service cards must remain visible at all times**. The illustrated header says **SELECT YOUR PLAN**, and the original six cards immediately beneath it are the actual controls. The duplicate "YOUR CLEANING CHECKLIST / [Plan name] / [Description]" panel header, generic "OUR SERVICES / Cleaning, your way" introduction, and "EXPLORE OTHER PLANS" label remain absent. Full checklist tasks, additions and original quote CTA remain intact.
 
 For Essential Clean within this concept only, the redundant select dropdown is removed from the preview presentation and the three existing Kitchen+/Bathrooms+ focus buttons remain. The canonical focus-controls markup, data, and original homepage are not modified.
 
-Keyboard behavior: Enter/Space on the featured plan button opens the choices; Arrow Down/Up can open and navigate them; Escape closes the list and returns focus. Selecting a different plan collapses the menu and restores focus to the featured selector.
+Keyboard behavior: the six visible cards are ordinary accessible tabs with their existing active state and keyboard arrow/Home/End selection. No hidden navigation menu is used. The source-generated Essential+ explanatory footnote is suppressed **only in Concept 04's rendered Essential Clean checklist**; the canonical note and all other concepts remain unchanged.
 
 Concepts 01–03 remain unchanged as comparison references. No production mobile integration or Hero/tablet follow-up was authorized.

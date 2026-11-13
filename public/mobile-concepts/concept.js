@@ -4,7 +4,7 @@
 var root=document.getElementById("services-app"),allowed=["atlas","index","ribbon","featured"];
 var requested=new URL(location.href).searchParams.get("design");
 var concept=allowed.includes(requested)?requested:"atlas";
-var siteRoot=new URL("../",location.href),plans=[],catalog=null,activeId="maintenance",focus="standard",menuOpen=false;
+var siteRoot=new URL("../",location.href),plans=[],catalog=null,activeId="maintenance",focus="standard";
 var escapeText=function(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});};
 var byId=function(id){return plans.find(function(p){return p.id===id;});};
 function iconUrl(p){return new URL(p.icon.replace(/^\//,""),siteRoot).href;}
@@ -33,24 +33,19 @@ function focusMarkup(){
  }
  return template.innerHTML;
 }
-function featureSelector(p){
- var options=plans.filter(function(candidate){return candidate.id!==p.id;}).map(function(candidate){
-  return '<button class="feature-option" type="button" data-plan="'+escapeText(candidate.id)+'" style="'+escapeText(style(candidate))+'">'+
-  img(candidate)+'<span class="feature-option-name">'+escapeText(candidate.name)+'</span><span aria-hidden="true" class="feature-option-arrow">↗</span></button>';
- }).join("");
- return '<div class="feature-select">'+
- '<h1 class="feature-screenreader-heading">Hello Casa cleaning services</h1>'+
- '<button type="button" class="feature-trigger" id="featured-plan-trigger" aria-controls="featured-plan-menu" aria-expanded="'+menuOpen+'" aria-label="Select your plan. Current plan: '+escapeText(p.name)+'" style="--active-color:'+escapeText(p.iconBg)+'">'+
+function featureHeader(p){
+ return '<div class="feature-header" style="--active-color:'+escapeText(p.iconBg)+'">'+
  '<span class="featured-icon"><img src="'+escapeText(iconUrl(p))+'" alt="" width="47" height="47"></span>'+
- '<span class="feature-copy"><span class="meta">SELECT YOUR PLAN</span><span class="feature-name">'+escapeText(p.name)+'</span><span class="feature-description">'+escapeText(p.description)+'</span></span>'+
- '<span class="feature-toggle-icon" aria-hidden="true">'+(menuOpen?"⌃":"⌄")+'</span></button>'+
- '<div class="feature-menu" id="featured-plan-menu" aria-label="Choose another cleaning plan"'+(menuOpen?"":" hidden")+'>'+options+'</div></div>';
+ '<div class="feature-copy"><p class="meta">SELECT YOUR PLAN</p><h2 class="feature-name">'+escapeText(p.name)+'</h2><p class="feature-description">'+escapeText(p.description)+'</p></div></div>';
 }
 function panel(p){
  var html=p.checklists[focus]||p.checklists.standard;
  var featured=concept==="featured";
+ // Preview-only removal of the redundant Essential+ explanatory note.
+ // Leave canonical plan.note and all original service data untouched.
+ if(featured&&p.id==="maintenance")html=html.replace(/<p class="hc-footnote">[^<]*<\/p>/,"");
  var heading=featured?"":'<div class="panel-head"><p class="meta">YOUR CLEANING CHECKLIST</p><h2>'+escapeText(p.name)+(p.id==="maintenance"&&focus!=="standard"?" · "+(focus==="kitchen"?"Kitchen":"Bathrooms")+" focus":"")+'</h2><p class="panel-description">'+escapeText(p.description)+'</p></div>';
- return '<section class="service-panel" id="service-panel" role="'+(concept==="index"||featured?"region":"tabpanel")+'" aria-labelledby="'+(featured?"featured-plan-trigger":"concept-plan-"+escapeText(p.id))+'" tabindex="0">'+
+ return '<section class="service-panel" id="service-panel" role="'+(concept==="index"?"region":"tabpanel")+'" aria-labelledby="concept-plan-'+escapeText(p.id)+'" tabindex="0">'+
  heading+(p.id==="maintenance"?'<div class="focus-host">'+focusMarkup()+'</div>':"")+
  '<div class="panel-body">'+html+'</div><div class="panel-actions"><a class="quote-cta" href="'+escapeText(catalog.quote)+'" target="_blank" rel="noopener noreferrer">Customize My Quote <span aria-hidden="true">→</span></a></div></section>';
 }
@@ -59,8 +54,9 @@ function render(){
  var navItems=plans.map(function(p,i){
   return concept==="index"?'<div class="index-item">'+item(p,i)+(p.id===activeId?panelHtml:"")+'</div>':item(p,i);
  }).join("");
- var feature=concept==="featured"?featureSelector(active):"";
- var nav=concept==="featured"?"":'<div class="selector-zone"><p class="shell-label">'+(concept==="index"?"THE SERVICE INDEX":"EXPLORE THE PLANS")+'</p><div class="svc-nav"'+(concept==="index"?' aria-label="Cleaning plans"':' role="tablist" aria-label="Cleaning plans"')+'>'+navItems+'</div></div>';
+ var feature=concept==="featured"?featureHeader(active):"";
+ var label=concept==="featured"?"":'<p class="shell-label">'+(concept==="index"?"THE SERVICE INDEX":"EXPLORE THE PLANS")+'</p>';
+ var nav='<div class="selector-zone">'+label+'<div class="svc-nav"'+(concept==="index"?' aria-label="Cleaning plans"':' role="tablist" aria-label="Cleaning plans"')+'>'+navItems+'</div></div>';
  root.innerHTML='<div class="service-shell variant-'+concept+'" style="--active-color:'+escapeText(active.iconBg)+'">'+feature+nav+(concept==="index"?"":panelHtml)+'</div>';
  root.setAttribute("aria-busy","false");
  if(active.id==="maintenance"){
@@ -71,22 +67,12 @@ function render(){
  document.documentElement.dataset.concept=concept;
 }
 root.addEventListener("click",function(e){
- var trigger=e.target.closest(".feature-trigger");
- if(trigger){
-  menuOpen=!menuOpen;
-  render();
-  var target=menuOpen?root.querySelector(".feature-option"):root.querySelector(".feature-trigger");
-  target?.focus({preventScroll:true});
-  return;
- }
  var plan=e.target.closest("[data-plan]");
  if(plan){
   var same=activeId===plan.dataset.plan;
   activeId=plan.dataset.plan;
-  menuOpen=false;
   render();
-  var b=concept==="featured"?root.querySelector(".feature-trigger"):root.querySelector('[data-plan="'+activeId+'"]');
-  if(b&&(!same||concept==="featured"))b.focus({preventScroll:true});
+  if(!same){var b=root.querySelector('[data-plan="'+activeId+'"]');if(b)b.focus({preventScroll:true});}
   return;
  }
  var f=e.target.closest("[data-focus]");
@@ -94,25 +80,6 @@ root.addEventListener("click",function(e){
 });
 root.addEventListener("change",function(e){if(e.target.id==="essential-focus"){focus=e.target.value;render();root.querySelector("#essential-focus").focus({preventScroll:true});}});
 root.addEventListener("keydown",function(e){
- if(concept==="featured"){
-  if(e.key==="Escape"&&menuOpen){
-   e.preventDefault();menuOpen=false;render();root.querySelector(".feature-trigger")?.focus({preventScroll:true});return;
-  }
-  if(e.target.closest(".feature-trigger")&&["ArrowDown","ArrowUp"].includes(e.key)){
-   e.preventDefault();menuOpen=true;render();
-   var options=root.querySelectorAll(".feature-option");
-   options[e.key==="ArrowDown"?0:options.length-1]?.focus({preventScroll:true});
-   return;
-  }
-  var option=e.target.closest(".feature-option");
-  if(option){
-   if(!["ArrowDown","ArrowUp","Home","End"].includes(e.key))return;
-   e.preventDefault();
-   var options=Array.from(root.querySelectorAll(".feature-option"));
-   var i=options.indexOf(option),n=e.key==="Home"?0:e.key==="End"?options.length-1:(i+(e.key==="ArrowDown"?1:-1)+options.length)%options.length;
-   options[n]?.focus({preventScroll:true});return;
-  }
- }
  var tab=e.target.closest("[data-plan]");if(!tab)return;
  if(!["ArrowRight","ArrowLeft","ArrowDown","ArrowUp","Home","End"].includes(e.key))return;
  e.preventDefault();
