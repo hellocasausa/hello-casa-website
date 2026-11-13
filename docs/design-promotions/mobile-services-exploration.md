@@ -47,3 +47,7 @@ For Essential Clean within this concept only, the redundant select dropdown is r
 Keyboard behavior: the six visible cards are ordinary accessible tabs with their existing active state and keyboard arrow/Home/End selection. No hidden navigation menu is used. The source-generated Essential+ explanatory footnote is suppressed **only in Concept 04's rendered Essential Clean checklist**; the canonical note and all other concepts remain unchanged.
 
 Concepts 01–03 remain unchanged as comparison references. No production mobile integration or Hero/tablet follow-up was authorized.
+
+## Featured Service exact-white surfaces and explanation cleanup
+
+Owner clarified the color request with a screenshot. Concept 04 only: the previously cream/yellow outer service shell, selector background and `Optional: Partial deep clean` focus card now match the canonical white checklist cards exactly (`#fff`). The illustrated `SELECT YOUR PLAN` card **retains** its softly colored left-to-right gradient, but its pale cream end color is replaced by the same white (`#fff`) for a seamless blend. The six pastel service cards and their selected states are not recolored. Remove the short `Selected rooms receive the Essential+ checklist; all other rooms remain Essential.` supporting line under the focus buttons, exclusively in the featured prototype. The canonical focus markup, note, tasks, other concepts, and approved mobile homepage remain unchanged.

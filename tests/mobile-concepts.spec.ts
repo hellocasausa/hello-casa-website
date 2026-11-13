@@ -103,7 +103,15 @@ test("Featured Service displays the original six small cards, uses focus buttons
   await expect(page.locator("#essential-focus")).toHaveCount(0);
   await expect(page.locator(".hc-focus-btn")).toHaveCount(3);
   await expect(page.locator(".hc-footnote")).toHaveCount(0);
+  await expect(page.locator(".hc-focus-help")).toHaveCount(0);
+  await expect(page.getByText("Selected rooms receive the Essential+ checklist", {exact:false})).toHaveCount(0);
   await expect(page.getByText("Essential+ focuses on one area per visit", {exact:false})).toHaveCount(0);
+  for(const surface of [".service-shell",".selector-zone",".hc-focus-wrap",".hc-group"]){
+   await expect(page.locator(surface).first()).toHaveCSS("background-color","rgb(255, 255, 255)");
+  }
+  const gradient=await page.locator(".feature-header").evaluate(el=>getComputedStyle(el).backgroundImage);
+  expect(gradient).toContain("rgb(255, 255, 255)");
+  expect(gradient).not.toContain("rgb(255, 253, 250)");
   await page.locator('[data-plan="deep"]').focus();
   await page.keyboard.press("ArrowRight");
   await expect(page.locator('[data-plan="moving"]')).toBeFocused();

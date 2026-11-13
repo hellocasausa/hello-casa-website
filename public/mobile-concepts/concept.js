@@ -24,6 +24,8 @@ function focusMarkup(){
  var template=document.createElement("template");
  template.innerHTML=catalog.focusHtml;
  template.content.querySelector("#essential-focus")?.remove();
+ // Remove the redundant focus explanation in Concept 04 only.
+ template.content.querySelector(".hc-focus-help")?.remove();
  var label=template.content.querySelector('label[for="essential-focus"]');
  if(label){
   var title=document.createElement("p");
