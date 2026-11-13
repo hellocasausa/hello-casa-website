@@ -155,6 +155,10 @@ test("compact navigation closes on Escape and selection; destinations and newsle
     "aria-disabled",
     "true",
   );
+  // Newsletter was intentionally removed from tablet, but remains on desktop.
+  await expect(page.locator("#footer .hc-b-footer__newsletter")).toBeHidden();
+  await page.setViewportSize({width:1100,height:900});
+  await expect(page.locator("#footer .hc-b-footer__newsletter")).toBeVisible();
   await page.locator("#hc-b-footer-signup button").click();
   await expect(page.locator("#hc-b-footer-form-status")).toContainText(
     "No information has been sent.",

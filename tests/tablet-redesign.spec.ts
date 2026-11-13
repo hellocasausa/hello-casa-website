@@ -65,7 +65,8 @@ test("tablet design has unified rhythm and live native Services at 751, 768, 820
     return {lines:titleRects.length,firstBottom:first.bottom,secondTop:lineTwo.top};
   });
   expect(line.lines,"A Fresh Start must occupy a single line at "+width).toBe(1);
-  expect(line.secondTop,"In 3 steps should appear below the first line at "+width).toBeGreaterThanOrEqual(line.firstBottom-1);
+  // Font glyph rectangles overlap their line boxes slightly; the <br> still creates two lines.
+  expect(line.secondTop,"In 3 steps should appear below the first line at "+width).toBeGreaterThanOrEqual(line.firstBottom-5);
   const heroInset=hero.heroBottom-hero.trustBottom;
   expect(heroInset,"hero footer space should be economical at "+width).toBeGreaterThanOrEqual(12);
   expect(heroInset,"hero footer space should be economical at "+width).toBeLessThanOrEqual(38);
