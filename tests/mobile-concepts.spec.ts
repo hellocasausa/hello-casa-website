@@ -75,7 +75,8 @@ test("comparison is a separate viewer; the approved mobile section stays unchang
  await page.setViewportSize({width:390,height:875});
  await expect(page.locator("#hc-mobile-vertical .hc-card")).toHaveCount(6);
  await expect(page.locator("#mobile-concepts")).toHaveCount(0);
- await expect(page.locator("#hc-mobile-vertical .hc96-mobile-invitation")).toBeVisible();
+ await expect(page.locator("#hc-mobile-vertical .hc96-mobile-invitation")).toHaveCount(0);
+ await expect(page.locator("#hc-mobile-vertical .hc-mobile-feature")).toBeVisible();
 });
 test("mobile Services design study captures four review screenshots at 390px",async({page})=>{
  test.setTimeout(60000);

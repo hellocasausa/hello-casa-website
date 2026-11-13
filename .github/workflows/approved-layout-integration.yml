@@ -15,6 +15,9 @@ on:
       - "tests/hosted-review.spec.ts"
       - "tests/tablet-redesign.spec.ts"
       - "tests/mobile-concepts.spec.ts"
+      - "tests/native-mobile-featured.spec.ts"
+      - "src/components/services.ts"
+      - "src/styles/hero.css"
       - "scripts/build-mobile-concepts.ts"
       - "public/mobile-concepts/**"
       - "preview/visual-review.html"
@@ -43,7 +46,7 @@ jobs:
       - name: Generate experimental mobile variants from canonical Services
         run: node scripts/build-mobile-concepts.ts
       - name: Functional and layout regressions
-        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts tests/approved-previews.spec.ts tests/hosted-review.spec.ts tests/tablet-redesign.spec.ts tests/mobile-concepts.spec.ts --reporter=line
+        run: npx playwright test tests/homepage.spec.ts tests/approved-services.spec.ts tests/approved-standards.spec.ts tests/approved-previews.spec.ts tests/hosted-review.spec.ts tests/tablet-redesign.spec.ts tests/mobile-concepts.spec.ts tests/native-mobile-featured.spec.ts --reporter=line
       - uses: actions/upload-artifact@v4
         if: always()
         with:
