@@ -39,7 +39,7 @@
 }
 .hc-contact-new h2 {
   font:
-    400 clamp(31px, 3vw, 41px)/1.22 "HC Libre",
+    400 var(--hc-heading-section)/1.22 "HC Libre",
     "Libre Baskerville",
     Georgia,
     serif;
@@ -80,9 +80,6 @@
   }
   .hc-contact-new .hc-contact-card {
     padding: 26px 24px 24px;
-  }
-  .hc-contact-new h2 {
-    font-size: 31px;
   }
   .hc-contact-new .hc-photo-scene {
     width: 245px;
@@ -267,7 +264,7 @@
   letter-spacing: 0.19em;
 }
 .hc-contact-new h2 {
-  font-size: clamp(30px, 2.38vw, 35px);
+  font-size: var(--hc-heading-section);
   line-height: 1.16;
   letter-spacing: -0.035em;
   max-width: none;
@@ -314,7 +311,6 @@
     top: -14px;
   }
   .hc-contact-new h2 {
-    font-size: clamp(26px, 3vw, 33px);
     line-height: 1.18;
   }
   .hc-contact-new .hc-photo-scene {
@@ -325,6 +321,12 @@
   .hc-contact-new .hc-photo-scene img {
     height: auto;
     aspect-ratio: 1.19;
+  }
+}
+@media (min-width: 751px) and (max-width: 900px) {
+  /* Retain the previously approved tablet scale; desktop headings are exactly 32px. */
+  .hc-contact-new h2 {
+    font-size: clamp(26px, 3vw, 33px);
   }
 }
 @media (max-width: 750px) {

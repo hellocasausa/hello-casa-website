@@ -22,7 +22,7 @@
   --hc-space-4: 32px;
   --hc-space-5: 48px;
   --hc-section-pad-desktop: clamp(32px, 3.4vw, 48px);
-  --hc-heading-section: clamp(30px, 2.45vw, 35px);
+  --hc-heading-section: 32px;
   --hc-heading-editorial: clamp(27px, 2.2vw, 32px);
   --hc-body-editorial: 15px;
   --hc-steps-height: 128px;

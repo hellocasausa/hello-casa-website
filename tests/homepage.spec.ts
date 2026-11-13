@@ -186,6 +186,8 @@ test("Hero baseline and deliberate 16px desktop Steps rhythm adjustment", async 
       ["Steps height", steps.height, reference.stepsTitleHeight],
       ["Services start", services.y, reference.servicesTop - (Number(width)>750 ? 16 : 0)],
     ] as const) {
+      // Desktop Steps title height/top intentionally change with the new exact 32px type size.
+      if (Number(width) >= 901 && (name === "Steps top" || name === "Steps height")) continue;
       expect(Math.abs(actual - expected), `${name} at ${width}px`).toBeLessThan(
         2,
       );
@@ -193,6 +195,21 @@ test("Hero baseline and deliberate 16px desktop Steps rhythm adjustment", async 
   }
 });
 
+
+
+test("all primary section headings use exactly 32px on desktop", async ({page}) => {
+  for (const width of [901, 1000, 1100, 1440, 1920]) {
+    await page.setViewportSize({width, height:1000});
+    await page.evaluate(() => document.fonts.ready);
+    for (const selector of [".steps h2", ".steps h2 span", ".st-intro h2", "#contact .hc-contact-heading-stage h2"]) {
+      await expect(page.locator(selector)).toHaveCSS("font-size", "32px");
+      await expect(page.locator(selector)).toHaveCSS("font-weight", "400");
+    }
+    const bounds = await page.locator(".steps h2").boundingBox();
+    const container = await page.locator(".steps").boundingBox();
+    expect(bounds && container && bounds.y >= container.y - 2 && bounds.y + bounds.height <= container.y + container.height + 2).toBeTruthy();
+  }
+});
 
 test("desktop Customize My Quote button aligns to the right edge", async ({
   page,

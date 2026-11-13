@@ -56,7 +56,6 @@
    always inherit the same canonical 1440px container-relative settings. */
 @media(min-width:901px) and (max-width:1199px){
  .st-intro{padding:18px 36px 20px 58px;width:min(720px,76vw)}
- .st-intro h2{font-size:33px}
  .st-story--one{grid-template-columns:calc(23.60cqw * var(--st-story-scale)) minmax(0,1fr);margin-left:0}
  .st-story--two{grid-template-columns:minmax(0,1fr) calc(23.217cqw * var(--st-story-scale));margin-right:0}
  .st-story--three{grid-template-columns:calc(27.36cqw * var(--st-story-scale)) minmax(0,1fr);margin-left:0}

@@ -124,11 +124,6 @@
     font-size: 11px;
   }
 }
-@media (min-width: 751px) and (max-width: 1100px) {
-  .steps h2 {
-    font-size: 27px;
-  }
-}
 @media (max-width: 750px) {
   .steps h2 {
     font-size: clamp(20px, 5.25vw, 29px);
@@ -187,7 +182,7 @@
   .steps h2,
   .steps h2 span {
     font:
-      400 clamp(30px, 2.38vw, 34.272px)/1.16 "HC Libre",
+      400 var(--hc-heading-section)/1.16 "HC Libre",
       serif;
     letter-spacing: -0.035em;
   }
@@ -229,10 +224,6 @@
   .steps-heading {
     padding-left: 8px;
   }
-  .steps h2,
-  .steps h2 span {
-    font-size: clamp(26px, 3vw, 30px);
-  }
   .steps .step-number {
     width: 43px;
     height: 43px;
@@ -255,6 +246,13 @@
   }
   .steps-heading p {
     font-size: 11px;
+  }
+}
+@media (min-width: 751px) and (max-width: 900px) {
+  /* Existing tablet sizing is intentionally separate from the desktop 32px token. */
+  .steps h2,
+  .steps h2 span {
+    font-size: clamp(26px, 3vw, 30px);
   }
 }
 @media (max-width: 750px) {
