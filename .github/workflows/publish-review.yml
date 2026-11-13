@@ -38,7 +38,7 @@ jobs:
           grep -q '/hello-casa-website/assets/' dist/index.html
           grep -q 'data-view="tablet"' dist/review/index.html
           grep -q 'data-view="mobile"' dist/review/index.html
-          test -f dist/assets/0914a207ac7fe63a496e.png
+          test -f dist/assets/0914a207ac7fe63a496e.webp
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload compiled preview to Pages
