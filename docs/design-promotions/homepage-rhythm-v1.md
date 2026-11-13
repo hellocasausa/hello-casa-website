@@ -66,7 +66,7 @@ Desktop scope is 901px and above; tablet and mobile retain their existing styles
 
 All edits live in the existing source owners, without another corrective stylesheet. Previous committed implementation remains recoverable at the `checkpoint/pre-desktop-body-16px-c48a706` branch.
 
-**Batch preview source pin:** `a6325a70d483abe388a8070ed80602c9484ff930` (one immutable snapshot for review, same native CSS as the batch).
+**Prior batch preview source pin:** `a6325a70d483abe388a8070ed80602c9484ff930` (one immutable snapshot for review, same native CSS as the batch).
 
 ## Approved Standards text-card re-proportioning and Guest Turnover cleanup
 
@@ -77,3 +77,5 @@ All edits live in the existing source owners, without another corrective stylesh
 - Regression coverage verifies the responsive card proportions and the Guest group's display while auditing the full catalog inventory.
 
 Rollback checkpoint: `checkpoint/pre-standards-narrow-card-guest-v1-7b14a9a`.
+
+**Current batch preview source pin:** `92f10df0c041ee910a7c3329b9767ee5285fecdc` (approved narrower Standards cards, left-facing second card bubble, and Guest Final Touches in fourth position).
