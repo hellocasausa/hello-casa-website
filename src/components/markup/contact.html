@@ -7,7 +7,37 @@
 <div class="hc-contact-card">
 <h3 class="hc-card-title">Leave a little note.</h3><p class="hc-card-desc"><span class="hc104-question">Have a question, something special in mind or a space that needs a little extra attention?</span> <span class="hc104-closing">We'd love to hear about it.</span></p>
 
-<div aria-label="Hello Casa contact form" class="hc-jotform-embed" id="hc-contact-jotform"><script src="https://form.jotform.com/jsform/262930639373060" type="text/javascript"></script></div>
+<form aria-label="Hello Casa contact form" class="hc-contact-form" id="hc-native-contact-form" action="#" method="post">
+  <div class="hc-contact-form-grid">
+    <div class="hc-contact-field">
+      <label for="hc-contact-name">Your name <span aria-hidden="true">*</span></label>
+      <input id="hc-contact-name" name="name" type="text" autocomplete="name" maxlength="120" required placeholder="Full name">
+    </div>
+    <div class="hc-contact-field">
+      <label for="hc-contact-email">Email address <span aria-hidden="true">*</span></label>
+      <input id="hc-contact-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com">
+    </div>
+    <div class="hc-contact-field hc-contact-field-full">
+      <label for="hc-contact-phone">Phone number <span class="hc-contact-optional">(optional)</span></label>
+      <input id="hc-contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="(555) 123-4567">
+    </div>
+    <div class="hc-contact-field hc-contact-field-full">
+      <label for="hc-contact-message">Your message <span aria-hidden="true">*</span></label>
+      <textarea id="hc-contact-message" name="message" rows="4" maxlength="3000" required placeholder="What can we help you with?"></textarea>
+    </div>
+  </div>
+  <div class="hc-contact-trap" aria-hidden="true">
+    <label for="hc-contact-website">Leave this field empty</label>
+    <input id="hc-contact-website" name="website" type="text" autocomplete="off" tabindex="-1">
+  </div>
+  <label class="hc-contact-consent">
+    <input type="checkbox" name="replyConsent" required>
+    <span>It's okay for Hello Casa to contact me about this message.</span>
+  </label>
+  <div id="hc-contact-verification" class="hc-contact-verification"></div>
+  <button class="hc-contact-submit" type="submit">Send my message</button>
+  <p class="hc-contact-status" id="hc-contact-status" role="status" aria-live="polite" hidden></p>
+</form>
 </div>
 </div>
 </section>
