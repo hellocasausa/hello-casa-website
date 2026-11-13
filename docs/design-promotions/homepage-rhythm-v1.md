@@ -67,3 +67,13 @@ Desktop scope is 901px and above; tablet and mobile retain their existing styles
 All edits live in the existing source owners, without another corrective stylesheet. Previous committed implementation remains recoverable at the `checkpoint/pre-desktop-body-16px-c48a706` branch.
 
 **Batch preview source pin:** `a6325a70d483abe388a8070ed80602c9484ff930` (one immutable snapshot for review, same native CSS as the batch).
+
+## Approved Standards text-card re-proportioning and Guest Turnover cleanup
+
+- The three desktop Standards stories preserve their original photography sizes and anchor sides, while the text-card track becomes approximately **25% narrower** at the 1440px desktop reference: maximum story widths now 895px / 872px / 924px. All copy remains intact, naturally increasing card heights; no independent artificial card height added.
+- The Personalized Cleaning Profiles card has its expressive **rounded end on the LEFT** (100px left corners and 22px right corners), not the right. Left interior padding is raised so its copy stays inside the curved edge.
+- Tablet and phone Standards story widths, 20px card radius, and layout remain as previously approved.
+- The **Guest Turnover default checklist** no longer displays the conditional Outdoor Areas box. **Final Touches** moves into the fourth visible group position after Bathrooms. The four `vacation-out-*` task definitions and their conditional marker are **retained in `plans.json`**, so the canonical source inventory remains at 129 IDs and can support explicitly requested outdoor work later. Other plan checklists remain unchanged.
+- Regression coverage verifies the responsive card proportions and the Guest group's display while auditing the full catalog inventory.
+
+Rollback checkpoint: `checkpoint/pre-standards-narrow-card-guest-v1-7b14a9a`.

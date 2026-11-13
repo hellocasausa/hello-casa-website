@@ -91,3 +91,30 @@ test("all approved full-length Standards copy remains readable on tablet and pho
    await page.locator("#standards").screenshot({path:"test-results/approved-standards-mobile-"+width+".png",animations:"disabled",style:".skip-link{visibility:hidden !important}"});
  }
 });
+test("narrower Standards cards retain image dimensions, all text and left-facing bubble", async ({page})=>{
+ await page.setViewportSize({width:1440,height:950});
+ const stories=page.locator("#standards .st-story");
+ await expect(stories).toHaveCount(3);
+ const widths=await stories.evaluateAll(items=>items.map(story=>{
+   const card=story.querySelector(".st-prose")!.getBoundingClientRect();
+   const photo=story.querySelector(".st-figure")!.getBoundingClientRect();
+   const paragraphs=[...story.querySelectorAll(".st-copy p")];
+   return {width:card.width,height:card.height,photoWidth:photo.width,photoHeight:photo.height,
+     fits:paragraphs.every(p=>p.getBoundingClientRect().bottom<=card.bottom+2),
+     paragraphCount:paragraphs.length};
+ }));
+ // Relative to earlier desktop text tracks of approximately [859,833,846]px.
+ const before=[859,833,846];
+ widths.forEach((row,i)=>{
+   expect(row.width/before[i],`text card ${i+1} width ratio`).toBeGreaterThan(0.72);
+   expect(row.width/before[i],`text card ${i+1} width ratio`).toBeLessThan(0.78);
+   expect(row.fits).toBe(true);
+   expect(row.paragraphCount).toBe(2);
+ });
+ expect(widths.map(row=>Math.round(row.photoWidth))).toEqual([276,255,303]);
+ const second=stories.nth(1).locator(".st-prose");
+ await expect(second).toHaveCSS("border-top-left-radius","100px");
+ await expect(second).toHaveCSS("border-bottom-left-radius","100px");
+ await expect(second).toHaveCSS("border-top-right-radius","22px");
+ await expect(second).toHaveCSS("border-bottom-right-radius","22px");
+});

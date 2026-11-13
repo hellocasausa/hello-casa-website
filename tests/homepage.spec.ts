@@ -12,7 +12,10 @@ test("all six source catalogs retain all 129 unique tasks and exact copy", async
   for (const p of plans) {
     await page.locator(`[data-plan="${p.id}"]`).click();
     await expect(page.locator("#hc-name")).toHaveText(p.name);
-    const expected = p.groups.flatMap((g) => g.taskIds);
+    const visibleGroups = p.id === "guest"
+      ? p.groups.filter((g) => g.title !== "Outdoor Areas")
+      : p.groups;
+    const expected = visibleGroups.flatMap((g) => g.taskIds);
     expect(
       await page
         .locator("[data-task-id]")
@@ -20,19 +23,24 @@ test("all six source catalogs retain all 129 unique tasks and exact copy", async
     ).toEqual(expected);
     for (const g of p.groups)
       for (let i = 0; i < g.items.length; i++) {
-        await expect(
-          page.locator(`[data-task-id="${g.taskIds[i]}"]`),
-        ).toHaveText(g.items[i]);
+        if (p.id !== "guest" || g.title !== "Outdoor Areas")
+          await expect(
+            page.locator(`[data-task-id="${g.taskIds[i]}"]`),
+          ).toHaveText(g.items[i]);
         ids.add(g.taskIds[i]);
       }
     await expect(page.locator(".hc-extras-list li")).toHaveCount(
       p.extras.length,
     );
     await expect(page.locator(".hc-footnote")).toHaveText(p.note);
-    if (p.id === "guest")
-      await expect(
-        page.getByRole("heading", { name: "Outdoor Areas · if included" }),
-      ).toBeVisible();
+    if (p.id === "guest") {
+      await expect(page.getByRole("heading", {name:"Outdoor Areas · if included"})).toHaveCount(0);
+      await expect(page.locator("#hc-detail-body .hc-group h4")).toHaveText([
+        "All Rooms", "Kitchen", "Bathrooms", "Final Touches",
+      ]);
+      await expect(page.locator('[data-task-id^="vacation-out-"]')).toHaveCount(0);
+      await expect(page.locator('[data-task-id^="vacation-final-"]')).toHaveCount(5);
+    }
   }
   expect(ids.size).toBe(129);
 });
@@ -231,10 +239,10 @@ test("approved desktop body rhythm, headings, mirrored inset and bubble ending",
     expect(left && right).not.toBeNull();
     expect(Math.abs(left!.x - (width - (right!.x + right!.width))), `mirrored heading insets at ${width}px`).toBeLessThanOrEqual(2);
     const radius = page.locator("#standards .st-story--two .st-prose");
-    await expect(radius).toHaveCSS("border-top-right-radius", "100px");
-    await expect(radius).toHaveCSS("border-bottom-right-radius", "100px");
-    await expect(radius).toHaveCSS("border-top-left-radius", "22px");
-    await expect(radius).toHaveCSS("border-bottom-left-radius", "22px");
+    await expect(radius).toHaveCSS("border-top-left-radius", "100px");
+    await expect(radius).toHaveCSS("border-bottom-left-radius", "100px");
+    await expect(radius).toHaveCSS("border-top-right-radius", "22px");
+    await expect(radius).toHaveCSS("border-bottom-right-radius", "22px");
     await expect(page.locator(".st-intro h2")).toHaveCSS("font-size", "32px");
   }
   for (const width of [390, 750, 820, 900]) {

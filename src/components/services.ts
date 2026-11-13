@@ -34,7 +34,10 @@ const escape = (s: string) =>
       ]!,
   );
 export function checklist(plan: Plan, focus: Focus = "standard") {
-  return `<div class="hc-grid hc-grid-approved">${selectedGroups(plan, focus)
+  const groups = selectedGroups(plan, focus).filter(
+    (g) => plan.id !== "guest" || g.title !== "Outdoor Areas",
+  );
+  return `<div class="hc-grid hc-grid-approved">${groups
     .map(
       (g) =>
         `<section class="hc-group hc-group-approved ${"conditional" in g ? "hc-conditional" : ""}"><h4>${escape(g.title)}${"conditional" in g ? " · if included" : ""}</h4><ul>${g.items.map((s, i) => `<li data-task-id="${g.taskIds[i]}">${escape(s)}</li>`).join("")}</ul></section>`,
