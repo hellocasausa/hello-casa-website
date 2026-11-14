@@ -10,27 +10,30 @@
 <form aria-label="Hello Casa contact form" class="hc-contact-form" id="hc-native-contact-form" action="#" method="post">
   <div class="hc-contact-form-grid">
     <div class="hc-contact-field">
-      <label for="hc-contact-zipcode">Zipcode <span class="hc-contact-required" aria-hidden="true">*</span></label>
-      <input id="hc-contact-zipcode" name="zipcode" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" required placeholder="ZIP code">
+      <label for="hc-contact-name">Your name <span class="hc-contact-required" aria-hidden="true">*</span></label>
+      <input id="hc-contact-name" name="name" type="text" autocomplete="name" maxlength="120" required placeholder="Your name">
+    </div>
+    <div class="hc-contact-field">
+      <label for="hc-contact-email">Email address <span class="hc-contact-required" aria-hidden="true">*</span></label>
+      <input id="hc-contact-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com">
     </div>
     <div class="hc-contact-field">
       <label for="hc-contact-phone">Phone number <span class="hc-contact-required" aria-hidden="true">*</span></label>
       <input id="hc-contact-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" required placeholder="(555) 555-5555">
     </div>
     <div class="hc-contact-field">
-      <label for="hc-contact-name">Your name <span class="hc-contact-required" aria-hidden="true">*</span></label>
-      <input id="hc-contact-name" name="name" type="text" autocomplete="name" maxlength="120" required placeholder="Your name">
-    </div>
-    <div class="hc-contact-field">
-      <label for="hc-contact-topic">What can we help with? <span class="hc-contact-required" aria-hidden="true">*</span></label>
+      <label for="hc-contact-topic">What can we help you with? <span class="hc-contact-required" aria-hidden="true">*</span></label>
       <select id="hc-contact-topic" name="topic" required>
-        <!-- Temporary default. Replace the full list with owner-approved choices. -->
-        <option value="General Question" selected>General Question</option>
+        <option value="" disabled selected>Choose a topic</option>
+        <option value="I have a question">I have a question</option>
+        <option value="Help me choose a cleaning service">Help me choose a cleaning service</option>
+        <option value="My space needs something different">My space needs something different</option>
+        <option value="Something else">Something else</option>
       </select>
     </div>
     <div class="hc-contact-field hc-contact-field-full">
       <label for="hc-contact-message">Tell us a little more <span class="hc-contact-required" aria-hidden="true">*</span></label>
-      <textarea id="hc-contact-message" name="message" rows="4" maxlength="3000" required></textarea>
+      <textarea id="hc-contact-message" name="message" rows="4" maxlength="3000" required placeholder="Tell us a little about what you need."></textarea>
     </div>
   </div>
   <div class="hc-contact-trap" aria-hidden="true">
