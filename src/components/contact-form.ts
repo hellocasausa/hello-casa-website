@@ -8,6 +8,7 @@ export function bindContactForm() {
   if (!form) return;
 
   const button = form.querySelector<HTMLButtonElement>(".hc-contact-submit")!;
+  const defaultButtonLabel = button.innerHTML;
   const status = form.querySelector<HTMLElement>("#hc-contact-status")!;
   const verification = form.querySelector<HTMLElement>("#hc-contact-verification")!;
   // Live Hello Casa domain only. These are public values; Airtable credentials remain server-side.
@@ -53,11 +54,12 @@ export function bindContactForm() {
     }
     const payload = {
       name: String(values.get("name") || "").trim(),
-      email: String(values.get("email") || "").trim(),
+      zipcode: String(values.get("zipcode") || "").trim(),
       phone: String(values.get("phone") || "").trim(),
+      topic: String(values.get("topic") || "").trim(),
       message: String(values.get("message") || "").trim(),
       website: String(values.get("website") || ""),
-      replyConsent: values.has("replyConsent"),
+      replyConsent: true, // The visible privacy notice specifies reply-only use.
       turnstileToken,
     };
     button.disabled = true;
@@ -87,7 +89,7 @@ export function bindContactForm() {
       }).turnstile;
       turnstile?.reset();
       button.disabled = false;
-      button.textContent = "Send my message";
+      button.innerHTML = defaultButtonLabel;
     }
   });
 }
