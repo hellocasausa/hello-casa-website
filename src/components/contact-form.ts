@@ -11,7 +11,7 @@ export function bindContactForm() {
   const status = form.querySelector<HTMLElement>("#hc-contact-status")!;
   const verification = form.querySelector<HTMLElement>("#hc-contact-verification")!;
   // Live Hello Casa domain only. These are public values; Airtable credentials remain server-side.
-  const endpoint = "https://hc-contact-intake.hello-casa-usa.workers.dev/api/contact";
+  const endpoint = "https://hc-forms-api.hello-casa-usa.workers.dev/api/contact";
   const siteKey = "0x4AAAAAAGAOHqI8iezJxq7F";
 
   function setStatus(message: string, state: "success" | "error" | "preview") {
