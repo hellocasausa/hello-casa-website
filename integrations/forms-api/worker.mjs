@@ -6,6 +6,19 @@
 const LIMIT_BYTES = 8192;
 const AIRTABLE_URL = "https://api.airtable.com/v0/";
 const VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+const SITE_IDENTITY = Object.freeze({
+  "https://www.hello-casa.com": { company: "Hello Casa", market: "Florida" },
+  "https://hello-casa.com": { company: "Hello Casa", market: "Florida" },
+  "https://www.confidentcleanings.com": { company: "Confident Cleanings", market: "California" },
+  "https://confidentcleanings.com": { company: "Confident Cleanings", market: "California" },
+});
+const APPROVED_TOPICS = new Set([
+  "I have a question",
+  "Help me choose a cleaning service",
+  "My space needs something different",
+  "Something else",
+]);
+
 
 function respond(status, payload, origin) {
   const headers = {
@@ -29,9 +42,10 @@ function clean(value, maximum) {
 export default {
   async fetch(request, env) {
     const origin = request.headers.get("Origin") || "";
-    const allowed = (env.ALLOWED_ORIGINS || "")
-      .split(",").map((value) => value.trim()).filter(Boolean);
-    if (!origin || !allowed.includes(origin)) return respond(403, { ok: false }, "");
+    // Exact origin → company mapping. Never let public submissions choose the company.
+    // The chosen market describes the WEBSITE, not a visitor's residential location.
+    const identity = SITE_IDENTITY[origin];
+    if (!identity) return respond(403, { ok: false }, "");
 
     const path = new URL(request.url).pathname;
     if (path !== "/api/contact") return respond(404, { ok: false }, origin);
@@ -70,21 +84,21 @@ export default {
     const name = clean(input.name, 120);
     const email = clean(input.email, 254);
     const phone = clean(input.phone, 40);
-    const zipcode = clean(input.zipcode, 10);
     const topic = clean(input.topic, 120);
     const message = clean(input.message, 3000);
     const token = clean(input.turnstileToken, 3000);
-    // Support previously published email-based contact submissions during rollout.
-    // The approved Jotform-style layout uses ZIP + phone + name + topic + message.
-    const legacyEmailSubmission = Boolean(email && !zipcode && !topic);
+    const legacyZipcode = clean(input.zipcode, 10);
+    // A brief compatibility window for forms cached from the previous design;
+    // current Contact forms ALWAYS require email and one approved topic.
+    const legacySubmission = Boolean(!email && legacyZipcode && topic === "General Question");
     const phoneDigits = phone.replace(/\D/g, "");
     const validPhone = phoneDigits.length >= 10 && phoneDigits.length <= 15;
-    const validZipcode = /^[0-9]{5}(?:-[0-9]{4})?$/.test(zipcode);
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!name || name.length > 120 ||
-        (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)) ||
-        phone.length > 40 ||
+        (!legacySubmission && (!validEmail || email.length > 254)) ||
+        !validPhone || phone.length > 40 ||
         !message || message.length > 3000 ||
-        (!legacyEmailSubmission && (!validPhone || !validZipcode || !topic || topic.length > 120)) ||
+        (!APPROVED_TOPICS.has(topic) && !legacySubmission) ||
         input.replyConsent !== true || !token) {
       return respond(422, { ok: false, message: "Please check the required fields." }, origin);
     }
@@ -110,15 +124,17 @@ export default {
 
     const fields = {
       "fldrRV6y8pfL73o74": env.CONTACT_MODE === "production" ? "Operational" : "Test",
-      "fldplRnoZciBVRIWY": "Hello Casa",
+      "fldplRnoZciBVRIWY": identity.company,
       "flddvq8kfgJ1C1o0l": "New",
       "fldkp0pu9U6E3Nrw7": "Other",
       "fld0u1gwNFc15jmD2": name,
       "fldVAtEsUjUwVibjN": email || undefined,
       "fldEV99earNSeBe61": phone || undefined,
-      "fldgETeUwvPLui35l": zipcode || undefined,
-      "fldfir37pNdk9A3jJ": "Contact form inquiry." + (topic ? "\nReason: " + topic : "") +
-        "\nMessage:\n" + message + "\nReply permission: yes",
+      "fldfir37pNdk9A3jJ": "Contact form inquiry." +
+        "\nReason: " + topic +
+        "\nWebsite market: " + identity.market +
+        (legacySubmission ? "\nLegacy form version" : "") +
+        "\nMessage:\n" + message + "\nContact details provided for inquiry response",
       "fld6htuvrRQs5VVyY": "Native website contact form",
       "fld6PAAK8pC8YMmLj": "contact-" + crypto.randomUUID(),
       "fldKSw0W3p1KEssJe": origin + "/#contact",
