@@ -1,5 +1,15 @@
 # Native Contact → Airtable pilot (review branch only)
 
+## Actual staging deployment — November 13, 2026
+- Cloudflare Worker script **hc-contact-intake-staging** uploaded, with its workers.dev subdomain explicitly enabled. Expected endpoint: `https://hc-contact-intake-staging.hello-casa-usa.workers.dev/api/contact`. Actual HTTP submission remains unverified.
+- Cloudflare Turnstile widget **HC native contact — staging pilot** created. Public site key: `0x4AAAAAAGANgDCEKbgk8ZYB`, allowed hosts `hellocasausa.github.io`, `localhost`, and `127.0.0.1`. Its secret is stored as a secure Worker binding, not in source.
+- Worker bound to real Cleaning Operations base/table, explicit test-only mode and allowed preview/local origins.
+- **Missing: AIRTABLE_PAT Worker secret.** The existing admin staging Worker has a different protected Airtable token, which cannot be copied to this isolated Worker without exposing it. Create a new base-scoped Airtable PAT for this pilot. Do **not** post the PAT in ChatGPT or commit it.
+- Airtable: https://airtable.com/create/tokens → create `HC Contact Intake staging` with `data.records:write` scope, restrict resource to **Cleaning Operations** only. Then Cloudflare Dashboard → Workers & Pages → `hc-contact-intake-staging` → Settings → Variables and Secrets → add secret named `AIRTABLE_PAT`. Confirm deployed binding name via Cloudflare settings readback.
+- For local testing, copy the repository's `.env.example` to `.env.local` (contains only public values). Do not activate a production form or merge/deploy this draft PR without full QA.
+- Until AIRTABLE_PAT is present the Worker returns 503 and does not write anything.
+- GitHub Actions workflow `Native Contact pilot checks` runs unit/build/browser QA on feature branch. Check results before promotion.
+
 ## What changed
 The approved Contact section wrapper, photography, section text and responsive layout are preserved. The external Jotform **Contact** iframe is replaced by native HTML fields (name, email, optional phone, message, permission to reply) and a disabled-by-default submit button. The quote Jotform links are not in scope.
 
