@@ -163,9 +163,16 @@
 @media (max-width: 750px) {
   #contact.hc-contact-new .hc-card-title {font-size: 29px;margin-bottom: 10px}
   #contact.hc-contact-new .hc-card-desc {font-size: 14px;margin-bottom: 18px}
-  #contact.hc-contact-new .hc-contact-form-grid {grid-template-columns:minmax(0,1fr);row-gap:11px}
+  /* Atlas: two questions per row even on mobile; only the message box spans both. */
+  #contact.hc-contact-new .hc-contact-form-grid {grid-template-columns:repeat(2,minmax(0,1fr));column-gap:9px;row-gap:12px}
+  #contact.hc-contact-new .hc-contact-field {min-width:0}
+  #contact.hc-contact-new .hc-contact-field>label {flex:1;overflow-wrap:anywhere}
+  #contact.hc-contact-new .hc-contact-field input,
+  #contact.hc-contact-new .hc-contact-field select {min-width:0;padding:10px 9px;font-size:12.5px;border-radius:13px}
+  #contact.hc-contact-new .hc-contact-field select {padding-right:23px;background-position:right 6px center;background-size:12px}
+  #contact.hc-contact-new .hc-contact-field input::placeholder {font-size:12px}
   #contact.hc-contact-new .hc-contact-form {gap:12px}
-  #contact.hc-contact-new .hc-contact-field>label {font-size:14px}
+  #contact.hc-contact-new .hc-contact-field>label {font-size:12px;line-height:1.25}
   #contact.hc-contact-new .hc-contact-field input,
   #contact.hc-contact-new .hc-contact-field select {min-height:53px}
   #contact.hc-contact-new .hc-contact-actions {align-items:stretch;gap:10px}
