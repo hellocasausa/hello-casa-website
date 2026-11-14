@@ -55,7 +55,7 @@ test("tablet design has unified rhythm and live native Services at 751, 768, 820
   expect(stories.every(x=>x.fits)).toBe(true);
   await expect(page.locator("#contact .hc-card-desc")).toHaveCSS("font-size","16px");
   await expect(page.locator("#contact .hc-card-desc")).toHaveCSS("line-height","24px");
-  await expect(page.locator("#contact #hc-contact-jotform")).toHaveCSS("overflow","visible");
+  await expect(page.locator("#contact #hc-native-contact-form")).toHaveCSS("display","flex");
   const line=await page.locator(".steps h2").evaluate(el=>{
     const range=document.createRange();
     range.selectNodeContents(el.firstChild);
