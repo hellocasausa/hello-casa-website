@@ -4,25 +4,28 @@ test.beforeEach(async({page})=>{
  await page.goto("/");
  await page.evaluate(()=>document.fonts.ready);
 });
-test("mobile Contact removes redundant heading and link without disturbing Jotform embed",async({page})=>{
+test("mobile Contact preserves the approved layout with native fields",async({page})=>{
  for(const width of [320,375,390,520,750]){
   await page.setViewportSize({width,height:860});
   const section=page.locator("#contact");
   await expect(section.locator(".hc-card-title")).toBeHidden();
   await expect(section.locator(".hc-card-desc")).toBeVisible();
   await expect(section.locator(".contact-fallback")).toHaveCount(0);
-  await expect(section.locator("#hc-contact-jotform")).toBeAttached();
-  await expect(section.locator("#hc-contact-jotform script[src]")).toHaveAttribute("src","https://form.jotform.com/jsform/262930639373060");
+  await expect(section.locator("#hc-native-contact-form")).toBeAttached();
+  await expect(section.locator("#hc-contact-name")).toBeVisible();
+  await expect(section.locator("#hc-contact-email")).toBeVisible();
+  await expect(section.locator("#hc-contact-message")).toBeVisible();
+  await expect(section.locator("#hc-contact-jotform")).toHaveCount(0);
   const g=await section.evaluate(root=>{
    const desc=root.querySelector(".hc-card-desc")!.getBoundingClientRect();
-   const embed=root.querySelector(".hc-jotform-embed")!;
+   const embed=root.querySelector(".hc-contact-form")!;
    const container=root.querySelector(".hc-contact-card")!.getBoundingClientRect();
    return {gap:embed.getBoundingClientRect().top-desc.bottom,padding:desc.top-container.top,display:getComputedStyle(embed).display,
      overflow:document.documentElement.scrollWidth-innerWidth};
   });
   expect(g.gap,"description-to-embed gap at "+width).toBeLessThanOrEqual(18);
   expect(g.padding,"collapsed top padding at "+width).toBeLessThanOrEqual(25);
-  expect(g.display).toBe("flow-root");
+  expect(g.display).toBe("flex");
   expect(g.overflow).toBeLessThanOrEqual(2);
  }
 });
