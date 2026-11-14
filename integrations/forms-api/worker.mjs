@@ -39,8 +39,58 @@ function clean(value, maximum) {
   return typeof value === "string" ? value.trim().slice(0, maximum + 1) : "";
 }
 
+// Alert the private Telegram admin group only after Airtable confirms a saved Lead.
+// Never put the customer's message body, phone, email or bot token into alerts.
+async function notifyTelegram(env, { id, name, topic, company, market }) {
+  if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) return;
+  if (!/^-[0-9]+$/.test(String(env.TELEGRAM_CHAT_ID))) {
+    console.error("Telegram alerts need a private group chat ID.");
+    return;
+  }
+  if (!/^rec[A-Za-z0-9]{14}$/.test(id)) {
+    console.error("Telegram alert skipped: invalid record id.");
+    return;
+  }
+  const url = "https://airtable.com/" +
+    encodeURIComponent(env.AIRTABLE_BASE_ID) + "/" +
+    encodeURIComponent(env.AIRTABLE_TABLE_ID) + "/" + encodeURIComponent(id);
+  const text = [
+    "🔔 New website Contact inquiry",
+    "Company: " + company,
+    "Website market: " + market,
+    "Name: " + name.slice(0, 120),
+    "Topic: " + topic.slice(0, 120),
+    "Status: New · Pending review",
+  ].join("\n");
+  try {
+    const response = await fetch(
+      "https://api.telegram.org/bot" + env.TELEGRAM_BOT_TOKEN + "/sendMessage",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: env.TELEGRAM_CHAT_ID,
+          text,
+          disable_notification: false,
+          protect_content: true,
+          link_preview_options: { is_disabled: true },
+          reply_markup: { inline_keyboard: [[{ text: "Open Lead in Airtable", url }]] },
+        }),
+      },
+    );
+    if (!response.ok) {
+      console.error("Telegram alert failed:", response.status, id);
+      return;
+    }
+    const result = await response.json();
+    if (result.ok !== true) console.error("Telegram alert rejected:", id);
+  } catch {
+    console.error("Telegram alert unavailable:", id);
+  }
+}
+
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const origin = request.headers.get("Origin") || "";
     // Exact origin → company mapping. Never let public submissions choose the company.
     // The chosen market describes the WEBSITE, not a visitor's residential location.
@@ -157,6 +207,17 @@ export default {
       if (!result.ok) throw new Error("Airtable write rejected");
       const record = await result.json();
       if (!record.id) throw new Error("Airtable response missing id");
+      if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+        const notification = notifyTelegram(env, {
+          id: record.id,
+          name,
+          topic,
+          company: identity.company,
+          market: identity.market,
+        });
+        if (ctx?.waitUntil) ctx.waitUntil(notification);
+        else await notification;
+      }
       return respond(201, { ok: true, reference: record.id }, origin);
     } catch {
       // Never expose private Airtable details, credentials, or request content.
