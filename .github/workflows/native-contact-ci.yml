@@ -1,0 +1,35 @@
+name: Native Contact pilot checks
+
+on:
+  push:
+    branches:
+      - feature/native-contact-airtable-pilot
+  pull_request:
+    paths:
+      - 'src/components/contact-form.ts'
+      - 'src/components/markup/contact.html'
+      - 'src/styles/contact-form.css'
+      - 'src/main.ts'
+      - 'src/style.css'
+      - 'index.html'
+      - 'integrations/contact-intake/**'
+      - 'tests/homepage.spec.ts'
+      - 'package.json'
+      - '.github/workflows/native-contact-ci.yml'
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run test:contact
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
