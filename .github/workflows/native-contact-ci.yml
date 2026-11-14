@@ -12,7 +12,7 @@ on:
       - 'src/main.ts'
       - 'src/style.css'
       - 'index.html'
-      - 'integrations/contact-intake/**'
+      - 'integrations/forms-api/**'
       - 'tests/homepage.spec.ts'
       - 'tests/mobile-contact-hero-polish.spec.ts'
       - 'tests/tablet-redesign.spec.ts'
