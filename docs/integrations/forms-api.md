@@ -1,3 +1,16 @@
+# ADMIN ALERTS — Private Telegram Group
+
+**Implementation:** `hc-forms-api` includes `notifyTelegram()`, called only after Airtable returns a new Lead record ID. It is deployed but **not active** until the owner creates a Telegram bot and private admin group and the Worker has both bindings:
+
+- `TELEGRAM_BOT_TOKEN` — Cloudflare **Secret**: token issued by Telegram @BotFather. Never commit or paste into chat.
+- `TELEGRAM_CHAT_ID` — Cloudflare **Secret** containing the private group chat's numeric negative ID (e.g. `-1001234567890`). A private group's message link `https://t.me/c/1234567890/42` identifies a supergroup ID that can be configured as `-1001234567890` after owner confirmation.
+
+**Behavior:** one Telegram `sendMessage` call per successfully saved Contact lead; no alert before a successful Airtable write. The message includes company, website market, name, approved topic and an Airtable deep-link button, but not the email, phone, or full message. The group must be private and membership limited to authorized admins. Normal Bot API messages use the free Telegram rate-limited path; paid broadcast is NOT enabled. No Quo or Zapier dependency.
+
+**Failure handling:** notification uses the Cloudflare Worker `waitUntil` background lifetime. Telegram errors never change the successful customer confirmation or re-create a Lead. The Lead stays in Airtable's existing Pending review queue even if a push notification fails; Cloudflare logs carry a generic delivery error and record ID. Once configured, verify a single actual submission before calling alert delivery operational. Future forms reuse this single Telegram group integration.
+
+---
+
 # CURRENT CONTACT FORM — Atlas v3 (Nov 13, 2026)
 
 The official [Hello Cleaning Brand Atlas](https://docs.google.com/document/d/1H-BNGFRfPuw9y6kiwJSaaVVh27jiq3sebereRF8-K78/edit) supersedes earlier ZIP-focused Jotform mockup requirements.
