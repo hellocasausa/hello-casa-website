@@ -14,6 +14,8 @@ on:
       - 'index.html'
       - 'integrations/contact-intake/**'
       - 'tests/homepage.spec.ts'
+      - 'tests/mobile-contact-hero-polish.spec.ts'
+      - 'tests/tablet-redesign.spec.ts'
       - 'package.json'
       - '.github/workflows/native-contact-ci.yml'
 
@@ -32,4 +34,4 @@ jobs:
       - run: npm run test:contact
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - run: npm test
+      # The contact pilot gates core homepage and Contact responsive behavior.\n      # Separate prototype concept suites require their own generated fixtures.\n      - run: npx playwright test tests/homepage.spec.ts tests/mobile-contact-hero-polish.spec.ts tests/tablet-redesign.spec.ts
