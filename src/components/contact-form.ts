@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /**
- * Native Contact form. The public Vite settings contain ONLY an endpoint URL and
- * Turnstile site key, never Airtable credentials.
+ * Native Contact form, wired directly to the live Hello Casa contact API.
+ * Airtable credentials never enter the website bundle.
  */
 export function bindContactForm() {
   const form = document.querySelector<HTMLFormElement>("#hc-native-contact-form");
@@ -10,8 +10,9 @@ export function bindContactForm() {
   const button = form.querySelector<HTMLButtonElement>(".hc-contact-submit")!;
   const status = form.querySelector<HTMLElement>("#hc-contact-status")!;
   const verification = form.querySelector<HTMLElement>("#hc-contact-verification")!;
-  const endpoint = (import.meta.env.VITE_HC_CONTACT_API_URL || "").trim();
-  const siteKey = (import.meta.env.VITE_HC_CONTACT_TURNSTILE_SITE_KEY || "").trim();
+  // Live Hello Casa domain only. These are public values; Airtable credentials remain server-side.
+  const endpoint = "https://hc-contact-intake.hello-casa-usa.workers.dev/api/contact";
+  const siteKey = "0x4AAAAAAGAOHqI8iezJxq7F";
 
   function setStatus(message: string, state: "success" | "error" | "preview") {
     status.textContent = message;
