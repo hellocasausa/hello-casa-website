@@ -29,3 +29,17 @@ Use routes such as `POST /api/quote` and `POST /api/cleaner-application` on the 
 Create an Airtable PAT at https://airtable.com/create/tokens. In Cloudflare → Workers & Pages → `hc-forms-api` → Settings → Variables and Secrets, add a **Secret** named `AIRTABLE_PAT`. Do not paste secrets into GitHub, website HTML, or chat.
 
 The old `hc-contact-intake` name and former staging infrastructure are retired. This is the canonical integration reference.
+
+## Contact form visual/editing reference (November 13, 2026)
+
+Airtable catalog: **Cleaning Operations → Forms Registry → Hello Casa — Contact**; related fields live in the **Form Fields** table. This metadata is a specification and inventory, not an automatic live editor.
+
+The Contact form is published with the owner-provided Jotform-inspired appearance: peach card (#ffd3c2), centered Libre Baskerville heading, muted blue text, rounded blush inputs, two-column ZIP/phone then name/topic, full-width message, reply-only privacy notice and right-aligned rounded peach `Send a Note →` button. Mobile stacks fields. The existing Contact section outside the form is preserved.
+
+Current fields: `zipcode` (required, US 5-digit or ZIP+4 → Leads.Postal code), `phone` (required → Leads.Phone), `name` (required → Leads.Full name), `topic` (required → Leads.Intake notes, prefix Reason), `message` (required → Leads.Intake notes). Email is not asked in the new layout; the Worker accepts older email-based submissions during transition. Turnstile is still required, and the reply-only permission is communicated in the privacy notice.
+
+**Dropdown choices pending:** the image shows `General Question`, kept as a single interim option; other options should be added only after the owner supplies the approved wording. Update Form Fields and the HTML select together. Native source changes do not propagate automatically from Airtable.
+
+Production uses a content-only Cloudflare Worker update (`PUT /accounts/{accountId}/workers/scripts/hc-forms-api/content`) so existing secret bindings survive. Website changes use Wix's targeted static-file patch on the existing site ID, preserving other site files.
+
+Previous original Contact submission was confirmed in Airtable. The newly changed ZIP/phone/topic submission format has not been verified by a real website submission; don't claim otherwise.
