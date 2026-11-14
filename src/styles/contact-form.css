@@ -1,134 +1,179 @@
-/* Native Contact fields — scoped to the approved Contact card. */
-.hc-contact-new .hc-contact-form {
+/* Hello Casa — native Contact form visual grammar, based on approved Jotform card. */
+#contact.hc-contact-new .hc-contact-card {
+  background: #ffd3c2;
+  border-color: rgba(255,255,255,.25);
+  box-shadow: none;
+}
+#contact.hc-contact-new .hc-card-title {
+  font-family: "HC Libre", "Libre Baskerville", Georgia, serif;
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -.025em;
+  text-align: center;
+  color: #1d5078;
+  margin: 0 0 15px;
+}
+#contact.hc-contact-new .hc-card-desc {
+  color: #63829a;
+  font: 400 clamp(14px, 1.55vw, 17px)/1.65 "HC Nunito", "Nunito Sans", sans-serif;
+  max-width: none;
+  margin: 0 0 27px;
+  text-align: left;
+}
+#contact.hc-contact-new .hc-contact-form,
+#contact.hc-contact-new .hc-contact-form * {
+  box-sizing: border-box;
+}
+#contact.hc-contact-new .hc-contact-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
   width: 100%;
   font-family: "HC Nunito", "Nunito Sans", sans-serif;
 }
-.hc-contact-new .hc-contact-form-grid {
+#contact.hc-contact-new .hc-contact-form-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 12px;
-  row-gap: 15px;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  column-gap: 20px;
+  row-gap: 9px;
 }
-.hc-contact-new .hc-contact-field {
+#contact.hc-contact-new .hc-contact-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
   min-width: 0;
 }
-.hc-contact-new .hc-contact-field-full {
+#contact.hc-contact-new .hc-contact-field-full {
   grid-column: 1 / -1;
 }
-.hc-contact-new .hc-contact-field > label {
-  color: #274b6a;
-  font-size: 13px;
+#contact.hc-contact-new .hc-contact-field>label {
+  color: #185782;
+  font-size: 15px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.35;
 }
-.hc-contact-new .hc-contact-optional {
-  font-weight: 400;
-  color: #58748a;
+#contact.hc-contact-new .hc-contact-required {
+  color: #e35341;
 }
-.hc-contact-new .hc-contact-field input,
-.hc-contact-new .hc-contact-field textarea {
+#contact.hc-contact-new .hc-contact-field input,
+#contact.hc-contact-new .hc-contact-field select,
+#contact.hc-contact-new .hc-contact-field textarea {
   display: block;
   width: 100%;
   min-width: 0;
-  border: 1px solid #c3d4df;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.87);
-  color: #274b6a;
-  font: 400 14px/1.5 "HC Nunito", "Nunito Sans", sans-serif;
-  padding: 12px 14px;
+  border: 1px solid #d9ced0;
+  border-radius: 17px;
+  color: #294f73;
+  background: #fff8f5;
+  font: 400 15px/1.45 "HC Nunito", "Nunito Sans", sans-serif;
+  padding: 13px 15px;
   box-shadow: none;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition: border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
 }
-.hc-contact-new .hc-contact-field textarea {
-  min-height: 112px;
+#contact.hc-contact-new .hc-contact-field input,
+#contact.hc-contact-new .hc-contact-field select {
+  min-height: 56px;
+}
+#contact.hc-contact-new .hc-contact-field select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 39px;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 5.5L8 10l5-4.5' fill='none' stroke='%23526c85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+#contact.hc-contact-new .hc-contact-field textarea {
+  min-height: 110px;
   resize: vertical;
 }
-.hc-contact-new .hc-contact-field input::placeholder,
-.hc-contact-new .hc-contact-field textarea::placeholder {
-  color: #7f95a5;
+#contact.hc-contact-new .hc-contact-field input::placeholder,
+#contact.hc-contact-new .hc-contact-field textarea::placeholder {
+  color: #5e7c96;
+  opacity: 1;
 }
-.hc-contact-new .hc-contact-field input:focus-visible,
-.hc-contact-new .hc-contact-field textarea:focus-visible,
-.hc-contact-new .hc-contact-consent input:focus-visible,
-.hc-contact-new .hc-contact-submit:focus-visible {
-  outline: 2px solid #274b6a;
-  outline-offset: 3px;
+#contact.hc-contact-new .hc-contact-field input:focus-visible,
+#contact.hc-contact-new .hc-contact-field select:focus-visible,
+#contact.hc-contact-new .hc-contact-field textarea:focus-visible,
+#contact.hc-contact-new .hc-contact-submit:focus-visible {
+  outline: 2px solid #547fa4;
+  outline-offset: 2px;
+  border-color: #88aacc;
+  background-color: #edf3fc;
 }
-.hc-contact-new .hc-contact-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  color: #385c77;
-  font-size: 12px;
-  line-height: 1.5;
-  cursor: pointer;
-}
-.hc-contact-new .hc-contact-consent input {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
-  margin: 2px 0 0;
-  accent-color: #274b6a;
-}
-.hc-contact-new .hc-contact-trap {
+#contact.hc-contact-new .hc-contact-trap {
   position: absolute;
-  left: -10000px;
   width: 1px;
   height: 1px;
   overflow: hidden;
+  left: -10000px;
   pointer-events: none;
 }
-.hc-contact-new .hc-contact-submit {
-  border: 1px solid #274b6a;
-  background: #274b6a;
-  color: white;
+#contact.hc-contact-new .hc-contact-privacy-note {
+  color: #577591;
+  font-size: 12.5px;
+  line-height: 1.55;
+  margin: -1px 0 3px;
+}
+#contact.hc-contact-new .hc-contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 13px;
+  flex-wrap: wrap;
+}
+#contact.hc-contact-new .hc-contact-verification {
+  min-height: 0;
+  flex: 0 1 auto;
+}
+#contact.hc-contact-new .hc-contact-submit {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 55px;
+  padding: 12px 30px;
+  border: 1px solid #efad8d;
   border-radius: 999px;
-  padding: 13px 24px;
-  min-height: 47px;
-  width: 100%;
-  font: 700 14px/1.3 "HC Nunito", "Nunito Sans", sans-serif;
-  letter-spacing: .015em;
+  background: #ffc39d;
+  color: #075682;
+  font: 800 15px/1.3 "HC Nunito", "Nunito Sans", sans-serif;
   cursor: pointer;
-  transition: background 160ms ease, transform 160ms ease;
+  box-shadow: 0 5px 12px rgba(163,96,70,.13);
+  transition: background 140ms ease, box-shadow 140ms ease, transform 140ms ease;
 }
-.hc-contact-new .hc-contact-submit:hover:not(:disabled) {
-  background: #416986;
+#contact.hc-contact-new .hc-contact-submit:hover:not(:disabled) {
+  background: #ffb486;
   transform: translateY(-1px);
+  box-shadow: 0 7px 17px rgba(163,96,70,.16);
 }
-.hc-contact-new .hc-contact-submit:disabled {
-  opacity: .55;
+#contact.hc-contact-new .hc-contact-submit:disabled {
+  opacity: .66;
   cursor: not-allowed;
 }
-.hc-contact-new .hc-contact-verification {
-  min-height: 0;
+#contact.hc-contact-new .hc-contact-status {
+  color: #2d5b7b;
+  font: 500 13px/1.5 "HC Nunito", "Nunito Sans", sans-serif;
+  margin: 4px 0 0;
 }
-.hc-contact-new .hc-contact-status {
-  color: #385c77;
-  font-size: 12.5px;
-  line-height: 1.5;
-  margin: 0;
-}
-.hc-contact-new .hc-contact-status[hidden] {
-  display: none;
-}
-.hc-contact-new .hc-contact-status[data-state="error"] {
-  color: #8c393c;
-}
-.hc-contact-new .hc-contact-status[data-state="success"] {
-  color: #225d4b;
-}
+#contact.hc-contact-new .hc-contact-status[hidden] {display:none}
+#contact.hc-contact-new .hc-contact-status[data-state="error"] {color:#8c393c}
+#contact.hc-contact-new .hc-contact-status[data-state="success"] {color:#23674b}
 @media (max-width: 750px) {
-  .hc-contact-new .hc-contact-form-grid {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 12px;
-  }
-  .hc-contact-new .hc-contact-form { gap: 13px; }
-  .hc-contact-new .hc-contact-field input,
-  .hc-contact-new .hc-contact-field textarea { font-size: 14px; }
+  #contact.hc-contact-new .hc-card-title {font-size: 29px;margin-bottom: 10px}
+  #contact.hc-contact-new .hc-card-desc {font-size: 14px;margin-bottom: 18px}
+  #contact.hc-contact-new .hc-contact-form-grid {grid-template-columns:minmax(0,1fr);row-gap:11px}
+  #contact.hc-contact-new .hc-contact-form {gap:12px}
+  #contact.hc-contact-new .hc-contact-field>label {font-size:14px}
+  #contact.hc-contact-new .hc-contact-field input,
+  #contact.hc-contact-new .hc-contact-field select {min-height:53px}
+  #contact.hc-contact-new .hc-contact-actions {align-items:stretch;gap:10px}
+  #contact.hc-contact-new .hc-contact-submit {margin-left:auto}
+}
+@media (prefers-reduced-motion:reduce) {
+  #contact.hc-contact-new .hc-contact-submit,
+  #contact.hc-contact-new .hc-contact-field input,
+  #contact.hc-contact-new .hc-contact-field select,
+  #contact.hc-contact-new .hc-contact-field textarea {transition:none}
 }
