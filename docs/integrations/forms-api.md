@@ -1,3 +1,29 @@
+# CURRENT CONTACT FORM — Atlas v3 (Nov 13, 2026)
+
+The official [Hello Cleaning Brand Atlas](https://docs.google.com/document/d/1H-BNGFRfPuw9y6kiwJSaaVVh27jiq3sebereRF8-K78/edit) supersedes earlier ZIP-focused Jotform mockup requirements.
+
+**All five fields are required:** Your name; Email address; Phone number; What can we help you with?; Tell us a little more. NO ZIP/postal code field on the public Contact form.
+
+**Approved topic choices in exact order:** I have a question; Help me choose a cleaning service; My space needs something different; Something else. Avoid existing-client service/booking support options: those use a separate monitored support workflow.
+
+**Contextual message hints** (the Atlas labels the precise wording as working, not separately approved final copy):
+- I have a question: "Is there something you'd like to know before getting started?"
+- Help me choose a cleaning service: "Tell us what you're hoping to accomplish. We can help you explore your options."
+- My space needs something different: "A unique property or a special request? Tell us a little about it."
+- Something else: "Whatever's on your mind, we're listening."
+
+**Responsive layout:** two questions per row on desktop, tablet and mobile, with the message box alone taking the full width. On small screens use tighter gaps and field type scale without converting to single column. Keep the approved peach/blush/blue visual system, quiet privacy microcopy, and "Send a Note →" button. Success confirmation: "Thank you for reaching out. We've received your note."
+
+**Spam protection:** use Turnstile Managed mode with `appearance: "interaction-only"`; it stays out of the visual design for most visitors but can appear when interaction is genuinely required. Server must validate Turnstile hostname and one-time response token.
+
+**Brand identity routing:** one shared Worker with exact origin mappings `hello-casa.com`/`www.hello-casa.com` → Airtable Company `Hello Casa`, website market `Florida`; `confidentcleanings.com`/`www.confidentcleanings.com` → Company `Confident Cleanings`, website market `California`. A visitor's true residential location must **not** be inferred from the brand site. Source URL and website market are saved in Lead's metadata/notes. Both domains are authorized for the single Turnstile widget. **Only Hello Casa has the native Contact form deployed at present; enabling domain routing does NOT install a form on the separately editor-built Confident Cleanings site.**
+
+The Contacts registry is in Airtable `Cleaning Operations → Forms Registry` and each question in `Form Fields`. Editing registry records alone does not redeploy website/source changes. Cloudflare Worker code uses its internal explicit origin map; old `ALLOWED_ORIGINS` variable is historical and not consulted in this version.
+
+Any older Jotform-specific/ZIP guidance below is archived context, not the current requirements.
+
+---
+
 # Hello Casa Forms API — canonical integration
 
 **Shared Cloudflare Worker:** `hc-forms-api`  
