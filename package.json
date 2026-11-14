@@ -11,7 +11,7 @@
     "test": "playwright test",
     "perf:capture": "node scripts/perf/capture.mjs",
     "check:architecture": "node scripts/check-architecture.mjs",
-    "test:contact": "node --test integrations/contact-intake/worker.test.mjs"
+    "test:contact": "node --test integrations/forms-api/worker.test.mjs"
   },
   "repository": {
     "type": "git",
