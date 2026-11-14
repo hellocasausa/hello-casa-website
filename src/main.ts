@@ -1,5 +1,7 @@
 import { bindServices } from "./components/services";
+import { bindContactForm } from "./components/contact-form";
 bindServices();
+bindContactForm();
 const toggle = document.querySelector<HTMLButtonElement>(".hc-float-toggle")!;
 const dropdown = document.querySelector<HTMLElement>(".hc-float-dropdown")!;
 function closeMenu(restore = false) {
@@ -33,15 +35,6 @@ document
     s.textContent =
       "Preview only — newsletter signup is not connected. No information has been sent.";
   });
-const embed = document.querySelector("#hc-contact-jotform")!;
-const titleFrame = () => {
-  embed.querySelector("iframe")?.setAttribute("title", "Contact Hello Casa");
-};
-new MutationObserver(titleFrame).observe(embed, {
-  childList: true,
-  subtree: true,
-});
-titleFrame();
 const aliases: Record<string, string> = {
   "comp-mvg8kq2o": "services",
   "hc-mobile-vertical": "services",

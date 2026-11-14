@@ -34,7 +34,7 @@ for (const selector of [
   ".hero h1",
   ".steps ol",
   "#standards",
-  "#hc-contact-jotform",
+  "#hc-native-contact-form",
   "#footer",
 ])
   required(selector);
