@@ -1,6 +1,18 @@
+# Current direct production setup (owner-directed, November 13, 2026)
+
+The owner directed us to stop staging loops and wire the **actual website form** directly.
+
+- Production Cloudflare Worker `hc-contact-intake` created and activated at `https://hc-contact-intake.hello-casa-usa.workers.dev/api/contact`.
+- Production Cloudflare Turnstile widget `Hello Casa — Contact Form`, public key `0x4AAAAAAGAOHqI8iezJxq7F`; only `www.hello-casa.com` and `hello-casa.com` hostnames allowed.
+- Source contact frontend directly targets that production endpoint, no Vite frontend config steps or secondary preview deployment.
+- Airtable writes are mapped into **Cleaning Operations → Leads** with `Company=Hello Casa`, `Record class=Operational`, `Lead stage=New`.
+- **One unavoidable security connection remains:** create a base-scoped Airtable PAT with `data.records:write` and place it in Cloudflare Worker `hc-contact-intake` → Variables and Secrets → Secret **AIRTABLE_PAT**. Do not paste it into chat or commit it.
+- The live Wix site itself is a separate editorless hosted deployment. Its current source was not available to edit a single section safely using the connected tools. **Do not upload the entire GitHub reconstruction over the live site** merely to install this form; preserve unrelated content. Deploy the native source when live-site file ownership is confirmed.
+- The earlier isolated Worker `hc-contact-intake-staging` remains unused, has no Airtable token, and should not be linked from the website.
+
 # Native Contact → Airtable pilot (review branch only)
 
-## Actual staging deployment — November 13, 2026
+## Original isolated staging experiment — superseded by direct production setup
 - Cloudflare Worker script **hc-contact-intake-staging** uploaded, with its workers.dev subdomain explicitly enabled. Expected endpoint: `https://hc-contact-intake-staging.hello-casa-usa.workers.dev/api/contact`. Actual HTTP submission remains unverified.
 - Cloudflare Turnstile widget **HC native contact — staging pilot** created. Public site key: `0x4AAAAAAGANgDCEKbgk8ZYB`, allowed hosts `hellocasausa.github.io`, `localhost`, and `127.0.0.1`. Its secret is stored as a secure Worker binding, not in source.
 - Worker bound to real Cleaning Operations base/table, explicit test-only mode and allowed preview/local origins.
