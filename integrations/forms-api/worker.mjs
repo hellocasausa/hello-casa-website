@@ -1,7 +1,7 @@
 /**
  * Shared Hello Casa Forms API. Contact is the initial guarded route; future forms can be added independently. No secrets belong in the website bundle.
  * Fails closed until all environment bindings are configured.
- * Deploy only to a staging Worker until an owner-approved end-to-end test passes.
+ * Production route. Changes preserve existing secret bindings through a content-only update.
  */
 const LIMIT_BYTES = 8192;
 const AIRTABLE_URL = "https://api.airtable.com/v0/";
@@ -70,11 +70,21 @@ export default {
     const name = clean(input.name, 120);
     const email = clean(input.email, 254);
     const phone = clean(input.phone, 40);
+    const zipcode = clean(input.zipcode, 10);
+    const topic = clean(input.topic, 120);
     const message = clean(input.message, 3000);
     const token = clean(input.turnstileToken, 3000);
+    // Support previously published email-based contact submissions during rollout.
+    // The approved Jotform-style layout uses ZIP + phone + name + topic + message.
+    const legacyEmailSubmission = Boolean(email && !zipcode && !topic);
+    const phoneDigits = phone.replace(/\D/g, "");
+    const validPhone = phoneDigits.length >= 10 && phoneDigits.length <= 15;
+    const validZipcode = /^[0-9]{5}(?:-[0-9]{4})?$/.test(zipcode);
     if (!name || name.length > 120 ||
-        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 ||
-        phone.length > 40 || !message || message.length > 3000 ||
+        (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)) ||
+        phone.length > 40 ||
+        !message || message.length > 3000 ||
+        (!legacyEmailSubmission && (!validPhone || !validZipcode || !topic || topic.length > 120)) ||
         input.replyConsent !== true || !token) {
       return respond(422, { ok: false, message: "Please check the required fields." }, origin);
     }
@@ -104,9 +114,11 @@ export default {
       "flddvq8kfgJ1C1o0l": "New",
       "fldkp0pu9U6E3Nrw7": "Other",
       "fld0u1gwNFc15jmD2": name,
-      "fldVAtEsUjUwVibjN": email,
+      "fldVAtEsUjUwVibjN": email || undefined,
       "fldEV99earNSeBe61": phone || undefined,
-      "fldfir37pNdk9A3jJ": "Contact form inquiry. Message:\n" + message + "\nReply permission: yes",
+      "fldgETeUwvPLui35l": zipcode || undefined,
+      "fldfir37pNdk9A3jJ": "Contact form inquiry." + (topic ? "\nReason: " + topic : "") +
+        "\nMessage:\n" + message + "\nReply permission: yes",
       "fld6htuvrRQs5VVyY": "Native website contact form",
       "fld6PAAK8pC8YMmLj": "contact-" + crypto.randomUUID(),
       "fldKSw0W3p1KEssJe": origin + "/#contact",
